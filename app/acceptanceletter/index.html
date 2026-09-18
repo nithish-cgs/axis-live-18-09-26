@@ -1,0 +1,93 @@
+﻿<style>
+    .detailsscreendata {
+        padding-bottom: 5px;
+        margin-left: 10px;
+        border-bottom: 1px solid;
+        width: 30%;
+        font-weight: 600;
+    }
+    .authorisepolicy ul li {
+        margin-bottom: 10px;
+    }
+    .authorisepolicy ul li span {
+        margin-right: 10px;
+    }
+</style>
+<div class="container">
+<div class="row">
+	
+    <div class="col-12 text-left">
+        <div class="authorisepolicy">
+            <h4 class="ax-sec-title p-5 text-center">Authorisation to Axis Securities Limited</h4>
+            <div class="p-5">
+                <p>I,<b> &lt;{{karvyData.CUSTOMER_NAME}}&gt;</b>, PAN <b>&lt;{{karvyData.PAN}}&gt; </b> was maintaining my resident individual Trading Account with Karvy Stock
+                    Broking Limited. I understand that through a formal bidding process all client Trading Accounts maintained
+                    with Karvy are being shifted to Axis Securities Limited (ASL).</p>
+                <p>
+                    I confirm that I have already completed my CKYC and KRA process for my Trading account with Karvy. I
+understand that the above KYC documents will be forwarded by Karvy to ASL.
+                </p>
+                <p>
+                    Please take this as consent to open my Demat account with ASL as Depository Participant of NSDL and link it to
+my Trading account. The Demat account to be opened based on the KYC details including bank account details
+of my Trading account with Karvy.
+                </p>
+                <p>
+                    I agree to ASL’s standard retail DP Tariff sheet for my above Demat account. I will submit additional
+documents, if any required by ASL in this regard.
+                </p>
+                <p>Customer Declaration:</p>
+                <ul class="list-unstyled">
+                    <li><span>-</span>I/We authorize you to receive credit automatically into A/c.</li>
+                    <li><span>-</span>I/We do not want to receive the Delivery Instruction Slip (DIS) booklet</li>
+                    <li><span>-</span>I/We hereby authorize you to use my/our Bank A/c no in Trading account for dividend purpose,</li>
+                    <li><span>-</span>recovery of Demat related charges.</li>
+                    <li><span>-</span>I/We do not wish to make a nomination</li>
+                    <li><span>-</span>I/We opt for Non BSDA Demat Account operated through Power Of Attorney</li>
+                    <li><span>-</span>I/We opt for Statement frequency as Monthly</li>
+                    <li><span>-</span>I/We opt for Mode of receiving Demat statement, Rights &amp; Obligation and annual report as Electronic</li>
+                    <li><span>-</span>I/We allow Axis Securities to Share my email ID with RTA</li>
+                    <li><span>-</span>I/We wish to avail of the facility of internet trading/ wireless technology</li>
+                    <li><span>-</span>I/we further confirm having read and understood the contents of Part B Form comprising of Rights
+                        and Obligations of the Beneficial Owner and Depository Participant, Rights and Obligations of Stock
+                        Brokers, Sub Brokers &amp; clients, Rights and Obligations of Margin Trading, Risk Disclosure document,
+                        Policy &amp; Procedures, Guidance Note, Additional Terms &amp; Conditions &amp; Schedule of Charges. I/We do
+                        hereby agree to be bound by such provisions as outlined in these documents.</li>
+                </ul>
+                <p>Bank Account to be linked in Demat and Trading:</p>
+                <div class="d-flex align-items-center justify-content-start mb-3">
+                    <span>Bank Account Number:</span>
+                    <div class="detailsscreendata">{{karvyData.AC_NO}}</div>
+                </div>
+                <div class="d-flex align-items-center justify-content-start mb-3">
+                    <span>IFSC:</span>
+                    <div class="detailsscreendata">{{karvyData.IFSC_CODE}}</div>
+                </div>
+                <div class="d-flex align-items-center justify-content-start mb-3">
+                    <span>Bank Name:</span>
+                    <div class="detailsscreendata">{{karvyData.BANK_NAME}}</div>
+                </div>
+                <div class="d-flex align-items-center justify-content-start mb-3">
+                    <span>Date of Birth: </span>
+                    <div class="detailsscreendata">{{karvyData.DOB}}</div>
+                </div>
+                <div class="d-flex align-items-center justify-content-start mb-3">
+                    <span>Mobile Number: </span>
+                    <div class="detailsscreendata">{{karvyData.MOBILE}}</div>
+                </div>
+                <div class="d-flex align-items-center justify-content-start mb-3">
+                    <span>Email ID:</span>
+                    <div class="detailsscreendata">{{karvyData.EMAIL}}</div>    
+                </div>
+            </div>
+            <div class="px-5">
+                <p>Thanking you</p>
+                <p class="mb-5">Name: <b>&lt;{{karvyData.CUSTOMER_NAME}}&gt;</b></p>
+            </div>
+            <p class="text-center">
+                *Demat account opening is subject to validation of data with Trading account and KYC records Validation
+            </p>
+        </div>
+    </div>
+</div>
+</div>

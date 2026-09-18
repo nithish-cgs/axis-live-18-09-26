@@ -1,0 +1,359 @@
+﻿
+<style>
+.table {
+display: none !important;
+}
+
+#video {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width:320px;
+  height:240px;
+}
+
+#photo {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width:320px;
+  height:240px;
+}
+
+#canvas {
+  display:none;
+}
+
+.camera {
+  width: 340px;
+  display:inline-block;
+}
+
+.output {
+  width: 340px;
+  display:inline-block;
+}
+
+#startbutton {
+  display:block;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+  bottom:32px;
+  background-color: rgba(0, 150, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  color: rgba(255, 255, 255, 1.0);
+}
+
+.contentarea {
+  font-size: 16px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  width: 760px;
+}
+
+.wrapper {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.pdf-linkbtn {
+    border: 1px solid;
+    width: 150px;
+    display: block;
+    margin: auto;
+    padding: 6px 0px;
+    border-radius: 20px;
+    text-decoration: underline;
+}
+</style>
+
+
+<div class="profileaddresschangestep1 pacs">
+    <div class="onboard-innerinfo">
+        <!--<div class="clearfix ob-form-header" ng-hide="documentLoad">
+            <div class="pull-left">
+                <a href="bank" ng-click="sixthSection()" class="previous">Previous</a>
+            </div>
+            <div class="pull-right">
+                <div class="text-right" ng-if="formData.ReferenceNumber">Reference Number : {{formData.ReferenceNumber}}</div>
+            </div>
+        </div>-->
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="row mb-5">
+                    <div class="col-md-9">
+                        <h4 class="ax-sec-title">It is time to upload your documents now. I hope you have kept all the
+                            documents handy! Anyways, I can wait &#128578;</h4>
+                    </div>
+                    <div class="col-12 d-block d-sm-none">
+                        <div class="d-flex justify-content-start">
+                            <div>Step 6/8</div>
+                            <div class="mobile-progress progress">
+                                <div class="progress-bar" style="width:75%;height:20px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-3 text-center d-none d-sm-block">
+                        <img class="img-fluid cartoon-character" src="assets/images/axis/docupload-cartoon.png"
+                            alt="Registration-emoji" />
+                    </div> -->
+                </div>
+               
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="input-forms margint10" novalidate autocomplete="off">
+                            <!--<h3 class="uploaded-hd hidden-sm hidden-md hidden-lg">Upload Documents</h3>-->
+                            <div class="intrestedsegments upload-documents" ng-hide="documentLoad">
+                                
+
+                                <div class="row row-eq-height uploaded-type" 
+                                    ng-class="{'error': (!chequeImageValidation && chequeImageValidation!=''), 'success': chequeImageValidation}" >
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                        <param>Cancelled cheque <br />
+                                            <small class="grey-texts">(Personalised cancelled cheque image alongwith
+                                                signature)</small></param>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample dropdown">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="chequeSample=!chequeSample">Sample cancelled cheque</a>                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content bank-img">
+                                        <div class="d-flex">
+                                            <div class="upload-section">
+                                                <div id="bankImage"></div>
+                                                <input type="file" accept="image/*" class="input-upload" id="BankCheque"
+                                                    onchange="imgUplds('BankCheque');">
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result"
+                                                    ng-class="{'validation-error': (!chequeImageValidation && chequeImageValidation!=''), 'validation-success': chequeImageValidation}">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="banktypeError"><i class="fa fa-times"></i>File type not
+                                                supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="bankImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+										<div class="input-message clearfix"><span class="error-message"
+                                                ng-if="bankQImgError"><i class="fa fa-times"></i>Please upload good quality image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="bankSizeError"><i class="fa fa-times"></i>Please upload the
+                                                document less than 4Mb</span></div>
+                                    </div>
+									<div class="col-12" ng-if="chequeSample">
+										<div class="sample-output">
+                                                <div class="uploaded-image">
+                                                    <img src="assets/images/cheque.jpg" width="300" height="auto" alt="" />
+                                                </div>
+                                                <div class="boardformlist mt-3">
+                                                    <p>Ensure that you upload a personalized cheque. If you do not have a personalized cheque upload the normal cheque copy and in addition you would have to upload the Bank Statement which has Bank Account Number, IFSC Code and MICR Code.</p>
+                                                </div>
+                                        </div>
+									</div>
+                                </div>
+                                <div class="row mt-5">
+
+                                    <div class="col-sm-12">
+                                        <div class="nomination-address">
+                                            <label for="agree-terms" class="agreeTerms">
+                                                <input class="customcheckradio" required="" type="checkbox"
+                                                    id="agree-terms">
+                                                <span class="nomination-check">
+                                                    I Agree to the <a href="javascript:void(0);" ng-click="termsModal()">Terms &amp;
+                                                        Conditions</a>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-message clearfix"><span class="error-message top-0"
+                                        ng-if="termsError"><i class="fa fa-times"></i>Please accept terms and
+                                        conditions</span></div>
+                            </div>
+
+
+                            <!-- <div class="loader-info text-center" style="display:block" ng-show="documentLoad">
+                                <div class="display-table">
+                                    <div class="loading-data display-table-cell">
+                                        <span class="content-loader"></span>
+                                        <p class="loader-content">Your <span class="loadingdata-type">document</span> is getting <span class="verify-status">loaded</span></p>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="loader-parent" ng-if="documentLoad">
+                                <div class="nb-spinner"></div>
+                                <!-- <p class="loader-content">Your <span class="loadingdata-type">document</span> is getting <span class="verify-status">loaded</span></p> -->
+                            </div>
+
+                            <div class="row my-5">
+                                <div class="col-12 text-center">
+                                    <div class="wizard-btns">
+			
+										<!--<button type="button" id="" ng-click="displayForm()" ng-if="(ckycPennyAxis || !signatureButtons) && !ckycSignature"
+                                            class="btn ax-btn-primary text-uppercase">Proceed</button>-->
+									
+										<!-- <button type="button" id="" ng-click="rmProceed()" ng-if="formData.RMModule" class="btn ax-btn-primary text-uppercase">Proceed</button> -->
+										<button type="button" id="" ng-click="displayForm()" class="btn ax-btn-primary text-uppercase">Proceed</button>
+											
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+					</div>
+                </div>
+
+            </div>
+            <div class="col-md-3 help-sidebar d-none d-sm-block">
+                <h3 class="ax-sec-title mt-0 mb-3">Help is here</h3>
+                <div class="guideline-with-bg">
+                   
+                    <div class="d-flex pb-4">
+                        <div class="pr-3">1.</div>
+                        <div class="">Please ensure the cancelled cheque leaf that you upload matches with the details
+                            provided in Bank details section
+                        </div>
+                    </div>
+                   
+					
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="modal fade" id="getImgModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!--<div class="modal-header">
+                <button type="button" id="getImaModalPopup" class="close" data-dismiss="modal" data-toggle="tooltip" title="Close"><i class="icon16 card-collapse"></i></button>
+                <h3>&nbsp;</h3>
+            </div>-->
+            <div class="modal-body">
+                <button type="button" class="ax-modal-close close" data-dismiss="modal" data-toggle="tooltip"
+                    title="Close">&times;</button>
+                <div class="floating-buttons"></div>
+                <div class="kv-zoom-body file-zoom-content">
+                    <img src="" id="imgBig" class="kv-preview-data file-preview-image file-zoom-detail"
+                        style="width: 100%; height: 100%;">
+                    <embed src="" id="pdfBig" type="application/pdf"
+                        class="kv-preview-data file-preview-image file-zoom-detail" height="600" style="width: 100%;">
+                </div>
+                <button type="button" class="btn btn-navigate btn-prev" title="View previous file" id="viewPreviousFile"
+                    disabled="disabled"><i class="glyphicon glyphicon-triangle-left"></i></button>
+                <button type="button" class="btn btn-navigate btn-next" title="View next file" id="viewNextFile"
+                    disabled="disabled"><i class="glyphicon glyphicon-triangle-right"></i></button>
+            </div>
+        </div>
+    </div>
+	<form id="frmMain" runat="server" method="post">
+        <input id="msg" name="msg" type="text" value="" />
+	</form>
+
+</section>
+
+<section class="modal fade" id="formPDF" role="dialog">
+    <div class="modal-dialog modal-xl" style="max-width:1100px">
+        <div class="modal-content">
+            <!--<div class="modal-header">
+                <button type="button" id="getImaModalPopup" class="close" data-dismiss="modal" data-toggle="tooltip" title="Close"><i class="icon16 card-collapse"></i></button>
+                <h3>&nbsp;</h3>
+            </div>-->
+         <div class="modal-body">
+                <!--<button type="button" class="ax-modal-close close" data-toggle="tooltip" ng-click="closeForm()"
+                    title="Close">&times;</button>-->
+                <div class="kv-zoom-body file-zoom-content">
+					<object data="{{objURl | trustAsResourceUrl }}" style="width: 100%; height: 100%"></object>
+                    <!--<iframe src="{{objURl | trustAsResourceUrl }}"  width="100%" height="100%" frameborder="0">
+					</iframe>-->
+                </div>
+				<button type="button" id="proceedEsignPage" ng-click="DIYUpdateIPVStage('esign')"  class="btn ax-btn-primary text-uppercase" ng-if="!formData.RMModule">ESign and Activate Instantly</button>
+                <button data-dismiss="modal" ng-click="rmNewForm()" ng-if="formData.RMModule" 
+                            class="btn ax-btn-primary text-uppercase">
+                                    Okay</button>
+				<!--<button type="button" id="" ng-click="updateIPVStage('submit')" 
+				class="text-uppercase btn ax-btn-primary mt-2 mt-sm-0">Physical Sign and Activate Later</button>-->
+				</div>
+        </div>
+    </div>
+</section>
+
+<section class="modal fade" id="otpSection" role="dialog" tabindex="-1">
+	<div class="modal-dialog login-dialog" style="margin-top: 231.5px;" >
+		<div class="modal-content">
+		<div class="modal-body">
+			<!--Your signature from your axis account will be used for account opening purpose.-->
+			<div ng-show="ckycSignature" class="row">												
+				<div class="text-left col-md-12 parent-field">
+				<label class="ax-label">Your signature from your axis account will be used for account opening purpose.</label>
+					<label class="ax-label">We have sent an OTP to validate your KRA number</label>
+					<!--<div class="input-message child-field hint-txt clearfix" ng-hide="otpSuccess">
+						<a href="javascript:void(0)" class="pull-left info-message validate-newsendotp"
+							ng-click="newEmailValidate()">
+							<i class="icon14 icon-reset icon-reset-new"></i> <span>Resend OTP</span>
+						</a>
+					</div>-->
+					
+					<div class="ax-timerandresend">
+						<div class="ax-field">
+							<input autocomplete="nope" only-digits ng-keypress="emptyOTP = false; invalidOTP = false; $event.keyCode == 13 ? validateOTP() : ''" ng-model="formData.fields.otpCkyc" class="form-control" type="{{ typePassword ? 'text' : 'password' }}" required maxlength="6" />
+							<a href="javascript:void(0);" class="" tabindex="-1" ng-if="enableResendButton" ng-click="getOTP()"
+								ng-class="{adisabled: ResendDisable}">RE-SEND</a>
+							<span ng-if="!enableResendButton">{{counter}}</span>
+							<i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': typePassword, 'fa-eye-slash': !typePassword}" ng-click="togglePassword()"></i>
+						</div>
+						<p class="error-message pull-right" ng-if="emptyOTP"><i class="fa fa-times"></i> OTP is Empty
+						</p>
+						<p class="error-message pull-right" ng-show="invalidOTP"><i class="fa fa-times"></i> Invalid OTP
+						</p>
+					</div>
+				</div>
+				<div class="col-md-12 text-right validate3otp" ng-if="!otpSuccess">
+					<button type="button" class="btn px-3 py-3 my-2 ax-btn-primary validate-newotp"
+						ng-click="validateOTP()" id="validateOTP">
+						Validate
+					</button>
+				</div>
+				
+			</div>
+			<div class="help-body">
+			</div>
+		</div>
+		<div class="modal-footer d-flex justify-content-end">
+				<!--<button type="button" class="btn ax-btn-primary text-uppercase" data-dismiss="modal">OK</button>-->
+			</div>
+		</div>
+	</div>
+</section>
+<section class="modal fade" id="customerSMS" role="dialog" tabindex="-1">
+            <div class="modal-dialog login-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <p class="ax-sec-title m-0">{{apiResponseErrorMsg}}</p>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-12 text-center">
+								<button data-dismiss="modal" ng-if="customerSMS" 
+                                    class="btn ax-btn-primary text-uppercase">
+                                    Okay</button>
+                            </div>
+                        </div>
+                        <!-- End -->
+                    </div>
+                </div>
+            </div>
+        </section>

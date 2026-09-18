@@ -1,0 +1,1180 @@
+/***
+Names   : styles.css	
+purpose : Kotak PDF main css files
+version : 1.0
+Author  : CGS
+***/
+
+
+@font-face {
+    font-family: 'CamphorProHeavy';
+    src: url('../fonts/CamphorPro-Heavy.eot');
+    src: url('../fonts/CamphorPro-Heavy.eot?#iefix') format('embedded-opentype'), url('../fonts/CamphorPro-Heavy.woff') format('woff'), url('../fonts/CamphorPro-Heavy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'CamphorStdBold';
+    src: url('../fonts/CamphorStd-Bold.eot');
+    src: url('../fonts/CamphorStd-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/CamphorStd-Bold.woff') format('woff'), url('../fonts/CamphorStd-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'CamphorProRegular';
+    src: url('../fonts/CamphorPro-Regular.eot');
+    src: url('../fonts/CamphorPro-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/CamphorPro-Regular.woff') format('woff'), url('../fonts/CamphorPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    box-sizing: border-box;
+}
+body{
+	font-family:'CamphorProRegular';
+	font-size:14px;
+	/*transform: scale(1, 1.5);
+	-webkit-transform: scale(1, 1.5);
+	-moz-transform: scale(1, 1.5);  
+	-ms-transform: scale(1, 1.5);
+	-o-transform: scale(1, 1.5);  */
+}
+.container {
+    width: 950px;
+    margin: 0px auto;
+}
+.full-width{
+	float:left;
+	width:100%;
+}
+.cover-text{
+	font-size:5rem;
+	color:#000;
+}
+.page-setup{
+	height:1350px;
+	width:100%;
+	page-break-after:always !important;
+}
+.front-cover{
+	background:#fdfdfd; 
+}
+
+/** Headings **/
+.page-title{
+	font-family: 'CamphorProHeavy';
+	font-weight:bold;
+}
+.m-heading{
+	font-family: 'CamphorStdBold';
+	font-size:18px;
+}
+.s-heading{
+	font-family: 'CamphorStdBold';
+	font-size:16px;
+}
+/** Headings End **/
+
+/** Table designs common **/
+.v-middle, .v-middle td{
+	vertical-align:middle;
+}
+.v-top, .v-top td{
+	vertical-align:top;
+}
+.t-center{
+	text-align:center;
+}
+.t-justify{
+	text-align: justify;
+}
+.t-right{
+	text-align:right;
+}
+.t-left{
+	text-align:left;
+}
+.d-table{
+	display:table;
+}
+.d-table-cell{
+	display:table-cell;
+}
+.pdf-table{
+	width:100%;
+	float:left;
+}
+.b-collapse{
+	border-collapse:collapse;
+}
+.grey-head-table thead{
+	background-color:#dadada;
+}
+.d-table{
+	display:table;
+}
+.d-table .d-table-child{
+	display:table-cell;
+}
+.two-column-table .d-table .d-table-child:first-child{
+	width:30px;
+}
+.two-column-table .d-table .d-table-child{
+	margin-bottom:5px;
+}	
+.b-table{
+	display:inline-block;
+}
+.bc-collapse{
+	border-collapse:collapse;
+}
+.d-seperator{
+	border:none !important;
+}
+.td-border-tables > tbody > tr > td{ border-bottom:1px solid #dadada;}
+.td-border-tables > tbody > tr > td > input[type="text"]{ border-bottom:none;}
+table.t-left, table.t-left td{text-align:left !important;}
+.b-1{ border:1px solid #dadada !important;}
+/** Table designs End **/
+
+/** Common CSS */
+.f-9{font-size:9px;}
+.f-12{font-size:12px;}
+.f-13{font-size:13px;}
+.f-14{font-size:14px;}
+.f-18{font-size:18px;}
+
+.fs-italic{font-style:italic;}
+
+.h-100{height:100%;}
+.w-100{width:100%;}
+
+.vertical-text{text-align: center;white-space: nowrap;transform-origin: 50% 50%;transform: rotate(-90deg);}
+.color-red{color:red;font-weight:bold;}
+
+p{margin:0px;}
+.w-12p{width:12px;}
+
+/** Margin **/
+.mt-0{margin-top:0px;}
+.mt-2{margin-top:2px;}
+.mt-5{margin-top:5px;}
+.mt-10{margin-top:10px;}
+.mt-15{margin-top:15px;}
+.mt-30{margin-top:30px;}
+
+.mr-5{ margin-right:5px;}
+.mr-20{ margin-right:20px;}
+.mr-50{ margin-right:50px;}
+
+.mb-10{margin-bottom:10px;}
+.mb-15{margin-bottom:15px;}
+.mb-0{margin-bottom:0px;}
+.mb-5{margin-bottom:5px;}
+
+.ml-10{margin-left:10px;}
+.ml-20{margin-left:20px;}
+.ml-45{margin-left:45px;}
+.ml-50{margin-left:50px;}
+.ml--2{ margin-left: -2px;}
+
+/** Margin End **/
+
+/** Padding **/
+.p-5{ padding:5px;}
+.p-15{ padding: 15px;}
+
+.pr-5{ padding-right:5px;}
+.pr-10{ padding-right:10px;}
+.pr-15{ padding-right:15px;}
+.pr-20{ padding-right:20px;}
+.pr-25{ padding-right:25px;}
+
+.pl-5{ padding-left:5px;}
+.pl-10{ padding-left:10px;}
+.pl-15{ padding-left:15px;}
+.pl-20{ padding-left:20px;}
+
+.pt-5{ padding-top:5px;}
+.pt-10{ padding-top:10px;}
+.pt-16{ padding-top:16px;}
+
+.pb-5{ padding-bottom:5px;}
+.pb-2{padding-bottom: 2px;}
+.px-0{padding-left: 0px; padding-right: 0px;}
+/** Padding End **/
+
+/** Border **/
+.b-0{border:none;}
+.b-0 td{border:none;}
+
+/** Border-end **/
+
+table, table td{border: 1px solid #dadada;}
+table:not(.b-0){ border:none;}
+table:not(.b-0) > tbody > tr > td{border: 1px solid #dadada; padding: 2px;width: 15px;height: 15px;text-align: center;}
+
+.d-iblock{display:inline-block;}
+.f-left{ float:left;}
+.f-right{ float:right;}
+
+.mw-100{max-width:100%;}
+.mw-18{max-width:18px;}
+.mw-75{max-width:75px;}
+.mw-150{max-width:150px;}
+
+.mh-25{max-height:25px;}
+.mh-135{max-height:135px;}
+.mh-150{max-height:150px;}
+
+.w-1{width:1%;}
+.w-2{width:2%;}
+.w-3{width:3%;}
+.w-4{width:4%;}
+.w-5{width:5%;}
+.w-6{width:6%;}
+.w-7{width:7%;}
+.w-8{width:8%;}
+.w-9{width:9%;}
+.w-10{width:10%;}
+.w-11{width:11%;}
+.w-12{width:12%;}
+.w-13{width:13%;}
+.w-14{width:14%;}
+.w-15{width:15%;}
+.w-16{width:16%;}
+.w-17{width:17%;}
+.w-18{width:18%;}
+.w-19{width:19%;}
+.w-20{width:20%;}
+.w-21{width:21%;}
+.w-22{width:22%;}
+.w-23{width:23%;}
+.w-24{width:24%;}
+.w-25{width:25%;}
+.w-26{width:26%;}
+.w-27{width:27%;}
+.w-28{width:28%;}
+.w-29{width:29%;}
+.w-30{width:30%;}
+.w-31{width:31%;}
+.w-32{width:32%;}
+.w-33{width:33%;}
+.w-34{width:34%;}
+.w-35{width:35%;}
+.w-36{width:36%;}
+.w-37{width:37%;}
+.w-38{width:38%;}
+.w-39{width:39%;}
+.w-40{width:40%;}
+.w-41{width:41%;}
+.w-42{width:42%;}
+.w-43{width:43%;}
+.w-44{width:44%;}
+.w-45{width:45%;}
+.w-46{width:46%;}
+.w-47{width:47%;}
+.w-48{width:48%;}
+.w-49{width:49%;}
+.w-50{width:50%;}
+.w-51{width:51%;}
+.w-52{width:52%;}
+.w-53{width:53%;}
+.w-54{width:54%;}
+.w-55{width:55%;}
+.w-56{width:56%;}
+.w-57{width:57%;}
+.w-58{width:58%;}
+.w-59{width:59%;}
+.w-60{width:60%;}
+.w-61{width:61%;}
+.w-62{width:62%;}
+.w-63{width:63%;}
+.w-64{width:64%;}
+.w-65{width:65%;}
+.w-66{width:66%;}
+.w-67{width:67%;}
+.w-68{width:68%;}
+.w-69{width:69%;}
+.w-70{width:70%;}
+.w-71{width:71%;}
+.w-72{width:72%;}
+.w-73{width:73%;}
+.w-74{width:74%;}
+.w-75{width:75%;}
+.w-76{width:76%;}
+.w-77{width:77%;}
+.w-78{width:78%;}
+.w-79{width:79%;}
+.w-80{width:80%;}
+.w-81{width:81%;}
+.w-82{width:82%;}
+.w-83{width:83%;}
+.w-84{width:84%;}
+.w-85{width:85%;}
+.w-86{width:86%;}
+.w-87{width:87%;}
+.w-88{width:88%;}
+.w-89{width:89%;}
+.w-90{width:90%;}
+.w-91{width:91%;}
+.w-92{width:92%;}
+.w-93{width:93%;}
+.w-94{width:94%;}
+.w-95{width:95%;}
+.w-96{width:96%;}
+.w-97{width:97%;}
+.w-98{width:98%;}
+.w-99{width:99%;}
+.w-100{width:100%;}
+
+.light-color{
+	color:#dadada;
+}
+.d-sign-border{
+	border:1px solid #dadada;
+}
+.bt-1{ border-top:1px solid #dadada;}
+.bb-1{ border-bottom:1px solid #dadada;}
+/** Common CSS End */
+
+/** Index page **/
+.index-table tr >td:first-child{
+	width:10%;
+}
+.index-table tr >td:nth-child(2){
+	width:75%;
+}
+.index-table tr >td:nth-child(3){
+	width:15%;
+}
+
+/** Instruction pages **/
+.black-boxes > span{
+	float:left;
+	background:#000;
+	color:#fff;
+	padding:2px 5px; 
+	font-size:14px;
+	margin-right:2px;
+}
+.black-boxes > span > img{
+	max-width: 18px;
+    position: relative;
+    top: 2px;
+}
+.pr{
+	position:relative;
+}
+.t2{
+	top:2px;
+}
+.t--7{
+	top:-7px;
+}
+.bg-pen{
+	background: red;
+    padding: 2px 5px;
+    border-radius: 4px;
+    float: left;
+}
+.signature-txt{
+	color: #fff;
+    font-size: 8px;
+}
+.img-pen{
+	position: relative;
+    top: 3px;
+}
+
+/*** 4th Page ***/
+.k-logo{
+	width:110px;
+}
+.grey-boxed-txt{
+	background:#d1d3d4;
+	padding:2px 5px;
+}
+.right-slop-box, .left-slop-box, .right-slop-box-black{
+	position:relative;
+}
+ .right-slop-box:after{
+	position: absolute;
+    top: 0px;
+    right: -24px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 12px solid #fff;
+    border-right: 12px solid #fff;
+    border-bottom: 11px solid #d1d3d4;
+    border-left: 12px solid #d1d3d4;
+}
+.right-slop-box-black:after{
+	position: absolute;
+    top: 0px;
+    right: -24px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 12px solid #000;
+    border-right: 12px solid #fff;
+    border-bottom: 11px solid #fff;
+    border-left: 12px solid #000;
+}
+.left-slop-box:after{
+	position: absolute;
+    top: 0px;
+    left: -24px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 12px solid #fff;
+    border-right: 12px solid #000;
+    border-bottom: 11px solid #000;
+    border-left: 12px solid #fff;
+} 
+.black-boxed-txt{background:#000;color:#fff; padding:2px 5px;}
+.black-boxed-txt > img{max-width: 18px;position: relative;top: 2px;}
+.b-grey{border:1px solid #d1d3d4;}
+.bb-txt{border-bottom:1px solid #dadada;border-left:none;border-top:none;border-right:none;outline:none;}
+.client-photo{border: 1px solid #dadada;padding: 5px;text-align: center;}
+
+/** Page 5**/
+.pd-tbl > tbody > tr > td:first-child{	width:18%;}
+.t-uline{ text-decoration:underline;}
+.b-ul{padding: 0 0 0 25px;margin: 0px;list-style-type: disc;}
+.b-ul li{ margin-bottom:10px;}
+
+/** page 6**/
+.sales-staff-tbl > tbody > tr > td:first-child{ width:30%;}
+.b-1 td{ padding:5px !important;}
+.stamp-of-institution{ border:1px solid #dadada; height:50px;}
+.institute-tbl > tbody > tr >td:first-child{ width:30%; }
+
+/** Page 13**/
+.bb-2px{ border-bottom:2px solid #dadada;}
+.d-sign-border.b-0{ border:none !important;}
+
+/** Page 15**/
+table.t-left td.t-center{
+	text-align: center !important;
+}
+.other-detail-tbl td.o-details{ 
+	width: auto;
+    border: none;
+}
+.strictly-no-border, .strictly-no-border td{ border:none !important;}
+
+/** Page 16**/
+.strictly-no-border .border-inside-strictly-no-border, .strictly-no-border .border-inside-strictly-no-border td { border:1px solid #dadada !important;}
+.information-about-investment-experience td.w-25{ width:25% !important;}
+.information-about-investment-experience td.w-74{ width:74% !important;}
+.width-inherit-tbl td{ width:inherit !important;}
+.w-15.comitted-width{ width:15%;}
+.w-16.comitted-width{ width:16%;}
+.w-12.comitted-width{ width:12%;}
+.w-17.comitted-width{ width:17%;}
+.w-22.comitted-width{ width:22%;}
+.w-25.comitted-width{ width:25%;}
+.w-60.comitted-width{ width:60%;}
+
+/**Page 17**/
+.lr-border{border-left: 1px solid #dadada;border-right: 1px solid #dadada;}
+.br-1{ border-right:1px solid #dadada;}
+.bl-1{ border-left:1px solid #dadada;}
+
+/** Page 23**/
+.w-35.comitted-width{ width:35% !important;}
+.w-30.comitted-width{ width:30% !important;}
+.w-40.comitted-width{ width:40% !important;}
+
+
+/** Page 24**/
+.w-40.comitted-width{ width:40% !important;}
+
+/** Page 25**/
+.w-20.comitted-width{ width:20% !important;}
+.w-20.comitted-width{ width:20% !important;}
+.w-75.comitted-width{ width:75% !important;}
+.w-80.comitted-width{ width:80% !important;}
+
+
+@media print {
+	.page-setup{
+		page-break-after:always !important;
+	}
+} 
+
+/* Sellakannu Style */
+.invisible {
+	display: none;
+}
+.primary-text-color {
+	color: #c12957;
+}
+.primary-lighttext-color {
+	color: #edb1b8;
+}
+.primary-bg-color {
+	background: #c12957;
+}
+.primary-lightbg-color {
+	background: #edb1b8;
+}
+.text-white {
+	color: #fff;
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+
+/* ax-page-01 */
+.ax-page-01 .page-header h4 {
+    font-size: 24px;
+}
+.ax-page-01 .page-header h5 {
+    font-size: 16px;
+}
+.ax-page-01 .page-header .logo {
+    border-bottom: 5px solid #b2b3b6;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+.ax-page-01 table tr th {
+	font-weight: 500;
+}
+
+
+/* Sellakannu Style */
+.invisible {
+	position: absolute;
+	visibility: hidden;
+}
+.primary-text-color {
+	color: #c12957;
+}
+.primary-lighttext-color {
+	color: #edb1b8;
+}
+.primary-bg-color {
+	background: #c12957;
+}
+.primary-lightbg-color {
+	background: #edb1b8;
+}
+.primary-border-color {
+	border-color: #c12957!important;
+}
+.text-white {
+	color: #fff;
+}
+.text-uppercase {
+	text-transform: uppercase;
+}
+.font-weight-bold {
+	font-family: 'CamphorStdBold';
+}
+table:not(.b-0) > tbody > tr > td {
+    height: 22px;
+}
+
+/* Holder Signature Type 01 */
+.holderSignature-type-01 {
+	height: 100px;
+    width: 100%;
+    text-align: center;
+    color: #dadada;
+	position: relative;
+}
+.holderSignature-type-01:before {
+    content: '';
+    background-image: url(../images/signature.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    top: 30px;
+    left: 20px;
+    opacity: .2;
+}
+.holderSignature-type-02 {
+    height: 60px;
+	text-align: center;
+	position: relative;
+}
+.holderSignature-type-02:before {
+    content: '';
+    background-image: url(../images/signature.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    bottom: 20px;
+    right: 0px;
+    opacity: .8;
+}
+.holderSignature-nosignimg:before {
+	display: none;
+}
+
+/* ax-page-01 */
+.ax-page-01 .page-header h4 {
+    font-size: 24px;
+}
+.ax-page-01 .page-header h5 {
+    font-size: 16px;
+}
+.ax-page-01 .page-header .logo {
+    border-bottom: 5px solid #b2b3b6;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+.ax-page-01 table tr th {
+	font-weight: 500;
+}
+.ax-page-01 .ax-page-01-officeuse {
+	margin-top: 450px;
+}
+
+
+/* ax-page-01 */
+.ax-page-02 .page-header h4 {
+    font-size: 20px;
+}
+#branchSoleId {
+    position: absolute;
+    margin: -15px 0 0 58px;
+    bottom: 0;
+}
+.tradingText span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -20px;
+}
+.placeholderCenter {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 5px;
+	width: 100px;
+}
+
+/* ax-page-03 */
+.ax-page-03 .page-header h4 {
+    font-size: 22px;
+	margin: 0 0 5px 0;
+}
+.ax-page-03 .page-body-content h5 {
+    font-size: 18px;
+	margin: 0 0 5px 0;
+}
+.ax-page-03 #identityUserImage {
+    padding: 15px 15px 70px;
+    text-align: center;
+    width: 200px;
+    margin: auto;
+}
+.ax-page-03 #identityUserImage span:first-child {
+	    margin-bottom: 5px;
+}
+.ax-page-03 #identityUserImage span:last-child {
+    font-size: 12px;
+}
+.ax-page-03 .photoSign {
+    width: 200px;
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    padding: 25px 15px;
+    text-align: center;
+    background: #fff;
+}
+.ax-page-03 table:not(.b-0) > tbody > tr > td {
+    width: 20px;
+    height: 20px;
+}
+
+/* ax-page-04 */
+.ax-page-04  ul {
+    margin: 0;
+    padding: 0 0 0 15px!important;
+}
+
+
+/* Arun Style */
+.text-right{
+    text-align: right;
+}
+.d-inherit{
+    display: inherit;
+}
+.p-0{
+    padding: 0px !important;
+}
+.p-5{
+    padding:5px;
+}
+.px-5{
+    padding-left:5px; 
+    padding-right:5px; 
+}
+.border-bottom-0{
+    border-bottom: 0px !important;
+}
+.border-top-0{
+    border-top: 0px !important;
+}
+.borderTopNone{
+    border-top: none !important;
+}
+.pb-10 {
+    padding-bottom: 10px;
+}
+.borderLeftNone{
+    border-left: none !important;
+}
+.borderRightNone, .border-right-0 {
+    border-right: none !important;
+}
+
+.ax-page-06 .ax6HolderSign .holderSignature {
+    height: 75px;
+    border-bottom: 1px solid #dee2e6 !important;
+}
+.mx-auto{
+    margin: 0 auto;
+}
+
+.ax-page-06 .ax6HolderSign .holderSignature img{
+    width: 100px;
+}
+
+.ax-page-09 h5 {
+    font-size: 18px;
+    margin: 7px 0px;
+}
+
+.ax-page-06 .holderSignature:after {
+    content: "";
+    background-image: url(../images/signature.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    right: 0px;
+    left: initial;
+    top: 26px;
+    bottom: initial;
+    width: 40px;
+    height: 40px;
+}
+.holderSignature{
+    position: relative;
+}
+
+.ax-page-06 .holderSignature::after {
+    top: 26px;
+}
+
+.border-left-0{
+    border-left: none !important;
+}
+.d-inline-block{
+    display: inline-block;
+}
+.border-right-0 {
+    border-right: none;
+}
+.border-top-0 {
+    border-top: none;
+}
+.border{
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+.text-left{
+    text-align: left !important;
+}
+
+
+ .v-bottom{
+    vertical-align: bottom;
+ }
+ .text-center{
+     text-align: center;
+ }
+ .font-weight-bold{
+     font-weight: bold;
+ }
+ .lightGrey{
+     color: #ddd;
+ }
+ 
+
+
+ /* ax-page-06 */
+.ax-page-06 .primaryBorder{
+	border: 1px solid #c12b58;
+}
+
+.ax-page-06 h4{
+    color: #c12b58;
+    font-size: 24px;
+    margin: 4px 0px 3px;
+}
+ 
+.ax-page-06 h5{
+    background-color: #c12b58;
+    color: #fff;
+    padding: 5px;
+    font-size: 18px;
+    margin: 10px 0px 3px;
+}
+
+.attorneyColumns h6 {
+    font-size: 16px;
+    margin: 8px 0px 0px;
+}
+
+.attorneyColumns > div:first-child {
+    font-size: 14px;
+}
+
+.attorneyColumns > div:last-child {
+    font-size: 13px;
+}
+
+.nomineeCustomSign img{
+    width: 100px;
+}
+
+.nomineePhotograph{
+    padding: 10px !important;
+}
+
+
+
+/* @media print{
+    .ax-page-06 h5{
+        background: #c12b58 !important;
+    }
+} */
+
+
+.ax-page-07 table, .ax-page-07 th, .ax-page-07 td{
+    border-collapse: collapse;
+    border:1px solid #dadada;
+}
+
+.ax-page-07 td, .ax-page-07 th {
+    padding: 3px 5px !important;
+}
+
+.ax-page-07 h6 {
+    font-size: 14px;
+    margin: 5px 0px 2px;
+}
+
+.ax-page-07 .dateField div {
+    border-bottom: 1px solid #ccc;
+    width: 25px;
+    height: 20px;
+    position: relative;
+}
+
+.dateField div:nth-child(2):before, .dateField div:nth-child(4):before {
+    content: '/';
+    /* border-right: 1px solid #ccc; */
+    position: absolute;
+    top: -1px;
+    bottom: 0;
+    right: 0;
+    font-size: 18px;
+    color: #ccc;
+    /* transform: skew(-15deg); */
+}
+
+.ax-page-07 .witnessTable .holderSignature {
+    height: 50px;
+    display: inline-block;
+}
+
+.ax-page-07 .witnessTable .holderSignature::after {
+    right: 2px;
+    top: 12px;
+    width: 33px;
+    height: 33px;
+}
+
+.ax-page-07 .ax-page7-Place{
+    border: 0px;
+}
+
+.ax-page-07 .ax-page7-Address1{
+
+}
+
+.ax-page-07 .holderSignature img{
+    width: 100px;
+}
+
+.ax-page-07 .holderSignature:after {
+    content: "";
+    background-image: url(../images/signature.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    right: 0px;
+    left: initial;
+    top: 26px;
+    bottom: initial;
+    width: 40px;
+    height: 40px;
+}
+
+.ax-page-08 h6{
+    font-size: 18px;
+    margin: 5px 0px 3px;
+}
+
+.ax-page-08 h5 {
+    padding: 4px 4px;
+    font-size: 20px;
+    margin: 10px 5px;
+}
+
+.ax-page-08 .holderSignature {
+    position: relative;
+    height: 95px;
+}
+
+.ax-page-08 .holderSignature img{
+    width: 100px;
+}
+
+.ax-page-08 .holderSignature:after {
+    content: "";
+    background-image: url(../images/signature.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    right: -7px;
+    left: initial;
+    top: initial;
+    bottom: 0px;
+    width: 30px;
+    height: 30px;
+}
+
+.ax-page-09 .nominationHeadBg {
+    background: linear-gradient(to left, #b02760 0%, rgba(237, 22, 101, 0.81) 100%);
+    padding: 5px 15px;
+}
+
+.ax-page-09 .nominationHeadBg .italicFont {
+    font-size: 18px;
+    font-style: italic;
+    color: #fff;
+}
+
+.ax-page-09 .nominationHead2 .nominationHead2Left > div:nth-child(1) {
+    width: 300px;
+    height: 70px;
+}
+
+.ax-page-09 .nominationHead2 .nominationHead2Left > div:nth-child(2) {
+    width: 250px;
+    border-left: none !important;
+    height: 70px;
+}
+
+.ax-page-09 .nominationHead2 .nominationHead2Right div {
+    width: 250px;
+    height: 70px;
+}
+
+.ax-page-09 .border {
+    border: 1px solid #dee2e6!important;
+}
+
+.ax-page-09 .border-bottom{
+    border-bottom: 1px solid #dee2e6!important;
+}
+
+.ax-page-09 .nominationTable, .ax-page-09 .nominationTable table{
+    border-collapse: collapse;
+}
+
+/* .ax-page-09 .nomineePhotograph{
+    display: table;
+}
+
+ */
+
+ .ax-page-09 .nomineePhotograph span, .ax-page-09 .nomineePhotograph div{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.ax-page-09 .nomineePhotograph .border {
+    display: table;
+    width: 178px;
+    height: 130px;
+    float: left;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.ax-page-09 table.dematAcNoTable td {
+    min-width: 20px !important;
+    max-width: 20px !important;
+    width: 20px !important;
+    height: 25px !important;
+}
+
+
+/* .ax-page-09 .nominationTable > tbody > tr > td{
+    min-width: 180px;
+} */
+
+.ax-page-10 .nomineeCustomSign {
+    height: 65px;
+}
+
+.ax-page-10 table.dematAcNoTable td, .smallTableData td{
+    min-width: 20px !important;
+    max-width: 20px !important;
+    width: 20px !important;
+    height: 25px !important;
+}
+
+.notesContent div:nth-child(1) li {
+    padding-right: 20px;
+}
+
+.notesContent div li {
+    text-align: justify;
+    padding-left: 15px;
+    font-size: 10px !important;
+    line-height: 15px !important;
+}
+
+.axis8SignSection{
+    margin-top: 10px;
+}
+
+
+.ax-page-09 .topTitle h4{
+	color: #b32053;
+	font-size: 20px;
+	margin:0px 10px;
+	text-align:center;
+}
+
+.ax-page-02, .ax-page-03, .ax-page-04 {
+    padding-top: 15px; 
+    padding-bottom: 10px;
+}
+.ax-page-02 td {
+    padding: 3px 5px;
+}
+.position-relative{
+    position: relative;
+}
+.ax-page-03 td, .ax-page-03 p, .ax-page-03 span, .ax-page-03 th, .ax-page-03 div {
+    font-size: 13px;
+}
+
+.ax-page-04 td, .ax-page-04 p, .ax-page-04 span, .ax-page-04 th, .ax-page-04 div{
+    font-size: 12px;
+}
+
+.ax-page-07 td, .ax-page-07 p, .ax-page-07 span, .ax-page-07 th, .ax-page-07 div {
+    font-size: 12px !important;
+}
+.full-width.attorneyColumns > div:nth-child(2) {
+    font-size: 12.4px !important;
+}
+    .ax-page-04 .mb-5 {
+        margin-bottom: 3px !important;
+    }
+
+.ax-page-07, .ax-page-08, .ax-page-09, .ax-page-06 {
+    padding-top: 15px;
+}
+
+.ax-page-04 .primary-lightbg-color.p-5 {
+    padding: 2px;
+}
+
+.ax-page-04 .primary-lightbg-color.p-5 h5{
+    font-size:13px;
+}
+
+.ax-page-04 .mb-10{
+    margin-bottom:6px;
+}
+
+.ax-page-02 .mt-5{
+    margin-top:3px;
+}
+
+.ax-page-02.page-setup .primary-bg-color.pt-5 {
+    padding: 2px;
+}
+
+.ax-page-04 .pb-5 {
+    padding-bottom: 3px;
+}
+
+.ax-page-04 .otherAdditionalDetails li, .ax-page-04 .listItem li {
+    display: inline-block;
+    position: relative;
+}
+    .ax-page-04 .otherAdditionalDetails li::after, .ax-page-04 .listItem li::after {
+        position: absolute;
+        content: "";
+        width: 5px;
+        height: 5px;
+        background: #333;
+        border-radius: 50%;
+        top: 9px;
+        left: -12px;
+    }
+.ax-page-10 {
+    padding-top: 16px;
+}
+.ax-page-03 #identityUserImage img {
+    width: 130px;
+}
+.ax-page-02 .holderSignature img {
+    max-height: 34px !important;
+}
+
+
+
+@media print {
+    * {
+      -webkit-print-color-adjust: exact; }
+    /* h4.titlebg, .titleLightBg, .primary-bg-color, .secondary-bg-color, .primary-text-color {
+      -webkit-print-color-adjust: exact; } */
+    /* .dateField.table, .dateField tbody td {
+      border-top: none;
+      border-left: none;
+      border-right: none; }  */
+      .page-setup{
+		page-break-after:always !important;
+    }
+}
+.b-1.photoSign img {
+    width: 84px;
+    height:70px!important;
+}

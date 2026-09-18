@@ -1,0 +1,28 @@
+<input type="file" onchange="imgUpld('panNumber');" id="panNumber" />
+<script
+  src="jquery.min.js"
+></script>
+<script>
+function imgUpld (imgName) {
+var form = imgName;
+var filesSelected = document.getElementById(imgName).files;
+var imgFormData = new FormData();
+imgFormData.append("email_id", 'karthi@constient.com');
+imgFormData.append("api_key", "C4483-E85E7BB44-15D3C929F383B6D");
+imgFormData.append("file", filesSelected[0]);	
+
+$.ajax({
+    url: 'https://192.168.102.76:9443/getExtract?nocache=Math.random()',
+//	url: 'https://192.168.214.56:5376/getExtract',
+    data: imgFormData,
+    type: 'POST',
+    contentType: false,
+    processData: false, 
+success: function(data)
+           {
+              console.log(data); // show response from the php script.
+           }
+});
+
+}
+</script> 

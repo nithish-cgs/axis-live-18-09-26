@@ -1,0 +1,89 @@
+<style>
+    @media (min-width: 768px) {
+        video {
+            width: 300px !important;
+        }
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="profileaddresschangestep1 pacs" id="profileB">
+        <!--Contact Details-->
+        <div class="onboard-innerinfo">
+            <!-- IPV Start -->
+            <div class="row row-eq-height uploaded-type" ng-if="IPVSection">
+				<div class="col-12">
+				<p class="fw-bold h4">Please click capture to complete the IPV Process.</p>
+				</div>
+                <div class="col-12 text-dark col-md-6 upload-content marginb5">
+                    <param>Video IPV <br /></param>
+
+                </div>
+                <div class="col-12 col-md-6 upload-content bank-img">
+                    <div class="d-flex">
+                        
+                        <div style="color: #97144d; cursor: pointer;" ng-if="!IpvFinsh && !showVideo" ng-click="startIPV()">
+                            Capture IPV</div>
+                        <div style="color: #97144d; cursor: pointer;" ng-if="IpvFinsh && !showVideo" ng-click="bindImage('IPVVideo')">
+                            View</div>
+                        <div ng-if="showVideo">
+                            <!-- <iframe width="100%" height="190" ng-src="{{videoUrl | trustAsResourceUrl}}" frameborder="0" loading="lazy" ></iframe> -->
+                            <video controls>
+                                <source ng-src="{{videoUrl | trustAsResourceUrl}}" type="video/webm">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="text-center my-3" style="color: #97144d; cursor: pointer;" ng-if="ipvRetakeCount < 3" ng-click="startIPV();">
+                                Re-Take
+                            </div>
+                        </div>
+                        <!-- <small class="grey-texts">Allowed Extn : jpeg and png.</small> -->
+                    </div>
+
+                </div>
+                <div class="col-12">
+                   
+                    <div class="input-message clearfix"><span class="error-message"
+                            ng-if="IpvImgError"><i class="fa fa-times"></i>Please upload
+                            Video</span></div>
+                   
+                    <div class="input-message clearfix"><span class="error-message"
+                            ng-if="IPVApiError"><i class="fa fa-times"></i>{{IPVApiError}}</span></div>
+                    
+                </div>
+              
+            </div>
+            <div class="row mx-0 mt-4">
+                <div class="col-md-6 my-5">
+
+                </div>
+                <div class="col-md-4 col-12 text-end">
+                    <button type="button" class="btn ax-btn-primary text-uppercase" ng-if="IpvFinsh" ng-click="goTO()">Next</button>
+                </div>
+            </div>
+            <!-- IPV End -->
+        </div>
+    </div>
+    <div></div>
+    </div>
+
+    <section class="modal fade" id="commonModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog login-dialog modal-dialog-centered">
+            <div class="modal-content" style="background: #F9F9F9;">
+                <div class="modal-body d-flex justify-content-center p-3 text-dark">
+                    <div class="row mx-0 my-3">
+                        <div class="col-12 text-left terms-content">
+                            <p>Unable to fetch video file from service.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="button" data-bs-dismiss="modal" class="btn ax-btn-primary text-uppercase">
+                                Okay</button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </section>

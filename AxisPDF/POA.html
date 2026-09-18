@@ -1,0 +1,2673 @@
+﻿<!DOCTYPE html>
+<html>
+<title>Axis Pdf</title>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="assets/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="assets/js/JsBarcode.all.min.js"></script>
+    <script>
+        jQuery(document).bind("keyup keydown", function (e) {
+
+            $('input[type=checkbox]').attr('disabled', 'true');
+
+            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 117)) {//Alt+c, Alt+v will also be disabled sadly.
+                alert('not allowed');
+            }
+            return false;
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[type=checkbox]').attr('disabled', 'true');
+            document.addEventListener('contextmenu', event => event.preventDefault());
+            BindData();
+            JsBarcode("#barcodeImage7", RefNo, {
+                width: 2,
+                height: 40,
+                displayValue: true
+            });
+            JsBarcode("#barcodeImage8", RefNo, {
+                width: 2,
+                height: 40,
+                displayValue: true
+            });
+        });
+        var RefNo = '';
+        function BindData() {
+
+            RefNo = getParameterByName("ReferenceNumber");
+            var RxDigifinAppFromRequestObject = new Object();
+            RxDigifinAppFromRequestObject.ReferenceNumber = RefNo;
+
+            var dataToSend = JSON.stringify(RxDigifinAppFromRequestObject);
+            //   var apiurl = RxDigifinDiss + "api/RxDigifinAppForm/GetAppFormDetails";
+            var apiurl = WebAPILayer + "api/DIY/GetAppFormDetailsDIY";
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                data: dataToSend,
+                url: apiurl,
+                success: function (msg, status) {
+
+                    var data = msg;
+                    console.log(msg);
+
+                    //$('#CDNameOfTheClient,#NameOfBankAccountFirstHolders,#NameOfSecuritiesDematFirstAccountHolders').text(msg.CRxDigifinAppFormInfoList[0].ClientName.toUpperCase());
+                    //$('#CDAddress').val(msg.CRxDigifinAppFormInfoList[0].CorrentAddress.toUpperCase());
+                    //$('#CDClientCode').val();  ///Client Code
+                    //$('#CDName1').html(msg.CRxDigifinAppFormInfoList[0].ClientName.toUpperCase());
+                    //$('#CDName2').val();
+                    //$('#CDName3').val();
+                    //$('#CDName4').val();
+                    //$('#electronic').prop('checked', true);
+                    //$('#termDate').val(newDate);
+                    RefNo = msg.CRxDigifinAppFormInfoList[0].ReferenceNumber;
+                    if (msg.CRxDigifinAppFormInfoList[0].DematType == "NSDL") {
+
+                        $("#nominationNSDL").attr("checked", "checked");
+                        $("#ChkNSDL").attr("checked", "checked");
+
+                    }
+                    else {
+
+                        $("#nominationCDSL").attr("checked", "checked");
+                        $("#ChkCDSL").attr("checked", "checked");
+
+                    }
+                    if (msg.CRxDigifinAppFormInfoList[0].BankName)
+                        $("#userbank").text(msg.CRxDigifinAppFormInfoList[0].BankName);
+
+                    if (msg.CRxDigifinAppFormInfoList[0].AccountNumber) {
+                        var p12tdCID = msg.CRxDigifinAppFormInfoList[0].AccountNumber;
+                        $("#ax-page7-scheduleBankAcDetailsACNo").text(msg.CRxDigifinAppFormInfoList[0].AccountNumber);
+                    }
+
+                    // $("#borderBoxRef").append(RefNo);
+                    $("#quarterly").attr("checked", "checked");
+                    $('#CDNameOfTheClient,#NameOfSecuritiesDematFirstAccountHolders').text(msg.CRxDigifinAppFormInfoList[0].ClientName.toUpperCase());
+                    $('#CDAddress').text(msg.CRxDigifinAppFormInfoList[0].CorrentAddress.toUpperCase());
+                    // $('#CDClientCode').text(msg.CRxDigifinAppFormInfoList[0].ClientAccountNumber);
+
+
+                    $('#NameOfBankAccountFirstHolders,#CDName1').html(msg.CRxDigifinAppFormInfoList[0].ClientName.toUpperCase());
+                    $('#NameOfBankAccountSecondHolders,#CDName2').html(msg.CRxDigifinAppFormInfoList[0].SecondHoldername.toUpperCase());
+                    $('#NameOfBankAccountThirdHolders,#CDName3').html(msg.CRxDigifinAppFormInfoList[0].ThirdrHoldername.toUpperCase());
+                    var SecHolderName = msg.CRxDigifinAppFormInfoList[0].SecondHoldername.toUpperCase();
+                    var ThirdHolderName = msg.CRxDigifinAppFormInfoList[0].ThirdrHoldername.toUpperCase();
+                    $('#ax-page6-sole1stHolder,#ax-page8-sole1stHolder').html(msg.CRxDigifinAppFormInfoList[0].ClientName.toUpperCase());
+                    $('#ax-page6-2ndHolderBankAC').html(msg.CRxDigifinAppFormInfoList[0].SecondHoldername.toUpperCase());
+                    $('#ax-page6-3ndHolderBankAC').html(msg.CRxDigifinAppFormInfoList[0].ThirdrHoldername.toUpperCase());
+
+
+                    // $('#CDName4').val();
+                    $('#electronic').prop('checked', true);
+                    if (msg.CRxDigifinAppFormInfoList[0].ClientAccountNumber) {
+                        var ClientAccountNumber = msg.CRxDigifinAppFormInfoList[0].ClientAccountNumber;
+                        $("#ax-page7-scheduleSecuritiesAcDetailsACNo").text(ClientAccountNumber);
+                    }
+
+                    var d = new Date();
+                    var strDate = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
+                    var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                    var newDate = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+
+                    $('#termDate').val(newDate);
+
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+
+                    var yyyy = today.getFullYear();
+                    if (dd < 10) {
+                        dd = '0' + dd;
+                    }
+                    if (mm < 10) {
+                        mm = '0' + mm;
+                    }
+                    var today = dd + '/' + mm + '/' + yyyy;
+
+                    $("#TodDate").val(today);
+                    today = today.replace('/', '');
+                    today = today.replace('/', '');
+
+                    if (today != "") {
+                        for (var i = 0; i < today.length; i++) {
+                            var j = i + 1;
+                            //$("#declarationDate" + j).text(today[i]);
+                            // $("#primaryApplicationDeclarationED" + j).text(today[i]);
+                            $("#nominationCancelDateD" + j).text(today[i]);
+                            // $("#fatcaD" + j).text(today[i]);
+                            //$("#guardianEndDateD" + j).text(today[i]);
+
+
+                        }
+                    }
+
+                    if (msg.CRxDigifinAppFormInfoList[0].IsNominee) {
+                        var IsNominee = msg.CRxDigifinAppFormInfoList[0].IsNominee;
+                        if (IsNominee == "1") {
+                            $('#makeaNomination').prop('checked', true);
+                        }
+                    }
+                    if (msg.CRxDigifinAppFormInfoList[0].ClientName) {
+                        var CustomerName = msg.CRxDigifinAppFormInfoList[0].ClientName.toUpperCase();
+                        if (CustomerName != "") {
+                            $("#noimineeNameOfHolder1").text(CustomerName);
+                        }
+                    }
+
+                    ////////////////////////Multiple Nominee start////////////////
+                    var nomineeList = msg.CRxDigifinAppFormInfoList[0].NomineeList;
+                    if (nomineeList.length > 0) {
+                        $("#TCPOApage8").addClass('page-setup');
+                        $("#NomineePOApage9").addClass('page-setup');
+                        //$("#NomineePOApage10").addClass('page-setup');
+                    }
+                    else {
+                        $("#NomineePOApage9").hide();
+                        $("#NomineePOApage10").hide();
+                    }
+                    for (var i = 0; i < nomineeList.length; i++) {
+
+                        var j = i + 1;
+                        var k = j;
+                        // $("#nomineeDOB" + j).text(NomineeDOB[i]);
+
+                        $("#nominationTablefnamenominee" + j).text(nomineeList[i].NomineeFirstName);
+                        //$("#nominationTablemnamenominee" + j).text(nomineeList[i].);
+                        $("#nominationTablelnamenominee" + j).text(nomineeList[i].NomineeLastName);
+                        var ff = nomineeList[i].NomineeRatio;
+                        ff = ff + '%';
+                        $("#forCDSLEquallyPercent" + j).text(ff);
+                        $("#nomineeRelationShipApplication" + j).text(nomineeList[i].RelationshipWithNominee);
+                        $("#nomineeAddr" + j).text(nomineeList[i].NomineeAddress1);
+                        $("#nomineeCity" + j).text(nomineeList[i].NomineeCity);
+                        $("#nomineeState" + j).text(nomineeList[i].NomineeState);
+                        $("#nomineePin" + j).text(nomineeList[i].NomineePinCode);
+                        $("#nomineeCountry" + j).text(nomineeList[i].NomineeCountry);
+
+                        if (nomineeList[i].NomineeProofId == 111) {     //AAdhar-Card
+                            $('#nomineeAadhaarUID').prop('checked', true);
+                            var str = nomineeList[i].NomineeIDProofNumber;
+                            str = str.replace(/\d(?=\d{6})/g, "*");
+                            $("#nomineeAadhaarUID" + j).text(str);
+                        }
+                        else if (nomineeList[i].NomineeProofId == 118)   //118 -PAN  Card
+                        {
+                            $('#nomineePan').prop('checked', true);
+                            $("#nomineePan" + j).text(nomineeList[i].NomineeIDProofNumber);
+                        }
+                        else if (nomineeList[i].NomineeProofId == 112) {     //bank Proof
+                            $('#nomineeSavingBankAc').prop('checked', true);
+                            $("#nomineeProofOfIdentity" + j).text(nomineeList[i].NomineeIDProofNumber);
+                        }
+                        else {
+                            $('#nomineeProofOfIdentity').prop('checked', true);
+                            $("#nomineeProofOfIdentity" + j).text(nomineeList[i].NomineeIDProofNumber);
+                        }
+
+                        //Nominee -Minor///
+                        if (nomineeList[i].NomineeAge) {
+                            var nAge = nomineeList[i].NomineeAge;
+                            if (18 >= nAge) {
+
+                                $("#nomineeNameOfGuardian" + j).text(nomineeList[i].GuardianFirstName);
+                                $("#nomineeLNameOfGuardian" + j).text(nomineeList[i].GuardianLastName);
+
+                                $("#nomineeAddressOfGuardian" + j).text(nomineeList[i].NomineeGuardainAddress1);
+                                $("#nomineeAddressOfGuardianCity" + j).text(nomineeList[i].NomineeGuardainCity);
+                                $("#nomineeAddressOfGuardianState" + j).text(nomineeList[i].NomineeGuardainState);
+                                $("#nomineeAddressOfGuardianPin" + j).text(nomineeList[i].NomineeGuardainPinCode);
+                                $("#nomineeAddressOfGuardianCountry" + j).text(nomineeList[i].NomineeGuardainCountry);
+                                $("#nomineeGuardianRelation" + j).text(nomineeList[i].GuardianRelation);
+
+                                if (nomineeList[i].GuardianProofId == 111) {     //AAdhar-Card
+                                    $('#GuardianAadhaarUID').prop('checked', true);
+                                    var str = nomineeList[i].GuardianIDProofNumber;
+                                    str = str.replace(/\d(?=\d{6})/g, "*");
+                                    $("#guardianAadhaar" + j).text(str);
+                                }
+                                else if (nomineeList[i].GuardianProofId == 118)   //118 -PAN  Card
+                                {
+                                    $('#guardianPan').prop('checked', true);
+                                    $("#guardianPan" + j).text(nomineeList[i].GuardianIDProofNumber);
+                                }
+                                else if (nomineeList[i].GuardianProofId == 112) {     //bank Proof
+                                    $('#guardianSavingBAc').prop('checked', true);
+                                    $("#guardianSavingBAc" + j).text(nomineeList[i].GuardianIDProofNumber);
+                                }
+                                else {
+                                    $('#nomineeGuardianPOI').prop('checked', true);
+                                    $("#nomineeGuardianPOI" + j).text(nomineeList[i].GuardianIDProofNumber);
+                                }
+                                $("#nameOfAcSign" + j).text(nomineeList[i].NomineeGuardianName);
+
+
+                                if (nomineeList[i].NomineeDOB) {
+                                    var NomineeDOB = nomineeList[i].NomineeDOB;
+                                    if (NomineeDOB != "") {
+                                        for (var m = 0; m < NomineeDOB.length; m++) {
+                                            var n = m + 1;
+                                            $("#nomineeMandatoryID" + k + n).text(NomineeDOB[m]);//nomineeMandatory1D1
+
+                                        }
+                                    }
+                                }
+
+
+                            }
+                        }
+
+
+                    }
+
+
+
+
+                },
+                error: function (msg, results) {
+                    alert('Failed to get the information ');
+                }
+            });
+        }
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <form>
+        <div class="container">
+		<div class="poa">
+            <div class="ax-page-06 page-setup p-text-justify">
+                <div class="full-width d-table">
+                    <div class="w-70 d-table-cell">
+                        <img src="assets/images/logo.png" width="160" alt="Logo">
+                    </div>
+                    <div class="w-30 d-table-cell">
+                        <div id="borderBoxRef" class="topBox primaryBorder" style="height: 88px;text-align:center">
+                            <svg alt="barcode" width="150" id="barcodeImage7"></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="full-width">
+                    <h4 class="text-center">Annexure to Trading & Demat Account Opening Form</h4>
+                    <p>
+                        The execution of this document by the client is voluntary. However in case the client wish to
+                        avail of the online trading services with the linkage of Broking, bank and demat account, then
+                        execution of
+                        this document by the client is required in order to facilitate seamless and hassle free trading
+                        and settlement of transactions.
+                    </p>
+                </div>
+                <div class="full-width text-center">
+                    <h4 class="text-uppercase text-center" style="background:none;color:#000;font-size:18px;">NON-MANDATORY DOCUMENTS</h4>
+                    <h5 class="text-center d-inline-block mx-auto pl-5 pr-5">
+                        POWER OF ATTORNEY (THIS DOCUMENT IS
+                        VOLUNTARY)
+                    </h5>
+                </div>
+
+                <div class="full-width attorneyColumns">
+                    <div class="w-50 f-left pr-10">
+                        <p class="mb-3">
+                            This Power of Attorney ("Power of Attorney") is given on the <span>
+                                <input type="text" class="border-left-0 border-right-0 border-top-0 border-bottom-0 border" id="POAdate" style="width: 40px;border-bottom:0px!important">
+                            </span> day of<span>
+                                <input type="text" class="border-left-0 border-right-0 border-top-0 border" id="POAMonth"
+                                       style="width: 40px;border-bottom:0px!important">
+                            </span> <span id="twenty-20">20</span><span>
+                                <input type="text" class="border-left-0 border-right-0 border-top-0 border" id="POAYear"
+                                       style="width:60px;border-bottom:0px!important">
+                            </span> by
+                            <!-- <span><input type="text"
+    class="border-left-0 border-right-0 border-top-0 border" id="ax-page5-POABy"></span> -->
+                        </p>
+                        <p>
+                            a)The persons(s) Specified in the Schedule[A] hereinafter referred to as the "Bank Account
+                            Holder(s)"
+                        </p>
+                        <p>
+                            b)The persons(s) Specified in the Schedule[B] hereinafter referred to as the "Securities
+                            (Demant)
+                            Account Holder(s)"
+                        </p>
+                        <h6 class="text-uppercase font-weight-normal">
+                            Whereas:
+                        </h6>
+
+                        <p>
+                            A. The Client (the person set out in Schedule [E]) has read and understood the SEBI
+                            prescribed Rights
+                            and
+                            Obligations and desirous of entering into a broking relationship with Axis Securities
+                            Limited(ASL), a
+                            company,
+                            incorporated under the provisions of the Companies Act, 1956, being a Member of BSE Limited
+                            & National
+                            Stock
+                            Exchange of India Ltd., MCX Limited & NCDEX Limited, having its registered office at Axis
+                            House, 8th
+                            Floor,
+                            Wadia
+                            International Centre, Pandurang Budhkar Marg, Worli, Mumbai – 400 025 (hereinafter called
+                            the “Stock
+                            Broker”)
+                            for dealing in Securities, and Commodities broking services and other services as may be
+                            availed by the
+                            Client from
+                            time to
+                            time;
+                        </p>
+                        <p>
+                            B. The Bank Account Holders hold bank account/s with the bank (the “Bank”), and bearing
+                            bank
+                            account
+                            number/s as mentioned in the Schedule [C] hereunder under title “Bank Account Details”
+                            (hereinafter
+                            referred to
+                            as the “Bank Account”);
+                        </p>
+                        <p>
+                            C. The Securities (Demat) Account Holders hold securities account/s with Axis Securities
+                            Limited (ASL),
+                            a
+                            depository participant (DP) registered with SEBI (the “DP”) details whereof are mentioned
+                            in the
+                            Schedule
+                            [D]
+                            hereunder under title “Securities (Demat) Account Details” (hereinafter referred to as the
+                            “Securities
+                            Account”);
+
+                        </p>
+                        <p>
+                            D. The Bank Account Holder(s) and the Securities (Demat) Account Holder(s) are collectively
+                            referred to
+                            as
+                            the
+                            “Joint Account Holder”;
+                        </p>
+                        <p>
+                            E. To facilitate proper execution of the Client’s transactions, the Joint Account Holder(s)
+                            are granting
+                            this power of
+                            attorney in favour of the Stock Broker for the purpose of executing instructions, orders or
+                            requests
+                            and/or
+                            handling obligations in respect of transactions made with the Stock Broker.
+                        </p>
+                        <h6 class="text-uppercase font-weight-normal">I.Definitions</h6>
+                        <p>a) “Rights and Obligations” means the Rights and Obligations document as prescribed by SEBI.</p>
+                        <p>b) “Client” means the persons set out in Schedule [E] hereto.</p>
+                        <p>
+                            c) “Securities” includes “Securities” as defined under the Securities Contracts
+                            (Regulation)
+                            Act, 1956;
+                        </p>
+                        <h6 class="text-uppercase font-weight-normal">II. POWER OF ATTORNEY</h6>
+                        <p>
+                            I/We, the Joint Account Holders do hereby authorize/nominate/appoint the Stock Broker for
+                            the purpose hereof
+                            acting through any of its officers or employees or any sub-agents or delegates, to be
+                            my/our true and lawful
+                            agent and attorney for me/us and on my/our behalf (the “Attorney”) and in my /our name from
+                            time to time to
+                            do and exercise or cause to be done and exercised all or any of the following acts, powers
+                            and authorities:
+                        </p>
+                        <p>
+                            1. To operate and debit the Securities Account(s) in my/our name for facilitating
+                            transactions in
+                            Securities/Commodities through
+                            the Stock Broker to meet all margin / delivery obligations due from me/us to the Stock
+                            Broker and to do
+                            the
+                            following for the above purpose:
+                        </p>
+                        <p>
+                            a. to transfer Securities from the Securities Account to the account of the Stock broker to
+                            effect
+                            delivery of
+                            securities or for margin purposes and to meet margin/delivery obligations for transactions
+                            done on any
+                            of
+                            the
+                            Exchange(s) for me/us;
+                        </p>
+                        <p>
+                            b. to create pledge on/and/or transfer the Securities lying in the Securities Account(s) in
+                            favour of
+                            Stock Broker for
+                            the limited purpose of meeting the margin /settlement requirements of the client in
+                            connection with the
+                            trades
+                            executed/ to be executed by the client on the stock exchange through the same Stock Broker.
+                        </p>
+                        <p>
+                            c. to transfer Securities from my/our Securities Account to the account of the Stock Broker
+                            to effect
+                            delivery of the
+                            Securities sold through the Stock Broker on my/our behalf against issuance of contract
+                            notes by the
+                            Stock
+                            Broker;
+
+                        </p>
+                        <p>
+                            d. to sign necessary slips/forms/documents etc. which are required for performing the
+                            powers hereby
+                            conferred;
+                        </p>
+
+                    </div>
+                    <div class="w-50 f-left pl-10">
+                        <p>
+                            2. To operate and to transfer funds from the Bank Account in my/our name, for facilitating
+                            transactions in
+                            Securities/Commodities by the Stock Broker as a stock broker, for meeting my/ our
+                            settlement obligations/ margin
+                            requirements in connection with the trades executed by me/us on the Stock Exchange through
+                            the Stock broker and for
+                            recovering any outstanding amounts due from me/ us to the Stock Broker arising out of my/
+                            our trading activities on the stock
+                            exchanges through the Stock broker, towards any monies/ fees/ charges outstanding or
+                            payable by virtue of me /us using /
+                            availing / subscribing to any of the products/facilities/ services offered by the Stock
+                            Broker.
+                        </p>
+                        <p>
+                            To block and/or hold and/or create lien all or any of the monies lying in the Bank
+                            Account(s) in
+                            accordance with the
+                            instructions of the Stock Broker in accordance with the powers given hereby.
+                            To block & transfer funds for meeting obligations arising out and pursuant to I/we
+                            subscribing to such
+                            other
+                            products/facilities/services through the Stock broker like mutual funds, public issues
+                            (shares as well
+                            as debt instruments),
+                            rights, offer of shares, tendering shares in open offers pursuant to my/our instructions ,
+                            including
+                            applying for redemptions
+                        </p>
+                        <p>
+                            3. Transfer funds from the Bank account towards monies/fees/charges etc. due to the Stock
+                            broker/Depository
+                            Participant/Principal payable by virtue of, I/We using/subscribing to any of the
+                            facilities/services
+                            availed by me/us, at my/our
+                            instance.
+                        </p>
+                        <p>
+                            4. To make applications for or to renounce and sign renunciation forms in respect of Mutual
+                            Funds/Securities/bonds/debentures, corporate fixed deposits, debt instruments, right shares
+                            and
+                            additional shares of any Company/ Body/ Authority.
+                        </p>
+                        <p>5. To comply and /or cause to be complied with all statutory and other requirements.</p>
+                        <p>
+                            I/we hereby agree to ratify and confirm the acts of the said attorney done lawfully or
+                            cause
+                            to be done
+                            by virtue of these
+                            presents.
+                        </p>
+                        <p>
+                            The Attorney and/or the DP is authorized to send to me / us consolidated summary of scrip
+                            wise buy and
+                            sell positions taken
+                            by me/us with average rates by way of short messaging services or e-mails on a daily basis.
+                            The Bank /
+                            DP accordingly is
+                            authorized and has consented to follow the instructions of my/our said Attorney with
+                            respect to the
+                            powers set forth with
+                            respect to my/our Bank Account/Securities Account.
+                        </p>
+                        <p>
+                            The Attorney may appoint and remove at its discretion any authorized signatories for or
+                            under the
+                            Attorney in respect of all
+                            or any of the matters contained herein upon such terms and conditions as the Attorney may
+                            think fit.
+                        </p>
+                        <p>
+                            The Attorney may request the DP to mark a hold on the required securities balances so that
+                            the actual
+                            transfer of securities
+                            towards margins/settlement obligations, could take place in a seamless manner. The Stock
+                            Broker shall
+                            return to me / us the
+                            Securities or funds that may have been received by it erroneously or those securities or
+                            funds that it
+                            was not entitled to
+                            receive from me/us.
+                        </p>
+                        <p>
+                            This Power of Attorney (POA) shall continue in full force and effect until the Attorney
+                            shall receive
+                            intimation of revocation or
+                            in the event of the termination thereof by my/our death until the Attorney shall have
+                            received actual
+                            intimation thereof. The
+                            Attorney shall not act on any instructions received subsequent to the intimation of such
+                            revocation.
+                            However, such revocation
+                            shall not be applicable for any outstanding settlement/margin obligation arising out of the
+                            transactions carried out prior to
+                            receiving request for revocation of Power of Attorney.
+                        </p>
+                        <p>
+                            To induce any depository, stock exchanges, clearing corporation/house, mutual funds, body
+                            corporates,
+                            banks, approved
+                            intermediaries and registrars and share transfer agents (hereinafter collectively referred
+                            to as
+                            “Transfer Agent”) or other third
+                            party to act, I/we hereby agree that any Transfer Agent or other third party receiving a
+                            certified true
+                            copy of this Power of
+                            Attorney may act upon it, and that revocation or termination hereof shall be ineffective as
+                            to such
+                            Transfer Agent or other
+                            third party, unless and until actual notice or knowledge of such revocation or termination
+                            shall have
+                            been received by such
+                            Transfer Agent or other third party.
+                        </p>
+                        <p>
+                            I/We do hereby agree that in case the constitution is changed in case of non individual
+                            client, I/We
+                            shall execute a fresh POA to the satisfaction of the Stock Broker.
+                        </p>
+
+                        <div class="full-width ax6HolderSign">
+                            <div class="w-50 f-left text-center pr-10 mt-10">
+                                <div class="border-left-0 border-right-0 border-top-0 border holderSignature d-table w-100 text-center">
+                                   
+                                    <div id="ax-page6-sole1stHolder" style="text-align:center;" class="d-table-cell v-bottom">
+                                    </div>
+                                </div>
+                                <div class="font-weight-bold">Sole/1st Holder</div>
+                            </div>
+                            <div class="w-50 f-left text-center pl-10 mt-10">
+                                <div class="border-left-0 border-right-0 border-top-0 border holderSignature d-table w-100 text-center">
+                                   
+                                    <div id="ax-page6-2ndHolderBankAC" style="text-align:center;" class="d-table-cell v-bottom">
+                                    </div>
+                                </div>
+                                <div class="font-weight-bold">2nd Holder in Bank A/c.</div>
+                               
+                            </div>
+                            <div class="w-50 f-left text-center pr-10 mt-10">
+                                <div class="border-left-0 border-right-0 border-top-0 border holderSignature d-table w-100 text-center">
+                                    
+                                    <div id="ax-page6-3ndHolderBankAC" style="text-align:center;" class="d-table-cell v-bottom">
+                                    </div>
+                                </div>
+                                <div class="font-weight-bold">3rd Holder in Bank A/c.</div>
+                                
+                            </div>
+                            <p class="w-100 f-right mt-10">(In case of joint bank/demat account,singnature of all holders is mandatory)</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="ax-page-07 page-setup p-text-justify">
+                <div class="full-width">
+                    I/We specifically agree that any matter or issue arising hereunder shall be
+                    governed by and construed
+                    exclusively in accordance with the Indian laws. In respect of disputes arising out
+                    of transactions or matters governed by the relevant stock exchange(s), the same shall be subject to
+                    the
+                    regional arbitration centres of the relevant stock exchange(s). In all other
+                    cases, disputes shall be subject to the jurisdiction of the courts at Mumbai in India.
+                </div>
+                <div class="full-width">
+                    This Power of Attorney does not intend to give any exclusive rights to operate
+                    to Stock Broker on the
+                    Bank Account and /or the Securities Account.
+                    The Stock Broker as my/our constituted Attorney may seek from the DP/Bank information regarding
+                    my/our
+                    funds/Securities balances for the transactions effected/to be effected by
+                    me/us or on behalf of me/us through the Stock Broker and the Stock Broker may also provide
+                    transaction
+                    information to DP/Bank, from time to time, in order to complete settlement
+                    of transactions. In case of merger/demerger of ASL with another entity/into another entity, the
+                    scheme
+                    of merger/demerger should be approved by High Court and one month prior
+                    intimation given to me/us about the corporate restructuring to facilitate me/us to continue or
+                    discontinue with ASL.
+                </div>
+                <h6>III. INSTRUCTIONS TO THE DP</h6>
+                <div class="full-width">
+                    i. The Joint Account Holder(s) authorize the DP to honour all instructions
+                    received from the Stock
+                    Broker pursuant to this power of attorney.
+                </div>
+                <div class="full-width">
+                    ii. In case of death, disability, winding up or liquidation of any Joint
+                    Account Holder, the surviving
+                    Joint Account Holder/s and/or the heirs, nominees, executors, administrators,
+                    liquidator, successors and legal representatives of the Joint Account Holder who has died or been
+                    disabled, dissolved, wound up or liquidated shall forthwith inform the Stock Broker
+                    of the same in writing. This power of attorney shall not be revoked as regards such Joint Account
+                    Holder on account thereof for all pending obligations and dues of the Client
+                    towards the Stock Broker until the same have been fulfilled to the satisfaction of the Stock Broker
+                    and
+                    shall continue to subsist and bind (and shall be deemed to have been given by)
+                    the heirs, executors, administrators, liquidator, successors or legal representatives of such Joint
+                    Account Holder, and the Stock Broker in the capacity of a broker shall be entitled to
+                    continue to act on the basis hereof.
+                </div>
+                <div class="full-width">
+                    iii. In the event of any change in the number, nature of securities and for the
+                    ISIN number of the securities (during any period in which any securities are blocked /pledged
+                    pursuant
+                    to this power of attorney) as a consequence of any corporate action of the concerned company
+                    implemented by the Depository, the Stock Broker, as an Attorney shall be entitled to
+                    accordingly modify the block/pledge created to accommodate the changes in the ISIN number, the
+                    number /
+                    nature / quantity of securities maintaining the block/pledge at the same
+                    percentage of the share capital of the company as originally blocked.
+                </div>
+                <div class="full-width">SCHEDULE 1-Stock Broker Bank and Securities(Demat) Account Details</div>
+
+
+                <div class="full-width">
+                    <div class="f-left w-50 pr-15">
+
+                        <table class="table table-bordered border-dark mb-10 w-100 customSpace b-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Name of DP - Axis Bank Ltd (NSDL - DP ID : <span id="nameOfDPNSDLClientID"></span> IN300484)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-left">Client IDs: <span id="nameOfDPNSDLClientIDList"></span> 16892364, 13645375, 16892389, 13645383, 13594118</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-bordered border-dark mb-5 w-100 customSpace b-0">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Name of Bank</th>
+                                    <th>Bank Account No.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="20%">Axis Bank Ltd.</td>
+                                    <td>
+                                        <span id="instructionBAC">
+                                            910020019944317, 910020019950516, 912020040140939,
+                                            918020234363910, 918020023249622, 918020023038723,
+                                            9180200023510940, 918020023113387
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                    <div class="f-left w-50 pl-15">
+                        <!-- <table class="table table-bordered border-dark mb-2 w-100 customSpaceClientId">
+                    <thead>
+                        <tr>
+                            <th>Name of DP</th>
+                            <th>NSDL/CDSL</th>
+                            <th>DP ID</th>
+                            <th>Client ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="nameOfDp1">
+                                Axis Securities Ltd
+                            </td>
+                            <td id="cdsl1">CDSL</td>
+                            <td id="epdpId1">12049200</td>
+                            <td id="epclientId1">00000586</td>
+                        </tr>
+                        <tr>
+                            <td id="nameOfDp2">
+                                Axis Securities Ltd
+                            </td>
+                            <td id="cdsl2">CDSL</td>
+                            <td id="epdpId2">12049200</td>
+                            <td id="epclientId2">00000586</td>
+                        </tr>
+                        <tr>
+                            <td id="nameOfDp3">
+                                Axis Securities Ltd
+                            </td>
+                            <td id="cdsl3">CDSL</td>
+                            <td id="epdpId3">12049200</td>
+                            <td id="epclientId3">00000586</td>
+                        </tr>
+                        <tr>
+                            <td id="nameOfDp4">
+                                Axis Securities Ltd
+                            </td>
+                            <td id="cdsl4">CDSL</td>
+                            <td id="epdpId4">12049200</td>
+                            <td id="epclientId4">00000586</td>
+                        </tr>
+                        <tr>
+                            <td id="nameOfDp5">
+                                Axis Securities Ltd
+                            </td>
+                            <td id="cdsl5">CDSL</td>
+                            <td id="epdpId5">12049200</td>
+                            <td id="epclientId5">00000586</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+
+
+                        <table class="table table-bordered border-dark mb-10 w-100 customSpace b-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Name of DP - Axis Securities Ltd(CDSL - DP ID : <span id="nameOfDPNSDLClientID"></span> 12049200)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-left">Client IDs: <span id="nameOfDPNSDLClientIDList"></span>00000586,00000590, 00000611, 00000630, 00001366</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-bordered border-dark w-100 customSpace b-0">
+                            <tr>
+                                <td>CDSL Early Pay-in Accounts</td>
+                                <td>DP ID</td>
+                                <td>Client ID</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block">BSE Early Pay-in Account</span>
+                                    <span class="d-inline-block"> (Indian Clearing Corporation Ltd (ICCL))</span>
+                                </td>
+                                <td id="bseDPID"> 11000010</td>
+                                <td id="bseclientID">00015852</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block">NSE Early Pay-in Account</span><span class="d-inline-block">
+                                        (NSE Clearing Ltd)
+                                    </span>
+                                </td>
+                                <td>11000011</td>
+                                <td>00016449</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="full-width">
+                    <p>
+                        Any other Account(s) of the Stock broker substituted for or in addition to the above as may be
+                        notified on the website and/or by way of electronic mail and as decided by the Stock
+                        Broker from time to time. In case of any changes in the Bank and Demat accounts, the same shall
+                        be communicated accordingly.
+                    </p>
+                </div>
+
+                <div class="full-width">
+                    <!--<h6 class="m-0 font-weight-bold text-center text-uppercase">Schedule A-bank account holders</h6>-->
+                    <table class="table table-bordered border-dark w-100 customSpace mb-2 b-0">
+                        <tbody>
+                            <tr class="text-center">
+                                <td width="25%" id="ax-page7-NameOfBankAccountHolders">SCHEDULE A-Name of bank account holders</td>
+                                <td width="25%" id="NameOfBankAccountFirstHolders">
+                                    <span class="lightGrey">
+                                        Sole/1st
+                                        Holder
+                                    </span>
+                                </td>
+                                <td width="25%" id="NameOfBankAccountSecondHolders">
+                                    <span class="lightGrey">
+                                        Second
+                                        Holder
+                                    </span>
+                                </td>
+                                <td width="25%" id="NameOfBankAccountThirdHolders">
+                                    <span class="lightGrey">
+                                        Third
+                                        Holder
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<h6 class="m-0 font-weight-bold text-center text-uppercase">
+        Schedule B-Securities (Demat)
+        Account
+        holders
+    </h6>-->
+                    <table class="table table-bordered border-dark mb-2 scheduleAccountHolders w-100 b-0">
+                        <tbody>
+                            <tr>
+                                <td width="30%" id="ax-page7-NameOfSecuritiesDematAccountHolders">
+                                    SCHEDULE B-Name of
+                                    Securities
+                                    (Demat) Account Holders
+                                </td>
+                                <td width="70%" id="NameOfSecuritiesDematFirstAccountHolders" class="text-center align-middle">
+                                    <span class="lightGrey">Sole Holder</span>
+                                </td>
+                                <!--<!--<td width="25%" id="ax-page7-NameOfSecuritiesDematSecondAccountHolders" class="text-center align-middle">
+                    <span class="lightGrey">Second Holder</span>
+                </td>
+                <td width="25%" id="ax-page7-NameOfSecuritiesDematThirdAccountHolders" class="text-center align-middle">
+                    <span class="lightGrey">Third Holder</span>
+                </td>-->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<h6 class="m-0 font-weight-bold text-center text-uppercase">Schedule C-bank account Details</h6>-->
+                    <table class="table table-bordered border-dark mb-2 customSpace w-100 b-0">
+                        <tbody>
+                            <tr>
+                                <td width="20%" class="text-left"> SCHEDULE C-Bank &amp; Branch details</td>
+                                <td width="40%" class="text-left" id="userbank"></td>
+                                <td width="40%" class="text-left">
+                                    <div class="d-table w-100">
+                                        <span class="d-table-cell w-18 v-bottom">Account No:</span>
+                                        <span class="d-table-cell w-82 pl-3" id="ax-page7-scheduleBankAcDetailsACNo">
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<h6 class="m-0 font-weight-bold text-center text-uppercase">
+        Schedule D-Securities (Demat)
+        account
+        Details
+    </h6>-->
+                    <table class="table table-bordered border-dark mb-2 customSpace w-100 b-0">
+                        <tbody>
+                            <tr>
+                                <td width="25%" class="text-left">SCHEDULE D-Name of DP: <span>AXIS SECURITIES LIMITED</span></td>
+                                <td  width="30%" class="t-right">
+                                    <span class="pr-1"><input id="ChkNSDL" type="checkbox" />NSDL-IN304295</span>
+                                    <span class="pr-1"><input id="ChkCDSL" type="checkbox" />CDSL-12049200</span>
+                                </td>
+
+                                <!--<!--<td width="33%" class="text-center">CDSL-12049200</td>-->
+                                <td width="45%" class="text-left">
+                                    <div class="d-table w-100">
+                                        <span class="d-table-cell w-40 v-bottom">Client ID:</span>
+                                        <span class="d-table-cell w-82 pl-3" id="ax-page7-scheduleSecuritiesAcDetailsACNo"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!--<h6 class="m-0 font-weight-bold text-center text-uppercase">Schedule E-Client Details</h6>-->
+                    <table class="table table-bordered border-dark mb-2 scheduleClientDetails w-100 b-0">
+                        <tbody>
+                            <tr>
+                                <td widtclass="text-left" width="25%">SCHEDULE E-CLIENT DETAILS-Name of the Client: </td>
+                                <td class="text-left" width="20%"> <span id="CDNameOfTheClient"></span></td>
+                                <td class="text-left" width="10%">Client Code: </td>
+                                <td class="text-left"> <span id="CDClientCode"></span></td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered border-dark mb-2 scheduleClientDetails w-100 b-0">
+                        <tbody>
+                          
+                            <tr>
+                                <td width="10%" class="text-left">Address: </td>
+                                <td width="90%" class="text-left" colspan="4"><span id="CDAddress"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="pt-5 pb-5">
+                        <span class="text-uppercase">In witness whereof</span> I/We have hereunto set and
+                        subscribed
+                        our
+                        respective hands on the day and date as first mentioned in the Schedule.
+                    </p>
+                    <table class="table table-bordered border-dark mb-2 witnessTable b-0">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Sr.No.</th>
+                                <th width="33%">Holder</th>
+                                <th width="33%">Name</th>
+                                <th width="33%">Signature</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td class="text-left">Sole/ 1st Holder</td>
+                                <td id="CDName1"></td>
+                                <td>
+                                    <span class="pl-20 holderSignature w-100" id="sceduledeclarationSign1">
+                                        <!--<span class="lightGrey">S5 of 5</span>-->
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td class="text-left">
+                                    <span class="d-inline-block">2nd Holder in Bank Account</span>
+                                </td>
+                                <td id="CDName2"></td>
+                                <td>
+                                    <span class="pl-20 holderSignature w-100" id="sceduledeclarationSign4">
+                                        <!--<span class="lightGrey">SH 4 of 4</span>-->
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td class="text-left">
+                                    <span class="d-inline-block">3rd Holder in Bank Account</span>
+                                </td>
+                                <td id="CDName3"></td>
+                                <td>
+                                    <span class="pl-20 holderSignature w-100" id="sceduledeclarationSign4">
+                                        <!--<span class="lightGrey">SH 4 of 4</span>-->
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="full-width footerpdf">
+                    <div class="f-left w-50">
+                        <div class="no-gutters w-100">
+                            <div class="d-table mt-5  mb-40">
+                                <p class="text-nowrap d-table-cell">
+                                    Name of Witness :
+                                </p>
+                                <input type="text" class="border-left-0 border-right-0 border-top-0 border w-100 " style="width:300px"
+                                       id="ax-page7-NameOfWitness">
+                            </div>
+                            <!--<div class="d-table px-0 mt-5">
+                                <p class="pr-2 d-table-cell">Date:</p>
+                                <div class="d-table dateField">
+                                    <div class="d-table-cell" id="ax-page7-1DD1"></div>
+                                    <div class="d-table-cell" id="ax-page7-1DD2"></div>
+                                    <div class="d-table-cell" id="ax-page7-1MM1"></div>
+                                    <div class="d-table-cell" id="ax-page7-1MM2"></div>
+                                    <div class="d-table-cell" id="ax-page7-1YY1"></div>
+                                    <div class="d-table-cell" id="ax-page7-1YY2"></div>
+                                    <div class="d-table-cell" id="ax-page7-1YY3"></div>
+                                    <div class="d-table-cell" id="ax-page7-1YY4"></div>
+                                </div>
+                            </div>-->
+
+
+                        </div>
+                        <div class="d-flex flex-row align-items-end w-100 my-3 mt-5 p-r">
+                            <p class="text-nowrap">
+                                Witness Signature  :
+                                <input type="text" class="border-left-0 border-right-0 border-top-0 border w-100" style="width:300px"
+                                       id="Signature">
+                                <span class="holderSignature_re"></span>
+                            </p>
+                            
+                            <span id="ax-page7-WitnessSignature" class="pl-3">
+
+                            </span>
+                        </div>
+
+                        <div class="d-table w-100 mt-5">
+                            <div class="pr-3 d-table-cell w-15">
+                                Address:
+                            </div>
+                            <div class="d-table-cell">
+                                <input type="text" class="border-left-0 border-right-0 border-top-0 border w-83 ax-page7-Address1"
+                                       id="ax-page7-Address1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f-right w-40">
+                        <div class="px-0 mt-5">
+                            <p class="ml-5 mb-3">
+                                Accepted for Axis Securities Limited
+                            </p>
+                        </div>
+                        <div class="ml-5">
+                            <p class="mb-2 mt-30 p-r">
+                                Authorised Signatory
+                                <input type="text" class="border-left-0 border-right-0 border-top-0 border w-50 ax-page7-Address1" id="authorised">
+                                <span class="holderSignature_"></span>
+                            </p>
+                            <div class="no-gutters mt-5">
+                                <div class="px-0 d-table">
+                                    <div class="d-table mt-5 w-130 f-left">
+                                        <p class="text-nowrap d-table-cell ">
+                                            Place:
+                                        </p>
+                                        <input type="text" class="border-0 w-100 d-table-cell ax-page7-Place" id="ax-page7-Place">
+                                    </div>
+                                    <div class="d-table mt-5 f-right">
+                                        <p class="d-table-cell">Date:</p>
+                                        <div class="d-table dateField">
+                                            <div class="d-table-cell" id="ax-page7-DD1"></div>
+                                            <div class="d-table-cell" id="ax-page7-DD2"></div>
+                                            <div class="d-table-cell" id="ax-page7-MM1"></div>
+                                            <div class="d-table-cell" id="ax-page7-MM2"></div>
+                                            <div class="d-table-cell" id="ax-page7-YY1"></div>
+                                            <div class="d-table-cell" id="ax-page7-YY2"></div>
+                                            <div class="d-table-cell" id="ax-page7-YY3"></div>
+                                            <div class="d-table-cell" id="ax-page7-YY4"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="ax-page-08 p-text-justify" id="TCPOApage8">
+                <div class="text-center">
+                    <div class="w-100 f-left">
+                        <p>
+                            The execution of this document by the client is voluntary. However in case the client
+                            wish
+                            to
+                            avail of the online trading services with the linkage of Broking, bank and demat
+                            account,
+                            then
+                            execution of this document by the client is required in order to facititate seamless
+                            and
+                            hassle
+                            free trading and settlement of transactions.
+                        </p>
+                        <div id="borderBoxRef" class="topBox primaryBorder" style="height: 150px;text-align:center">
+                            <svg alt="barcode" width="150" id="barcodeImage7"></svg>
+                        </div>
+                    </div>
+                   
+                    <div class="text-center w-100 f-left">
+                        <h5 class="text-uppercase text-white primary-bg-color d-inline-block px-3 font-weight-bold pl-5 pr-5 pt-5 pb-5">
+                            Terms &amp; Conditions (This document is voluntary)
+                        </h5>
+                    </div>
+                </div>
+              
+                
+                <p>
+                    1. The Client shall maintain such Margin as may be stipulated by Axis Securities Limited
+                    (ASL)
+                    from
+                    time to time. In case the Client does
+                    not provide the required Margin within the time frame stipulated by ASL, then ASL shall
+                    take
+                    such
+                    other action as it may think fit and
+                    proper. ASLmay require the Client to pay additional Margin immediately in case of high
+                    volatility.
+                    2. The Client undertakes to monitor the
+                    adequacy of the collateral and the market value of such collateral on a continuous basis.
+                    3.
+                    ASL as
+                    risk containment measure shall have
+                    the discretion to square off/sell all or some of the client
+                    positions/collaterals/securities,
+                    without any notice to the client. 4. The Client is
+                    responsible for all orders, including any orders that may be executed without the required
+                    Margin
+                    in the Client’s account. 5. ASL shall
+                    have the discretion to allow or disallow trading by the client in certain scrips /
+                    contracts /
+                    products / services. 6. No transaction request
+                    shall be assumed to be executed / modified until a confirmation from ASL is received by the
+                    Client.
+                    7. The client authorizes ASL to close
+                    out the transactions in case the Client fails to make full payment to ASL or if there is
+                    debit
+                    in
+                    client’s account with ASL. Also, ASL may
+                    square off open client’s margin/leveraged positions in case the scrip price is nearing its
+                    daily
+                    price band or due to any adverse
+                    development concerning the client’s position or scrip. 8. The client agrees that ASL shall
+                    not
+                    be
+                    liable for non-execution or delay in the
+                    execution of any order due to system/network issue or due to any reason beyond the control
+                    of
+                    ASL.
+
+                    9. The client shall pay to ASL outstanding debit balance if any in his/her account from time to time without any delay. In case of delay, interest on delayed payment @ 18 % per annum shall be charged on outstanding amount including on interest amount already charged.
+
+                    10. The losses incurred on client’s account will be to the
+                    account
+                    of the client only. Neither ASLnor any
+                    of its employees/agents shall in any circumstances be liable for any loss, lost profits,
+                    cost,
+                    liability, expense or damage occurred to the
+                    client. 11. The client authorises ASL to obtain details in relation to the transactions and
+                    balances in respect of the securities held in
+                    his/her demat account for the purpose of collating and displaying
+                    details
+                    in the personalised portfolio watch
+                    page. The client acknowledges that the services under ‘Portfolio Watch’ being provided are
+                    as
+                    an
+                    add on facility and for client
+                    convenience only and ASL shall not be liable for any inaccurate display of data due to any
+                    unintended error etc. 12. The client authorizes
+                    ASL to deposit from time to time client’s collateral deposits with the Exchanges/Clearing
+                    Corporation for meeting client’s margin
+                    requirements and other obligations.13. The client authorises ASL to provide the
+                    communications
+                    through SMS and/or telephone calls
+                    on the registered mobile number(s), even if the clients contact number is registered with
+                    the
+                    National Do Not Call Registry etc. The
+                    client confirms that he/she shall not make any complaint to the TRAI/Service provider in
+                    relation
+                    to any call/communications received
+                    from ASLand shall not hold ASLliable. 14. The client authorizes ASLto place Mutual Fund
+                    transactions as per the instructions provided.
+                    15. The client authorise ASL to set off outstanding in any of the account of the client
+                    against
+                    credits available or arising in any other
+                    accounts/segments/exchanges maintained with ASL. 16. The client authorizes ASL to
+                    use
+                    the
+                    client account details/KYC
+                    details/Bank Debit card details/registered telephone numbers/TPIN etc. as method of
+                    verification of
+                    the client’s identity as the caller and
+                    then take orders, instructions from the caller over the phone. All such orders,
+                    instructions
+                    etc.
+                    shall be deemed to have been placed by
+                    the client and biding on the client. 17. The Client acknowledges that he/it is fully aware
+                    of
+                    and
+                    understands the risks associated with
+                    availing of the services for routing orders over the telephone including the risk of misuse
+                    and
+                    unauthorized use of his/its details and/or
+                    username and/or TPIN and/or Bank Debit card details by a third party. The Client agrees
+                    that
+                    he/it
+                    shall be fully liable and responsible for
+                    any and all unauthorized transactions and unauthorized use of the above. 18. The client
+                    shall
+                    not
+                    have recourse to dispute redressal
+                    mechanism/arbitration mechanism/investor protection schemes of the Stock Exchanges/SEBI, in
+                    case
+                    the client avails services under
+                    any schemes/leagues/competitions etc. offered by any third party/group company/associate of
+                    ASL,
+                    and concerning such services.
+                    19. The client agrees that non-receipt of bounced mail notification by ASL shall amount to
+                    delivery
+                    of the contract note at the email ID of
+                    the client.
+                    20. The Trading Member may keep the unutilised margin deposits
+                    of the client in bank deposits. However, no interest shall be passed on to the client earned for such deposits.
+                    21. I have opted to receive Part B comprising of Rights & Obligations (Trading
+                    and
+                    Demat separately), Uniform Risk
+                    Disclosure document and Guidance Note etc. in the form of <input type="checkbox" id="physical" />
+                    Physical <input type="checkbox" id="electronic" /> Electronic (If the applicant
+                    does
+                    not
+                    select the
+                    check box, default option is physical).
+                    22.<input type="checkbox" id="eTF" checked />I hereby authorise ASL to buy ETF(s) units not exceeding Rs.100 at market price towards activation of my Trading account. I agree that this is complimentary against account opening fees paid and no money will be deducted from my bank account.
+                </p>
+                <h6 class="m-0 mt-3 text-uppercase text-center font-weight-bold">TERMS & CONDITIONS FOR SIGNATURE</h6>
+                <p>
+                    I hereby, state that the signature uploaded on Axis Direct website for opening of Demat and Trading Account to be used for signing the KYC Documents which includes :1)
+                    C-KYC 2) KRA Page 3) Demat Page 4) Trading Account Details and 5) Terms and conditions page and all other relevant KYC pages other than POA.
+                </p>
+                <h6 class="m-0 mt-3 text-uppercase text-center font-weight-bold">RUNNING ACCOUNT AUTHORISATION</h6>
+                <p> I/We hereby authorise ASLas follows, in respect of my/our trading account with ASL:</p>
+                <p>
+                    To maintain my account, on a running account basis, i.e. instead of paying to me/us any
+                    amounts
+                    or
+                    securities representing payouts,
+                    settlement dues, marked to market profits on the settlement date, to retain, withhold,
+                    set-off
+                    and
+                    / or appropriate for such purposes and in
+                    such manner as ASLmay deem fit, including towards settling outstanding obligations on a
+                    settlement
+                    date. I/We understand and agree
+                    that no interest will be payable to me/us on the deposits or amounts or securities lying to
+                    my/our
+                    credit with ASL. This authorization may
+                    be revoked by me/us at any time by giving ASLwritten intimation.
+                </p>
+                <p>
+                    I/We request you to settle my/our account on a <input type="checkbox" id="monthly" />Monthly
+                    <input type="checkbox" id="quarterly" />Quarterly basis (If the client does not select the
+                    checkbox,
+                    default option is Quarterly)
+                </p>
+                <h6 class="m-0 mt-3 text-uppercase text-center font-weight-bold">
+                    ADDITIONAL TERMS & CONDITIONS
+                    OF
+                    BROKERAGE PLANS
+                </h6>
+                <p>
+                    I/We hereby agree and confirm the following Terms & Conditions of Brokerage Plans
+                    (applicable
+                    only
+                    if the client subscribes to the same).
+                </p>
+                <p>
+                    1. On completion of the Validity Period of the Plan, client may choose to subscribe to the
+                    existing
+                    or new Plan, on the terms and
+                    conditions applicable at that time. Client needs to submit physical request or in any other
+                    manner
+                    prescribed by ASL. </br>
+                    2. The plan is
+                    subject to regulatory norms in force from time to time and may be discontinued under any
+                    regulatory
+                    directions or for any reason, without
+                    giving prior intimation to the client.
+
+                </p>
+                <h6 class="m-0 mt-3 text-uppercase text-center font-weight-bold">GST Declaration</h6>
+                <p><span class="mr-5">I/We hereby state:</span> <input type="checkbox" class="mr-5" id="gstDeclareIdontHave" /> <span class="mr-5">I do not have GST Number.</span> <input type="checkbox" class="mr-5" id="gstDeclareIHave" /> <span class="mr-5">I have GST Number</span><input type="text" class="mr-5 border-left-0 border-right-0 border-top-0 border" id="nameOfStateOne" /><span class="mr-5">Name of State</span><input type="text" class="border-left-0 border-right-0 border-top-0 border" id="nameOfStateOne" /></p>
+                <div class="mt-5 pt-5">
+                    <div class="w-100 f-left mt-5">
+                        <div class="d-table " style="width: 300px;">
+                            <p class="d-table-cell ">
+                                Date:  <input type="text" class="d-table-cell border-left-0 border-right-0 border-top-0 border w-30 pl-2"
+                                              id="TodDate">
+                            </p>
+                           
+                        </div>
+                    </div>
+                    <div class="px-0 d-table w-100 axis8SignSection mt-20 f-left">
+                                             <div class="w-25 f-left pr-20">
+                            <div class="border-left-0 border-right-0 border-top-0 border-f w-100 holderSignature text-center d-table">
+                                
+                                <span class="lightGrey d-table-cell v-bottom"></span>
+                                <div class="d-table-cell v-bottom" id="ax-page8-sole1stHolder"></div>
+                            </div>
+                            <div class="font-weight-bold text-center">Sole/1st Holder</div>
+                        </div>
+                        <!-- <div class="w-25 f-left pr-20">
+        <div class="border-left-0 border-right-0 border-top-0 border w-100 holderSignature text-center d-table"
+             id="ax-page8-2ndHolderDematBankAC">
+            <span class="lightGrey d-table-cell v-bottom"></span>
+            <div class="d-table-cell v-bottom"></div>
+        </div>
+        <div class="font-weight-bold text-center">2nd Holder in Bank A/c.</div>
+        <div class="font-weight-bold text-center">(If different in Demat A/C.)</div>
+    </div>-->
+                        <div class="w-25 f-left">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ax-page-09" id="NomineePOApage9">
+                <!-- <div class="full-width d-table nominationHeadBg mb-5">
+            <div class="d-table-cell v-middle w-50 italicFont">
+                Badhti ka naam zindagi...
+            </div>
+            <div class="d-table-cell w-50 text-right px-4">
+                <img src="assets/images/logo.png" alt="logo" />
+            </div>
+        </div>
+        <div class="mb-5">
+            <p>
+                Gigaplex, Building No.1, 4th Floor, Plot No. I.T.5, MIDC, Airoli Knowledge Park Airoli, Navi
+                Mumbai - 400 708.
+            </p>
+        </div> -->
+
+                <div class="full-width topTitle mb-10">
+                    <div class="f-left w-30">
+                        <img src="assets/images/logo.png" alt="logo" />
+                    </div>
+                    <div class="f-left w-40">
+                        <h4>FORM FOR NOMINATION</h4>
+                        <h4>FOR DEMAT & TRADING ACCOUNT</h4>
+                    </div>
+                    <div class="f-left w-30">
+                        &nbsp
+                    </div>
+                </div>
+
+                <div class="full-width d-table ">
+                    <div class="d-table-cell w-65 ">
+                        <div class="border f-left d-table">
+                            <div class="d-table-cell v-middle pl-10 pr-10">
+                                <span class="f-left text-center w-100" id="nominationRegNo"></span>
+                                <span class="f-left text-center w-100">Nomination Registration No.</span>
+                            </div>
+                        </div>
+                        <div class="border f-left d-table">
+                            <div class="d-table-cell v-middle pl-10 pr-10">
+                                <span class="f-left text-center w-100" id="nominationDate"></span>
+                                <span class="f-left text-center w-100">Dated</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="w-30 d-table-cell">
+                        <div id="borderBoxRef" class="topBox primaryBorder" style="height: 88px;text-align:center">
+                            <svg alt="barcode" width="150" id="barcodeImage7"></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border px-0 full-width">
+                    <h5 class="text-center">FORM FOR NOMINATION / CANCELLATION OF NOMINATION</h5>
+                    <p class="text-center">(To be filled in by individual applying singly or jointly)</p>
+                    <div class="full-width border-bottom pb-10">
+                        <div class="f-left w-50 pl-10">
+                            <div class="px-0">
+                                <div class="py-2">
+                                    <div class="d-table">
+                                        <span class="pr-2 d-table-cell v-middle pr-5">Date</span>
+                                        <table border="1" class="fillForm d-table-cell pr-5 v-middle smallTableData"
+                                               cellpadding="2" style="border-collapse:collapse;">
+                                            <tbody>
+                                                <tr>
+                                                    <td id="nominationCancelDateD1"></td>
+                                                    <td id="nominationCancelDateD2"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table border="1" class="fillForm mr-2 d-table-cell pr-5 v-middle" cellpadding="2"
+                                               style="border-collapse:collapse;">
+                                            <tbody>
+                                                <tr>
+                                                    <td id="nominationCancelDateD3"></td>
+                                                    <td id="nominationCancelDateD4"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table border="1" class="fillForm d-table-cell pr-5 v-middle smallTableData"
+                                               cellpadding="2" style="border-collapse:collapse;">
+                                            <tbody>
+                                                <tr>
+                                                    <td id="nominationCancelDateD5"></td>
+                                                    <td id="nominationCancelDateD6"></td>
+                                                    <td id="nominationCancelDateD7"></td>
+                                                    <td id="nominationCancelDateD8"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="d-flex flex-row align-items-center px-0">
+                                        <span class="pr-2">NSDL</span>
+                                        <input type="checkbox" class="mr-2" id="nominationNSDL" />
+                                        <span class="pr-2">CDSL</span>
+                                        <input type="checkbox" class="mr-2" id="nominationCDSL" />
+                                        <span>(Please select any one)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="f-left w-50 pr-10">
+                            <div class="f-left w-100">
+                                <table border="1" class="fillForm f-right smallTableData w-60" cellpadding="2" style="border-collapse:collapse;">
+                                    <tbody>
+
+                                        <tr>
+                                            <td id="nominationCDSLDPID1" style="width:100px !important;">CDSL DP ID</td>
+                                            <td id="nominationCDSLDPID2"></td>
+                                            <td id="nominationCDSLDPID3"></td>
+                                            <td id="nominationCDSLDPID4"></td>
+                                            <td id="nominationCDSLDPID5"></td>
+                                            <td id="nominationCDSLDPID6"></td>
+                                            <td id="nominationCDSLDPID7"></td>
+                                            <td id="nominationCDSLDPID8"></td>
+                                            <td id="nominationCDSLDPID9"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="f-left w-100 mt-5">
+                                <table border="1" class="fillForm f-right w-60 smallTableData" cellpadding="2" style="border-collapse:collapse;">
+                                    <tbody>
+                                        <tr>
+                                            <td id="nominationClient1" style="width:90px !important;">Client ID</td>
+                                            <td id="nominationClientId1"></td>
+                                            <td id="nominationClientId2"></td>
+                                            <td id="nominationClientId3"></td>
+                                            <td id="nominationClientId4"></td>
+                                            <td id="nominationClientId5"></td>
+                                            <td id="nominationClientId6"></td>
+                                            <td id="nominationClientId7"></td>
+                                            <td id="nominationClientId8"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="full-width border-bottom pb-5 pt-5">
+                        <span class="font-weight-bold px-5">Nomination Option</span>
+                    </div>
+
+                    <div class="mb-1 border-bottom pb-1 full-width">
+                        <p class="px-5">I/we the sole holder / joint holders hereby declare that :</p>
+                        <div class="px-5">
+                            <div class="full-width">
+                                <input type="checkbox" id="makeaNomination" />
+                                <span class="ml-2">I/We wish to make a nomination. [As per details given below]</span>
+                            </div>
+                            <div class="full-width border-bottom">
+                                <input type="checkbox" id="cancelaNomination" />
+                                <span class="ml-2">
+                                    I/We wish to cancel the nomination made by me/ us earlier and
+                                    consequently all rights and liabilities in respect of beneficiary ownership in the
+                                    securities held by me / us in the said account shall vest in me/ us. [ Strike off
+                                    the nomination details below]
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-bottom pb-1 pb-5 pt-5 full-width">
+                        <span class="font-weight-bold px-5">Nomination Details</span>
+                    </div>
+                    <div class="full-width pb-5 pt-5">
+                        <p class="px-5">
+                            We wish to make a nomination and do hereby nominate the following person(s) who shall
+                            receive all securities held in the Depository by me / us in the said
+                            beneficiary owner account in the event of my / our death. This nomination shall supersede
+                            any prior nomination made by me/us and also any testamentary document executed by me/us.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="full-width">
+                    <table class="table w-100 nominationTable">
+                        <tr>
+                            <td colspan="3">Nomination can be made upto three nominees in the account.</td>
+                            <td style="min-width:210px;">Details of 1st Nominee</td>
+                            <td style="min-width:210px;">Details of 2nd Nominee</td>
+                            <td style="min-width:210px;">Details of 3rd Nominee</td>
+                        </tr>
+                        <tr>
+                            <td id="nominationTableSNO">1</td>
+                            <td id="nominationTablefName" colspan="2" class="borderLeftNone borderTopNone">
+                                <div>
+                                    <span class="font-weight-bold">
+                                        Name of the nominee(s)
+                                        (Mr./Ms./Others)
+                                    </span><span class="w-100 f-left text-left">
+                                        First
+                                        Name
+                                    </span>
+                                </div>
+                            </td>
+                            <td id="nominationTablefnamenominee1" class="borderTopNone"></td>
+                            <td id="nominationTablefnamenominee2" class="borderTopNone"></td>
+                            <td id="nominationTablefnamenominee3" class="borderTopNone"></td>
+                        </tr>
+                        <tr>
+                            <td id="nominationTableSNO"></td>
+                            <td id="nominationTableMName" colspan="2" class="borderLeftNone borderTopNone">
+                                <div class="text-left">
+                                    <span>Middle Name</span>
+                                </div>
+                            </td>
+                            <td id="nominationTablemnamenominee1" class="borderTopNone"></td>
+                            <td id="nominationTablemnamenominee2" class="borderTopNone"></td>
+                            <td id="nominationTablemnamenominee3" class="borderTopNone"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO"></td>
+                            <td id="nominationTableLName" colspan="2" class="borderTopNone borderBottomNone borderLeftNone">
+                                <div class="text-left">
+                                    <span>Last Name</span>
+                                </div>
+                            </td>
+                            <td id="nominationTablelnamenominee1" class="borderTopNone borderBottomNone"></td>
+                            <td id="nominationTablelnamenominee2" class="borderTopNone borderBottomNone"></td>
+                            <td id="nominationTablelnamenominee3" class="borderTopNone borderBottomNone"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO">2</td>
+                            <td colspan="5" class="text-left"><span class="font-weight-bold">Share of each Nominee</span></td>
+                        </tr>
+
+                        <tr>
+                            <td class="border-bottom-0 border-top-0">
+                                <div>
+                                    <span>A)</span>
+                                    <span>B)</span>
+                                </div>
+                            </td>
+                            <td colspan="2" class="p-0">
+                                <table class="w-100">
+                                    <tr>
+                                        <td class="borderTopNone borderLeftNone border-bottom-0" class="border-bottom-0 border-top-0">
+                                            <span class="font-weight">For NSDL</span>
+                                        </td>
+                                        <td class="borderTopNone borderRightNone border-bottom-0">
+                                            <div>
+                                                <span class="mr-2">Equally</span><input type="checkbox" id="forNSDLEqually" />
+                                            </div>
+                                            <p class="text-left">
+                                                [If not equally, please specify
+                                                percentage]
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td colspan="3" class="p-0">
+                                <table class="w-100 h-100">
+                                    <tr>
+                                        <td class="borderTopNone border-left-0" id=""><span id="forNSDLEquallyPercent1"></span></td>
+                                        <td class="borderTopNone border-left-0"><span id="forNSDLEquallyPercent2"></span></td>
+                                        <td class="borderTopNone borderRightNone"><span id="forNSDLEquallyPercent3"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left" colspan="3">
+                                            Any odd lot after division
+                                            shall be transferred to the first nominee mentioned in the
+                                            form.
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="border-bottom-0 border-top-0"></td>
+                            <td colspan="2" class="p-0">
+                                <table class="w-100">
+                                    <tr>
+                                        <td id="forCDSLEquallyPercent11" class="border-bottom-0  border-top-0 boder-right-0 borderLeftNone">
+                                            For CDSL
+                                        </td>
+                                        <td id="forCDSLEquallyPercent12" class="text-left border-top-0 borderRightNone borderLeftNone border-bottom-0">
+                                            Percentage of allocation
+                                            of securities
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td id="forCDSLEquallyPercent1">%</td>
+                            <td id="forCDSLEquallyPercent2">%</td>
+                            <td id="forCDSLEquallyPercent3">%</td>
+                        </tr>
+                        <tr>
+                            <td id="nominationSecurities1" class="border-top-0 border-bottom-0"></td>
+                            <td id="nominationSecurities2" colspan="2" class="text-left">
+                                Residual Securities (please tick
+                                any one nominee. If tick not
+                                marked default will be first
+                                nominee):
+                            </td>
+                            <td id="nominationSecurities3">
+                                <input type="checkbox" id="nominationSecuritiesSign3" />
+                            </td>
+                            <td id="nominationSecurities4">
+                                <input type="checkbox" id="nominationSecuritiesSign4" />
+                            </td>
+                            <td id="nominationSecurities5">
+                                <input type="checkbox" id="nominationSecuritiesSign5" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="border-bottom-0 border-top-0"></td>
+                            <td colspan="5" class="text-left">
+                                <span>Note:</span> Residual securities in case of multiple nominees,
+                                please choose any one nominee who will be credited with residual
+                                securities remaining after
+                                distributing of securities as per percentage of allocation. If you fail
+                                to choose one such nominee, then the first nominee will be marked as
+                                nominee entitled
+                                for residual shares, if any.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="font-weight-bold">3</span>
+                                </div>
+                            </td>
+                            <td colspan="2" class="text-left">
+                                <span class="font-weight-bold">Relationship With the Applicant (If Any)</span>
+                            </td>
+                            <td id="nomineeRelationShipApplication1"></td>
+                            <td id="nomineeRelationShipApplication2"></td>
+                            <td id="nomineeRelationShipApplication3"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="border-bottom-0">
+                                <div>
+                                    <span class="font-weight-bold">4</span>
+                                </div>
+                            </td>
+                            <td class="text-left" colspan="2">
+                                <span class="font-weight-bold">Address of Nominee(s)</span>
+                            </td>
+                            <td id="nomineeAddr1"></td>
+                            <td id="nomineeAddr2"></td>
+                            <td id="nomineeAddr3"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="border-top-0 border-bottom-0"></td>
+                            <td colspan="2" class="text-left">
+                                <span>City:</span>
+                            </td>
+                            <td id="nomineeCity1"></td>
+                            <td id="nomineeCity2"></td>
+                            <td id="nomineeCity3"></td>
+                        </tr>
+                        <tr>
+                            <td class="border-top-0 border-bottom-0"></td>
+                            <td colspan="2" class="text-left">
+                                <span>State:</span>
+                            </td>
+                            <td id="nomineeState1"></td>
+                            <td id="nomineeState2"></td>
+                            <td id="nomineeState3"></td>
+                        </tr>
+                        <tr>
+                            <td class="border-top-0 border-bottom-0"></td>
+                            <td colspan="2" class="text-left">
+                                <span>Pin:</span>
+                            </td>
+                            <td id="nomineePin1"></td>
+                            <td id="nomineePin2"></td>
+                            <td id="nomineePin3"></td>
+                        </tr>
+                        <tr>
+                            <td class="border-top-0"></td>
+                            <td colspan="2" class="text-left">
+                                <span>Country:</span>
+                            </td>
+                            <td id="nomineeCountry1"></td>
+                            <td id="nomineeCountry2"></td>
+                            <td id="nomineeCountry3"></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="font-weight-bold">5</span>
+                                </div>
+                            </td>
+                            <td class="text-left" colspan="2">
+                                <span class="font-weight-bold">Mobile / Telephone No. of nominee(s)</span>
+                            </td>
+                            <td id=""></td>
+                            <td id=""></td>
+                            <td id=""></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="font-weight-bold">6</span>
+                                </div>
+                            </td>
+                            <td class="text-left" colspan="2">
+                                <span class="font-weight-bold">Fax No.</span>
+                            </td>
+                            <td id="nomineeFaxNo1"></td>
+                            <td id="nomineeFaxNo2"></td>
+                            <td id="nomineeFaxNo3"></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="font-weight-bold">7</span>
+                                </div>
+                            </td>
+                            <td colspan="2" class="text-left">
+                                <span class="font-weight-bold">Email ID of nominee(s)</span>
+                            </td>
+                            <td id="nomineeEmailId1"></td>
+                            <td id="nomineeEmailId2"></td>
+                            <td id="nomineeEmailId3"></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="font-weight-bold">8</span>
+                                </div>
+                            </td>
+                            <td class="text-left" colspan="2">
+                                <span class="font-weight-bold">Nominee Identification details -</span>
+                                <p>
+                                    [Please tick any one
+                                    provide details of same]
+                                    of following and
+                                </p>
+                                <div>
+                                    <input type="checkbox" id="nomineePhotoSign" />
+                                    <span class="ml-2">Photograph & Signature</span>
+                                </div>
+
+                            </td>
+                            <td class="nomineePhotograph" id="nomineeEmailId1">
+                                <div class="p-3">
+                                    <div class="nomineeCustomSign border" id="nomineeAffixSign1">
+
+                                        <span>
+                                            Affix Colour
+                                            Photograph
+                                            of Nominee &
+                                            Sign across
+                                        </span>
+                                        <!-- <div><img src="assets/images/signature.png" /></div> -->
+                                    </div>
+                                    <div class="signatureOfNominee text-center full-width">
+                                        Signature of Nominee
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="nomineePhotograph" id="nomineeEmailId2">
+                                <div class="p-3">
+                                    <div class="nomineeCustomSign border" id="nomineeAffixSign2">
+
+                                        <span>
+                                            Affix Colour
+                                            Photograph
+                                            of Nominee &
+                                            Sign across
+                                        </span>
+                                        <!-- <div><img src="assets/images/signature.png" /></div> -->
+                                    </div>
+                                    <span class="signatureOfNominee text-center full-width">
+                                        Signature of Nominee
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="nomineePhotograph" id="nomineeEmailId3">
+                                <div class="p-3">
+                                    <div class="nomineeCustomSign border" id="nomineeAffixSign3">
+                                        <span>
+                                            Affix Colour
+                                            Photograph
+                                            of Nominee &
+                                            Sign across
+                                        </span>
+                                    </div>
+                                    <span class="signatureOfNominee text-center full-width">
+                                        Signature of Nominee
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td colspan="2">
+                                <div class="text-left">
+                                    <input type="checkbox" id="nomineePan" />
+                                    <span class="ml-2">PAN</span>
+                                </div>
+                            </td>
+                            <td id="nomineePan1"></td>
+                            <td id="nomineePan2"></td>
+                            <td id="nomineePan3"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td colspan="2">
+                                <div class="text-left">
+                                    <input type="checkbox" id="nomineeAadhaarUID" />
+                                    <span class="ml-2">Aadhaar / UID</span>
+                                </div>
+                            </td>
+                            <td id="nomineeAadhaarUID1"></td>
+                            <td id="nomineeAadhaarUID2"></td>
+                            <td id="nomineeAadhaarUID3"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td colspan="2">
+                                <div class="text-left">
+                                    <input type="checkbox" id="nomineeProofOfIdentity" />
+                                    <span class="ml-2">Proof of Identity</span>
+                                </div>
+                            </td>
+                            <td id="nomineeProofOfIdentity1"></td>
+                            <td id="nomineeProofOfIdentity2"></td>
+                            <td id="nomineeProofOfIdentity3"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td colspan="2">
+                                <div class="text-left">
+                                    <input type="checkbox" id="nomineeProofOfIdentity" />
+                                    <span>
+                                        Demat Account No.
+                                        DP ID
+                                    </span>
+                                </div>
+                            </td>
+                            <td colspan="3">
+                                <table class="dematAcNoTable">
+                                    <tbody>
+                                        <tr>
+                                            <td id="dematAcNoTable1"></td>
+                                            <td id="dematAcNoTable2"></td>
+                                            <td id="dematAcNoTable3"></td>
+                                            <td id="dematAcNoTable4"></td>
+                                            <td id="dematAcNoTable5"></td>
+                                            <td id="dematAcNoTable6"></td>
+                                            <td id="dematAcNoTable7"></td>
+                                            <td id="dematAcNoTable8"></td>
+                                            <td id="dematAcNoTable9"></td>
+                                            <td id="dematAcNoTable10"></td>
+                                            <td id="dematAcNoTable11"></td>
+                                            <td id="dematAcNoTable12"></td>
+                                            <td id="dematAcNoTable13"></td>
+                                            <td id="dematAcNoTable14"></td>
+                                            <td id="dematAcNoTable15"></td>
+                                            <td id="dematAcNoTable16"></td>
+                                            <td id="dematAcNoTable17"></td>
+                                            <td id="dematAcNoTable18"></td>
+                                            <td id="dematAcNoTable19"></td>
+                                            <td id="dematAcNoTable20"></td>
+                                            <td id="dematAcNoTable21"></td>
+                                            <td id="dematAcNoTable22"></td>
+                                            <td id="dematAcNoTable23"></td>
+                                            <td id="dematAcNoTable24"></td>
+                                        </tr>
+                                        <tr>
+                                            <td id="dematAcNoTableDPID1"></td>
+                                            <td id="dematAcNoTableDPID2"></td>
+                                            <td id="dematAcNoTableDPID3"></td>
+                                            <td id="dematAcNoTableDPID4"></td>
+                                            <td id="dematAcNoTableDPID5"></td>
+                                            <td id="dematAcNoTableDPID6"></td>
+                                            <td id="dematAcNoTableDPID7"></td>
+                                            <td id="dematAcNoTableDPID8"></td>
+                                            <td id="dematAcNoTableDPID9"></td>
+                                            <td id="dematAcNoTableDPID10"></td>
+                                            <td id="dematAcNoTableDPID11"></td>
+                                            <td id="dematAcNoTableDPID12"></td>
+                                            <td id="dematAcNoTableDPID13"></td>
+                                            <td id="dematAcNoTableDPID14"></td>
+                                            <td id="dematAcNoTableDPID15"></td>
+                                            <td id="dematAcNoTableDPID16"></td>
+                                            <td id="dematAcNoTableDPID17"></td>
+                                            <td id="dematAcNoTableDPID18"></td>
+                                            <td id="dematAcNoTableDPID19"></td>
+                                            <td id="dematAcNoTableDPID20"></td>
+                                            <td id="dematAcNoTableDPID21"></td>
+                                            <td id="dematAcNoTableDPID22"></td>
+                                            <td id="dematAcNoTableDPID23"></td>
+                                            <td id="dematAcNoTableDPID24"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+
+
+                    </table>
+                </div>
+
+
+            </div>
+
+            <div class="ax-page-10" id="NomineePOApage10">
+                <table class="table w-100 nominationTable" style="border-collapse:collapse;">
+                    <tr>
+                        <td class="border-bottom-0">9</td>
+                        <td class="border-bottom-0 text-left" colspan="5">
+                            <span class="font-weight-bold">
+                                Sr. Nos. 9-16
+                                should be
+                                filled mandatorily if
+                                nominee(s) is a minor:
+                            </span>
+                        </td>
+                    </tr>
+
+                </table>
+                <table class="table w-100 nominationTable" style="border-collapse:collapse;">
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td style="min-width:210px;" class="text-left" colspan="2">Date of Birth</td>
+                            <td style="min-width:210px;">
+                                <div class="d-table mx-auto smallTableData">
+                                    <table border="1" class="fillForm pr-10 d-table-cell" cellpadding="2" style="border-collapse:collapse;">
+                                        <tbody>
+                                            <tr>
+                                                <td id="nomineeMandatoryID11"></td>
+                                                <td id="nomineeMandatoryID12"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table border="1" class="fillForm pr-10 d-table-cell" cellpadding="2" style="border-collapse:collapse;">
+                                        <tbody>
+                                            <tr>
+                                                <td id="nomineeMandatoryID13"></td>
+                                                <td id="nomineeMandatoryID14"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table border="1" class="fillForm d-table-cell" cellpadding="2" style="border-collapse:collapse;">
+                                        <tbody>
+                                            <tr>
+                                                <td id="nomineeMandatoryID15"></td>
+                                                <td id="nomineeMandatoryID16"></td>
+                                                <td id="nomineeMandatoryID17"></td>
+                                                <td id="nomineeMandatoryID18"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td style="min-width:210px;">
+                                <div class="d-table mx-auto">
+                                    <table border="1" class="fillForm pr-10 d-table-cell" cellpadding="2" style="border-collapse:collapse;">
+                                        <tbody>
+                                            <tr>
+                                                <td id="nomineeMandatoryID21"></td>
+                                                <td id="nomineeMandatoryID22"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table border="1" class="fillForm pr-10 d-table-cell" cellpadding="2" style="border-collapse:collapse;">
+                                        <tbody>
+                                            <tr>
+                                                <td id="nomineeMandatoryID23"></td>
+                                                <td id="nomineeMandatoryID24"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table border="1" class="fillForm" cellpadding="2" style="border-collapse:collapse;">
+                                        <tbody>
+                                            <tr>
+                                                <td id="nomineeMandatoryID25"></td>
+                                                <td id="nomineeMandatoryID26"></td>
+                                                <td id="nomineeMandatoryID27"></td>
+                                                <td id="nomineeMandatoryID28"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td style="min-width:210px;">
+                                <div class="d-table mx-auto">
+                                    <table border="1" class="fillForm pr-10 d-table-cell" cellpadding="2" style="border-collapse:collapse;">
+                                        <tbody>
+                                            <tr>
+                                                <td id="nomineeMandatoryID31"></td>
+                                                <td id="nomineeMandatoryID32"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table border="1" class="fillForm pr-10 d-table-cell" cellpadding="2" style="border-collapse:collapse;">
+                                        <tbody>
+                                            <tr>
+                                                <td id="nomineeMandatoryID33"></td>
+                                                <td id="nomineeMandatoryID34"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table border="1" class="fillForm d-table-cell" cellpadding="2" style="border-collapse:collapse;">
+                                        <tbody>
+                                            <tr>
+                                                <td id="nomineeMandatoryID35"></td>
+                                                <td id="nomineeMandatoryID36"></td>
+                                                <td id="nomineeMandatoryID37"></td>
+                                                <td id="nomineeMandatoryID38"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="2" class="text-left" id="nomineeMandatoryAge">Age</td>
+                            <td id="nomineeMandatoryAge1"></td>
+                            <td id="nomineeMandatoryAge2"></td>
+                            <td id="nomineeMandatoryAge3"></td>
+                        </tr>
+                        <tr>
+                            <td id="nominationTableSNO">10</td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span class="font-weight-bold">Name of Guardian (Mr./Ms./Others)</span>
+                                    <span>First Name</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeNameOfGuardian1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeNameOfGuardian2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeNameOfGuardian3"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO"></td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span>Middle Name</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeMNameOfGuardian1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeMNameOfGuardian2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeMNameOfGuardian3"></td>
+                        </tr>
+                        <tr>
+                            <td id="nominationTableSNO"></td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span>Last Name</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeLNameOfGuardian1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeLNameOfGuardian2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeLNameOfGuardian3"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO">11</td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span>Address of Guardian(s)</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeAddressOfGuardian1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeAddressOfGuardian2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeAddressOfGuardian3"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO"></td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span>City:</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeAddressOfGuardianCity1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeAddressOfGuardianCity2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeAddressOfGuardianCity3"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO"></td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span>State:</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeAddressOfGuardianState1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeAddressOfGuardianState2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeAddressOfGuardianState3"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO"></td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span>Pin:</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeAddressOfGuardianPin1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeAddressOfGuardianPin2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeAddressOfGuardianPin3"></td>
+                        </tr>
+                        <tr>
+                            <td id="nominationTableSNO"></td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span>Country:</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeAddressOfGuardianCountry1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeAddressOfGuardianCountry2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeAddressOfGuardianCountry3"></td>
+                        </tr>
+                        <tr>
+                            <td id="nominationTableSNO">12</td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span class="font-weight-bold">Mobile/Telephone No. of Guardian</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeGuardianMobPhone1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeGuardianMobPhone2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeGuardianMobPhone3"></td>
+                        </tr>
+                        <tr>
+                            <td id="nominationTableSNO">13</td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span class="font-weight-bold">Fax No.</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeGuardianFaxNo1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeGuardianFaxNo2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeGuardianFaxNo3"></td>
+                        </tr>
+                        <tr>
+                            <td id="nominationTableSNO">14</td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span class="font-weight-bold">Email ID of Guardian</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeGuardianEmailId1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeGuardianEmailId2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeGuardianEmailId3"></td>
+                        </tr>
+                        <tr>
+                            <td id="nominationTableSNO">15</td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <span class="font-weight-bold">Relationship of Guardian with nominee</span>
+                                </div>
+                            </td>
+                            <td class="borderTopNone borderBottomNone borderLeftNone" id="nomineeGuardianRelation1"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeGuardianRelation2"></td>
+                            <td class="borderTopNone borderBottomNone" id="nomineeGuardianRelation3"></td>
+                        </tr>
+                        <tr class="ax-page-09">
+                            <td>
+                                <div>
+                                    <span class="font-weight-bold">16</span>
+                                </div>
+                            </td>
+                            <td class="text-left" colspan="2">
+                                <span class="font-weight-bold">Guardian Identification details -</span>
+                                <p>
+                                    [Please tick any one
+                                    provide details of same]
+                                    of following and
+                                </p>
+                                <div>
+                                    <input type="checkbox" id="nomineeGuardianPhotoSign" />
+                                    <span class="ml-2">Photograph & Signature</span>
+                                </div>
+
+                            </td>
+                            <td class="nomineePhotograph" id="nomineeEmailId1">
+                                <div class="p-3">
+                                    <div class="nomineeCustomSign border" id="nomineeAffixSign1">
+
+                                        <span>
+                                            Affix Colour
+                                            Photograph
+                                            of Nominee &
+                                            Sign across
+                                        </span>
+                                        <!-- <div><img src="assets/images/signature.png" /></div> -->
+                                    </div>
+                                    <div class="signatureOfNominee text-center full-width">
+                                        Signature of Nominee
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="nomineePhotograph" id="nomineeEmailId2">
+                                <div class="p-3">
+                                    <div class="nomineeCustomSign border" id="nomineeAffixSign2">
+
+                                        <span>
+                                            Affix Colour
+                                            Photograph
+                                            of Nominee &
+                                            Sign across
+                                        </span>
+                                    </div>
+                                    <span class="signatureOfNominee text-center full-width">
+                                        Signature of Nominee
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="nomineePhotograph" id="nomineeEmailId3">
+                                <div class="p-3">
+                                    <div class="nomineeCustomSign border" id="nomineeAffixSign3">
+                                        <span>
+                                            Affix Colour
+                                            Photograph
+                                            of Nominee &
+                                            Sign across
+                                        </span>
+                                    </div>
+                                    <span class="signatureOfNominee text-center full-width">
+                                        Signature of Nominee
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO" class="borderTopNone"></td>
+                            <td colspan="2" class="text-left">
+                                <div>
+                                    <input type="checkbox" id="guardianPan" />
+                                    <span class="ml-2">PAN</span>
+                                </div>
+                            </td>
+                            <td id="guardianPan1" class="borderTopNone borderBottomNone borderLeftNone"></td>
+                            <td id="guardianPan2" class="borderTopNone borderBottomNone"></td>
+                            <td id="guardianPan3" class="borderTopNone borderBottomNone"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO" class="borderTopNone"></td>
+                            <td colspan="2" class="text-left">
+                                <div>
+                                    <input type="checkbox" id="GuardianAadhaarUID" />
+                                    <span class="ml-2">Aadhaar / UID</span>
+                                </div>
+                            </td>
+                            <td id="guardianAadhaar1" class="borderTopNone borderBottomNone borderLeftNone"></td>
+                            <td id="guardianAadhaar2" class="borderTopNone borderBottomNone"></td>
+                            <td id="guardianAadhaar3" class="borderTopNone borderBottomNone"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO" class="borderTopNone"></td>
+                            <td colspan="2" class="text-left">
+                                <div>
+                                    <input type="checkbox" id="nomineeSavingBankAc" />
+                                    <span class="ml-2">Saving Bank account No.</span>
+                                </div>
+                            </td>
+                            <td id="guardianSavingBAc1" class="borderTopNone borderBottomNone borderLeftNone"></td>
+                            <td id="guardianSavingBAc2" class="borderTopNone borderBottomNone"></td>
+                            <td id="guardianSavingBAc3" class="borderTopNone borderBottomNone"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO" class="borderTopNone"></td>
+                            <td colspan="2" class="text-left">
+                                <div>
+                                    <input type="checkbox" id="nomineeGuardianPOI" />
+                                    <span class="ml-2">Proof of Identity</span>
+                                </div>
+                            </td>
+                            <td id="nomineeGuardianPOI1" class="borderTopNone borderBottomNone borderLeftNone"></td>
+                            <td id="nomineeGuardianPOI2" class="borderTopNone borderBottomNone"></td>
+                            <td id="nomineeGuardianPOI3" class="borderTopNone borderBottomNone"></td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO" class="borderTopNone"></td>
+                            <td class="text-left" colspan="2">
+                                <div>
+                                    <input type="checkbox" id="nomineeProofOfIdentity" />
+                                    <span>
+                                        Demat Account No.
+                                        DP ID
+                                    </span>
+                                </div>
+                            </td>
+                            <td colspan="3" class="p-0">
+                                <table class="w-100 dematAcNoTable" style="border-collapse:collapse; height: 100%;">
+                                    <tr>
+                                        <td id="dematAcNoTable1" class="borderLeftNone borderTopNone"></td>
+                                        <td id="dematAcNoTable2" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable3" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable4" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable5" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable6" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable7" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable8" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable9" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable10" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable11" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable12" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable13" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable14" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable15" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable16" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable17" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable18" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable19" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable20" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable21" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable22" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable23" class="borderTopNone"></td>
+                                        <td id="dematAcNoTable24" class="borderRightNone borderTopNone"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="dematAcNoTableDPID1" class="borderLeftNone borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID2" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID3" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID4" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID5" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID6" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID7" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID8" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID9" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID10" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID11" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID12" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID13" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID14" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID15" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID16" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID17" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID18" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID19" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID20" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID21" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID22" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID23" class="borderTopNone borderBottomNone"></td>
+                                        <td id="dematAcNoTableDPID24" class="borderRightNone borderTopNone borderBottomNone"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO" class="borderTopNone">17</td>
+                            <td colspan="2">
+                                <div>
+                                    <span class="font-weight-bold">Name & Signature of Account Holder(s)</span>
+                                </div>
+                            </td>
+                            <td id="nameOfAcSign1" class="borderTopNone borderBottomNone borderLeftNone">
+                                <div class="nomineeCustomSign d-table w-100" id="nameOfAcSign1">
+                                    <span class="font-weight-bold d-table-cell v-middle"> Sole/1st Holder</span>
+                                    <!-- <div class="d-table-cell v-middle">Image</div> -->
+                                </div>
+                            </td>
+                            <td id="nameOfAcSign2" class="borderTopNone borderBottomNone">
+                                <div class="nomineeCustomSign d-table w-100" id="nameOfAcSign2">
+                                    <span class="font-weight-bold d-table-cell v-middle">
+                                        2nd
+                                        Holder
+                                    </span>
+                                    <!-- <div class="d-table-cell v-middle">Image</div> -->
+                                </div>
+                            </td>
+                            <td id="nameOfAcSign3" class="borderTopNone borderBottomNone">
+                                <div class="nomineeCustomSign d-table w-100" id="nameOfAcSign3">
+                                    <span class="font-weight-bold d-table-cell v-middle">3rd Holder</span>
+                                    <!-- <div class="d-table-cell v-middle">Image</div> -->
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td colspan="2"><span>Name(s) of holder (s)</span></td>
+                            <td id="noimineeNameOfHolder1"></td>
+                            <td id="noimineeNameOfHolder2"></td>
+                            <td id="noimineeNameOfHolder3"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><span>Signature(s) of holder (s)</span></td>
+                            <td>
+                                <div class="nomineeCustomSign text-center w-100 d-table" id="signOfFholder">
+                                    <span class="d-table-cell v-middle">Signature of 1st Holder</span>
+                                    <!-- <div class="d-table-cell v-middle"><img src="assets/images/signature.png" /></div> -->
+                                </div>
+                            </td>
+                            <td>
+                                <div class="nomineeCustomSign text-center w-100 d-table" id="signOfFholder">
+                                    <span class="d-table-cell v-middle">
+                                        Signature
+                                        of 2nd Holder
+                                    </span>
+                                    <!-- <div class="d-table-cell v-middle"><img src="assets/images/signature.png" /></div> -->
+                                </div>
+                            </td>
+                            <td>
+                                <div class="nomineeCustomSign text-center w-100 d-table" id="signOfFholder">
+                                    <span class="d-table-cell v-middle">
+                                        Signature
+                                        of 3rd Holder
+                                    </span>
+                                    <!-- <div class="d-table-cell v-middle"><img src="assets/images/signature.png" /></div> -->
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="nominationTableSNO" class="borderTopNone">18</td>
+                            <td colspan="2">
+                                <div>
+                                    <span class="font-weight-bold">Details of Witness for Nomination</span>
+                                </div>
+                            </td>
+                            <td colspan="3" class="p-0">
+                                <span></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="3" class=" borderTopNone">
+                                Name
+                                of the Witness
+                            </td>
+                            <td colspan="3" class="p-0">
+                                <table class="w-100" style="border-collapse:collapse; height:100%;">
+                                    <tr>
+                                        <td style="min-width:65px;" class=" borderTopNone borderLeftNone border-bottom-0">
+                                            Address
+                                            of Witness
+                                        </td>
+                                        <td class=" borderTopNone borderLeftNone borderRightNone border-bottom-0">
+                                            Signature
+                                            of Witness
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="3" class="borderRightNone borderBottomNone">
+                                <div class="nomineeCustomSign" id="nameOfWitness">
+                                </div>
+                            </td>
+                            <td colspan="3" class="p-0">
+                                <table class="w-100" style="border-collapse:collapse; height:100%;">
+                                    <tr>
+                                        <td class="borderLeftNone border-top-0 border-bottom-0 border-right-0">
+                                            <div class="nomineeCustomSign" id="addressOfWitness">
+
+                                            </div>
+                                        </td>
+                                        <td class="borderRightNone border-top-0 border-bottom-0">
+                                            <div class="nomineeCustomSign" id="signOfWitness">
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="border-right-color:transparent;" colspan="3">
+                                <div class="text-left">
+                                    <span class="mr-2">Place :</span>
+                                    <span></span>
+                                </div>
+                            </td>
+                            <td colspan="3" class="p-0">
+                                <table class="w-100" style="border-collapse:collapse; height:100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="min-width:190px;" class="border-top-0 border-left-0 border-right-0 border-bottom-0"></td>
+                                            <td class="border-top-0 border-right-0 border-bottom-0">
+                                                <div class="d-table smallTableData">
+                                                    <span class="d-table-cell pr-10 v-middle">Date</span>
+                                                    <table border="1" class="fillForm d-table-cell pr-10" cellpadding="2"
+                                                           style="border-collapse:collapse;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td id="guardianEndDateD1"></td>
+                                                                <td id="guardianEndDateD2"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <table border="1" class="fillForm d-table-cell pr-10" cellpadding="2"
+                                                           style="border-collapse:collapse;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td id="guardianEndDateD3"></td>
+                                                                <td id="guardianEndDateD4"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <table border="1" class="fillForm" cellpadding="2" style="border-collapse:collapse;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td id="guardianEndDateD5"></td>
+                                                                <td id="guardianEndDateD6"></td>
+                                                                <td id="guardianEndDateD7"></td>
+                                                                <td id="guardianEndDateD8"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <p class="font-weight-bold mt-10">Notes:</p>
+                <div class="full-width notesContent">
+
+                    <div class="f-left w-50 px-0">
+                        <ol class="pl-10">
+                            <li>
+                                The nomination can be made only by individuals holding beneficiary owner accounts
+                                on their own behalf singly or jointly. Non- individuals including society, trust, body
+                                corporate and partnership firm, karta of Hindu Undivided Family, holder of power of
+                                attorney cannot nominate. If the account is held jointly, all joint holders will sign
+                                the
+                                nomination form.
+                            </li>
+                            <li>
+                                A minor can be nominated. In that event, the name and address of the Guardian of the
+                                minor nominee shall be provided by the beneficial owner.
+                            </li>
+                            <li>
+                                The Nominee(s) shall not be a trust, society, body corporate, partnership firm, karta
+                                of
+                                Hindu Undivided Family or a power of Attorney holder. A non-resident Indian can be a
+                                Nominee, subject to the exchange controls in force, from time to time.
+                            </li>
+                            <li>
+                                Nomination in respect of the beneficiary owner account stands rescinded upon
+                                closure of the beneficiary owner account. Similarly, the nomination in respect of the
+                                securities shall stand terminated upon transfer of the securities.
+                            </li>
+                            <li>
+                                Transfer of securities in favour of a Nominee(s) shall be valid discharge by the
+                                depository and the Participant against the legal heir.
+                            </li>
+                            <li>
+                                The cancellation of nomination can be made by individuals only holding beneficiary
+                                owner accounts on their own behalf singly or jointly by the same persons who made
+                                the original nomination. Non- individuals including society, trust, body corporate and
+                                partnership firm, karta of Hindu Undivided Family, holder of power of attorney cannot
+                                cancel the nomination. If the beneficiary owner account is held jointly, all joint
+                                holders
+                                will sign the cancellation form.
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="f-left w-50 px-0">
+                        <ol start="7" class="pl-20">
+                            <li>
+                                On cancellation of the nomination, the nomination shall stand rescinded and the
+                                depository shall not be under any obligation to transfer the securities in favour of
+                                the
+                                Nominee(s).
+                            </li>
+                            <li>
+                                Nomination can be made upto three nominees in a demat account. In case of multiple
+                                nominees, the Client must specify the percentage of share for each nominee that shall
+                                total upto hundred percent. In the event of the beneficiary owner not indicating any
+                                percentage of allocation/share for each of the nominees, the default option shall be to
+                                settle the claims equally amongst all the nominees.
+                            </li>
+                            <li>
+                                On request of Substitution of existing nominees by the beneficial owner, the earlier
+                                nomination shall stand rescinded. Hence, details of nominees as mentioned in the
+                                FORM at the time of substitution will be considered. Therefore, please mention the
+                                complete details of all the nominees.
+                            </li>
+                            <li>
+                                Copy of any proof of identity must be accompanied by original for verification or duly
+                                attested by any entity authorized for attesting the documents.
+                            </li>
+                            <li>DP ID and client ID shall be provided where demat details is required to be provided.</li>
+                        </ol>
+                    </div>
+                </div>
+                
+            </div>
+
+		</div>
+        </div>
+    </form>
+
+</body>
+
+</html>

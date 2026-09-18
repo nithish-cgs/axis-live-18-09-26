@@ -1,0 +1,388 @@
+<style>
+	.account-plan-bg-01,
+	.account-plan-bg-02,
+	.account-plan-bg-03 {
+		background-size: cover;
+	}
+
+	.EmailorMBL {
+		margin-top: 2rem !important;
+	}
+
+	@media screen and (max-width:600px) {
+		.EmailorMBL {
+			margin-top: 0 !important;
+		}
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<label class="ax-label">LG Code:</label>
+			<div class="ax-field">
+				<input class="form-control text-capitalize" type="text" id="lgCode" placeholder="LG Code"
+					ng-model="lgCode" autocomplete="nope" ng-disabled="lgdisabled" />
+				<span class="validation-result"></span>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<label class="ax-label">LC Code:</label>
+			<div class="ax-field">
+				<input class="form-control text-capitalize" type="text" id="lcCode" placeholder="LC Code"
+					ng-model="lcCode" autocomplete="nope" ng-disabled="lgdisabled" />
+				<span class="validation-result"></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<h4 class="ax-sec-title m-0 mt-5">Pick a plan</h4>
+		</div>
+	</div>
+	<div class="row mb-1 no-gutters">
+		<div class="col-md-9">
+			<data-owl-carousel class="owl-carousel segmentation-container account-plan-container mt-3 pt-4"
+				data-options="owlOptionsTestimonials">
+				<div class="mb-3 account-plan-container item" owl-carousel-item=""
+					ng-repeat="plan in planList track by [$index]">
+					<input type="radio" ng-click="productSelect()" name="axisDirect" id="{{plan.ProductId}}-{{$index}}"
+						value="{{plan.ProductId}}">
+					<div class="account-plan account-plan-bg h-100 d-flex flex-row mx-1 text-dark">
+						<span class="arrow"></span>
+						<div class="ps-0 overflow-hidden">
+							<div class="d-flex flex-column">
+								<div class="align-self-start text-uppercase">{{plan.PlanName}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</data-owl-carousel>
+		</div>
+		<!--<div class="col-md-3 account-plan-container">
+					<input type="radio" name="axisDirect" value="{{paymentProductId}}" id="prosperity"> 
+					<div class="account-plan account-plan-bg-01 h-100 d-flex flex-row mx-1">
+						<span class="arrow"></span>
+						<div class="ps-5 d-none">
+							<div>AXIS DIRECT</div> 
+							<div class="d-flex flex-column">
+								<div class="align-self-start">PROSPERITY</div> 
+								<div class="align-self-end">ACCOUNT</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 account-plan-container">
+					<input type="radio" name="axisDirect" value="{{paymentProductIdTwo}}" id="5555Plan" checked> 
+					<div class="account-plan account-plan-bg-02 h-100 d-flex flex-row mx-1">
+						<span class="arrow"></span>
+						<div class="ps-5 d-none">
+							<div>AXIS DIRECT</div> 
+							<div class="d-flex flex-column">
+								<div class="align-self-start">NOW or NEVER 5555</div> 
+								<div class="align-self-end">PLAN</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 account-plan-container">
+					<input type="radio" name="axisDirect" value="{{paymentProductIdThree}}" id="1500Plan"> 
+					<div class="account-plan account-plan-bg-03 h-100 d-flex flex-row mx-1">
+						<span class="arrow"></span>
+						<div class="ps-5 d-none">
+							<div>AXIS DIRECT</div> 
+							<div class="d-flex flex-column">
+								<div class="align-self-start">INVESTMENT <sup>plus</sup> AP1500</div> 
+								<div class="align-self-end">PLAN</div>
+							</div>
+						</div>
+					</div>
+				</div>-->
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<h4 class="ax-sec-title m-0 my-5">Pick trading segment</h4>
+		</div>
+	</div>
+
+	<div class="intrestedsegments intrested-products">
+		<div class="row intrestedlist">
+			<div class="col-sm-4 mt-3 input-section">
+				<label class="checkkbox no-border" for="equity">
+					<input class="customcheckradio" type="checkbox" name="segments" id="equity">
+					<span>Equity <span class="grey-texts">(NSE & BSE)</span></span>
+
+					<img src="assets/images/info-icon.svg" width="16" height="16"
+						class="ml-2 ax-product-info pull-right" alt="" data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						title="Be a part of India's growth story by investing in stock market or take benefit of short term stock movements using plethora of leverage products like E-margin, Intraday, cover!">
+				</label>
+			</div>
+			<div class="col-sm-6 mt-3 input-section currencies-section">
+				<label class="checkkbox no-border iSelect" for="mutualfunds">
+					<input class="customcheckradio" type="checkbox" name="segments" id="mutualfunds">
+					<span>Mutual Funds <span class="grey-texts">(Exchange, Distribution)</span></span>
+				</label>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-sm-12 mt-3">
+				<label class="checkkbox no-border iSelect" for="derivativesAll">
+					<input class="customcheckradio" type="checkbox" name="derivativesAll" id="derivativesAll">
+					<span>Derivatives - All</span>
+				</label>
+			</div>
+		</div>
+		<div class="row intrestedlist">
+			<div class="col-sm-4 mt-3 input-section derivatives-section">
+				<label class="checkkbox no-border iSelect" for="equityderivatives">
+					<input class="customcheckradio" type="checkbox" name="derivatives" id="equityderivatives" disabled>
+					<span>Equity Derivatives <span class="grey-texts">(NSE)</span></span>
+
+					<img src="assets/images/info-icon.svg" width="16" height="16"
+						class="ml-2 ax-product-info pull-right" alt="" data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						title="Trade in futures & options on Stocks & Indices. Make the best use of leverage products like intraday and cover to take multi fold exposure!">
+				</label>
+			</div>
+			<div class="col-sm-4 mt-3 input-section currencies-section">
+				<label class="checkkbox no-border iSelect" for="commodityderivatives">
+					<input class="customcheckradio" type="checkbox" name="derivatives" id="commodityderivatives"
+						disabled>
+					<span>Commodity Derivatives</span>
+
+					<img src="assets/images/info-icon.svg" width="16" height="16"
+						class="ml-2 ax-product-info pull-right" alt="" data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						title="Diversify your portfolio beyond equity. Trade in Futures & Options on Gold, silver, crude and agricultural commodities to hedge your investments / benefit from commodity price movements!">
+				</label>
+			</div>
+			<div class="col-sm-4 mt-3 input-section pos-relative">
+				<label class="checkkbox no-border" for="currency">
+					<input class="customcheckradio" type="checkbox" name="derivatives" id="currency" disabled>
+					<span>Currency <span class="grey-texts">(NSE)</span></span>
+
+					<img src="assets/images/info-icon.svg" width="16" height="16"
+						class="ml-2 ax-product-info pull-right" alt="" data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						title="World is too small, they say! Global currencies move with global markets and they all are interlinked. With a good insight of these markets, you can benefit from currency futures/options trading!">
+				</label>
+			</div>
+			<div class="col-sm-12 mt-3 input-section pos-relative" ng-if="displaysInfoStatus">
+				<div class="alert-skeleton derivative-alert p-3">
+					<p class="m-0"><span class="font-regular">Please note:</span> To enable Derivatives you
+						require additional Last 6 months bank statement.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-5">
+		<div class="col-md-4">
+			<label class="ax-label">Bank name:</label>
+			<div class="ax-field">
+				<select class="select form-control" ng-model="bankID" id="pBank" ng-if="formData.bankList != ''">
+					<option value="">Select Bank</option>
+					<option ng-selected="bank.BankName == bankID" ng-if="bank.ShortBankName"
+						ng-repeat="bank in formData.bankList track by [$index]" value="{{bank.ShortBankName}}">
+						{{bank.BankName}}</option>
+				</select>
+			</div>
+			<div class="input-message clearfix" ng-if="bankNameError"><span class="error-message pull-right"><i
+						class="fa fa-times"></i> Please select bank name</span></div>
+		</div>
+		<!--<div class="col-md-4">	
+			<label class="ax-label">Bank Short Code:</label>
+			<div class="ax-field">                        
+				<select class="select form-control" ng-model="ShortbankID"  id="psBank" ng-if="formData.bankList != ''">
+					<option value="">Select Bank</option>
+					<option ng-selected="bank.BankName == bankID"
+						ng-repeat="bank in formData.bankList track by [$index]"
+						value="{{bank.ShortBankName}}">{{bank.ShortBankName}}</option>
+				</select>
+			</div>
+		</div>-->
+
+		<!--<div class="col-md-4">
+			<label class="ax-label">
+				DP
+			</label>
+			<select class="select form-control" id="dpValue" ng-model="dpValue"
+				name="dpValue">
+				 <option></option>
+				<option value="Yes">Yes</option>
+				<option ng-selected="true" value="No">No</option>
+			</select>
+		</div>
+		<div class="col-md-4">
+			<label class="ax-label">
+				Is CML Copy
+			</label>
+			<select class="select form-control" id="isCmlcopy" ng-model="isCmlcopy"
+				name="isCmlcopy">
+				 <option></option>
+				<option value="1">Yes</option>
+				<option ng-selected="true" value="0">No</option>
+			</select>
+		</div>-->
+		<div class="col-md-4">
+			<label class="ax-label">Referral Code</label>
+			<div class="ax-field">
+				<input class="form-control text-capitalize" type="text" id="refCode" placeholder=""
+					autocomplete="nope" />
+				<span class="validation-result"></span>
+			</div>
+			<div class="input-message clearfix" ng-if="refCodeError">
+				<span class="error-message pull-right">
+					<i class="fa fa-times"></i> Refeeral code is required</span>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<label class="ax-label">Promo Code</label>
+			<div class="ax-field">
+				<input class="form-control text-capitalize" type="text" id="promoCode" placeholder=""
+					autocomplete="nope" />
+				<span class="validation-result"></span>
+			</div>
+			<div class="ax-field">
+				<select class="select form-control" id="promoCode" ng-if="formData.promocodeList != ''">
+					<option value="">Select Promocode</option>
+					<option ng-selected="procode.PromoCode == PromoCodeId"
+						ng-repeat="procode in formData.promocodeList track by [$index]" value="{{procode.PromoCode}}">
+						{{procode.PromoCode}}</option>
+				</select>
+			</div>
+			<div class="input-message clearfix" ng-if="promoCodeError">
+				<span class="error-message pull-right">
+					<i class="fa fa-times"></i> Promo code is required</span>
+			</div>
+		</div>
+	</div>
+	<div class="row my-4">
+		<div class="col-12 text-danger text-center mb-4" ng-if="fpError">
+			<strong>Axis Freedom Plan is applicable for Axis Bank account holders only.</strong>
+		</div>
+		<div class="col-md-12 mb-4 pull-right d-flex justify-content-center">
+			<button class="btn btn-primary ax-btn-primary float-right text-uppercase mx-2"
+				ng-click="genLink()">Generate</button>
+		</div>
+		<span class="error-message position-static pull-right" ng-if="genUrlError"><i class="fa fa-times"></i> Please
+			provide Valid input</span>
+		<div class="col-md-12 my-4 text-center" ng-if="genUrl">
+			<a class="ml-4" href="javascript:void(0)" ng-hide="copied" ng-click="copyTxt()" role="button"><i
+					class="fa fa-copy"></i> Copy URL</a> <span class="ml-4" ng-show="copied">
+				<i class="fa fa-check"></i>URL Copied</span> : <span style="word-wrap: break-word;">{{genUrl}}</span>
+		</div>
+
+	</div>
+	<!-- <div class="row mt-5 mt-sm-0 d-block">
+		<div class="col-md-6">
+			<label class="ax-label" for="mobileExtn">URL</label>
+			
+				<div class="col-12">
+					<div class="ax-field">
+						<textarea class ="w-100" id="w3review" ng-disabled="gendisabled" name="w3review" rows="4" cols="50">{{genUrl}}</textarea>
+						<span class="error-message position-static pull-right" ng-if="genUrlError"><i class="fa fa-times"></i> Please
+							provide Valid input</span>
+					</div>
+				</div>
+			
+		</div>
+
+		
+		
+	</div> -->
+	<div class="col-md-12 mb-4 pull-right d-flex justify-content-start">
+		<p>Enter a valid Mobile Number or Email ID to trigger a customized link. You can trigger the generated
+			customized link on Mobile or Email or Both (Email & Mobile).</p>
+	</div>
+	<div class="row mt-5">
+		<div class="col-md-5">
+			<label class="ax-label">Mobile Number:</label>
+			<div class="d-flex">
+				<div class="col-md-11 col-10">
+					<div class="ax-field d-flex">
+						<input class="form-control" autocomplete="nope" placeholder="Enter 10 Digit Mobile Number"
+							type="tel" id="cusmobile" ng-model="formData.fields.cusmobile"
+							ng-blur="getUserDetails($event)"
+							ng-disabled="formData.ReferenceNumber || otp || otpVerified" maxlength="10"
+							ng-keypress="emptyMobile = false; invalidMobile = false; $event.keyCode == 13 ? firstStage() : null"
+							required only-digits />
+						<span class="validation-result"></span>
+
+					</div>
+				</div>
+				<div class="col-md-1 col-2">
+					<div>
+						<button ng-click="custimzeLinkMbl()" class="border-0 bg-white">
+							<span>
+								<img src="assets/images/download.png" class="mx-2" width="30" height="30">
+							</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="input-message clearfix">
+				<span class="error-message pull-right" ng-if="cusempty"><i class="fa fa-times"></i> Please
+					provide mobile number</span>
+				<span class="error-message pull-right" ng-if="cusinvalidMobile"><i class="fa fa-times"></i> Please
+					provide valid mobile number</span>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<label class="ax-label"> </label>
+			<div class="ax-field d-flex justify-content-center EmailorMBL">OR</div>
+		</div>
+		<div class="col-md-5">
+			<label class="ax-label">Email ID:</label>
+			<div class="d-flex">
+				<div class="col-md-11 col-10">
+					<div class="ax-field d-flex">
+						<input class="form-control" autocomplete="nope" placeholder="Enter your valid Email ID"
+							type="text" id="cusemailID" ng-model="formData.fields.cusemail"
+							ng-keypress="emptyEmail = false; invalidEmail = false; $event.keyCode == 13 ? firstStage() : null"
+							ng-disabled="formData.ReferenceNumber  || otp" required maxlength="50" />
+						<span class="validation-result"></span>
+
+					</div>
+				</div>
+				<div class="col-md-1 col-2">
+					<div>
+						<button ng-click="custimzeLinkEmail()" class="border-0 bg-white">
+							<span>
+								<img src="assets/images/download.png" class="mx-2" width="30" height="30">
+							</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="input-message clearfix">
+				<span class="error-message pull-right" ng-if="cusemailempty"><i class="fa fa-times"></i> Please
+					provide mobile number</span>
+				<span class="error-message pull-right" ng-show="cusinvalidEmail"><i class="fa fa-times"></i>
+					Please
+					provide proper email address. Eg: john@xyz.com</span>
+			</div>
+		</div>
+	</div>
+	<section class="modal fade" id="genLink" role="dialog" tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-12 text-center" ng-if="!genError">
+							<h4 class="mt-3">{{gensuccess}}
+							</h4>
+
+						</div>
+						<div class="col-12 text-center" ng-if="genError">
+							<h4 class="mt-3">{{genErrorMessage}}
+							</h4>
+
+						</div>
+					</div>
+					<!-- End -->
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

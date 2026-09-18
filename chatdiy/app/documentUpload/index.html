@@ -1,0 +1,2165 @@
+﻿
+<style>
+.table {
+display: none !important;
+}
+
+#video {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width:320px;
+  height:240px;
+}
+
+#photo {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width:320px;
+  height:240px;
+}
+
+#canvas {
+  display:none;
+}
+
+.camera {
+  width: 340px;
+  display:inline-block;
+}
+
+.output {
+  width: 340px;
+  display:inline-block;
+}
+
+#startbutton {
+  display:block;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+  bottom:32px;
+  background-color: rgba(0, 150, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  color: rgba(255, 255, 255, 1.0);
+}
+
+.contentarea {
+  font-size: 16px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  width: 760px;
+}
+
+.wrapper {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.pdf-linkbtn {
+    border: 1px solid;
+    width: 150px;
+    display: block;
+    margin: auto;
+    padding: 6px 0px;
+    border-radius: 20px;
+    text-decoration: underline;
+}
+.file-input .file-preview,.file-input .fileinput-remove-button{
+	display: none;
+}
+#takeselfiedis[disabled] {
+    opacity: .4;
+}
+/* .client-img .btn.btn-primary.btn-file {
+    display: none;
+} */
+</style>
+<!-- Global site tag (gtag.js) - Google Ads: 727858862 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-727858862"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-727858862');
+</script>
+<!-- Event snippet for AxisDirect_DocUpload_Dec20 conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-727858862/nV6dCI3j_esBEK79iNsC'});
+</script>
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1253495914811323');
+  fbq('track', 'PageView');fbq('trackCustom', 'AxisDirect-DocUpload');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1253495914811323&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+
+<div ng-if="formData.paymentPixel" style="height: 1px; visibility: hidden">
+	<img src="https://publicis.go2cloud.org/aff_l?offer_id=408&adv_sub={{formData.ReferenceNumber}}" width="1" height="1" />
+</div>
+<div ng-if="formData.skippedPayment" style="height: 1px; visibility: hidden">
+<img src="https://apoxymedia.net/p.ashx?o=930&e=275&f=img&t={{formData.ReferenceNumber}}" width="1" height="1" border="0" />
+</div>
+
+<div class="profileaddresschangestep1 pacs">
+    <div class="onboard-innerinfo">
+        <!--<div class="clearfix ob-form-header" ng-hide="documentLoad">
+            <div class="pull-left">
+                <a href="bank" ng-click="sixthSection()" class="previous">Previous</a>
+            </div>
+            <div class="pull-right">
+                <div class="text-right" ng-if="formData.ReferenceNumber">Reference Number : {{formData.ReferenceNumber}}</div>
+            </div>
+        </div>-->
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="row mb-5">
+                    <div class="col-md-9">
+                        <h4 class="ax-sec-title">It is time to upload your documents now. I hope you have kept all the
+                            documents handy! Anyways, I can wait &#128578;</h4>
+                    </div>
+                    <div class="col-12 d-block d-sm-none">
+                        <div class="d-flex justify-content-start">
+                            <div>Step 6/8</div>
+                            <div class="mobile-progress progress">
+                                <div class="progress-bar" style="width:75%;height:20px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center d-none d-sm-block">
+                        <!-- <img class="img-fluid cartoon-character" src="assets/images/axis/docupload-cartoon.png"
+                            alt="Registration-emoji" /> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right d-none d-sm-block">
+                        <button type="button" id="" ng-click="sendSMSToCustomer()"
+                            class="text-uppercase boariding-btns plan-button">
+                            Upload Docs using Mobile
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="input-forms margint10" novalidate autocomplete="off">
+                            <!--<h3 class="uploaded-hd hidden-sm hidden-md hidden-lg">Upload Documents</h3>-->
+                            <div class="intrestedsegments upload-documents" ng-hide="documentLoad">
+                                <div class="row row-eq-height uploaded-type" ng-hide="ibDocumentHide || formData.isgDocSkip || (!formData.docStageRejected && !panUpld)"
+                                    ng-class="{'error': (!panImageValidation && panImageValidation!=''), 'success': panImageValidation}">
+                                    <div class="col-4 col-sm-6 upload-content  text-left">
+                                        <span class="margint10">PAN Card</span>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="panSample=!panSample">Sample PAN card</a>
+										</div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content pan-img">
+                                        <div class="d-flex">
+                                            <div class="upload-section">
+                                                <div id="panPhoto"></div>
+											
+                                                <input type="file" accept="image/*" class="input-upload" id="PANNumber"
+                                                    onchange="imgUpld('PANNumber');">
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result"
+                                                    ng-class="{'validation-error': (!panImageValidation && panImageValidation!=''), 'validation-success': panImageValidation}">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="pantypeError"><i class="fa fa-times"></i>File type not
+                                                supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="panImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+										<div class="input-message clearfix"><span class="error-message"
+                                                ng-if="panQImgError"><i class="fa fa-times"></i>Please upload good quality image</span></div>	
+										<div class="input-message clearfix"><span class="error-message"
+                                                ng-if="panCNImgError"><i class="fa fa-times"></i>Please upload valid PAN card</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="panSizeError"><i class="fa fa-times"></i>Please upload the
+                                                document less than 4Mb</span></div>
+                                    </div>
+									<div class="col-12" ng-if="panSample">
+										 <div class="sample-output">
+                                                <div class="uploaded-image">
+                                                    <img src="assets/images/pancard-onboard.jpg" width="250" height="auto" alt="" />
+                                                </div>
+                                                <div class="boardformlist mt-3">                                                    
+                                                    <p>PAN card wth a clear photograph is a mandatory reqirement for all applicants who wish to open Axis Direct Demat and Trading Account. Ensure that you have filled all the details on the form as per pan card, or it might result into delay for account opening.</p>
+                                                </div>
+                                            </div>                                        
+									</div>
+                                </div>
+                                <div class="row row-eq-height uploaded-type"  ng-hide="ibDocumentHide && !ibCkycDocumentShow"
+                                    ng-class="{'error': (!sigImageValidation && sigImageValidation!=''), 'success': sigImageValidation}">
+                                    <div class="col-4 col-sm-6 upload-content text-left">
+                                        <span class="margint10">Signature</span>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="signatureSample=!signatureSample">Sample signature</a>                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content signature-img">
+                                        <div class="d-flex">
+                                            <div class="upload-section">
+                                                <div id="clientSignature"></div>
+											
+                                                <input type="file" accept="image/*" class="input-upload"
+                                                    id="SPECIMENPROOF" onchange="imgUpld('SPECIMENPROOF');">
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result"
+                                                    ng-class="{'validation-error': (!sigImageValidation && sigImageValidation!=''), 'validation-success': sigImageValidation}">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="signaturetypeError"><i class="fa fa-times"></i>File type not
+                                                supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="signatureImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="signatureSizeError"><i class="fa fa-times"></i>Please upload the
+                                                document less than 4Mb</span></div>
+                                        <p class="page-tag page-tag1 ax-bold-title  mb-3 mt-3" ng-if="signFincleMsg">
+                                            The uploaded signature will be used only for the purpose of opening Demat and Trading Account with Axis securities and same will be not updated in bank records
+                                        </p>
+                                    </div>
+									<div class="col-12" ng-if="signatureSample">
+										<div class="sample-output">
+                                                <div class="uploaded-image">
+                                                    <img src="assets/images/signature_scan.png" width="200" height="auto" alt="" />
+                                                </div>
+                                                <div class="boardformlist mt-3">
+                                                    <p>Signature should be clear and match with PAN card.</p>
+                                                </div>
+                                            </div>
+									</div>
+                                </div>
+
+                                <!-- <div class="row row-eq-height uploaded-type" ng-hide="ibDocumentHide || formData.isgDocSkip || (!formData.docStageRejected && !photoUpld)"
+                                    ng-class="{'error': (!photoProofImageValidation && photoProofImageValidation!=''), 'success': photoProofImageValidation}"> -->
+                                <div class="row row-eq-height uploaded-type"  ng-hide="ibDocumentHide && !ibCkycDocumentShow"
+                                    ng-class="{'error': (!photoProofImageValidation && photoProofImageValidation!=''), 'success': photoProofImageValidation}">
+                                    <div class="col-4 col-sm-6 upload-content  text-left">
+                                        <span class="">Passport Size Photo</span>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample dropdown">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="photoSample=!photoSample">Sample passport size photo</a>                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content client-img">
+                                        <div class="d-flex">
+                                            <div class="upload-section client-photo">
+                                                <div id="clientImage"></div>
+                                              <!--  <input type="file" accept="image/*" class="input-upload"
+                                                    id="ClientPhoto" onchange="imgUpld('ClientPhoto');">-->
+												
+                                            </div>
+											<div class="upload-section clientPhoto mt-5">
+                                                <div id="clientImageSelfie"></div>
+                                                <canvas id="preview" style="display:none;"></canvas>
+
+                                                <!--<input type="file" accept="image/*" class="input-upload"
+                                                    id="ClientPhotoSelfie" onchange="imgUpld('ClientPhotoSelfie');">-->
+												<!-- <span ng-if="!formData.isMobile && formData.RMModule" class="mt-3" style="color: #0057ab; cursor: pointer" data-toggle="modal" data-target="#cammodal">TAKE SELFIE</span> -->
+                                    
+												<input type="file" accept="image/*" capture="capture"  ng-if="formData.isMobile" class="input-upload"
+                                                   id="takeselfie"  onchange="imgUpld('takeselfie');" ng-disabled="takeSelfieDisabled || cameraDisabled">
+												<button  class="mt-3" ng-if="!formData.isMobile"
+                                                 id="takeselfiedis"  style="color: #97144d; cursor: pointer;border: none;background: transparent;" ng-click="camModal()" ng-disabled="takeSelfieDisabled  || cameraDisabled">TAKE SELFIE</button>
+
+                                                <label  class="agreeTerms mt-3" style="font-size: 12px;font-weight: 600;" ng-show="takeSelfieDisabled || cameraDisabled">
+                   
+                                                    <span class="nomination-check">
+                                                        To capture the selfie please 
+														<span ng-if="!hdlPerm"><a href="javascript:void(0)" ng-click="handlePermission()">click here </a> to allow location and camera access.</span>
+														<span ng-if="hdlPerm">go to browser setting, select site settings and allow location and camera access</span>
+                                                    </span>
+													
+                                                </label>
+												
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result"
+                                                    ng-class="{'validation-error': (!photoProofImageValidation && photoProofImageValidation!=''), 'validation-success': photoProofImageValidation}">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="phototypeError"><i class="fa fa-times"></i>File type not
+                                                supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="photoImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="clientPhoqqualityError"><i class="fa fa-times"></i>{{ClienterrorMsg}}</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="photoSizeError"><i class="fa fa-times"></i>Please upload the
+                                                document less than 4Mb</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="takeSelfieDisabled"><i class="fa fa-times"></i>Location Permission Denied, go to browser setting, select <span ng-if="!formData.isMobile">security and privacy</span><span ng-if="formData.isMobile">site settings</span> and allow location access</span></div> <div class="input-message clearfix"><span class="error-message"
+                                          <div class="input-message clearfix"><span class="error-message" ng-if="cameraDisabled"><i class="fa fa-times"></i>Camera Permission Denied, go to browser setting, select <span ng-if="!formData.isMobile">security and privacy</span><span ng-if="formData.isMobile">site settings</span> and allow camera access</span></div>
+                                        <div class="input-message clearfix"><span class="error-message" ng-if="takeSelfieUnavailableStatus"><i class="fa fa-times"></i>Location Position unavailable, please try in Chorme  browser.</span></div>
+                                    </div>
+									<div class="col-12" ng-if="photoSample">
+										<div class="sample-output">
+                                                <div class="uploaded-image inline-block" ng-if="imgM">
+                                                    <img src="assets/images/male.png" width="200" height="auto" alt="" />
+                                                </div>
+                                                <div class="uploaded-image inline-block" ng-if="!imgM">
+                                                    <img src="assets/images/female.png" width="200" height="auto" alt="" />
+                                                </div>
+                                                <div class="boardformlist mt-3">
+                                                    <p>Please upload latest photo.</p>    
+                                                </div>
+                                            </div>
+									</div>
+                                </div>
+
+                                <div class="row row-eq-height uploaded-type" ng-hide="(!formData.docStageRejected && !chequeUpld) || (webfinacle && formData.CKYC)"
+                                    ng-class="{'error': (!chequeImageValidation && chequeImageValidation!=''), 'success': chequeImageValidation}">
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                        <param>Cancelled cheque <br />
+                                            <small class="grey-texts">(Personalised cancelled cheque image alongwith
+                                                signature)</small></param>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample dropdown">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="chequeSample=!chequeSample">Sample cancelled cheque</a>                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content bank-img">
+                                        <div class="d-flex">
+                                            <div class="upload-section">
+                                                <div id="bankImage"></div>
+										
+                                                <input type="file" accept="image/*" class="input-upload" id="BankCheque"
+                                                    onchange="imgUpld('BankCheque');">
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result"
+                                                    ng-class="{'validation-error': (!chequeImageValidation && chequeImageValidation!=''), 'validation-success': chequeImageValidation}">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="banktypeError"><i class="fa fa-times"></i>File type not
+                                                supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="bankImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+										<div class="input-message clearfix"><span class="error-message"
+                                                ng-if="bankCNImgError"><i class="fa fa-times"></i>Please upload valid cheque image</span></div>
+										<div class="input-message clearfix"><span class="error-message"
+                                                ng-if="bankQImgError"><i class="fa fa-times"></i>Please upload good quality image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="bankSizeError"><i class="fa fa-times"></i>Please upload the
+                                                document less than 4Mb</span></div>
+                                    </div>
+									<div class="col-12" ng-if="chequeSample">
+										<div class="sample-output">
+                                                <div class="uploaded-image">
+                                                    <img src="assets/images/cheque.jpg" width="300" height="auto" alt="" />
+                                                </div>
+                                                <div class="boardformlist mt-3">
+                                                    <p>Ensure that you upload a personalized cheque. If you do not have a personalized cheque upload the normal cheque copy and in addition you would have to upload the Bank Statement which has Bank Account Number, IFSC Code and MICR Code.</p>
+                                                </div>
+                                        </div>
+									</div>
+                                </div>
+
+                                <div class="row row-eq-height uploaded-type" ng-hide="ibDocumentHide || formData.isgDocSkip || (!formData.docStageRejected && !addressUpld)"
+                                    ng-class="{'error': (!caddressProofImageValidation && caddressProofImageValidation!=''), 'success': caddressProofImageValidation}">
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                        <p class="margint10">Correspondance Address</p>
+                                        <select class="select cadr form-control"
+                                            data-placeholder="Correspondence Address Proof"
+                                            ng-model="formData.fields.DocsaddressProof"
+                                            ng-change="cAddressImgError = false; ctypeError = false;cImgUpld()">
+                                            <option value="" ng-hide="formData.fields.DocsaddressProof">Correspondence
+                                                Address Proof</option>
+                                            <option ng-selected="ap.DocumentTypeId == formData.fields.DocsaddressProof"
+                                                ng-repeat="ap in formData.cList track by [$index]"
+                                                value="{{ap.DocumentTypeId}}">{{ap.Name}}</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample dropdown">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="documentSample=!documentSample">Sample document</a>
+										</div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="d-flex">
+                                            <div class="c-adr">
+                                                <div class="upload-section">
+                                                    <div id="cAddressImage"></div>
+													
+                                                    <input type="file" accept="image/*" class="input-upload-front"
+                                                        id="CorrespondenceAddress"
+                                                        onchange="imgUpld('CorrespondenceAddress');">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts" ng-if="AadhaarBackImg">Please Upload Back Side of the Aadhaar also.</small>
+                                            <div class="c-adr2">
+                                                <div class="upload-section">
+                                                    <div id="cAddressImage2"></div>
+													
+                                                    <input type="file" accept="image/*" class="input-upload-back"
+                                                        id="CorrespondenceAddress2"
+                                                        onchange="imgUpld('CorrespondenceAddress2');">
+                                                </div>
+
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result"
+                                                    ng-class="{'validation-error': (!caddressProofImageValidation && caddressProofImageValidation!=''), 'validation-success': caddressProofImageValidation}">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="catypeError || ca2typeError"><i class="fa fa-times"></i>File type
+                                                not supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="cAddressImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+										<div class="input-message clearfix"><span class="error-message"
+                                                ng-if="cAddressQImgError"><i class="fa fa-times"></i>
+												Please upload good quality image</span></div>
+										<div class="input-message clearfix"><span class="error-message"
+                                                ng-if="cAddressCNImgError"><i class="fa fa-times"></i>
+												Please upload valid aadhaar card</div>		
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="ctypeError"><i class="fa fa-times"></i>Please select document
+                                                type</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="cSizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                                    </div>
+									<div class="col-12"  ng-if="documentSample">
+										
+                                            <div class="sample-output">
+                                                <div
+                                                    ng-if="formData.fields.DocsaddressProof == '108' || !formData.fields.DocsaddressProof">
+                                                    <div class="uploaded-image inline-block">
+                                                        <img src="assets/images/passport-front.jpg" width="250" alt="" /> 
+                                                    </div>
+                                                    <div class="boardformlist mt-3">                                                       
+                                                        <p>Always ensure that you upload the front page which has your picture and the last page which has your address details clearly. Ensure that Passport Expiry Date has been checked properly.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.DocsaddressProof == '109'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/voter-id.jpg" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist mt-3">
+                                                        <p>Always ensure that you upload the front page which has your picture and the last page of voter id which has your address details clearly.</p>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="formData.fields.DocsaddressProof == '110'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/driving-license.jpg" width="250" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist mt-3">                                                        
+                                                        <p>Alwa ensure that you uplaod a clear image. Driving License which is being uplaoded should  be valid. Ensure that Driving License Expiry Date has been checked properly.</p>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="formData.fields.DocsaddressProof == '111'">
+                                                    <div class="uploaded-image inline-block">
+                                                        <img src="assets/images/aadharcard.jpg" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p class="points-head">Points to note when uploading your UID
+                                                            Card</p>
+                                                        <p>Take a snap or scan the front side of the UID Card (the one
+                                                            with your photograph on it) and also the other side of the
+                                                            card (the one with your address on it)</p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Photograph
+                                                            </li>
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Aadhaar card Number
+                                                            </li>
+                                                            <li>
+                                                                Full Address
+                                                            </li>
+                                                            <li>
+                                                                Date of Birth
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.DocsaddressProof == '112'">
+                                                    <div class="uploaded-image inline-block">
+                                                        <img src="assets/images/bank-statement.jpg" width="400" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p class="points-head">Points to note when uploading your Bank
+                                                            statement or Passbook</p>
+                                                        <p>Take a snap or scan bank statement or bank passbook</p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <p>Bank Statement</p>
+                                                                <ul class="marginb20">
+                                                                    <li>
+                                                                        Name
+                                                                    </li>
+                                                                    <li>
+                                                                        Full Address
+                                                                    </li>
+                                                                    <li>
+                                                                        Bank Name
+                                                                    </li>
+                                                                    <li>
+                                                                        Account Number
+                                                                    </li>
+                                                                    <li>
+                                                                        Should show recent transactions, last
+                                                                        transaction not exceeding 1 month
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <p>Bank Passbook</p>
+                                                                <ul class="marginb20">
+                                                                    <li>
+                                                                        Name
+                                                                    </li>
+                                                                    <li>
+                                                                        Full Address
+                                                                    </li>
+                                                                    <li>
+                                                                        Bank Address
+                                                                    </li>
+                                                                    <li>
+                                                                        Bank Stamp
+                                                                    </li>
+                                                                    <li>
+                                                                        IFSC code
+                                                                    </li>
+
+                                                                    <li>
+                                                                        MICR code
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p>Ensure that Image must be maximum 4mb.</p>
+                                                </div>
+
+                                                <div ng-if="formData.fields.DocsaddressProof == '113'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/bank-certificate.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p>Take a snap or scan the banker's certificate</p>
+                                                        <p class="margint20">Ensure that the image is clear, and all the
+                                                            details are easily visible</p>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.DocsaddressProof == '114'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/electriciy-bill.png" width="250" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist mt-3">
+                                                        <p>Utility bills should not be more than 3 months old.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.DocsaddressProof == '115'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/telephone-bill.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist mt-3">
+                                                        <p>Utility bills should not be more than 3 months old.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.DocsaddressProof == '116'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/sale-deed.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p>Points to note when uploading your flat sale agreement of
+                                                            residence</p>
+                                                        <p>Take a snap or scan of the flat sale aggreement</p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Full Address
+                                                            </li>
+                                                            <li>
+                                                                Registration Number
+                                                            </li>
+                                                            <li>
+                                                                Date of Registration
+                                                            </li>
+                                                            <li>
+                                                                Place of Registration
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.DocsaddressProof == '117'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/leave-license.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p>Points to note when uploading your lease/leave agreement of
+                                                            residence</p>
+                                                        <p>Take a snap or scan of the lease/leave agreement of residence
+                                                        </p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Full Address
+                                                            </li>
+                                                            <li>
+                                                                Lease Registeration Number
+                                                            </li>
+                                                            <li>
+                                                                Date of Registration
+                                                            </li>
+                                                            <li>
+                                                                Place of Registration
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+												<div ng-if="formData.fields.DocsaddressProof == '118'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/pancard-onboard.jpg" alt="" width="400" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p>Points to note when uploading your PAN</p>
+                                                        <p>Take a snap or scan of the PAN
+                                                        </p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                PAN Number
+                                                            </li>
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Date of Birth
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="formData.fields.DocsaddressProof == '1001'">
+                                                    <div class="uploaded-image inline-block">
+                                                        <img src="assets/images/govt-id.png" alt="" />
+                                                    </div>
+                                                    <div class="uploaded-image inline-block">
+                                                        <img src="assets/images/govt-id2.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p>Points to note when uploading your Central/State Govt ID</p>
+                                                        <p>Take a snap or scan of the central/state govt id.</p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Photograph
+                                                            </li>
+                                                            <li>
+                                                                Full Address
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                      
+									</div>
+                                </div>
+
+                                <div class="row row-eq-height uploaded-type" ng-show="(formData.docStageRejected && addressUpld && paddrUpld && !ibDocumentHide) || (addressUpld && paddrUpld && !formData.isgDocSkip && !ibDocumentHide)"
+                                    ng-class="{'error': (!paddressProofImageValidation && paddressProofImageValidation!=''), 'success': paddressProofImageValidation}">
+
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                            <p class="margint10">Permanent Address</p>
+                                        <select class="select form-control" data-placeholder="Permanent Address Proof"
+                                            ng-model="formData.fields.pDocsaddressProof"
+                                            ng-change="pAddressImgError = false;ptypeError = false; pImgUpld()">
+                                            <option value="" ng-hide="formData.fields.pDocsaddressProof">Permanent
+                                                Address Proof</option>
+                                            <option ng-show="false" value=""></option>
+                                            <option ng-selected="ap.DocumentTypeId == formData.fields.pDocsaddressProof"
+                                                ng-repeat="ap in formData.pList track by [$index]"
+                                                value="{{ap.DocumentTypeId}}">{{ap.Name}}</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample dropdown">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="pdocumentSample=!pdocumentSample">Sample document</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="d-flex">
+                                            <div class="p-adr">
+                                                <div class="upload-section">
+                                                    <div id="pAddressImage"></div>
+													
+                                                    <input type="file" accept="image/*" class="input-upload-front"
+                                                        id="PermenantAddress" onchange="imgUpld('PermenantAddress');">
+                                                </div>
+                                            </div>
+                                            <div class="p-adr2">
+                                                <div class="upload-section">
+                                                    <div id="pAddressImage2"></div>
+													
+                                                    <input type="file" accept="image/*" class="input-upload-back"
+                                                        id="PermenantAddress2" onchange="imgUpld('PermenantAddress2');">
+                                                </div>
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result"
+                                                    ng-class="{'validation-error': (!paddressProofImageValidation && paddressProofImageValidation!=''), 'validation-success': paddressProofImageValidation}">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="patypeError || pa2typeError"><i class="fa fa-times"></i>File type
+                                                not supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="pAddressImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+										<div class="input-message clearfix"><span class="error-message"
+                                                ng-if="pAddressQImgError"><i class="fa fa-times"></i>
+												Please upload good quality image</span></div>
+										<div class="input-message clearfix"><span class="error-message"
+                                                ng-if="pAddressCNImgError"><i class="fa fa-times"></i>Please upload valid aadhaar card</div>		
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="ptypeError"><i class="fa fa-times"></i>Please select document
+                                                type</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="pSizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                                    </div>
+									<div class="col-12" ng-if="pdocumentSample">
+									   <div class="sample-output">
+                                                <div
+                                                    ng-if="formData.fields.pDocsaddressProof == '108' || !formData.fields.pDocsaddressProof">
+                                                    <div class="uploaded-image inline-block">
+                                                        <img src="assets/images/passport-front.jpg" width="250" alt="" /> 
+                                                    </div>
+                                                    <div class="boardformlist mt-3">                                                       
+                                                        <p>Always ensure that you upload the front page which has your picture and the last page which has your address details clearly. Ensure that Passport Expiry Date has been checked properly.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.pDocsaddressProof == '109'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/voter-id.jpg" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist mt-3">
+                                                        <p>Always ensure that you upload the front page which has your picture and the last page of voter id which has your address details clearly.</p>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="formData.fields.pDocsaddressProof == '110'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/driving-license.jpg" width="250" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist mt-3">                                                        
+                                                        <p>Alwa ensure that you uplaod a clear image. Driving License which is being uplaoded should  be valid. Ensure that Driving License Expiry Date has been checked properly.</p>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="formData.fields.pDocsaddressProof == '111'">
+                                                    <div class="uploaded-image inline-block">
+                                                        <img src="assets/images/aadharcard.jpg" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p class="points-head">Points to note when uploading your UID
+                                                            Card</p>
+                                                        <p>Take a snap or scan the front side of the UID Card (the one
+                                                            with your photograph on it) and also the other side of the
+                                                            card (the one with your address on it)</p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Photograph
+                                                            </li>
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Aadhaar card Number
+                                                            </li>
+                                                            <li>
+                                                                Full Address
+                                                            </li>
+                                                            <li>
+                                                                Date of Birth
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.pDocsaddressProof == '112'">
+                                                    <div class="uploaded-image inline-block">
+                                                        <img src="assets/images/bank-statement.jpg" width="400" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p class="points-head">Points to note when uploading your Bank
+                                                            statement or Passbook</p>
+                                                        <p>Take a snap or scan bank statement or bank passbook</p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <p>Bank Statement</p>
+                                                                <ul class="marginb20">
+                                                                    <li>
+                                                                        Name
+                                                                    </li>
+                                                                    <li>
+                                                                        Full Address
+                                                                    </li>
+                                                                    <li>
+                                                                        Bank Name
+                                                                    </li>
+                                                                    <li>
+                                                                        Account Number
+                                                                    </li>
+                                                                    <li>
+                                                                        Should show recent transactions, last
+                                                                        transaction not exceeding 1 month
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <p>Bank Passbook</p>
+                                                                <ul class="marginb20">
+                                                                    <li>
+                                                                        Name
+                                                                    </li>
+                                                                    <li>
+                                                                        Full Address
+                                                                    </li>
+                                                                    <li>
+                                                                        Bank Address
+                                                                    </li>
+                                                                    <li>
+                                                                        Bank Stamp
+                                                                    </li>
+                                                                    <li>
+                                                                        IFSC code
+                                                                    </li>
+
+                                                                    <li>
+                                                                        MICR code
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.pDocsaddressProof == '113'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/bank-certificate.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p>Take a snap or scan the banker's certificate</p>
+                                                        <p class="margint20">Ensure that the image is clear, and all the
+                                                            details are easily visible</p>
+                                                            <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.pDocsaddressProof == '114'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/electriciy-bill.png" width="250" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist mt-3">
+                                                        <p>Utility bills should not be more than 3 months old.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.pDocsaddressProof == '115'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/telephone-bill.png" alt="" />
+													</div>
+                                                    </div><div class="boardformlist mt-3">
+                                                        <p>Utility bills should not be more than 3 months old.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.pDocsaddressProof == '116'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/sale-deed.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p>Points to note when uploading your flat sale agreement of
+                                                            residence</p>
+                                                        <p>Take a snap or scan of the flat sale aggreement</p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Full Address
+                                                            </li>
+                                                            <li>
+                                                                Registration Number
+                                                            </li>
+                                                            <li>
+                                                                Date of Registration
+                                                            </li>
+                                                            <li>
+                                                                Place of Registration
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.pDocsaddressProof == '117'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/leave-license.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p>Points to note when uploading your lease/leave agreement of
+                                                            residence</p>
+                                                        <p>Take a snap or scan of the lease/leave agreement of residence
+                                                        </p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Full Address
+                                                            </li>
+                                                            <li>
+                                                                Lease Registeration Number
+                                                            </li>
+                                                            <li>
+                                                                Date of Registration
+                                                            </li>
+                                                            <li>
+                                                                Place of Registration
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+												<div ng-if="formData.fields.pDocsaddressProof == '118'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/pancard-onboard.jpg" alt="" width="400" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p>Points to note when uploading your PAN</p>
+                                                        <p>Take a snap or scan of the PAN
+                                                        </p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                PAN Number
+                                                            </li>
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Date of Birth
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="formData.fields.pDocsaddressProof == '1001'">
+                                                    <div class="uploaded-image inline-block">
+                                                        <img src="assets/images/govt-id.png" alt="" />
+                                                    </div>
+                                                    <div class="uploaded-image inline-block">
+                                                        <img src="assets/images/govt-id2.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p>Points to note when uploading your Central/State Govt ID</p>
+                                                        <p>Take a snap or scan of the central/state govt id.</p>
+                                                        <p class="margint20">Ensure that the image is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Photograph
+                                                            </li>
+                                                            <li>
+                                                                Full Address
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that Image must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+								</div>
+                                <div class="row row-eq-height uploaded-type" ng-show="foImgUpld || (formData.docStageRejected && foImgUpld)"
+                                    ng-class="{'error': (!incomeProofImageValidation && incomeProofImageValidation!=''), 'success': incomeProofImageValidation}">
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                            <p class="margint10">Income Proof</p>
+                                        <select class="select form-control" data-placeholder="Income Proof"
+                                            ng-model="formData.fields.foDocumentProof"
+                                            ng-change="foImgError = false;itypeError = false;foImgUpload()">
+                                            <option value="" ng-hide="formData.fields.foDocumentProof">Select Future &
+                                                Options doc.</option>
+                                            <option ng-selected="ap.DocumentTypeId == formData.fields.foDocumentProof"
+                                                ng-repeat="ap in formData.foDocumentTypeList track by [$index]"
+                                                value="{{ap.DocumentTypeId}}">{{ap.Name}}</option>
+                                        </select>
+                                        <small class="grey-texts">(Last 6 months income proof)</small>
+                              
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample dropdown">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg"
+                                                data-toggle="dropdown">Sample document</a>
+                                            <div class="sample-output dropdown-menu">
+
+                                                <div
+                                                    ng-if="formData.fields.foDocumentProof == '121' || !formData.fields.foDocumentProof">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/itr.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p class="points-head">Points to note when uploading your ITR
+                                                            Acknowledgement</p>
+                                                        <p>Take a snap or scan the image or pdf of ITR Acknowledgement
+                                                        </p>
+                                                        <p class="margint20">Ensure that the image/pdf is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Address
+                                                            </li>
+                                                            <li>
+                                                                Financial year of the ITR acknowledgement
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that file must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="formData.fields.foDocumentProof == '122'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/account-statement.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p class="points-head">Points to note when uploading your
+                                                            Account statement</p>
+                                                        <p>Take a snap or scan the image or pdf of Account statement</p>
+                                                        <p class="margint20">Ensure that the image/pdf is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Address
+                                                            </li>
+                                                            <li>
+                                                                Financial year of the Account Statement
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that file must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="formData.fields.foDocumentProof == '123'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/income-proof.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p class="points-head">Points to note when uploading your Salary
+                                                            Slip, Form 16</p>
+                                                        <p>Take a snap or scan the image or pdf of Salary Slip of last 3
+                                                            months</p>
+                                                        <p class="margint20">Ensure that the image/pdf is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Company Name
+                                                            </li>
+                                                            <li>
+                                                                Period of salary slip (Not less than 3 months)
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that file must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="formData.fields.foDocumentProof == '124'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/net-worth.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p class="points-head">Points to note when uploading your
+                                                            Netwoth certificate</p>
+                                                        <p>Take a snap or scan the image or pdf of Networth certificate
+                                                        </p>
+                                                        <p class="margint20">Ensure that the image/pdf is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Company Name
+                                                            </li>
+                                                            <li>
+                                                                Period of salary slip (Not less than 3 months)
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that file must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="formData.fields.foDocumentProof == '125'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/demat-statement.png" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p class="points-head">Points to note when uploading your Demat
+                                                            statement</p>
+                                                        <p>Take a snap or scan the image or pdf of Demat statement</p>
+                                                        <p class="margint20">Ensure that the image/pdf is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Broker Name
+                                                            </li>
+                                                            <li>
+                                                                DP ID
+                                                            </li>
+                                                            <li>
+                                                                Date of Statement
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ensure that file must be maximum 4mb.</p>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="formData.fields.foDocumentProof == '126'">
+                                                    <div class="uploaded-image">
+                                                        <img src="assets/images/bank-statement.jpg" width="400" alt="" />
+                                                    </div>
+                                                    <div class="boardformlist">
+                                                        <p class="points-head">Points to note when uploading your Bank
+                                                            statement</p>
+                                                        <p>Take a snap or scan the image or pdf of Bank statement</p>
+                                                        <p class="margint20">Ensure that the image/pdf is clear, and the
+                                                            following details are easily visible</p>
+                                                        <ul class="marginb20">
+                                                            <li>
+                                                                Name
+                                                            </li>
+                                                            <li>
+                                                                Bank Name
+                                                            </li>
+                                                            <li>
+                                                                Account Number
+                                                            </li>
+                                                            <li>
+                                                                Minimum of atleast 10,000 transaction
+                                                            </li>
+                                                            <li>
+                                                                IFSC code
+                                                            </li>
+                                                            <li>
+                                                                MICR code
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content income-img">
+                                        <div class="d-flex">
+                                            <div class="upload-section">
+                                                <div id="incomeImage"></div>
+												
+                                                <input type="file" accept="image/*,application/pdf,.pdf" class="input-upload" id="Income"
+                                                    onchange="imgUpld('Income');">
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result"
+                                                    ng-class="{'validation-error': (!incomeProofImageValidation && incomeProofImageValidation!=''), 'validation-success': incomeProofImageValidation}">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="incometypeError"><i class="fa fa-times"></i>File type not
+                                                supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="foImgError"><i class="fa fa-times"></i>Please upload image</span>
+                                        </div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="itypeError"><i class="fa fa-times"></i>Please select document
+                                                type</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="iSizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                                    </div>
+                                </div>
+								
+								 <!-- <div class="row row-eq-height uploaded-type" ng-show="(!ibDocumentHide && !IBMBDocumentShow && cmlUpld) ||cmlUpld"
+                                    ng-class="{'success': cmlImageValidation}"> -->
+								 <div class="row row-eq-height uploaded-type" ng-show="cmlShow"
+                                    ng-class="{'success': cmlImageValidation}">
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                            <p class="margint10">CML</p>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="cmlSample=!cmlSample">Sample CML</a>
+                                            <div class="sample-output dropdown-menu"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content cml-img">
+                                        <div class="d-flex">
+                                            <div class="upload-section">
+                                                <div id="cmlImage"></div>
+											
+                                                <input type="file" accept="image/*,application/pdf,.pdf" class="input-upload" id="CMLDOCUMENT"
+                                                    onchange="imgUpld('CMLDOCUMENT');">
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result"
+                                                    ng-class="{'validation-error': (!cmlImageValidation && cmlImageValidation!=''), 'validation-success': cmlImageValidation}">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="cmltypeError"><i class="fa fa-times"></i>File type not
+                                                supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="cmlImgError"><i class="fa fa-times"></i>Please upload image</span>
+                                        </div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="cmlSizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                                    </div>
+									<div class="col-12" ng-if="cmlSample">
+										<div class="sample-output">
+                                                <div class="uploaded-image">
+                                                    <img src="assets/images/cmlImage.png" width="600" height="auto" alt="" />
+                                                </div>
+                                            </div>
+									</div>
+                                </div>
+								
+								
+								
+								<div class="row row-eq-height uploaded-type" ng-show="formData.RMModule">
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                        <p class="margint10">Additional Documents</p>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="d-flex">
+                                            <div class="adoc1-img">
+                                                <div class="upload-section">
+                                                    <div id="ADDITIONALDOC1IMAGE"></div>
+												
+                                                    <input type="file" accept="image/*" class="input-upload-front"
+                                                        id="ADDITIONALDOC1" onchange="imgUpld('ADDITIONALDOC1');">
+                                                    <a href="javascript:void(0)" class="add-addcopy"
+                                                        ng-class="{'b10':adocUpdt}" title=""
+                                                        ng-click="adocaddPage2 = true;"
+                                                        ng-hide="adocaddPage2 || adocDisable" data-toggle="tooltip"
+                                                        data-original-title="Add another copy" data-placement="left"><i class="fa fa-plus"></i></a>
+                                                </div>
+                                            </div>
+                                            <div ng-show="adocaddPage2" class="adoc2-img">
+                                                <div class="upload-section">
+                                                    <div id="ADDITIONALDOC2IMAGE"></div>
+												
+                                                    <input type="file" accept="image/*" class="input-upload" id="ADDITIONALDOC2" onchange="imgUpld('ADDITIONALDOC2');">							
+														<a href="javascript:void(0)" class="add-addcopy"
+                                                        ng-class="{'b10':adocUpdt}" title=""
+                                                        ng-click="adocaddPage3 = true;"
+                                                        ng-hide="adocaddPage3" data-toggle="tooltip"
+                                                        data-original-title="Add another copy" data-placement="left"><i class="fa fa-plus"></i></a>		
+                                                </div>
+
+                                            </div>
+                                            <div ng-show="adocaddPage3" class="adoc3-img">
+                                                <div class="upload-section">
+                                                    <div id="ADDITIONALDOC3IMAGE"></div>
+												
+                                                    <input type="file" accept="image/*" class="input-upload"
+                                                        id="ADDITIONALDOC3" onchange="imgUpld('ADDITIONALDOC3');">
+                                                </div>
+
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="adoctypeError || adoc2typeError || adoc3typeError"><i class="fa fa-times"></i>File type
+                                                not supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="adocImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="adocSizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                                    </div>
+								</div>
+								
+                                <!-- nominee document -->
+								<div class="row row-eq-height uploaded-type" ng-show="NomineeOne && !ibDocumentHide">
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                        <p class="margint10">Nominee 1</p>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="Nominee1Sample=!Nominee1Sample">Sample Document</a>
+                                            <div class="sample-output dropdown-menu"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="d-flex">
+                                            <div class="nominee1-img">
+                                                <div class="upload-section">
+                                                    <div id="NOMINEE1PROOFIMAGE"></div>
+												
+                                                    <input type="file" accept="image/*" class="input-upload"
+                                                        id="NOMINEE1" onchange="imgUpld('NOMINEE1');">
+                                                </div>
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="nominee1typeError"><i class="fa fa-times"></i>File type
+                                                not supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="nominee1ImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="nominee1SizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                                    </div>
+                                    <div class="col-12" ng-if="Nominee1Sample">
+										<div class="sample-output">
+                                            <div class="uploaded-image">
+                                                <img src="assets/images/voter-id.jpg" alt="" />
+                                            </div>
+                                            <div class="boardformlist mt-3">
+                                                <p>Always ensure that you upload the front page which has your picture and the last page of voter id which has your address details clearly.</p>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+								<div class="row row-eq-height uploaded-type" ng-show="NomineeTwo && !ibDocumentHide">
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                        <p class="margint10">Nominee 2</p>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="Nominee2Sample=!Nominee2Sample">Sample Document</a>
+                                            <div class="sample-output dropdown-menu"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="d-flex">
+                                            <div class="nominee2-img">
+                                                <div class="upload-section">
+                                                    <div id="NOMINEE2PROOFIMAGE"></div>
+												
+                                                    <input type="file" accept="image/*" class="input-upload"
+                                                        id="NOMINEE2" onchange="imgUpld('NOMINEE2');">
+                                                </div>
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="nominee2typeError"><i class="fa fa-times"></i>File type
+                                                not supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="nominee2ImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="nominee2SizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                                    </div>
+                                    <div class="col-12" ng-if="Nominee2Sample">
+										<div class="sample-output">
+                                            <div class="uploaded-image">
+                                                <img src="assets/images/voter-id.jpg" alt="" />
+                                            </div>
+                                            <div class="boardformlist mt-3">
+                                                <p>Always ensure that you upload the front page which has your picture and the last page of voter id which has your address details clearly.</p>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+								<div class="row row-eq-height uploaded-type" ng-show="NomineeThree && !ibDocumentHide">
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                        <p class="margint10">Nominee 3</p>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="Nominee3Sample=!Nominee3Sample">Sample Document</a>
+                                            <div class="sample-output dropdown-menu"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="d-flex">
+                                            <div class="nominee3-img">
+                                                <div class="upload-section">
+                                                    <div id="NOMINEE3PROOFIMAGE"></div>
+											
+                                                    <input type="file" accept="image/*" class="input-upload"
+                                                        id="NOMINEE3" onchange="imgUpld('NOMINEE3');">
+                                                </div>
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="nominee3typeError"><i class="fa fa-times"></i>File type
+                                                not supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="nominee3ImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="nominee3SizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                                    </div>
+                                    <div class="col-12" ng-if="Nominee3Sample">
+										<div class="sample-output">
+                                            <div class="uploaded-image">
+                                                <img src="assets/images/voter-id.jpg" alt="" />
+                                            </div>
+                                            <div class="boardformlist mt-3">
+                                                <p>Always ensure that you upload the front page which has your picture and the last page of voter id which has your address details clearly.</p>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+                                <!-- gauradian document  -->
+								<div class="row row-eq-height uploaded-type" ng-show="GuardianOne && !ibDocumentHide">
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                        <p class="margint10">Guardian 1</p>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+
+                                        <div class="uploaded-sample">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="Guardian1Sample=!Guardian1Sample">Sample Document</a>
+                                            <div class="sample-output dropdown-menu"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="d-flex">
+                                            <div class="guardian1-img">
+                                                <div class="upload-section">
+                                                    <div id="GUARDIAN1PROOFIMAGE"></div>
+												
+                                                    <input type="file" accept="image/*" class="input-upload"
+                                                        id="GUARDIAN1" onchange="imgUpld('GUARDIAN1');">
+                                                </div>
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="guardian1typeError"><i class="fa fa-times"></i>File type
+                                                not supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="guardian1ImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="guardian1SizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                                    </div>
+                                    <div class="col-12" ng-if="Guardian1Sample">
+										<div class="sample-output">
+                                            <div class="uploaded-image">
+                                                <img src="assets/images/voter-id.jpg" alt="" />
+                                            </div>
+                                            <div class="boardformlist mt-3">
+                                                <p>Always ensure that you upload the front page which has your picture and the last page of voter id which has your address details clearly.</p>
+                                            </div>
+                                        </div>
+									</div>
+								</div>  
+								<div class="row row-eq-height uploaded-type" ng-show="GuardianTwo && !ibDocumentHide">
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                        <p class="margint10">Guardian 2</p>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="Guardian2Sample=!Guardian2Sample">Sample Document</a>
+                                            <div class="sample-output dropdown-menu"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="d-flex">
+                                            <div class="guardian2-img">
+                                                <div class="upload-section">
+                                                    <div id="GUARDIAN2PROOFIMAGE"></div>
+													
+                                                    <input type="file" accept="image/*" class="input-upload"
+                                                        id="GUARDIAN2" onchange="imgUpld('GUARDIAN2');">
+                                                </div>
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="guardian2typeError"><i class="fa fa-times"></i>File type
+                                                not supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="guardian2ImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="guardian2SizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                                    </div>
+                                    <div class="col-12" ng-if="Guardian2Sample">
+										<div class="sample-output">
+                                            <div class="uploaded-image">
+                                                <img src="assets/images/voter-id.jpg" alt="" />
+                                            </div>
+                                            <div class="boardformlist mt-3">
+                                                <p>Always ensure that you upload the front page which has your picture and the last page of voter id which has your address details clearly.</p>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+								<div class="row row-eq-height uploaded-type" ng-show="GuardianThree && !ibDocumentHide ">
+                                    <div class="col-4 col-sm-6 upload-content marginb5">
+                                        <p class="margint10">Guardian 3</p>
+
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="uploaded-sample">
+                                            <a href="javascript:void(0)" class="view-sampledoc sampimg" ng-click="Guardian3Sample=!Guardian3Sample">Sample Document</a>
+                                            <div class="sample-output dropdown-menu"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-3 upload-content">
+                                        <div class="d-flex">
+                                            <div class="guardian3-img">
+                                                <div class="upload-section">
+                                                    <div id="GUARDIAN3PROOFIMAGE"></div>
+											
+                                                    <input type="file" accept="image/*" class="input-upload"
+                                                        id="GUARDIAN3" onchange="imgUpld('GUARDIAN3');">
+                                                </div>
+                                            </div>
+                                            <div class="ax-field">
+                                                <div class="validation-result">
+                                                </div>
+                                            </div>
+                                            <small class="grey-texts">Allowed Extn : jpeg and png.</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="guardian3typeError"><i class="fa fa-times"></i>File type
+                                                not supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="guardian3ImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="guardian3SizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                                    </div>
+                                    <div class="col-12" ng-if="Guardian3Sample">
+										<div class="sample-output">
+                                            <div class="uploaded-image">
+                                                <img src="assets/images/voter-id.jpg" alt="" />
+                                            </div>
+                                            <div class="boardformlist mt-3">
+                                                <p>Always ensure that you upload the front page which has your picture and the last page of voter id which has your address details clearly.</p>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+                                <div class="row mt-5">
+
+                                    <div class="col-sm-12">
+                                        <div class="nomination-address">
+                                            <label for="agree-terms" class="agreeTerms">
+                                                <input class="customcheckradio" required="" type="checkbox"
+                                                    id="agree-terms">
+                                                <span class="nomination-check">
+                                                    I Agree to the <a href="javascript:void(0);" ng-click="termsModal()">Terms &amp;
+                                                        Conditions</a>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-message clearfix"><span class="error-message top-0"
+                                        ng-if="termsError"><i class="fa fa-times"></i>Please accept terms and
+                                        conditions</span></div>
+                            </div>
+
+
+                            <!-- <div class="loader-info text-center" style="display:block" ng-show="documentLoad">
+                                <div class="display-table">
+                                    <div class="loading-data display-table-cell">
+                                        <span class="content-loader"></span>
+                                        <p class="loader-content">Your <span class="loadingdata-type">document</span> is getting <span class="verify-status">loaded</span></p>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="loader-parent" ng-if="documentLoad">
+                                <div class="nb-spinner"></div>
+                                <!-- <p class="loader-content">Your <span class="loadingdata-type">document</span> is getting <span class="verify-status">loaded</span></p> -->
+                            </div>
+
+                            <div class="row my-5">
+                                <div class="col-12 text-center">
+                                    <div class="wizard-btns">
+			
+									
+										
+										<button type="button" ng-if="verifyemail" ng-click="genEmailOTP()" class="btn ax-btn-primary text-uppercase mr-3">Verify Email</button>
+										<button type="button" ng-click="displayForm()" class="btn ax-btn-primary text-uppercase">Proceed</button>
+											
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+					</div>
+                </div>
+
+            </div>
+            <div class="col-md-3 help-sidebar d-none d-sm-block">
+                <h3 class="ax-sec-title mt-0 mb-3">Hey.. Help is here!</h3>
+                <div class="guideline-with-bg">
+                    <div class="d-flex pb-4">
+                        <div class="pr-3">1.</div>
+                        <div ng-if="!webfinacle">As per SEBI guidelines you need to provide proof of documents for all the information
+                            provided in previous sections.
+                        </div>
+						<div ng-if="webfinacle">All your available documents will be fetched from your Axis Bank records.
+                        </div>
+                    </div>
+                    <div class="d-flex pb-4">
+                        <div class="pr-3">2.</div>
+                        <div class="" ng-if="!webfinacle">Please upload PAN card copy, cancelled cheque copy and address proof.
+                        </div>
+						<div class="" ng-if="webfinacle">In case you are not CKYC verified or your documents are not available with Axis Bank, then you will have to upload the documents as requested.
+                        </div>
+                    </div>
+                    <div class="d-flex pb-4">
+                        <div class="pr-3">3.</div>
+                        <div class="" ng-if="!webfinacle">Please ensure the Address proof you upload matches with the address in personal
+                            details section
+                        </div>
+						<div class="" ng-if="webfinacle">Please click your Selfie to complete the verification 
+                        </div>
+                    </div>
+                    <div class="d-flex pb-4">
+                        <div class="pr-3">4.</div>
+                        <div class="" ng-if="!webfinacle">Please ensure the cancelled cheque leaf that you upload matches with the details
+                            provided in Bank details section
+                        </div>
+						<div class="" ng-if="webfinacle">In case you have opted for any of the derivatives, you will need to upload any of the one Income Proof from the drop down list available.
+                        </div>
+                    </div>
+                    <div class="d-flex pb-4">
+                        <div class="pr-3">5.</div>
+                        <div class="" ng-if="!webfinacle">In case, you have opted for any of the derivatives segment, please provide income proof as
+                            per SEBI guidelines
+                        </div>
+						<div class="" ng-if="webfinacle">Further we will redirect you to Esign the documents along with Account Opening form.
+                        </div>
+                    </div>
+                    <div class="d-flex pb-4" ng-if="!webfinacle">
+                        <div class="pr-3">6.</div>
+                        <div class="">In case you do not have scanned document in your computer right now, don’t worry.
+                            You can upload all the docs by clicking on 'Upload Docs using Mobile' button at the bottom
+                            of the screen
+                        </div>
+                    </div>
+                    <div class="d-flex pb-4" ng-if="!webfinacle">
+                        <div class="pr-3">7.</div>
+                        <div class="">In case you opt for uploading the documents from your phone, you will receive a
+                            link on SMS from where you can open the page to upload the documents and proceed with
+                            filling the application
+                        </div>
+                    </div>
+					<div>
+										<i class="fa fa-question-circle fa-lg"></i> Need Further Assist? <span style="color: #97144d; cursor: pointer;" class="cursor-pointer" ng-click="formData.helpPopup()" role="button" tabindex="0"> Click here</span>
+									</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="modal fade" id="getImgModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!--<div class="modal-header">
+                <button type="button" id="getImaModalPopup" class="close" data-dismiss="modal" data-toggle="tooltip" title="Close"><i class="icon16 card-collapse"></i></button>
+                <h3>&nbsp;</h3>
+            </div>-->
+            <div class="modal-body">
+                <button type="button" class="ax-modal-close close" data-dismiss="modal" data-toggle="tooltip"
+                    title="Close">&times;</button>
+                <div class="floating-buttons"></div>
+                <div class="kv-zoom-body file-zoom-content" style="overflow-y: auto">
+                    <img src="" id="imgBig" class="kv-preview-data file-preview-image file-zoom-detail"
+                        style="width: auto; height: 100%;">
+                    <embed src="" id="pdfBig" type="application/pdf"
+                        class="kv-preview-data file-preview-image file-zoom-detail" height="600" style="width: 100%;">
+                </div>
+                <button type="button" class="btn btn-navigate btn-prev" title="View previous file" id="viewPreviousFile"
+                    disabled="disabled"><i class="glyphicon glyphicon-triangle-left"></i></button>
+                <button type="button" class="btn btn-navigate btn-next" title="View next file" id="viewNextFile"
+                    disabled="disabled"><i class="glyphicon glyphicon-triangle-right"></i></button>
+            </div>
+        </div>
+    </div>
+	<form id="frmMain" runat="server" method="post">
+        <input id="msg" name="msg" type="text" value="" />
+	</form>
+
+</section>
+
+<section class="modal fade" id="formPDF" role="dialog">
+    <div class="modal-dialog modal-xl" style="max-width:1100px">
+        <div class="modal-content">
+            <!--<div class="modal-header">
+                <button type="button" id="getImaModalPopup" class="close" data-dismiss="modal" data-toggle="tooltip" title="Close"><i class="icon16 card-collapse"></i></button>
+                <h3>&nbsp;</h3>
+            </div>-->
+         <div class="modal-body">
+                <!--<button type="button" class="ax-modal-close close" data-toggle="tooltip" ng-click="closeForm()"
+                    title="Close">&times;</button>-->
+                <div class="kv-zoom-body file-zoom-content">
+					<object data="{{objURl | trustAsResourceUrl }}" style="width: 100%; height: 100%"></object>
+         
+                </div>
+				<button type="button" id="proceedEsignPage" ng-click="DIYUpdateIPVStage('esign')"  class="btn ax-btn-primary text-uppercase" ng-if="!formData.RMModule && !formData.apiLoading">ESign and Activate Instantly</button>
+				<button type="button" id="proceedEsignPage" disabled  class="btn ax-btn-primary text-uppercase" ng-if="!formData.RMModule && formData.apiLoading">ESign and Activate Instantly</button>
+                <button data-dismiss="modal" ng-click="rmNewForm()" ng-if="formData.RMModule" 
+                            class="btn ax-btn-primary text-uppercase">
+                                    Okay</button>
+				</div>
+        </div>
+    </div>
+</section>
+
+<section class="modal fade" id="cammodal" role="dialog">
+    <div class="modal-dialog" style="max-width: 800px;">
+        <div class="modal-content">
+            <div class="modal-body">
+				<button type="button" class="ax-modal-close close" data-dismiss="modal" data-toggle="tooltip"
+                    title="Close">&times;</button>
+				<div class="row">
+					<div class="col-md-6 camera">
+						<video id="video">Video stream not available.</video>
+						<button id="startbutton">Take photo</button> 
+					</div>
+					<div class="col-md-6">
+					<canvas id="canvas"></canvas>
+					<div class="output"><img id="photo" alt="The screen capture will appear in this box."></div>
+					</div>
+				</div>
+				<a class="btn ax-btn-primary mt-4 text-center" href="javascript:void(0)" ng-click="selfImgUpld()"  ng-show="selfTrue">Upload</a>
+                <!-- <div class="input-message clearfix mt-5"><span class="error-message"
+                    ng-if="selfieLocationError"><i class="fa fa-times"></i>You Must Accept the location</span></div> -->
+                <!-- <div class="text-danger" id="selfieErrorText"></div> -->
+                <div class="input-message clearfix mt-5"><span class="error-message"
+                    ng-if="selfieError"><i class="fa fa-times"></i>Image not clear, please retake again</span></div>
+			</div>
+        </div>
+    </div>
+</section>
+
+<section class="modal fade" id="otpSection" role="dialog" tabindex="-1">
+	<div class="modal-dialog login-dialog" style="margin-top: 231.5px;" >
+		<div class="modal-content">
+		<div class="modal-body">
+			<!--Your signature from your axis account will be used for account opening purpose.-->
+			<div ng-show="ckycSignature" class="row">												
+				<div class="text-left col-md-12 parent-field">
+				<label class="ax-label">Your signature from your axis account will be used for account opening purpose.</label>
+					<label class="ax-label">We have sent an OTP to validate your KRA number</label>
+					<!--<div class="input-message child-field hint-txt clearfix" ng-hide="otpSuccess">
+						<a href="javascript:void(0)" class="pull-left info-message validate-newsendotp"
+							ng-click="newEmailValidate()">
+							<i class="icon14 icon-reset icon-reset-new"></i> <span>Resend OTP</span>
+						</a>
+					</div>-->
+					
+					<div class="ax-timerandresend">
+						<div class="ax-field">
+							<input autocomplete="nope" only-digits ng-keypress="emptyOTP = false; invalidOTP = false; $event.keyCode == 13 ? validateOTP() : ''" ng-model="formData.fields.otpCkyc" class="form-control" type="{{ typePassword ? 'text' : 'password' }}" required maxlength="6" />
+							<a href="javascript:void(0);" class="" tabindex="-1" ng-if="enableResendButton" ng-click="getOTP()"
+								ng-class="{adisabled: ResendDisable}">RE-SEND</a>
+							<span ng-if="!enableResendButton">{{counter}}</span>
+							<i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': typePassword, 'fa-eye-slash': !typePassword}" ng-click="togglePassword()"></i>
+						</div>
+						<p class="error-message pull-right" ng-if="emptyOTP"><i class="fa fa-times"></i> OTP is Empty
+						</p>
+						<p class="error-message pull-right" ng-show="invalidOTP"><i class="fa fa-times"></i> Invalid OTP
+						</p>
+					</div>
+				</div>
+				<div class="col-md-12 text-right validate3otp" ng-if="!otpSuccess">
+					<button type="button" class="btn px-3 py-3 my-2 ax-btn-primary validate-newotp"
+						ng-click="validateOTP()" id="validateOTP">
+						Validate
+					</button>
+				</div>
+				
+			</div>
+			<div class="help-body">
+			</div>
+		</div>
+		<div class="modal-footer d-flex justify-content-end">
+				<!--<button type="button" class="btn ax-btn-primary text-uppercase" data-dismiss="modal">OK</button>-->
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="modal fade" id="badImage" role="dialog" tabindex="-1">
+	<div class="modal-dialog login-dialog" style="margin-top: 231.5px;" >
+		<div class="modal-content">
+		<div class="modal-body">
+			<div class="row">												
+				<div class="text-left col-md-12 parent-field">
+				<label class="ax-label" ng-hide="panCNImgError || cAddressCNImgError || pAddressCNImgError">Kindly upload better quality image</label>
+				<br>
+				<label class="ax-label" ng-if="panCNImgError">Please upload valid PAN card</label>
+				<label class="ax-label" ng-if="cAddressCNImgError || pAddressCNImgError">Please upload valid <span ng-show="formData.fields.DocsaddressProof == 108">Passport</span> <span ng-show="formData.fields.DocsaddressProof == 109">Voter Id</span> <span ng-show="formData.fields.DocsaddressProof == 110">Driving License</span> <span ng-show="formData.fields.DocsaddressProof == 111">Aadhaar Card</span> <span ng-show="formData.fields.DocsaddressProof == 118">Pan Card</span></label>
+				<div class="row">	
+				<div class="col-md-6 text-right validate3otp" style="padding-top: 6px;" ng-hide="panCNImgError || cAddressCNImgError || pAddressCNImgError">
+					<a class="px-3 py-3 my-2 validate-newotp text-uppercase" href="javascript:void(0)" style="color: #0057ab"
+						ng-click="readfiles(fileSelected, selectedfileName)" id="validateOTP" data-dismiss="modal">
+						Upload Anyway 
+					</a>
+					<!--<button type="button" class="btn px-3 py-3 my-2 ax-btn-primary validate-newotp" data-dismiss="modal" ng-click="newUpload(selectedfileName)">
+						Reupload
+					</button>-->
+				</div>
+				<div class="col-md-6">
+					<div class="reupld-img">
+						<div class="file-input">
+
+						</div>
+					</div>
+				</div>
+				</div>
+				
+			</div>
+			<div class="help-body">
+			</div>
+		</div>
+		<div class="modal-footer d-flex justify-content-end">
+				<!--<button type="button" class="btn ax-btn-primary text-uppercase" data-dismiss="modal">OK</button>-->
+			</div>
+		</div>
+	</div>
+</section>
+
+
+        <section class="modal fade" id="customerSMS" role="dialog" tabindex="-1">
+            <div class="modal-dialog login-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <p class="ax-sec-title m-0">{{apiResponseErrorMsg}}</p>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-12 text-center">
+                                <button data-dismiss="modal" ng-click="rmNewForm()" ng-if="!customerSMS" 
+                                    class="btn ax-btn-primary text-uppercase">
+                                    Okay</button>
+								<button data-dismiss="modal" ng-if="customerSMS" 
+                                    class="btn ax-btn-primary text-uppercase">
+                                    Okay</button>
+                            </div>
+                        </div>
+                        <!-- End -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="modal fade" id="proceedConfirmRM" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <p class="ax-sec-title m-0">Kindly Check documents before submitting</p>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-12 text-center">
+                                <button data-dismiss="modal"  
+                                    class="btn ax-btn-primary text-uppercase mx-2" data-dismiss="modal">
+                                    Cancel</button>
+								<button data-dismiss="modal"   ng-click="rmproceedStatus()" 
+                                    class="btn ax-btn-primary text-uppercase mx-2">
+                                    Okay</button>
+                            </div>
+                        </div>
+                        <!-- End -->
+                    </div>
+                </div>
+            </div>
+        </section>
+		
+
+
+        <section class="modal fade" id="documentMobileEmailValidation" role="dialog" tabindex="-1">
+            <div class="modal-dialog login-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <p class="ax-sec-title m-0">{{documentMobileErrorResponse}}</p>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-12 text-center">
+                                <!-- <button data-dismiss="modal"  
+                                    class="btn ax-btn-primary text-uppercase" data-dismiss="modal">
+                                    Cancel</button> -->
+								<button data-dismiss="modal"   ng-click="redirecttoPersonalDetail()" 
+                                    class="btn ax-btn-primary text-uppercase">
+                                    Okay</button>
+                            </div>
+                        </div>
+                        <!-- End -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="modal fade" id="RmproceedStatus" role="dialog" tabindex="-1">
+            <div class="modal-dialog login-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 text-right mb-2" >
+                                <a href="javascript:void(0)" class="ax-sec-label m-0" ng-click="sendSMSToCustomer()">Link to Customer</a>
+                            </div>
+                            <!-- <div class="col-12 text-right mb-2" >
+                                <a href="javascript:void(0)" class="ax-sec-label m-0" ng-class="showlinktoCustomer ? '':'adisabled'" ng-click="sendSMSToCustomer()">Link to Customer</a>
+                            </div> -->
+                            <div class="alert alert-success w-100 my-2" role="alert" id="responseSms">
+                                <span>{{apiResponseErrorMsg}}</span>  
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-6 text-center">
+                                <a href="javascript:void(0)"   ng-click="sentPdfAofPoa()"
+                                    class="ax-bold-title text-uppercase pdf-linkbtn" >
+                                    Send AOF pdf</a>
+                            </div>
+                            <div class="col-6 text-center">
+                                <a href="javascript:void(0)"  ng-click="sentPdfPoaEmail()" 
+                                class="ax-bold-title text-uppercase pdf-linkbtn" >
+                                Send POA pdf</a>
+                            </div>
+                            <div class="col-6 text-center my-4">
+                                <a href="javascript:void(0)"  ng-click="rmgeneratePOA(formData.ReferenceNumber,'aof')" 
+                                    class="ax-bold-title text-uppercase pdf-linkbtn">
+                                    Generate AOF </a>
+                            </div>
+                            <div class="col-6 text-center my-4">
+                                <a href="javascript:void(0)"  ng-click="rmgeneratePOA(formData.ReferenceNumber,'poa')" 
+                                    class="ax-bold-title text-uppercase pdf-linkbtn" >
+                                    Generate POA </a>
+                            </div>
+                            <div class="col-6 text-center">
+                                <a href="javascript:void(0)" ng-click="rmdownloadPOA(formData.ReferenceNumber,'aof')" 
+                                    class="ax-bold-title text-uppercase pdf-linkbtn" >
+                                    Download AOF </a>
+                            </div>
+                            <div class="col-6 text-center">
+                                <a href="javascript:void(0)" ng-click="rmdownloadPOA(formData.ReferenceNumber,'poa')" 
+                                class="ax-bold-title text-uppercase pdf-linkbtn" >
+                                Download POA </a>
+                            </div>
+                            <div class="alert alert-success w-100 mt-2" role="alert" id="generatePdfMsg" >
+                                <span ng-bind-html="reason"></span>  
+                            </div>
+                            <div class="alert alert-success w-100 mt-2" role="alert" id="sentPdfMsg" ng-if="sentPdfSuccess">
+                                <span class="ax-title-label" >{{sentPdfSuccessMsg}}</span>  
+                            </div>
+                            <div class="alert alert-danger w-100 mt-2" role="alert" id="sentPdfMsg" ng-if="sentPdfFailure">
+                                <span class="ax-title-label" >{{sentPdfFailureMsg}}</span>   
+                            </div>
+                            <div class="col-sm-12 text-center mt-4">  
+                                <button  class="btn ax-btn-primary text-uppercase mr-4" ng-click="rmPdfPreview()">
+                                    PDF Preview</button>  
+                                <button data-dismiss="modal" class="btn ax-btn-primary text-uppercase" ng-click="rmNewForm()">
+                                    Done</button>
+                            </div>
+                        </div>
+                        <!-- End -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="modal fade" id="rejectModal" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="ax-modal-close close" data-dismiss="modal" data-toggle="tooltip"
+                            title="Close">&times;</button>
+                    </div>
+                    <div class="modal-body pt-0 pb-5">
+                            <span ng-bind-html="reason"></span>                    
+					</div>
+                </div>
+            </div>
+        </section>
+        <section class="modal fade" id="sentPdfDialog" role="dialog" tabindex="-1">
+            <div class="modal-dialog" style="margin-top: 230px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="ax-modal-close close" data-dismiss="modal" data-toggle="tooltip"
+                            title="Close">&times;</button>
+                    </div>
+                    <div class="modal-body pt-0 pb-5">
+                            <span class="ax-title-label" ng-if="sentPdfSuccess">{{sentPdfSuccessMsg}}</span>                   
+                            <span class="ax-title-label" ng-if="sentPdfFailure">{{sentPdfFailureMsg}}</span>                   
+					</div>
+                </div>
+            </div>
+        </section>

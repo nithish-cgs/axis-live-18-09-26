@@ -1,0 +1,85 @@
+
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/fixedHeader.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css">
+<style>
+.text-break {
+    word-break: break-word!important;
+    overflow-wrap: break-word!important;
+	padding-right: 0px;
+}
+.caret{
+	display: none;
+}
+.multiselect-parent, .mutliSelect button{
+	width: 100%;
+	text-align: left;	
+    height: 40px;
+    background: #fbfbfb;
+	border-color: #eaeaea;
+}
+.dropdown-toggle::after {
+  right: 6px;
+  top: 16px;
+  position: absolute;
+}
+thead input {
+  width: 100%;
+}
+td{
+	vertical-align: top;
+}
+input::placeholder {
+  color: #333;
+  font-size: 11px;
+  font-weight: normal
+}
+select[name="podList_length"]{
+	margin-bottom: 0px !important;
+}
+#podList_filter{display: none;}
+</style>
+<div class="row">
+	<div class="col-md-4">
+        <label class="ax-label">From Date:</label>
+		<div class="ax-field">
+		<input class="form-control ll-skin-melon" placeholder="Select Date" readonly type="text" id="fromDt" ng-model="formData.fields.fromDt"  maxlength="10" />
+		</div>
+	</div>
+	<div class="col-md-4">	
+        <label class="ax-label">To Date:</label>
+		<div class="ax-field">
+		<input class="form-control ll-skin-melon" placeholder="Select Date" readonly type="text" id="toDt" ng-model="formData.fields.toDt"  maxlength="10" />
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+        <label class="ax-label">RM List:</label>
+		<div class="ax-field">
+			<select class="select form-control" ng-model="rmList" id="rmList">
+				<option value="">Select</option>
+                <option ng-selected="list.RMId == rmList" ng-repeat="list in rmDetailsList track by [$index]"
+				value="{{list.RMId}}">{{list.RMUserName}}</option>
+			</select>
+		</div>
+		<div class="input-message clearfix" ng-if="rmListError">
+			<span class="error-message pull-right"><i class="fa fa-times"></i> Please select RM</span></div>
+	</div>
+	<div class="col-md-4">
+        <label class="ax-label">Reference Numbers:</label>
+		<div class="ax-field">			
+			<div ng-dropdown-multiselect="" options="example13data" selected-model="example13model" extra-settings="example13settings" class="w-100 bg-light mutliSelect"></div>
+			<!--<input class="form-control ll-skin-melon" id="refNumberList" type="text" ng-model="formData.fields.refNumberList" />-->
+		</div>
+		<div class="input-message clearfix" ng-if="refNumberListError"><span
+                                        class="error-message pull-right" style="top:0"><i class="fa fa-times"></i> Please
+                                        Select Reference Number</span></div>
+	</div>
+</div>
+<div class="row mb-5">
+            <div class="col-md-12">
+                <button class="btn btn-primary ax-btn-primary" id="personalDetails"
+                    ng-disabled="formData.hideBtn || formData.apiLoading" ng-click="tfr()">Transfer</button>
+            </div>
+        </div>

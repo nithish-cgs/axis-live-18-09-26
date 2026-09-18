@@ -1,0 +1,16 @@
+﻿<div class="container">
+<div class="row">
+	<div ng-if="formData.ReferenceNumber" class="text-center justify-content-center w-100 ax-homeBackBtn d-none d-sm-block cursor-default"> Reference Number:{{formData.ReferenceNumber}}</div>
+    <div class="col-12 text-center">
+        <div class="pg-completed">
+            <h4 class="ax-sec-title p-5 f-24">Congratulations and Welcome to Axis Family !</h4>
+            <!-- <img class="cartoon-character" src="../../assets/images/axis/completed-cartoon.png" alt="" title="axis-account-opened" /> -->
+            <div class="p-5">
+                <h4 class="ax-sec-title mb-0">Your email has been verified.</h4>
+                <h4 class="ax-sec-title mt-0">In the meanwhile, feel free to explore the wonderful world of investments with Axisdirect.</h4>
+            </div>
+            <button class="btn ax-btn-primary text-uppercase mb-5" ng-if="!vcip && !BYOD" ng-click="stageCompleted()">Go to axisdirect Homepage</button>
+        </div>
+    </div>
+</div>
+</div>

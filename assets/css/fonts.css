@@ -1,0 +1,85 @@
+/* Roboto Condensed Font Faces Start*/
+@font-face {
+	font-family: 'RobotoCondensedRegular';
+	src: url('../fonts/text-font/robotocondensed/RobotoCondensedRegular.eot');
+	src: url('../fonts/text-font/robotocondensed/RobotoCondensedRegular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/text-font/robotocondensed/RobotoCondensedRegular.woff') format('woff'),
+		url('../fonts/text-font/robotocondensed/RobotoCondensedRegular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RobotoCondensedBold';
+	src: url('../fonts/text-font/robotocondensed/RobotoCondensedBold.eot');
+	src: url('../fonts/text-font/robotocondensed/RobotoCondensedBold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/text-font/robotocondensed/RobotoCondensedBold.woff') format('woff'),
+		url('../fonts/text-font/robotocondensed/RobotoCondensedBold.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RobotoCondensedLight';
+	src: url('../fonts/text-font/robotocondensed/RobotoCondensedLight.eot');
+	src: url('../fonts/text-font/robotocondensed/RobotoCondensedLight.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/text-font/robotocondensed/RobotoCondensedLight.woff') format('woff'),
+		url('../fonts/text-font/robotocondensed/RobotoCondensedLight.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+/* Roboto Condensed Font Faces End*/
+
+/* proximanova Font Faces Start*/
+@font-face {
+	font-family: 'ProximaNovaRegular';
+	src: url('../fonts/text-font/proximanova/ProximaNova-Regular.eot');
+	src: url('../fonts/text-font/proximanova/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/text-font/proximanova/ProximaNova-Regular.woff') format('woff'),
+		url('../fonts/text-font/proximanova/ProximaNova-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ProximaNovaBold';
+	src: url('../fonts/text-font/proximanova/ProximaNova-Bold.eot');
+	src: url('../fonts/text-font/proximanova/ProximaNova-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/text-font/proximanova/ProximaNova-Bold.woff') format('woff'),
+		url('../fonts/text-font/proximanova/ProximaNova-Bold.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ProximaNovaLight';
+	src: url('../fonts/text-font/proximanova/ProximaNova-Light.eot');
+	src: url('../fonts/text-font/proximanova/ProximaNova-Light.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/text-font/proximanova/ProximaNova-Light.woff') format('woff'),
+		url('../fonts/text-font/proximanova/ProximaNova-Light.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+/* proximanova Font Faces End*/
+
+@font-face {
+	font-family: 'OswaldRegular';
+	src: url('../fonts/text-font/oswald/OswaldRegular.eot');
+	src: url('../fonts/text-font/oswald/OswaldRegular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/text-font/oswald/OswaldRegular.woff') format('woff'),
+		url('../fonts/text-font/oswald/OswaldRegular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Shadow-Light';
+	src: url('../fonts/text-font/shadowLight/ShadowsIntoLight.eot');
+	src: url('../fonts/text-font/shadowLight/ShadowsIntoLight.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/text-font/shadowLight/ShadowsIntoLight.woff') format('woff'),
+		url('../fonts/text-font/shadowLight/ShadowsIntoLight.woff2') format('woff2'),
+		url('../fonts/text-font/shadowLight/ShadowsIntoLight.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+

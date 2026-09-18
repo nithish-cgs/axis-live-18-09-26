@@ -1,0 +1,2120 @@
+<head>
+    <link rel="stylesheet" href="./assets/css/style_2.css">
+</head>
+<style>
+     .or-separator {
+        /* Ensures relative positioning for the absolutely positioned lines */
+        position: relative;
+        /* Centers the 'Or' text */
+        text-align: center;
+        /* Sets the background color to match the container/page, preventing the lines from running under the text */
+        background-color: #fff;
+        /* ASSUMPTION: Replace #fff with your page background color */
+        padding: 0 10px;
+        /* Adds space around the 'Or' text so the lines don't touch it */
+        display: inline-block;
+        /* Makes the padding work effectively */
+        z-index: 2;
+        /* Ensures the 'Or' text is above the lines */
+    }
+
+
+    .or-separator::before,
+    .or-separator::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        /* Aligns the line vertically to the middle of the 'Or' text */
+        width: 150px;
+        height: 1px;
+        /* The thickness of the line */
+        background: #ccc;
+        /* The color of the line (light gray) */
+        z-index: 1;
+        /* Puts the line behind the 'Or' text */
+    }
+
+
+    .or-separator::before {
+        /* The line to the left of 'Or' */
+        right: 100%;
+        margin-right: 10px;
+        /* Adds a gap equal to the padding on the text */
+    }
+
+
+    .or-separator::after {
+        /* The line to the right of 'Or' */
+        left: 100%;
+        margin-left: 10px;
+        /* Adds a gap equal to the padding on the text */
+    }
+
+
+    /* Optional: Center the entire container if needed */
+    .separator-container {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<div ng-show="emailMobile" id="newScreen">
+
+<!-- Pranita design starts here -->
+<div class="top-container">
+    <div class="container-fluid pad-0">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <div class="row">
+                    <div class="col-lg-12 top-title-m">
+                        <p class="mb-0 trad-title text-black"><i>Trade in top stocks by investing just</i></p>
+                        <p class="mb-0 f-b-48" style="color:#000"><i>25%* of the required capital</i></p>
+                        <p class="mb-0 f-b-24" style="color:#97144D">with E-Margin Facility</p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-lg-12 col-12">
+                        <p class="let-look-text mb-0 text-black">Let's look at an example</p>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="card top-price-card" style="width: 30%">
+                        <div style="height: 50%">
+                            <p class="mb-0 f-sub-14">You Pay</p>
+                        </div>
+                        <div style="height: 50%">
+                            <p class="mb-0 f-b-40"><span style="font-size: 20px;">₹</span>25,000</p>
+                        </div>
+                    </div>
+                    <div style="width: 5%;position: relative;">
+                        <p class="mb-0 plus-minus-sec">+</p>
+                    </div>
+                     <div class="card top-price-card" style="width: 30%">
+                        <div style="height: 50%">
+                            <p class="mb-0 f-sub-14">Axis Direct pays you up to</p>
+                        </div>
+                        <div style="height: 50%">
+                            <p class="mb-0 f-b-40"><span style="font-size: 20px;">₹</span>75,000</p>
+                        </div>
+                    </div>
+                    <div style="width: 5%;position: relative;">
+                        <p class="mb-0 plus-minus-sec">=</p>
+                    </div>
+                     <div class="card top-price-card" style="width: 30%">
+                        <div style="height: 50%">
+                             <p class="mb-0 f-sub-14">You can buy stocks worth</p>
+                        </div>
+                        <div style="height: 50%">
+                            <p class="mb-0 f-b-40"><span style="font-size: 15px;">₹</span>1,00,000</p>
+                        </div>
+                    </div>
+                </div>                   
+                <!-- <div class="row mt-1">
+                    <div class="col-lg-12 col-12">
+                        <p class="f-sub-14"><i>*Enjoy 0% MTF trading for the first 15 days*</i></p>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="col-lg-6 col-12">
+                <div class="card top-form-card">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p class="mb-0 f-sub-14 text-center text-black">Trusted by 5M+ happy customers</p>
+                            <p class="mb-0 mt-2 f-b-24 text-black">Open Free* Demat Account!</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mt-3">
+                                <form>
+                                    <div class="ax-field newForm" ng-if="!EmailField && Newutmsour">
+                                        <input class="form-control rounded-2" autocomplete="nope" placeholder="Enter Mobile Number" type="tel" id="mobile"
+                                            ng-model="formData.fields.mobile" n
+                                            ng-disabled="formData.ReferenceNumber || otp || otpVerified" maxlength="10"
+                                            ng-keypress="emptyMobile = false; invalidMobile = false; "
+                                            required only-digits  />
+                                            <span class="error-message1 text-left small mb-3" ng-if="emptyMobile"><i class="fa fa-times"></i> Mobile
+                                                number is mandatory.</span>
+                                            <span class="error-message1 text-left small mb-3" ng-if="invalidMobile"><i class="fa fa-times"></i> Please
+                                                provide valid mobile number</span>
+                                    </div>
+                                    
+                                    <div class="" ng-if="EmailField && Newutmsour">
+                                        <!-- <label class="ax-label">Email ID:</label> -->
+                                        <div class="col-12 mb-3">
+                                            <button class="btn btn-primary ax-btn-primary w-100 rounded-4 d-flex justify-content-center align-items-center"
+                                                id="getEmail" ng-click="googleEmailVerifyAPI()">
+                                                <img src="./assets/images/googleImg.png" class="img-fluid me-2" width="20" loading="lazy"
+                                                    alt="Google icon" />
+                                                Continue With Google
+                                            </button>
+                                        </div>
+                                    
+                                        <div class="col-12 separator-container">
+                                            <p class="text-center my-2 text-muted or-separator">Or</p>
+                                        </div>
+                                        <div class="ax-field newForm mt-3   " >
+                                        <input class="form-control rounded-2" autocomplete="nope" placeholder="Enter your valid Email ID" type="text" id="emailID"
+                                            ng-model="formData.fields.email"
+                                            ng-keypress="emptyEmail = false; invalidEmail = false; $event.keyCode == 13 ? firstStage() : null"
+                                            ng-disabled="formData.ReferenceNumber  || otp" required maxlength="50"  />
+                                            <span class="error-message1 text-left small mb-3" ng-if="invalidEmail || emptyEmail"><i class="fa fa-times"></i>
+                                                Please provide proper email address. Eg: john@xyz.com</span>
+                                    </div>
+                                        <!-- <p class="error-message1 pull-right" ng-if="invalidEmail || emptyEmail"><i class="fa fa-times"></i>
+                                            Please
+                                            provide proper email address. Eg: john@xyz.com</p> -->
+                                    </div>
+                                        <div class="d-flex align-items-start mt-3"   ng-if="!EmailField && Newutmsour">
+                                <input type="checkbox" id="uncheck" ng-model="chkselct"  ng-click="termss($event.target.checked)"  class="ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false"> <label class="color-label-black text-bold ml-4  mr-2" style="margin-left:10px;font-size: 12px;" id="submitting">By submitting this, I accept all the  <a data-bs-toggle="modal" data-bs-target="#TCInfor" href="#"><span class="color-label-purple1" id="submitting1">terms and conditions</span></a> </label>
+                            </div>
+							<div class="d-flex align-items-start mt-3"   ng-if="!Newutmsour">
+                                <input type="checkbox" id="uncheck" ng-model="chkselct"  ng-click="termss($event.target.checked)"  class="ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false"> <label class="color-label-black text-bold ml-4  mr-2" style="margin-left:10px;font-size: 12px;" id="submitting">By submitting this, I accept all the  <a data-bs-toggle="modal" data-bs-target="#TCInfor" href="#"><span class="color-label-purple1" id="submitting1">terms and conditions</span></a> </label>
+                            </div>
+                                        <p class="error-message1 text-left small mb-3" ng-class="validationmsg ? 'mt-0' : ''" ng-if="validationmsg"><i class="fa fa-times"></i> Please select the terms and conditions.</p>
+                                    <div class="text-left">
+                                        <button ng-click="formData.callPopup()"
+                                        class="boariding-btns  plan-button  " id="checkStatus"
+                                        ng-if="!formData.ReferenceNumber && !formData.changePassword" ng-hide="hideCA || webkarvy || webipo || krasearch || vcip ||BYOD || webJana || webfinacle || (formData.RmModule && !formData.rmOptions) || vcip ||ByodBank" style="padding: 3px !important; background-color: transparent"
+                                        ng-click="existingCustomer = false; existingResponse = false;">Resume Application</button>
+                                    </div>
+                                    
+                                    
+                                        <!-- <div class="ax-field newForm" ng-class="invalidEmail || emptyEmail ? 'mt-3' : 'mt-5'">                        
+                                            <select class="select form-control" ng-change="CountryChange(formData.fields.UtmCityNameNew)" ng-if="utmCityNameList && utmCityNameList.length > 0" ng-model="formData.fields.UtmCityNameNew" id="UtmCityNameNew">
+                                                <option value="0" selected>Select City</option>
+                                                <option ng-selected="list.id == formData.fields.UtmCityNameNew"
+                                                    ng-repeat="list in utmCityNameList"
+                                                    value="{{list.id}}">{{list.name}}</option>
+                                            </select>
+                                            <span class="error-message1 text-left small mb-3" ng-if="CountrySelctError"><i class="fa fa-times"></i>
+                                               Please Select Country</span>
+                                        </div> -->
+                                    </form>
+                                          
+                              <!-- <form>
+                                <input type="text" class="form-control top-form-input" id="mobile" placeholder="Enter Mobile Number">
+                                <input type="email" class="form-control top-form-input" id="exampleFormControlInput1" placeholder="Enter Email Id">
+                                <select class="form-select top-form-input" aria-label="Default select example">
+                                  <option selected>Select City</option>
+                                  <option value="1">Mumbai</option>
+                                  <option value="2">Pune</option>
+                                  <option value="3">Delhi</option>
+                                </select>
+                              <form> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-class="CountrySelctError ? 'mt-3' : 'mt-5'">
+                        <div class="col-lg-12">
+                            <button class="top-form-btn" type="button" ng-click="firstStage()">Open an Account</button>
+                        </div>
+                        <div class="col-lg-12">
+                            <div ng-if="OtpLimitExceed">
+                                <h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5">{{OtpResponseMsg}}</h4>
+                            </div>
+                            <h6 class="ax-primary-title mt-3 text-center " style="font-size: 14px;">Need Assistance<a class="boariding-btns px-0 plan-button float-right" style="
+                                padding: 1px 20px;
+                                " href="https://simplehai.axisdirect.in/images/DAO/Digital-Account-Opening.pdf" target="_blank">
+                                     Click Here! 
+                                </a>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+    
+</div>
+<!-- Pranita design ends -->
+
+
+
+
+
+<!-- otp popup -->
+<!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Launch static backdrop modal
+    </button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered otp-popup">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title f-b-24" id="staticBackdropLabel" style="font-size: 18px">Enter your OTP Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+           <form>
+               <input type="text" class="form-control top-form-input" id="otp" placeholder="Enter OTP Mobile Number">
+                <input type="text" class="form-control top-form-input" id="otp" placeholder="Enter OTP Email">
+           </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="top-form-btn" data-bs-dismiss="modal">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- end otp popup -->
+<!-- end top container -->
+
+<!-- enjoy section start -->
+<div class="container-fluid enjoye-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="mb-0 f-b-32 text-black">Enjoy Special Pricing</p>
+        </div>
+    </div>
+    <div class="row mt-4 enj-row-h-w">
+      <div class="col-lg-12 d-flex" style="justify-content: space-between;">
+          <div class="card enjoy-price-card">
+              <p class="f-b-56 mb-0"><span>₹</span>0</p>
+              <p class="f-sub-14 mb-0" style="color: #000000;">DP & AMC Charges for the first year*</p>
+          </div>
+
+          <div class="card enjoy-price-card">
+              <p class="f-b-56 mb-0">0.50<span>%</span></p>
+              <p class="f-sub-14 mb-0" style="color: #000000;">Brokerage on Equity Delivery</p>
+          </div>
+
+          <div class="card enjoy-price-card">
+              <p class="f-b-56 mb-0">0.05<span>%</span></p>
+              <p class="f-sub-14 mb-0" style="color: #000000;">Brokerage on Futures, and Commodities</p>
+          </div>
+
+          <div class="card enjoy-price-card">
+               <p class="f-b-56 mb-0">0.05<span>%</span></p>
+              <p class="f-sub-14 mb-0" style="color: #000000;">Brokerage on Intraday</p>
+          </div>
+
+          <div class="card enjoy-price-card">
+              <p class="f-b-56 mb-0"><span>₹</span>20</p>
+              <p class="f-sub-14 mb-0" style="color: #000000;">Online trade in Options at ₹20/order</p>
+          </div>
+      </div>
+    </div>
+    <div class="row mt-5 enj-row-h-m">
+        <div class="containers" style="overflow-x: auto;display: flex;justify-content: space-between;width: 100%;gap:15px;">
+            <section id="one">
+              <div class="card enjoy-price-card">
+                  <p class="f-b-56 mb-0"><span>₹</span>0</p>
+                  <p class="f-sub-14 mb-0" style="color: #000000;">DP & AMC Charges for the first year*</p>
+              </div>
+            </section>
+            <section id="">
+                  <div class="card enjoy-price-card">
+                      <p class="f-b-56 mb-0"><span>0.50</span>%</p>
+                      <p class="f-sub-14 mb-0" style="color: #000000;">Brokerage on Equity Delivery</p>
+                  </div>
+            </section>
+            <section id="">
+                  <div class="card enjoy-price-card">
+                      <p class="f-b-56 mb-0"><span>0.05</span>%</p>
+                      <p class="f-sub-14 mb-0" style="color: #000000;">Brokerage on Futures, and Commodities</p>
+                  </div>
+            </section>
+            <section id="two">
+                  <div class="card enjoy-price-card">
+                      <p class="f-b-56 mb-0"><span>0.05</span>%</p>
+                      <p class="f-sub-14 mb-0" style="color: #000000;">Brokerage on Intraday</p>
+                  </div>
+            </section>
+            <section id="">
+                  <div class="card enjoy-price-card">
+                      <p class="f-b-56 mb-0"><span>₹</span>20</p>
+                      <p class="f-sub-14 mb-0" style="color: #000000;">Online trade in Options at ₹20/order</p>
+                  </div>
+            </section>
+            <!-- <section id="three">
+                  <div class="card enjoy-price-card">
+                      <p class="f-b-56 mb-0"><span>₹</span>0</p>
+                      <p class="f-sub-14 mb-0" style="color: #000000;">DP & AMC Charges for the first year*</p>
+                  </div>
+            </section> -->
+        </div>
+    </div>
+    <div class="row enj-indicat-h">
+        <div class="col-12 text-center">
+            <nav class="mt-4">
+              <ul class="dotted-active ps-0" style="display: flex;justify-content: center;list-style: none;gap:10px">
+                <li class="active"><a href="#one"></a></li>
+                <li><a href="#two"></a></li>
+                <li><a href="#three"></a></li>
+                <li><a href="#four-4"></a></li>
+                <li><a href="#five-5"></a></li>
+                <li><a href="#six-6"></a></li>
+              </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- end enjoye section -->
+
+<!-- one account section -->
+<div class="container-fluid one-ac-section">
+    <div class="row">
+        <div class="col-lg-12 col-12">
+            <p class="f-b-32 text-black">One Account. Multiple Investing Options</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card border-0">
+                <nav>
+                    <div class="row nav nav-tabs mb-3 tab-btn-div" id="nav-tab" role="tablist">
+                        <div class="col-lg-4 col-4 nav-link tab-btn active"  id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                             <p>Invest</p>
+                        </div>
+                        <div class="col-lg-4 col-4 nav-link tab-btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                           <p>Trade</p>
+                        </div>
+                        <div class="col-lg-4 col-4 nav-link tab-btn" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+                            <p>Research</p>
+                        </div>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="row tab-scroll-m" id="carousel" style="--bs-gutter-y:30px">
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/Plant.jpg" height="50px"></p>
+                                    <p class="f-b-24 text-black">Mutual Fund</p>
+                                    <p class="f-sub-14">Get access to top-rated MF shortlisted based on in-depth risk and return analysis.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/Graph.jpg" height="50px"></p>
+                                    <p class="f-b-24 text-black">Stock SIP</p>
+                                    <p class="f-sub-14">Make small investments every month and create wealth for all your financial goals.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card dot">
+                                    <p class=""><img src="./assets/images/axisNew/Smallcse.jpg" height="50px"></p>
+                                    <p class="f-b-24 text-black">Smallcase</p>
+                                    <p class="f-sub-14">Invest in diversified baskets of stocks based on ideas, in just a click.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/Calend.jpg" height="50px"></p>
+                                    <p class="f-b-24 text-black">IPO</p>
+                                    <p class="f-sub-14">Enjoy pre-applying and applying to the latest IPOs.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/etf.jpg" height="50px"></p>
+                                    <p class="f-b-24text-black">ETFs</p>
+                                    <p class="f-sub-14">Diversify your portfolio by investing in Exchange Traded Funds (ETFs).</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/AI.jpg" height="50px"></p>
+                                    <p class="f-b-24 text-black">Axis Intellect</p>
+                                    <p class="f-sub-14">Quantative Data-backed approached delivering upto 10.3% returns.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="row tab-scroll-m" id="carousel" style="--bs-gutter-y:30px">
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/AroowGraph.jpg" height="50px"></p>
+                                    <p class="f-b-24 text-black">Futures & Options</p>
+                                    <p class="f-sub-14">Trade at Rs. 20/- per order and get 1st month brokerage free trades!</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/Gold.jpg" height="50px"></p>
+                                    <p class="f-b-24 text-black">Commodities</p>
+                                    <p class="f-sub-14">Trade in Gold, Silver, Crude Oil & Argo Commodities at Rs. 20/- per order.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card dot">
+                                    <p class=""><img src="./assets/images/axisNew/US.jpg" height="50px"></p>
+                                    <p class="f-b-24 text-black">Trade in the US market</p>
+                                    <p class="f-sub-14">Diversify your portfolio by investing in the US stock market.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/Calend.jpg" height="50px"></p>
+                                    <p class="f-b-24 text-black">Unlisted shares</p>
+                                    <p class="f-sub-14">Invest in companies that are yet to be listed on the stock exchange.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/Buymore.jpg" height="50px"></p>
+                                    <p class="f-b-24 text-black">Buy More Pay Later</p>
+                                    <p class="f-sub-14">Interest free E-margin for amount up to Rs. 25 lakhs for 30 days from a/c opening.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/AI.jpg" height="50px"></p>
+                                    <p class="f-b-24 text-black">Intradaily</p>
+                                    <p class="f-sub-14">Get access to top-rated MF shortlisted based on in-depth risk and return analysis.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <div class="row tab-scroll-m" id="carousel" style="--bs-gutter-y:30px">
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/R1.png" height="50px"></p>
+                                    <p class="f-b-24 text-black">5-30 Days</p>
+                                    <p class="f-sub-14">Axis Alpha reported cumulative strike rate of 67% in May 24'</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/R2.png" height="50px"></p>
+                                    <p class="f-b-24 text-black">6-9 Months</p>
+                                    <p class="f-sub-14">Pick of the week delivered a monthly strike rate of 88% in May 24'</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card dot">
+                                    <p class=""><img src="./assets/images/axisNew/R3.png" height="50px"></p>
+                                    <p class="f-b-24 text-black">18-24 Months</p>
+                                    <p class="f-sub-14">Axis Top Picks baskets delivered impressive returns of 43% in last one year</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/R4.png" height="50px"></p>
+                                    <p class="f-b-24 text-black">18-24 Months</p>
+                                    <p class="f-sub-14">Technical Monthly Calls delivered average monthly strike rate of 72% in May 24'</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/R5.png" height="50px"></p>
+                                    <p class="f-b-24 text-black">Derivatives calls</p>
+                                    <p class="f-sub-14">Derivatives Strategies delivered a monthly strike rate of 72% in May 24'</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 dot">
+                                <div class="card one-ac-card">
+                                    <p class=""><img src="./assets/images/axisNew/R6.png" height="50px"></p>
+                                    <p class="f-b-24 text-black">Commodity calls</p>
+                                    <p class="f-sub-14">Commodity calls delivered monthly strike rate of 72% in May 24'</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dots-container enj-indicat-h" id="dots">
+                    <div class="dot" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+                    <div class="dot" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+                    <div class="dot" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+                    <div class="dot" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+                    <div class="dot" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+                    <div class="dot" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end one account section -->
+
+<!-- amazing feuture section -->
+<div class="container-fluid amazing-feuture-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="mb-0 f-b-32 text-black">Amazing Features <span class="h-m" style="display:inline-block">of Traders App </span></p>
+        </div>
+    </div>
+    <!-- amazing feuture for web view -->
+    <div class="row h-m">
+        <div class="col-lg-12">
+            <!-- tabs for web view -->
+            <div class="row mt-5">
+            <!-- tabs content start -->
+            <div class="col-lg-3 tab-content">
+                <div id="first" class="tabcontent" style="display:block;">
+                  <img src="./assets/images/axisNew/Features-Screen-Chart.png" alt="" class="tab_img">
+                </div>
+
+                <div id="second" class="tabcontent" style="display:none;">
+                 <img src="./assets/images/axisNew/Features-Screen-OptionStrategies.png" alt="" class="tab_img">
+                </div>
+
+                <div id="third" class="tabcontent" style="display:none;">
+                  <img src="./assets/images/axisNew/Features-Screen-Scanner.png" alt="" class="tab_img">
+                </div>
+
+                <div id="four" class="tabcontent" style="display:none;">
+                  <img src="./assets/images/axisNew/Features-Screen-Fundamental.png" alt="" class="tab_img">
+                </div>
+
+                <div id="five" class="tabcontent" style="display:none;">
+                  <img src="./assets/images/axisNew/Features-Screen-Research.png" alt="" class="tab_img">
+                </div>
+
+                <div id="six" class="tabcontent" style="display:none;">
+                  <img src="./assets/images/axisNew/Features-Screen-StockEvent.png" alt="" class="tab_img">
+                </div>
+            </div>
+            <!-- tabs content end -->
+
+            <!-- tabs card start -->
+            <div class="col-lg-9">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="row g-3 tab" style="--bs-gutter-x: 2rem;">
+                        <div class="col-lg-4 col-12">
+                            <div class="card p-3 tablinks card_one"  onmouseover="openCity(event, 'first')">
+                                <div class="row">
+                                    <div class="col-lg-12 col-12 text-start">
+                                        <img src="./assets/images/axisNew/analysis 1.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- <div class="accordion accordion-flush" id="accordionFlushExample"> -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed card_title" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                                aria-expanded="false" aria-controls="flush-collapseOne">
+                                                Real-time
+                                                Chart-based <br>Trading
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body card_sub_title">Gain a visual edge with added technical indicators, empowering you to make more informed decisions.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-12">
+                            <div class="card p-3 tablinks"  onmouseover="openCity(event, 'second')">
+                                 <div class="row">
+                                    <div class="col-lg-12 col-12 text-start">
+                                        <img src="./assets/images/axisNew/analysis 1.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed card_title" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                                aria-expanded="false" aria-controls="flush-collapseTwo">
+                                                Simplified Options <br>Trading Strategies
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body card_sub_title">Explore and execute with pre-defined Option strategies like Straddle, Strangle, basis your market views.
+                                            </div>
+                                        </div>
+                                    </div>                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-12">
+                            <div class="card p-3 tablinks"  onmouseover="openCity(event, 'third')">
+                                <div class="row">
+                                    <div class="col-lg-12 col-12 text-start">
+                                        <img src="./assets/images/axisNew/analysis 1.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed card_title" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapsethree"
+                                                aria-expanded="false" aria-controls="flush-collapsethree">
+                                                Scanners
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapsethree" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body card_sub_title">Discover potential trading opportunities using live scanners tailored to your market outlook, whether it's bullish or bearish.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-12">
+                            <div class="card p-3 tablinks"  onmouseover="openCity(event, 'four')">
+                                <div class="row">
+                                    <div class="col-lg-12 col-12 text-start">
+                                        <img src="./assets/images/axisNew/analysis 1.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed card_title" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapsefour"
+                                                aria-expanded="false" aria-controls="flush-collapsefour">
+                                                Fundamental and <br>Technical Insights
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapsefour" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body card_sub_title">Stay informed with real-time access to company financials, events, and news.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-12">
+                            <div class="card p-3 tablinks"  onmouseover="openCity(event, 'five')">
+                                <div class="row">
+                                    <div class="col-lg-12 col-12 text-start">
+                                        <img src="./assets/images/axisNew/analysis 1.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed card_title" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapsefive"
+                                                aria-expanded="false" aria-controls="flush-collapsefive">
+                                                Research
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapsefive" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body card_sub_title">Gain access to research-backed investing and trading ideas by our in-house experts to diversify your portfolio with confidence.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-12">
+                            <div class="card p-3 tablinks" onmouseover="openCity(event, 'six')">
+                                <div class="row">
+                                    <div class="col-lg-12 col-12 text-start">
+                                        <img src="./assets/images/axisNew/analysis 1.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed card_title" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapsesix"
+                                                aria-expanded="false" aria-controls="flush-collapsesix">
+                                                Stock News & Events
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapsesix" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body card_sub_title">Stay ahead of the curve with the latest news and events, including updates on bonuses, dividends, AGMs, Splits, and more.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end tabs for web view  -->
+        </div>
+    </div>
+    <!-- end amazing feuture web view -->
+
+    <!--start amazing feuture for mobile view -->
+    <div class="row mt-5 amaz-h-w">
+        <div class="stock_scroll_mobile col">
+            <div class="row scroll_row">
+                <div class="col-12">
+                    <div class="card p-3 amz-feuture-m-card">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img src="./assets/images/axisNew/Hero-Chart 2.png" style="width: 175px;">
+                            </div>
+                        </div>
+                        <div class="row" style="background-color: #FFF;--bs-gutter-x: 1.5rem;">
+                            <div class="col-12">
+                                <p class="card_title_for_mobile text-center" style="font-size:16px;font-weight: 700;">Real-time Chart-based Trading </p>
+                                <p class="card_sub_title_for_mobile">Gain a visual edge with added technical indicators, empowering you to make more informed decisions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card p-3 amz-feuture-m-card">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img src="./assets/images/axisNew/simplified-strategy.png" style="width: 175px;">
+                            </div>
+                        </div>
+                        <div class="row" style="background-color: #FFF;--bs-gutter-x: 1.5rem;">
+                            <div class="col-12">
+                                <p class="card_title_for_mobile text-center" style="font-size:16px;font-weight: 700;"> Simplified Options Trading Strategies </p>
+                                <p class="card_sub_title_for_mobile">Explore and execute with pre-defined Option strategies like Straddle, Strangle, basis your market views.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card p-3 amz-feuture-m-card">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img src="./assets/images/axisNew/Features-Scanners.png" style="width: 175px;">
+                            </div>
+                        </div>
+                        <div class="row" style="background-color: #FFF;--bs-gutter-x: 1.5rem;">
+                            <div class="col-12">
+                                <p class="card_title_for_mobileb text-center" style="font-size:16px;font-weight: 700;"> Scanners </p>
+                                <p class="card_sub_title_for_mobile">Discover potential trading opportunities using live scanners tailored to your market outlook, whether it's bullish or bearish.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card p-3 amz-feuture-m-card">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img src="./assets/images/axisNew/Features-Fundamental.png" style="width: 175px;">
+                            </div>
+                        </div>
+                        <div class="row" style="background-color: #FFF;--bs-gutter-x: 1.5rem;">
+                            <div class="col-12">
+                                <p class="card_title_for_mobile text-center" style="font-size:16px;font-weight: 700">Fundamental and Technical Insights</p>
+                                <p class="card_sub_title_for_mobile">Stay informed with real-time access to company financials, events, and news.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card p-3 amz-feuture-m-card">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img src="./assets/images/axisNew/Features-Screen-Research.png" style="width: 175px;">
+                            </div>
+                        </div>
+                        <div class="row" style="background-color: #FFF;--bs-gutter-x: 1.5rem;">
+                            <div class="col-12">
+                                <p class="card_title_for_mobile text-center" style="font-size:16px;font-weight: 700;">Research</p>
+                                <p class="card_sub_title_for_mobile">Gain access to research-backed investing and trading ideas by our in-house experts to diversify your portfolio with confidence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card p-3 amz-feuture-m-card">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img src="./assets/images/axisNew/Features-StockEvent.png" style="width: 175px;">
+                            </div>
+                        </div>
+                        <div class="row" style="background-color: #FFF;--bs-gutter-x: 1.5rem;">
+                            <div class="col-12">
+                                <p class="card_title_for_mobile text-center" style="font-size:16px;font-weight: 700;">Stock News & Events</p>
+                                <p class="card_sub_title_for_mobile">Stay ahead of the curve with the latest news and events, including updates on bonuses, dividends, AGMs, Splits, and more.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end amazing feuture for mobile view -->
+</div>
+<!-- end amazing feuture section -->
+
+<!-- document requred section -->
+<div class="container-fluid document-requred-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="mb-0 f-b-32 text-black">Documents required</p>
+            <p class="mb-0 f-sub-14">List of documents mandatory for opening a Demat & Trading account </p>
+        </div>
+    </div>
+    <div class="row mt-4 h-m">
+        <div class="col-lg-12 tab-scroll-m">
+            <div class="docu-req-card-div">
+                <div class="card docu-req-card">
+                    <p><img src="./assets/images/axisNew/id-proof-icon.png"></p>
+                    <p class="f-16 mb-0" style="font-weight: 700;">Identity Proof</p>
+                    <p class="f-16 mb-0">PAN Card</p>
+                </div>
+                <div class="card docu-req-card">
+                    <p><img src="./assets/images/axisNew/id-proof-icon.png"></p>
+                    <p class="f-16 mb-0" style="font-weight: 700;">Address Proof</p>
+                    <p class="f-16 mb-0">Aadhar Card</p>
+                </div>
+                <div class="card docu-req-card">
+                    <p><img src="./assets/images/axisNew/id-proof-icon.png"></p>
+                    <p class="f-16 mb-0" style="font-weight: 700;">Signature</p>
+                    <p class="f-16 mb-0">Sign on a White Paper</p>
+                </div>
+                <div class="card docu-req-card">
+                    <p><img src="./assets/images/axisNew/id-proof-icon.png"></p>
+                    <p class="f-16 mb-0" style="font-weight: 700;">Nominee Addition</p>
+                    <p class="f-16 mb-0">Nominee's Proof of Identity</p>
+                </div>
+                <div class="card docu-req-card">
+                    <p><img src="./assets/images/axisNew/id-proof-icon.png"></p>
+                    <p class="f-16 mb-0" style="font-weight: 700;">Cancelled Cheque</p>
+                    <p class="f-16 mb-0">Only if bank verification fails</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-wrapper mt-3" id="carouselContainer">
+        <div class="carousel-slide docu-req-card">
+                <p><img src="./assets/images/axisNew/id-proof-icon.png"></p>
+                <p class="f-16 mb-0" style="font-weight: 700;">Identity Proof</p>
+                <p class="f-16 mb-0">PAN Card</p>
+        </div>
+        <div class="carousel-slide docu-req-card">
+                <p><img src="./assets/images/axisNew/id-proof-icon.png"></p>
+                <p class="f-16 mb-0" style="font-weight: 700;">Address Proof</p>
+                <p class="f-16 mb-0">Aadhar Card</p>
+        </div>
+        <div class="carousel-slide docu-req-card">
+                <p><img src="./assets/images/axisNew/id-proof-icon.png"></p>
+                <p class="f-16 mb-0" style="font-weight: 700;">Signature</p>
+                <p class="f-16 mb-0">Sign on a White</p>
+                <p class="f-16 mb-0">Paper</p>
+        </div>
+        <div class="carousel-slide docu-req-card">
+                <p><img src="./assets/images/axisNew/id-proof-icon.png"></p>
+                <p class="f-16 mb-0" style="font-weight: 700;">Nominee</p>
+                <p class="f-16 mb-0" style="font-weight: 700;">Addition</p>
+                <p class="f-16 mb-0">Nominee's Proof</p>
+                <p class="f-16 mb-0">of Identity</p>
+        </div>
+        <div class="carousel-slide docu-req-card">
+                <p><img src="./assets/images/axisNew/id-proof-icon.png"></p>
+                <p class="f-16 mb-0" style="font-weight: 700;">Cancelled</p>
+                <p class="f-16 mb-0" style="font-weight: 700;">Cheque</p>
+                <p class="f-16 mb-0">Only if bank </p>
+                <p class="f-16 mb-0">verification fails</p>
+        </div>
+    </div>
+    <div class="indicator-group" id="carouselIndicators">
+        <span class="indicator-item"></span>
+        <span class="indicator-item"></span>
+        <span class="indicator-item"></span>
+        <span class="indicator-item"></span>
+        <span class="indicator-item"></span>
+    </div>
+    <!-- <div class="row">
+         <div class="dots-container">
+            <div class="indicator-item" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+            <div class="indicator-item" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+            <div class="indicator-item" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+            <div class="indicator-item" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+            <div class="indicator-item" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+            <div class="indicator-item" style="height: 10px;width: 10px;border-radius: 50%;background-color: gray;margin: 0 5px;border: 1px solid #97144D;background-color: #F6FAFF;"></div>
+        </div>
+    </div> -->
+</div>
+<!-- end document requred -->
+
+<!-- faq section -->
+<div class="container-fluid faq-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="mb-0 f-b-32 text-black">Frequently Asked Questions</p>
+        </div>
+    </div>
+     <div class="row mt-4">
+        <div class="col-lg-12">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                   What is a Trading account? / What is a Demat
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    A trading account is where one can buy or sell shares in a stock market. It is linked with a demat account and bank account of an investor. The shares get credited in the the demat account on settlement day and the buy transaction valuegets deducted from the bank account. Each trading account has a unique trading ID which is utilised to perform online transactions. A Demat Account or Dematerialised Account provides the facility of holding shares in an electronic format. Shares are held in a Demat Account, thus, facilitating easy trade for the users. A Demat Account holds the investments an individual makes in shares, securities, exchange-traded funds, bonds and mutual funds in one place.
+
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    What is the difference between a Demat & Trading Account?
+                  </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    The difference between a Demat and Trading account is that a Demat account holds shares and securities in
+      the Digital Mode, while a trading account provides the interface to buy and sell shares in the stock market.
+      Despite the different roles they play, a Demat and Trading Account work together to make online trading
+      possible.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    What documents are needed to open an Axis Direct Trading & Demat Account?
+                  </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <p>Here’s a list of documents that are required to open a trading account –
+                    </p><ol style="padding-left:1.2em">
+                      <li>Identity proof - PAN card</li>
+                      <li>Signature on a white paper </li>
+                      <li>Live Photo</li>
+                      <li> Personalized Cancelled Cheque</li>
+                      <li>Address proof (Voter ID card, Passport, Aadhaar card or Driving License)</li>
+                      <li> Income proof – Activation of any Derivatives </li>
+                      (Any one: copy of ITR, net worth certificate, salary proof, Annual accounts, Demat Account Holding
+                      statement) - *Last 6 months
+                      <li>Email Id, Mobile number, Aadhar card</li>
+          
+                    </ol>
+                    *Note:- Only Individual Accounts can be opened digitally. For Non Individual category, please apply through
+                    Physical Form. <p></p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                    What are the features of an Axis Direct Demat & Trading Account?
+                  </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body" style="overflow-x: auto;">
+                    <table border="1" cellspacing="0" cellpadding="10px" width="100%" style="border-collapse:collapse; border:1px grey solid;">
+                        <tbody><tr>
+                          <td width="779" valign="top" class="td_border">
+                            <p><strong>Features</strong></p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p><strong>Basic* - NSDL (without POA)</strong></p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p><strong>Limited* - CSDL/NSDL (without POA)</strong></p>
+                          </td>
+                          <td width="324" valign="top">
+                            <p><strong>Standard with POA</strong></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="779" valign="top">
+                            <p>Intraday Buying &amp; Selling</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>✓</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>✓</p>
+                          </td>
+                          <td width="324" valign="top">
+                            <p>✓</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="779" valign="top">
+                            <p>Delivery Buying</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>✓</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>✓</p>
+                          </td>
+                          <td width="324" valign="top">
+                            <p>✓</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="779" valign="top">
+                            <p>Delivery Selling&nbsp;</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>M-pin</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>×</p>
+                          </td>
+                          <td width="324" valign="top">
+                            <p>✓</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="779" valign="top">
+                            <p>Trading Channels(Mobile, Web, Dealers, CNT, Terminal)</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>Mobile, Swift Trade</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>All</p>
+                          </td>
+                          <td width="324" valign="top">
+                            <p>All</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="779" valign="top">
+                            <p>Exposure against Collateral</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>×</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>×</p>
+                          </td>
+                          <td width="324" valign="top">
+                            <p>✓</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="779" valign="top">
+                            <p>Investment&nbsp;in&nbsp;Mutual Funds (Demat)</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>×</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>×</p>
+                          </td>
+                          <td width="324" valign="top">
+                            <p>✓</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="779" valign="top">
+                            <p>Trading&nbsp;in&nbsp;Commodities</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>×</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>×</p>
+                          </td>
+                          <td width="324" valign="top">
+                            <p>✓</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="779" valign="top">
+                            <p>ASBA (IPO/NCD/Rights Issue)</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>×</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>×</p>
+                          </td>
+                          <td width="324" valign="top">
+                            <p>✓</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="779" valign="top">
+                            <p>SmartEDGE: curated Basket of stocks</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>×</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>×</p>
+                          </td>
+                          <td width="324" valign="top">
+                            <p>✓</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="779" valign="top">
+                            <p>3-in-1 accounts (Funds)</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>Net Banking</p>
+                          </td>
+                          <td width="308" valign="top">
+                            <p>Net Banking</p>
+                          </td>
+                          <td width="324" valign="top">
+                            <p>Hold</p>
+                          </td>
+                        </tr>
+                      </tbody></table>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display: flex;justify-content: center;">
+    <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn-visible-scroll top-form-btn border-custom" style="width: 240px">Open Demat & Trading A/C</button>
+</div>
+</div>
+<!-- end faq -->
+<div class="row" ng-if="pan">
+    <!-- Global site tag (gtag.js) - Google Ads: 727858862 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-727858862"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'AW-727858862');
+    </script>
+    <!-- Event snippet for AxisDirect_PANDetails_Dec20 conversion page -->
+    <script>
+      gtag('event', 'conversion', {'send_to': 'AW-727858862/3nZ4CIrN_OsBEK79iNsC'});
+    </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1253495914811323');
+      fbq('track', 'PageView');fbq('trackCustom', 'AxisDirect-PANDetails');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1253495914811323&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"137025576"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+    <div class="container">
+        <div class="row">
+    <div class="col-md-9">
+            <div class="row mb-5">
+                <div class="col-md-10 pe-0">
+                    <h1 class="ax-primary-title mt-0 mt-sm-5 text-capitalize" ng-if="!webfinacle">Hi {{formData.fields.username}}, I am delighted to be helping you today.
+                    </h1>
+                    <h1 class="ax-primary-title mt-0 mt-sm-5 text-capitalize" ng-if="webfinacle">Hi {{formData.fields.username}}, we are delighted to help you today.
+                    </h1>
+                    <!-- <h4 class="ax-sec-title"><span ng-if="!webfinacle">Now, we will be verifying your KYC details. For that, I need your
+                        <br class="d-none d-sm-block" />PAN and Date of Birth.</span>
+                        <span ng-if="webfinacle">Please confirm your PAN and Date of Birth to proceed further.</span>
+                        <br/><br/>
+                        <p>Note: Mobile number or email address should be updated in Aadhar for Instant activation. Not sure? <a href="https://resident.uidai.gov.in/verify-email-mobile" target="_blank" rel="noopener">Click here</a></p>
+                    </h4>
+                    <h4 class="ax-sec-title">
+                    Kindly note: The Digital Account Opening process is available for Resident Individual with Single holder only.
+                    </h4> -->
+                    <!-- <h4 class="ax-sec-title">
+                    Please Note: Exchange circular (NSE/ISC/48165) restricts trading in all such accounts where PAN is not linked to Aadhar. However, it does not restrict you from opening a trading account with us. 
+                    </h4> -->
+                    <h4 class="ax-sec-title">
+                    As per PAN Card/Site, enter Name, PAN Number, and Date of Birth to verify KYC (Resident Individual – Single Holder)
+                    </h4>
+                    
+                </div>
+                <div class="col-12 d-block d-sm-none">
+                    <div class="d-flex justify-content-start">
+                        <div>Step 1/8</div>
+                        <div class="mobile-progress progress">
+                            <div class="progress-bar" style="width:12.5%;height:20px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-none d-sm-block">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="" ng-if="nameonCardPan" ng-class="nameonCardPan?'col-md-4':'col-md-6'">
+                    <label class="ax-label" ng-if="!webfinacle">Name as per PAN Card:</label>
+                    <label class="ax-label" ng-if="webfinacle">Name as per PAN Card:</label>
+                    <div class="ax-field">
+                        <input class="form-control text-uppercase" placeholder="Enter PAN Name" type="text" id="panCName" autocomplete="false"
+                            ng-model="formData.fields.username" ng-right-click stop-ccp
+                            ng-disabled="formData.ReferenceNumber || webJana"
+                            maxlength="100"  
+                            only-alphabet required />
+                        <span class="validation-result"></span>
+                    </div>
+                    <div class="input-message clearfix">
+                        <span class="error-message pan-right" ng-if="panCVerified">
+                            <i class="fa fa-times"></i> PAN Name Enter</span>
+                    </div>
+                </div>
+                <div class="" ng-class="nameonCardPan?'col-md-4':'col-md-6'">
+                    <label class="ax-label" ng-if="!webfinacle">Enter valid PAN no:</label>
+                    <label class="ax-label" ng-if="webfinacle">PAN:</label>
+                    <div class="ax-field">
+                        <input class="form-control text-uppercase" placeholder="Enter PAN" type="text" id="pan" autocomplete="false"
+                            ng-model="formData.fields.panNumber" ng-right-click stop-ccp
+                            ng-disabled="formData.ReferenceNumber || webJana"
+                            maxlength="10"
+                            ng-keypress="$event.keyCode == 13 ? $event.preventDefault() : null; $event.keyCode == 13 ? panEnter() : panErrorClear();"
+                            ng-keyup="panErrorClear()" alpha-numeric required />
+                        <span class="validation-result"></span>
+                    </div>
+                    <div class="input-message clearfix">
+                        <span class="success-message pan-verified1 pull-left" ng-show="panVerified">
+                            <i class="fa fa-check"></i> PAN Verified</span>
+                        <span class="error-message pull-right" ng-show="panError">
+                            <i class="fa fa-times"></i> PAN card is mandatory to open Axis Direct account. Based on PAN,
+                            your KYC details will be fetched from KRA.</span>
+                        <span class="error-message pull-right" ng-show="panInValid">
+                            <i class="fa fa-times"></i> Please provide valid PAN</span>
+                        <span class="error-message pull-right" ng-show="panCoVaild">
+                            <i class="fa fa-times"></i> Only Individual Account can be opened digitally. For Non Individual category, please process through Physical Form.
+                        </span>
+                    </div>
+                </div>
+                <!--  ng-disabled="((formData.ReferenceNumber) && (!formData.previewDetails || formData.fields.KRAVerified) || webJana)"-->
+                <div class="" ng-class="nameonCardPan?'col-md-4':'col-md-6'">
+                    <label class="ax-label">Date of Birth:</label>
+                    <div class="ax-field">
+                        <input class="form-control ll-skin-melon" placeholder="Enter DOB" type="text" id="txtDOB"
+                            ng-model="formData.fields.DOB" ng-disabled="dobFreeze" maxlength="10" readonly/>
+                        <span class="validation-result"></span>
+                    </div>
+                    <div class="input-message clearfix">
+                        <span class="success-message kra-verified pull-left" ng-show="kraCustomer">
+                            <i class="fa fa-check"></i> KRA Verified</span>
+                        <span class="error-message pull-right" ng-if="dobError">
+                            <i class="fa fa-times"></i> Please provide Date of Birth</span>
+                        <span class="error-message pull-right" ng-show="ageInvalid">
+                            <i class="fa fa-times"></i> Must have completed 18 years of age</span>
+                    </div>
+                </div>
+               
+                
+            </div>
+            <div class="row" ng-show="formData.RMModule">
+                <div class="col-md-6">
+                    <label class="ax-label" for="rmmobileExtn">Mobile Number:</label>
+                    <div class="row">
+                        <div class="col-3">
+                            <input class="form-control" type="tel" id="rmmobileExtn" ng-model="formData.fields.mobileExtn"
+                                ng-disabled="true" maxlength="10" only-digits />
+                        </div>
+                        <div class="col-9">
+                            <div class="ax-field">
+                                <input class="form-control" autocomplete="nope" placeholder="Enter 10 Digit Mobile Number" type="tel" id="rmmobile"
+                                    ng-model="formData.fields.rmmobile" 
+                                    ng-disabled="formData.ReferenceNumber || rmotpobile || rmotpVerifiedmobile || rmotpSectionShow" maxlength="10"
+                                    ng-keypress="$event.keyCode == 13 ? registration() : null" ng-keyup="rmmobileErrorClear()"
+                                    required only-digits  />
+                                <span class="validation-result"></span>
+                            </div>
+                            <div class="input-message clearfix">
+                            <span class="error-message pull-right" ng-show="rmemptyMobile && !RMOtpResponseMsg"><i class="fa fa-times"></i> Mobile
+                                number is mandatory.</span>
+                            <span class="error-message pull-right" ng-show="rminvalidMobile && !RMOtpResponseMsg"><i class="fa fa-times"></i> Please
+                                provide valid mobile number</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-6">
+                    <label class="ax-label">Email ID:</label>
+                    <div class="ax-field">
+                        <input class="form-control" autocomplete="nope" placeholder="Enter your valid Email ID" type="text" id="rmemailID"
+                            ng-model="formData.fields.rmemail" ng-keyup="rmemailErrorClear()"
+                            ng-keypress="$event.keyCode == 13 ? registration() : null"
+                            ng-disabled="formData.ReferenceNumber  || rmotpemail || rmotpVerifiedemail || rmotpSectionShow" required maxlength="50"  />
+                        <span class="validation-result"></span>
+                    </div>
+                    <span class="error-message pull-right" ng-show="rminvalidEmail || rmemptyEmail && !RMOtpResponseMsg"><i class="fa fa-times"></i>
+                        Please provide proper email address. Eg: john@xyz.com</span>
+                    <span class="error-message pull-right" ng-show="RMOtpResponseMsg"><i class="fa fa-times"></i>
+                        {{RMOtpResponseMsg}}</span>
+                </div>
+            </div>
+            <div class="row" ng-show="rmotpSectionShow">
+                <div class="col-md-6">
+                    <label class="ax-label">Mobile OTP:</label>
+                    <div class="ax-timerandresend">
+                        <div class="ax-field">
+                            <input autocomplete="nope" maxlength="6" only-digits ng-keypress="rmemptyMobileOTP = false; $event.keyCode == 13 ? rmvalidateOTP() : ''" ng-model="formData.fields.rmmobileOTP" class="form-control" type="{{ rmmtypePassword ? 'text' : 'password' }}"
+                                id="rmmobileOtp" required />
+                            <i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': rmmtypePassword, 'fa-eye-slash': !rmmtypePassword}" style="right:10px;" ng-click="togglePassword('rmmobile')"></i>
+                        </div>
+                        <p class="error-message pull-right" ng-if="rmemptyMobileOTP"><i class="fa fa-times"></i> Mobile OTP is Empty</p>
+                        <p class="error-message pull-right" ng-if="rminvalidMobileOTP"><i class="fa fa-times"></i> {{rmemailapiResponseErrorMsg}}</p>
+                        <div ng-if="!RMOtpResponseMsg">
+                            <h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5" ng-if="rmotpSentMobile">We have sent a One Time Password to your mobile number.</h4>
+                        </div>
+                        
+    
+                        <div ng-if="RMOtpResponseMsg">
+                            <h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5">{{RMOtpResponseMsg}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="ax-label">Email OTP:</label>
+                    <div class="ax-timerandresend">
+                        <div class="ax-field">
+                            <input autocomplete="nope" maxlength="6" only-digits ng-keypress="rmemptyEmailOTP = false; $event.keyCode == 13 ? rmvalidateOTP() : ''" ng-model="formData.fields.rmemailOTP" class="form-control" type="{{ rmetypePassword ? 'text' : 'password' }}"
+                                id="rmemailOtp" required />
+                            <i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': rmetypePassword, 'fa-eye-slash': !rmetypePassword}" style="right:10px;" ng-click="togglePassword('rmemail')"></i>
+                        </div>
+                        <p class="error-message pull-right" ng-if="rmemptyEmailOTP"><i class="fa fa-times"></i> Email OTP is Empty</p>
+                        <p class="error-message pull-right" ng-if="rminvalidEmailOTP"><i class="fa fa-times"></i> {{rmmobileapiResponseErrorMsg}}</p>
+                        <div ng-if="!RMOtpResponseMsg">
+                            <h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5" ng-if="rmotpSentEmail">We have sent a One Time Password to your email.</h4>
+                        </div>
+                        <div ng-if="RMOtpResponseMsg">
+                            <h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5">{{RMOtpResponseMsg}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-message clearfix" ng-if="panErrMis">
+                <span class="error-message pull-right"><i class="fa fa-times"></i>{{formData.panStatus}}</span>
+            </div>
+            <div class="row mb-5">
+                <div class="col-sm-12">
+                    <p class="page-tag page-tag1 ax-bold-title  mb-5 mt-3" ng-if="webfinacle">
+                        Proceeding ahead in the journey, shall override your registration for DNC if any. You hereby authorize Axis Securities Ltd, to call and assist you over SMS/E-Mail/WhatsApp.
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    <!-- <button class="btn btn-primary ax-btn-primary" id="personalDetails" 
+                    ng-disabled="formData.hideBtn || formData.apiLoading" ng-click="registration()">PROCEED TO PERSONAL
+                    DETAILS</button> -->
+                    <button class="btn btn-primary ax-btn-primary" id="personalDetails" ng-if="(!formData.RMModule || (formData.RMModule && formData.ReferenceNumber))&&!BYOD"
+                    ng-disabled="formData.hideBtn || formData.apiLoading" ng-click="registration()">PROCEED TO PERSONAL
+                    DETAILS</button>
+                    <button class="btn btn-primary ax-btn-primary" id="personalDetails" ng-if="BYOD"
+                    ng-disabled="formData.hideBtn || formData.apiLoading" ng-click="registration()">PROCEED TO PERSONAL
+                    DETAILS</button>
+                    <button class="btn btn-primary ax-btn-primary" id="personalDetails" ng-if="(formData.RMModule &&!rmotpSectionShowStage&& !rmotpSectionShow && !formData.ReferenceNumber)&&!BYOD"
+                    ng-disabled="formData.hideBtn || formData.apiLoading || formData.disableApp" ng-click="registration()">GET OTP ON MOBILE & EMAIL</button>
+                <button class="btn btn-primary ax-btn-primary" id="personalDetails" ng-if="(formData.RMModule && (rmotpSectionShow||rmotpSectionShowStage))&&!BYOD"
+                    ng-disabled="formData.hideBtn || formData.apiLoading || formData.disableApp" ng-click="validateRMOTP()">START REGISTRATION</button>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-3 d-none d-sm-block">
+            <div class="mt-0 mb-3 ax-sec-title">Help is Here</div>
+            <div class="guideline-with-bg" ng-if="pan">
+                <div class="d-flex pb-4">
+                    <div class="pe-3">1.</div>
+                    <div>Pan card is a mandatory document to open
+                        Demat and Trading Account as per SEBI
+                        Guidelines</div>
+                </div>
+                <div class="d-flex pb-4">
+                    <div class="pe-3">2.</div>
+                    <div class="">We require you to input your PAN number
+                        and DOB to verify if you are a KYC compliant
+                        customer</div>
+                </div>
+                <div class="d-flex pb-4">
+                    <div class="pe-3">3.</div>
+                    <div class="">Please ensure your DOB is as per your PAN
+                        Card</div>
+                </div>
+                <div class="d-flex pb-4">
+                    <div class="pe-3">4.</div>
+                    <div class="">In case your KYC is successfully verified, the
+                        form will be auto filled.</div>
+                </div>
+                <!-- <div>
+                    <i class="fa fa-question-circle fa-lg"></i> Need Further Assist? <span style="color: #97144d; cursor: pointer;" class="cursor-pointer" ng-click="formData.helpPopup()" role="button" tabindex="0"> Click here</span>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+<!-- button visible on scroll top -->
+<!-- <div class="">
+<button class="top-form-btn btn-visible-scroll" onclick="topFunction()" id="mybtn">Open Your Free Account</button>
+</div> -->
+<!-- end button visible on scroll top-->
+
+
+
+<script>
+    $(document).ready(function() {
+        const container = $('.containers');
+        const sections = $('section');
+        const navLinks = $('nav li');
+        let currentIndex = 0;
+        const scrollInterval = 5000; // Change interval in milliseconds
+
+        // Function to update active nav link
+        function updateNav() {
+            let scrollPos = container.scrollLeft();
+            sections.each(function(i) {
+                if ($(this).position().left <= scrollPos + 100) {
+                    navLinks.removeClass('active');
+                    navLinks.eq(i).addClass('active');
+                }
+            });
+        }
+
+        // Scroll to the next 100px
+        function scrollToNextSection() {
+            const targetPosition = container.scrollLeft() + 100;
+            container.animate({scrollLeft: targetPosition}, 1000);
+            updateNav(); // Call updateNav to ensure active link is updated
+        }
+
+        // Set up scroll event listener
+        container.on('scroll', function() {
+            updateNav();
+        });
+
+        // Set up click event listener for nav links
+        $('nav a').on('click', function(event) {
+            event.preventDefault();
+            const target = $(this).attr('href');
+            const targetPosition = $(target).position().left;
+            container.animate({scrollLeft: targetPosition}, 1000);
+            currentIndex = $(target).index();
+        });
+
+        // Auto-scroll function
+        setInterval(scrollToNextSection, scrollInterval);
+
+        // Initialize navigation state
+        updateNav();
+    });
+</script>
+<!-- end enjoye section -->
+
+<!-- this for one acoount scroll auto move in mobile view -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const container = document.getElementById('carousel');
+        const dots = document.getElementById('dots').getElementsByClassName('dot');
+        let currentIndex = 0;
+        const totalItems = dots.length;
+        let isAutoScrolling = false;
+
+        function updateActiveDot(index) {
+            for (let dot of dots) {
+                dot.classList.remove('active');
+            }
+            dots[index].classList.add('active');
+        }
+
+        function scrollToIndex(index) {
+            const scrollAmount = index * container.children[0].offsetWidth;
+            isAutoScrolling = true;
+            container.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+            updateActiveDot(index);
+        }
+
+        function autoScroll() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            scrollToIndex(currentIndex);
+        }
+
+        // Initial setting
+        updateActiveDot(currentIndex);
+
+        // Set interval for auto scrolling
+        let autoScrollInterval = setInterval(autoScroll, 5000); // 3000ms = 3s
+
+        // Add click event listeners to dots
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].addEventListener('click', function() {
+                clearInterval(autoScrollInterval); // Clear the auto-scrolling interval
+                currentIndex = i;
+                scrollToIndex(i);
+                autoScrollInterval = setInterval(autoScroll, 5000); // Restart the auto-scrolling interval
+            });
+        }
+
+        // Add scroll event listener to update active dot on manual scroll
+        container.addEventListener('scroll', function() {
+            if (isAutoScrolling) {
+                isAutoScrolling = false;
+                return;
+            }
+            let closestIndex = 0;
+            let closestDistance = Number.MAX_VALUE;
+            for (let i = 0; i < totalItems; i++) {
+                let itemLeft = container.children[i].offsetLeft;
+                let distance = Math.abs(itemLeft - container.scrollLeft);
+                if (distance < closestDistance) {
+                    closestIndex = i;
+                    closestDistance = distance;
+                }
+            }
+            updateActiveDot(closestIndex);
+            currentIndex = closestIndex;
+        });
+    });
+</script>
+<!-- end this for one acoount scroll auto move in mobile view -->
+
+<!-- this for document scroll auto move in mobile view -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carouselContainer = document.getElementById('carouselContainer');
+        const indicators = document.getElementById('carouselIndicators').getElementsByClassName('indicator-item');
+        let currentIndex = 0;
+        const totalItems = indicators.length;
+        let autoScrolling = false;
+        const itemWidth = carouselContainer.children[0].offsetWidth;
+
+        function setActiveIndicator(index) {
+            Array.from(indicators).forEach(indicator => indicator.classList.remove('active'));
+            indicators[index].classList.add('active');
+        }
+
+        function scrollToIndex(index) {
+            const scrollAmount = index * itemWidth;
+            autoScrolling = true;
+            carouselContainer.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+            setActiveIndicator(index);
+        }
+
+        function startAutoScroll() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            scrollToIndex(currentIndex);
+        }
+
+        // Initial setup
+        setActiveIndicator(currentIndex);
+
+        // Auto-scroll interval
+        let autoScrollInterval = setInterval(startAutoScroll, 3000); // 3000ms = 3s
+
+        // Click event for indicators
+        Array.from(indicators).forEach((indicator, index) => {
+            indicator.addEventListener('click', function() {
+                clearInterval(autoScrollInterval); // Stop auto-scrolling
+                currentIndex = index;
+                scrollToIndex(index);
+                autoScrollInterval = setInterval(startAutoScroll, 3000); // Restart auto-scrolling
+            });
+        });
+
+        // Update active indicator on manual scroll
+        carouselContainer.addEventListener('scroll', function() {
+            if (autoScrolling) {
+                autoScrolling = false;
+                return;
+            }
+            let closestIndex = Math.round(carouselContainer.scrollLeft / 100);
+            closestIndex = Math.min(closestIndex, totalItems - 1); // Ensure index is within bounds
+            setActiveIndicator(closestIndex);
+            currentIndex = closestIndex;
+        });
+    });
+</script>
+<!-- end this fordocument scroll auto move in mobile view -->
+
+<script>
+     $(document).ready(function(){
+        $('[data-bs-toggle="collapse"]').on('mouseenter', function() {
+            $(this).parents('.card').find('.collapse').collapse('show');
+        });
+    });
+
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+</script>
+
+<script>
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+<section class="modal fade" id="paninformation" role="dialog" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog login-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom: 0 !important;">
+                <h4 style="text-align:left;" ng-if="panSeedingBtnShowheader"  ng-hide="formData.hideCancel || janabank" >Aadhaar-Pan Linking</h4>
+                <button type="button" class="btn-close"  ng-click="redirectToRegister()" ng-if="formData.panSeedingBtnShow"  ng-hide="formData.hideCancel || janabank" data-bs-dismiss="modal"
+                    data-bs-toggle="tooltip" data-bs-dismiss="modal" title="">
+                    <i class="icon16 card-collapse"></i>
+                </button>
+
+            </div>
+            <div class="modal-body login-body pt-0 pb-0">
+                <div class="login-screen welcome-content">
+                    <form class="input-forms">
+                        <ul class="form-fields text-center">
+                            <li class="final-step no-padding">
+                                <p class="page-tag page-tag1 ax-sec-title mt-0" compile="formData.panStatus"></p>
+                            </li>
+                            <li class="mt-5">
+                                <!-- <button type="button" class="btn ax-btn-disabled mr-4" ng-hide="formData.hideCancel || janabank"
+                                     data-bs-dismiss="modal" ng-click="redirectToRegister()">
+                                    Cancel
+                                </button> -->
+                                <button type="button" class="btn ax-btn-primary"
+                                    ng-click="regdecryptUrl();" id="refExist" data-bs-dismiss="modal" ng-if="ibrefernceExist">
+                                    Resume Application
+                                </button>
+                                <button type="button" class="btn ax-btn-primary"
+                                   ng-click="formData.panVerification = false; decryptUrl();" id="refExist" ng-if="refernceExist">
+                                    Okay
+                                </button>
+                                <!-- <button type="button" class="btn ax-btn-primary"
+                                   ng-click="formData.panVerification = false; openCheckAccountStatus();" id="refExist" ng-if="refernceExist">
+                                    Okay
+                                </button> -->
+                                <button type="button" class="btn ax-btn-primary"
+                                    ng-click="formData.panVerification = false; existingDroppedToken()"
+                                     data-bs-dismiss="modal"
+                                    ng-if="formData.applicationDisabled">
+                                    Okay
+                                </button>
+                                <button type="button" class="btn ax-btn-primary"
+                                    ng-click="formData.panVerification = false; kraValidation()"
+                                    id="getKraDetailsButton" data-bs-dismiss="modal"
+                                    ng-if="formData.getKraDetails && !formData.otherMode">
+                                    Okay
+                                </button>
+                                <button type="button" class="btn ax-btn-primary" data-bs-dismiss="modal"
+                                    id="otherModeButton" ng-click="redirectToRegister()" ng-if="formData.otherMode && !formData.HideOkayBtn">
+                                    Okay
+                                </button>
+                                <button type="button" class="btn ax-btn-primary" data-bs-dismiss="modal"
+                                    id="otherModeButton" ng-click="redirectToIB()" ng-if="ibResumeError">
+                                    Resume
+                                </button>
+                                <!-- <button type="button" class="btn ax-btn-primary" data-bs-dismiss="modal"
+                                    id="otherModeButton" ng-click="panSeedingPopupDetail()" ng-if="formData.panSeedingBtnShow">
+                                    Okay
+                                </button> -->
+                                <button type="button" class="btn ax-btn-primary" data-bs-dismiss="modal"
+                                    id="janaModeButton" ng-click="formData.panVerification = false; decryptUrl();" ng-if="janabankExistingAccountsttaus">
+                                    Continue Existing Application
+                                </button>
+                                <button type="button" class="btn ax-btn-primary" data-bs-dismiss="modal"
+                                    id="otherModeButton" ng-click="redirectToRegister()" ng-if="Pannamemismatched">
+                                    Okay
+                                </button>
+                                <!-- <button type="button" class="btn ax-btn-primary" data-bs-dismiss="modal"
+                                    id="janaModeButton" ng-click="formData.panVerification = false; openCheckAccountStatus();" ng-if="janabankExistingAccountsttaus">
+                                    Continue Existing Application
+                                </button> -->
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="PanSeedinginformation" role="dialog" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog login-dialog" style="margin-top: 231.5px;">
+        <div class="modal-content">
+            <!--<div class="modal-header">
+                <button type="button" class="close" id="panVerificationSection" ng-click="formData.panVerification = false" data-bs-dismiss="modal"
+                    data-bs-toggle="tooltip" title="">
+                    <i class="icon16 card-collapse"></i>
+                </button>
+            </div>-->
+            <div class="modal-body login-body">
+                <div class="login-screen welcome-content">
+                    <form class="input-forms">
+                        <ul class="form-fields text-center">
+                            <li class="final-step no-padding">
+                                <p class="page-tag page-tag1 ax-sec-title mt-0" compile="formData.GetPanStatusDetails"></p>
+                            </li>
+                            <li class="mt-5">
+                                <button type="button" class="btn ax-btn-disabled mr-4"
+                                     data-bs-dismiss="modal" ng-click="redirectToRegister()">
+                                    Cancel
+                                </button>
+                                <button type="button" class="btn ax-btn-primary"
+                                    ng-click="formData.panVerification = false; kraValidation()"  data-bs-dismiss="modal"
+                                   >
+                                    Okay
+                                </button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="DebarredPan" role="dialog" tabindex="-1">
+        <div class="modal-dialog login-dialog" style="margin-top: 231.5px;">
+            <div class="modal-content">
+                <!--<div class="modal-header">
+                    <button type="button" class="close" id="panVerificationSection" ng-click="formData.panVerification = false" data-bs-dismiss="modal"
+                        data-toggle="tooltip" title="">
+                        <i class="icon16 card-collapse"></i>
+                    </button>
+                </div>-->
+                <div class="modal-body login-body">
+                    <div class="login-screen welcome-content">
+                        <form class="input-forms">
+                            <ul class="form-fields text-center">
+                                <li class="final-step no-padding">
+                                    <p class="page-tag page-tag1 ax-sec-title mt-0" compile="formData.panStatus"></p>
+                                </li>
+                                <li class="mt-5">
+                                    <button type="button" class="btn ax-btn-primary"
+                                        ng-click="DebarredPan()"
+                                        id="" data-bs-dismiss="modal">
+                                        Okay
+                                    </button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="modal fade" id="digilocker" role="dialog" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered m-0 p-0" style="max-width: 100%;">
+        <div class="modal-content">
+            <div class="modal-header ax-headerBorder" style="padding-bottom: 2px !important; padding-top: 2px !important;">
+                <div>
+                    <!-- <img src="./assets/images/band.png" class="img-fluid" alt=""> -->
+                </div>
+            </div>
+            <div class="col-12 mb-4 mx-0 pt-5" style="background-color: #FFF6F3;">
+                <div class="row">
+                    <div class="col-md-5 col-12 text-end">
+                        <h3 class="fw-bold text-dark text-center">
+                            Fetch your details and 
+                        </h3>
+                        <h3 class="fw-bold text-dark text-center  docdigi">
+                             documents using DigiLocker.
+                        </h3>
+                    </div>
+                    <div class="col-md-7 col-12">
+                        <img src="./assets/images/digilogocom.png" class="img-fluid" alt="">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body login-body px-md-5 px-0 pt-0">
+                <div class="container">
+                <div class="row">
+                <div class="col-md-4 mb-md-0 mb-3">
+                    <div class="digidesign text-dark">
+                        <div class=" mt-0 mb-4">
+                            <p class="fw-bold text-dark">
+                                What is DigiLocker?
+                            </p>
+                            <p class="f-14">
+                                DigiLocker is a government-provided platform for obtaining verified documents digitally.
+                            </p>
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <p class="fw-bold text-dark">
+                                Steps for Digilocker:
+                            </p>
+                        </div>
+                        <ul class="mb-3" style="list-style-type: disc; padding-left: 2rem;">
+                            <li>Keep your Aadhar number and mobile number linked with Aadhar handy</li>
+                            <li>You will receive OTP on this number.</li>
+                            <li>If you haven't set up your DigiLocker PIN, create a
+                                6-digit Digilocker PIN.
+                                </li>
+                                <li>
+                                    If you forgotten your existing Digilocker Pin, click on "Forgot security PIN" on the DigiLocker KYC screen and create a new 6-digit PIN.
+
+                                </li>
+                        </ul>
+                    </div>
+                            
+                </div>
+                <div class="col-md-8">
+                    <div class="card"  style="
+                    border: 1px solid #AE275F !important;">
+                        <img src="./assets/images/GifDigi.gif" alt="" class="mt-3">
+                    </div>
+                    <ul class="mt-5" style="list-style-type: disc;padding-left: 5rem;padding-right: 5rem;">
+                        <li class="page-tag page-tag1 mb-4" style="font-size: 14px;color: #282828;">
+                            If you do not wish to continue via DigiLocker, please proceed with the journey by entering your details and uploading the relevant documents.  <a type="button" style="color: #ED1164 !important;" href="javascript:void(0);" data-bs-dismiss="modal" ng-click="formFilling()" ng-if="!hideDigiBtn">
+                                Click here to Proceed
+                            </a>.
+                        </li>
+                    </ul>
+                            <div class="checkBoxSect2 mt-5" style="padding-left: 3rem;padding-right: 5rem;color: #282828;">
+                                <label class="cBox2" for="digitermscondition"> I agree to the <a href="javascript:void(0)" ng-click="Digiterms()" style="color: #AE275F"> Terms & Conditions for opting Digilocker.</a> 
+                                <input type="checkbox" id="digitermscondition" name="rdnContractNote"> <span class="tickMark2"></span></label>
+                            </div>
+                            <span class="error-message pull-right" ng-if="digitmcondition" style="padding-left: 3rem; top:0rem !important"><i class="fa fa-times"></i>
+                                Please select the Terms & Conditions.</span>
+                </div>
+            </div>
+           
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end ">
+                    <button type="button" ng-if="!hideDigiBtn" class="btn ax-btn-primary" style="font-size: 14px;padding: 10px 15px !important;border-radius: 8px;" ng-click="getDigiLocker1()">
+                        Proceed with DigiLocker
+                        <!-- <p class="m-0 f-11"><span >(Fast KYC)</span></p> -->
+                     </button>
+                </div> 
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="Digiterms" role="dialog" tabindex="-1">
+    <div class="modal-dialog login-dialog">
+        <div class="modal-content" style="background: #F9F9F9;">
+            <div class="modal-header" >
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="ax-sec-title mt-0 fw-bold text-dark">Terms & conditions</h4>
+                    </div>
+                </div>
+                <button type="button" class="btn-close close" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                    title="Close">&times;</button>
+              
+            </div>
+            <div class="modal-body py-0 text-dark">
+
+                <div class="row mt-2 mb-5">
+                    <div class="col-12 text-left terms-content">
+                        <ul style="list-style-type: disc; padding-left: 2rem;">
+                        <li>By agreeing to these terms and conditions you have voluntarily consented that at their own discretion, you have submitted the Aadhaar information to Axis Securities Ltd (ASL) for the purpose of establishing identity/address proof for opening a digital Trading and Demat account.
+                        </li>
+                        <li>You hereby consent to ASL that you have no objection for verification of the genuineness of the Aadhaar through Quick Response (QR) embedded code or through such other manner as set out by UIDAI or any other law from time to time.
+                        </li>
+                        <li>You will be redirected to an authorized agency website whose services are being availed by ASL for the purpose of authentication of your credentials.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" data-bs-dismiss="modal" class="btn ax-btn-primary text-uppercase">
+                            Okay</button>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="OTPpopMobile" role="dialog" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog login-dialog" style="max-width:500px !important">
+        <div class="modal-content" style="background: #F9F9F9;margin-top: 10rem;">
+            <div class="modal-header" >
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="ax-sec-title mt-0 fw-bold text-dark">Mobile OTP Verification</h4>
+                    </div>
+                </div>
+                <!-- <button type="button" class="btn-close close" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                    title="Close">&times;</button> -->
+              
+            </div>
+            <div class="modal-body py-0 text-dark">
+
+                <div class="row" ng-show="otpSectionShow">
+                    <div class="">
+                        <label class="ax-label">Mobile OTP:</label>
+                        <div class="ax-timerandresend">
+                            <div class="ax-field">
+                                <input autocomplete="nope" maxlength="6" only-digits ng-keypress="emptyMobileOTP = false; $event.keyCode == 13 ? validateOTP() : ''" ng-model="formData.fields.mobileOTP" class="form-control" type="{{ typePassword ? 'text' : 'password' }}"
+                                    id="mobileOtp" required />
+                                <a href="javascript:void(0);" class="" tabindex="-1" ng-if="enableResendButton" ng-click="resendOTP('mobile')"
+                                    ng-class="{adisabled: mobileResendDisable}" rel="noopener">RE-SEND</a>
+                                <span ng-bind="counter" ng-if="!enableResendButton"></span>
+                                <span class="validation-result"></span>
+                                <i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': typePassword, 'fa-eye-slash': !typePassword}" ng-click="togglePassword('mobile')"></i>
+                            </div>
+                            <p class="error-message pull-right" ng-if="emptyMobileOTP"><i class="fa fa-times"></i> Mobile OTP is Empty</p>
+                            <p class="error-message pull-right" ng-if="invalidOTP"><i class="fa fa-times"></i> {{apiResponseErrorMsg}}</p>
+                            <div ng-if="!OtpLimitExceed">
+                                <h4 class="page-tag page-tag1 ax-bold-title mt-0 " ng-if="otpSent">We have sent a One Time Password to your mobile number.</h4>
+                                <h4 class="page-tag page-tag1 ax-bold-title mt-0" ng-if="otpreSent">We have re-sent a One Time Password to your mobile number.</h4>
+                            </div>
+                            
+                
+                            
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-12">
+                        <h4 class="page-tag page-tag1 ax-bold-title mt-0"> Proceeding ahead if you are a KRA compliant, Axis Securities Limited (ASL) will retrieve data/documents from KRA. By initiating the online account opening process, ASL considers consent for fetching data/documents from KRA.</h4>
+                    </div> -->
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="col-md-12">
+                            <button class="btn ax-btn-primary w-100 rounded-4" id="registration" ng-if="showRegistrationBtn"
+                                ng-click="validateOTP()">START REGISTRATION</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</section>
+
+<section class="modal fade" id="allowEsigns" role="dialog">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <p>
+                    Unable to complete the signup process. We noticed that the NSDL Pan service is experiencing intermittent timeouts.  We regret the trouble this has caused. As soon as the services are restored, we will give you an update.
+                </p>
+                
+                <button data-bs-dismiss="modal" ng-click="allowEsignFunc()"
+                    class="btn ax-btn-primary text-uppercase">
+                    Okay</button>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="TCInfor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-modal="true" role="dialog">
+    <div class="modal-dialog login-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="ax-sec-title mt-0 fw-bold text-dark">Terms &amp; conditions</h4>
+            </div>
+        </div>
+        <button type="button" class="btn-close close" data-bs-dismiss="modal" data-bs-toggle="tooltip" title="Close">×</button>
+      
+    </div>
+    <div class="bb-1px"></div>
+    <div class="modal-body py-0 my-4 text-dark">
+        <div class="row m-0">
+            <div class="col-sm-12">
+                <!-- <div class="my-3"><h4 style="font-size: 20px;" >Demat & Trading Preferences</h4></div> -->
+                <ul class="form-fields list-decor pl-4" style="list-style-type: disc;">
+                    <li>I hereby agree and allow Axis Securities Limited to download my KYC information available from KRA/CKYC for the purpose
+                        of opening trading and demat accounts.</li>
+                    <li>I hereby agree that my Trading and Demat account will be opened as per the name available in the Income tax database.</li>
+                    <li>I hereby consent to receive information from Central KYC Registry/KRA through SMS/Email on the above-registered
+                        number/email address and to download my records from CKYCR by Axis Securities Limited.</li>
+                   
+                    </ul>
+    </div>
+    </div>
+    </div>
+    <!-- <div class="modal-footer justify-content-center">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-md-12">
+                    <button class="btn ax-btn-primary w-100 rounded-4" id="registration" ng-if="showRegistrationBtn"
+                        ng-click="validateOTP()">START REGISTRATION</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>  -->
+</div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+            </div> -->
+        </div>
+
+    </div>
+<!-- <section class="modal fade" id="OTPpopMobile" role="dialog" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog login-dialog otp-popup">
+        <div class="modal-content" style="background: #F9F9F9;margin-top: 10rem;">
+            <div class="modal-header" >
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="ax-sec-title mt-0 fw-bold text-dark">{{NewLandingPage ? 'Enter your OTP Details' : 'Mobile OTP Verification'}}</h4>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="modal-body py-0 text-dark">
+
+                <div class="row" ng-show="otpSectionShow">
+                    <div class="">
+                        <label class="ax-label">Mobile OTP:</label>
+                        <div class="ax-timerandresend">
+                            <div class="ax-field newForm" ng-class="(invalidOTP || emptyMobileOTP) ? 'mb-3' : 'mb-5'">
+                                <input autocomplete="nope" maxlength="6" only-digits ng-keypress="emptyMobileOTP = false; $event.keyCode == 13 ? validateOTP() : ''" ng-model="formData.fields.mobileOTP" class="form-control" type="{{ typePassword ? 'text' : 'password' }}"
+                                    id="mobileOtp" required />
+                                <a href="javascript:void(0);" class="" tabindex="-1" ng-if="enableResendButton" ng-click="resendOTP('mobile')"
+                                    ng-class="{adisabled: mobileResendDisable}" rel="noopener">RE-SEND</a>
+                                <span ng-bind="counter" ng-if="!enableResendButton"></span>
+                                <span class="validation-result"></span>
+                                <i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': typePassword, 'fa-eye-slash': !typePassword}" ng-click="togglePassword('mobile')"></i>
+                            </div>
+                            <p class="error-message1 text-left mb-3 mt-0" ng-if="emptyMobileOTP"><i class="fa fa-times"></i> Mobile OTP is Empty</p>
+                            <p class="error-message1 text-left mb-3 mt-0" ng-if="invalidOTP"><i class="fa fa-times"></i> {{apiResponseErrorMsg}}</p>
+                            <div ng-if="!OtpLimitExceed">
+                                <h4 class="page-tag page-tag1 ax-bold-title mt-0 " ng-if="otpSent">We have sent a One Time Password to your mobile number.</h4>
+                                <h4 class="page-tag page-tag1 ax-bold-title mt-0" ng-if="otpreSent">We have re-sent a One Time Password to your mobile number.</h4>
+                            </div>
+                            
+                
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center" style="padding: .75rem !important;">
+                            <button class="btn ax-btn-primary w-100 rounded-4" id="registration" ng-if="showRegistrationBtn"
+                                ng-click="validateOTP()">Submit</button>
+            </div> 
+        </div>
+    </div>
+</section> -->

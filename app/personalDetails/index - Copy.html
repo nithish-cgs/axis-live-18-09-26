@@ -1,0 +1,970 @@
+<style>
+button[disabled], html input[disabled], button[disabled]:hover, html input[disabled]:hover {
+    cursor: no-drop;
+	background: #ddd;
+	box-shadow: none;
+}
+.table {
+display: none !important;
+}
+</style>
+<!-- Global site tag (gtag.js) - Google Ads: 727858862 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-727858862"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-727858862');
+</script>
+<!-- Event snippet for AxisDirect_PersonalDetails-B_Dec20 conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-727858862/hgQGCO7a_OsBEK79iNsC'});
+</script>
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1253495914811323');
+  fbq('track', 'PageView');fbq('trackCustom', 'AxisDirect-PersonalDetails-B');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1253495914811323&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+<div class="profileaddresschangestep1 pacs">
+    <!--Contact Details-->
+    <div class="onboard-innerinfo">
+        <div class="clearfix ob-form-header">
+            <!-- <div class="pull-left">
+                <a href="javascript:void(0);" ng-click="secondSection()" class="previous">Previous</a>
+                <a href="javascript:void(0);" ng-click="fourthSection()" class="next">Next</a>
+            </div> -->
+            <!-- <div class="pull-right">
+                <div class="text-right" ng-if="formData.ReferenceNumber">Reference Number :
+                    {{formData.ReferenceNumber}}</div>
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-12 d-block d-sm-none">
+                        <div class="d-flex justify-content-start">
+                            <div>Step 3/8</div>
+                            <div class="mobile-progress progress">
+                                <div class="progress-bar" style="width:37.5%;height:20px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="ax-sec-title">Enter additional info</h4>
+                    </div>
+
+                    <div class="col-12" id="additionalInfo">
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <label class="ax-label">Residential Status:</label>
+
+                                <select class="select resident-status form-control" id="rStatus"
+                                    ng-model="formData.fields.resStatus" ng-change="resStatus()">
+                                    <option value="Resident Individual">Resident Individual</option>
+                                    <option value="Non Resident Indian">Non Resident Indian</option>
+                                    <option value="Foreign National">Foreign National</option>
+                                    <option value="Person of Indian Origin">Person of Indian Origin</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="rStatusError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                                <div class="input-message clearfix" ng-if="nonIndian"><span
+                                        class="error-message pull-right"><i class="fa fa-times"></i> Only accounts with
+                                        Resident Individual Allowed to open
+                                        from here. Please call us on 022-61480808 or 022-40508080 for opening an account with us</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ax-label">Citizenship:</label>
+
+                                <select disabled class="select form-control" ng-model="formData.fields.citizen"
+                                    id="citizen">
+                                    <option value="" ng-hide="formData.fields.citizen">Country</option>
+                                    <option ng-selected="country.CountryName == formData.fields.citizen"
+                                        ng-repeat="country in formData.countryList track by [$index]"
+                                        value="{{country.CountryName}}">{{country.CountryName}}</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="citizenError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="ax-label">Marital Status:</label>
+                                <select class="select form-control" ng-model="formData.fields.marital"
+                                    data-placeholder="Marital Status" ng-change="maritalError=false;" name="marital" id="marital">
+                                    <option></option>
+                                    <option value="S">Single</option>
+                                    <option value="M">Married</option>
+                                    <option value="O">Others</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="maritalError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ax-label">Gender:</label>
+                                <select class="select form-control" ng-model="formData.fields.gender" ng-if="!formData.RMModule"
+                                    data-placeholder="Gender" name="gender" id="gender">
+                                    <option></option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="T">Transgender</option>
+                                </select>
+								<select class="select form-control" ng-model="formData.fields.gender" ng-if="formData.RMModule"
+                                    data-placeholder="Gender" name="gender" id="gender">
+                                    <option></option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="genderError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mb-2 mb-sm-4">
+                                <ul class="list-inline radiolist" ng-show="fsType">
+                                    <li>
+                                        <label for="father">
+                                            <input type="radio" class="customcheckradio"
+                                                ng-model="formData.fields.fsType" name="fstype" id="father" value="F" />
+                                            <span>Father</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label for="spouse">
+                                            <input type="radio" class="customcheckradio"
+                                                ng-model="formData.fields.fsType" name="fstype" id="spouse" value="S"
+                                                checked />
+                                            <span>Spouse</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12">
+                                <label class="ax-label">Father's <span ng-if="fsType">/ Spouse</span> Name:</label>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="ax-label">Title:</label>
+                                <select class="select form-control" ng-disabled='true' data-placeholder="Title"
+                                    id="fsTitle">
+                                    <option></option>
+                                    <!--  <option value="DR">Dr</option> -->
+                                    <option selected='selected' value="MR">Mr</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="fsTitleError"><span
+                                    class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span></div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="ax-label">First Name:</label>
+                                <input class="input-field form-control" ng-keypress="fNames11Error = false" type="text" maxlength="25" only-alphabets
+                                    id="fNames11" value="" required="" ng-model="formData.fields.fsFirstName" ng-disabled="fsFirstNameFreeze">
+                                    <div class="input-message clearfix" ng-if="fNames11Error"><span
+                                        class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span></div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="ax-label">Middle Name:</label>
+                                <input class="input-field form-control" type="text" maxlength="25" only-alphabets
+                                    id="mNames11" value="" required="" ng-model="formData.fields.fsMiddleName" ng-disabled="fsMiddleNameFreeze">
+
+                            </div>
+                            <div class="col-md-3">
+                                <label class="ax-label">Last Name:</label>
+                                <input class="input-field form-control" type="text" maxlength="25" only-alphabets
+                                    id="lName11" value="" required="" ng-trim="true" ng-model="formData.fields.fsLastName" ng-disabled="fsLastNameFreeze">
+                                    <div class="input-message clearfix" ng-if="lNames11Error"><span
+                                        class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12"><label class="ax-label">Mother's Name:</label></div>
+                            <div class="col-md-2">
+                                <label class="ax-label">Title:</label>
+                                <select class="select form-control" ng-disabled='true' data-placeholder="Title"
+                                    id="moTitle">
+                                    <option></option>
+                                    <!--    <option value="DR">DR</option> -->
+                                    <option selected='selected' value="MRS">Mrs</option>
+                                    <!--           <option value="MISS">MISS</option>
+                                                    <option value="MS">MS</option> -->
+                                </select>
+                                <div class="input-message clearfix" ng-if="moTitleError"><span
+                                    class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span></div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="ax-label">First Name:</label>
+                                <input class="input-field form-control" ng-keypress="fName12Error = false" type="text" id="fName12" maxlength="25"
+                                    only-alphabets value="" required="" ng-model="formData.fields.moFirstName" ng-disabled="moFirstNameFreeze">
+                                    <div class="input-message clearfix" ng-if="fName12Error"><span
+                                        class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span></div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="ax-label">Middle Name:</label>
+                                <input class="input-field form-control" type="text" id="mName12" maxlength="25"
+                                    only-alphabets value="" required="" ng-model="formData.fields.moMiddleName" ng-disabled="moMiddleNameFreeze">
+
+                            </div>
+                            <div class="col-md-3">
+                                <label class="ax-label">Last Name:</label>
+                                <input class="input-field form-control" type="text" id="lName12" maxlength="25"
+                                    only-alphabets value="" required="" ng-model="formData.fields.moLastName" ng-disabled="moLastNameFreeze">
+                                    <div class="col-12 input-message clearfix" ng-if="lName12Error"><span
+                                        class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span></div>
+                            </div>
+                            <div class="list-inline relation-name" ng-if="moTitleError || fName12Error">
+                                <div class="col-12 input-message clearfix" ng-if="moTitleError"><span
+                                        class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span></div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="nameselect married-wselect row" ng-show="maiden">
+                                    <div class="col-12"><label class="ax-label">Your Maiden Name (Alternate
+                                            Name):</label></div>
+                                    <div class="col-12 col-sm-2">
+                                        <label class="ax-label">Title:</label>
+                                        <select class="select form-control" id="maidenTitle" data-placeholder="Title">
+                                            <option></option>
+                                            <!--         <option value="DR">DR</option>
+                                                                    <option value="MRS">Mrs</option> -->
+                                            <option value=""></option>
+                                            <option value="MISS">Miss</option>
+                                            <!--  <option value="MS">MS</option> -->
+                                        </select>
+                                    </div>
+
+
+                                    <div class="col-12 col-sm-4">
+                                        <label class="ax-label" for="fName1">First Name</label>
+                                        <div class="ax-field">
+                                            <input class="input-field form-control" ng-keypress="fName1Error = false" type="text" id="fName1"
+                                                maxlength="25" only-alphabets value="" required="" ng-disabled="maFirstNameFreeze"
+                                                ng-model="formData.fields.maFirstName">
+                                            <span class="validation-result"></span>
+                                        </div>
+										<div class="input-message clearfix" ng-if="fName1Error"><span class="error-message pull-right"><i class="fa fa-times"></i> Please provide valid input</span></div>
+                                    </div>
+                                    <div class="col-12 col-sm-3">
+                                        <label class="ax-label" for="mName1">Middle Name</label>
+                                        <div class="ax-field">
+                                            <input class="input-field form-control" type="text" id="mName2"
+                                                maxlength="25" only-alphabets value="" required="" ng-disabled="maMiddleNameFreeze"
+                                                ng-model="formData.fields.maMiddleName">
+                                            <span class="validation-result"></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12 col-sm-3">
+                                        <label class="ax-label" for="lName1">Last Name</label>
+                                        <div class="ax-field">
+                                            <input class="input-field form-control" type="text" id="lName2"
+                                                only-alphabets maxlength="25" value="" required="" ng-disabled="maLastNameFreeze"
+                                                ng-model="formData.fields.maLastName">
+                                        </div>
+                                        <div class="input-message clearfix" ng-if="lName1Error"><span
+                                            class="error-message pull-right"><i class="fa fa-times"></i>
+                                            Please provide valid input</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <label class="ax-label">Highest Education:</label>
+
+                                <select data-placeholder="Education" class="select  form-control" id="education"
+                                    ng-model="formData.fields.education" ng-change="educationError = false">
+                                    <option value="" ng-hide="formData.fields.education">Education</option>
+                                    <option ng-selected="ed.EducationId == formData.fields.education"
+                                        ng-repeat="ed in formData.educationList track by [$index]"
+                                        value="{{ed.EducationId}}">{{ed.Name}}</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="educationError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+							<!--<div class="col-md-6 parent-field" ng-if="formData.RMModule">
+                                <label class="input-label ax-label" for="input-rmemail">Email ID</label>
+                                <input class="input-field form-control" type="text" id="input-rmemail"
+                                    ng-model="formData.fields.RMemail" />
+								<div class="input-message clearfix">
+                                    <span class="error-message pull-right" ng-if="emptyEmail"><i
+                                            class="fa fa-times"></i>
+                                        Email address is mandatory.</span>
+                                    <span class="error-message pull-right" ng-if="invalidEmail"><i
+                                            class="fa fa-times"></i>
+                                        Please provide proper email address. Eg: john@xyz.com</span>
+                                </div>
+                            </div>-->
+                            <div class="col-md-6 parent-field" ng-if="!changeEmailAddress">
+                                <label class="input-label ax-label" for="input-1email">Email ID</label>
+                                <input class="input-field form-control" type="text" id="input-1email"
+                                    ng-model="formData.fields.email" ng-disabled="!formData.RMModule || rmemailotpSuccess || !rmonloadValidate || rmnewEmailOTP" />
+                                <div class="input-message child-field hint-txt clearfix" ng-if="(!formData.threeinone) && (!formData.RMModule || rmemailotpSuccess || !rmonloadValidate)">
+                                    <a href="javascript:void(0)" class="pull-right info-message change-pernumber"
+                                        ng-click="changeEmail()">Change Email</a>
+                                </div>
+								<div  ng-show="formData.RMModule && !rmemailnewOTP && !rmemailotpSuccess">
+									<button type="button" class="btn ax-btn-primary p-3 mb-5 validate-newsendotp"
+										ng-click="newEmailValidate('pageLoad')" id="sendOTP"
+										ng-if="rmonloadValidate && !rmpageload">
+										GET OTP ON Email
+									</button>
+									<div class="input-message clearfix" ng-if="rmemailOTPVerifiedError">
+										<span class="error-message pull-right" style="top: -2rem"><i
+												class="fa fa-times"></i> Verify your email</span>
+									</div>
+									<div class="input-message clearfix">
+										<!-- <span class="error-message pull-right" ng-if="sameEmail" style="top: -2rem"><i class="fa fa-times"></i>
+											Email address are same.</span> -->
+										<span class="error-message pull-right" ng-if="emptyEmail" style="top: -2rem"><i
+												class="fa fa-times"></i>
+											Email address is mandatory.</span>
+										<span class="error-message pull-right" ng-if="invalidEmail" style="top: -2rem"><i
+												class="fa fa-times"></i>
+											Please provide proper email address. Eg: john@xyz.com</span>
+									</div>
+								</div>
+								
+								<div class="col-md-12 validate3otp" ng-if="rmemailotpSuccess">
+									<h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5">Email OTP validated successfully</h4>
+								</div>
+                            </div>
+							<div class="col-md-6" ng-if="changeEmailAddress">
+                                <label class="ax-label" for="emailIDNew">New Email ID</label>
+                                <input class="input-field form-control" type="text" id="emailIDNew"
+                                    ng-model="formData.fields.emailNew" ng-disabled="rmnewEmailOTP"
+                                    ng-keypress="$event.keyCode == 13 ? $event.preventDefault(): null;$event.keyCode == 13 ? newEmailValidate('changeEmail') : emailErrClear()"
+                                    required maxlength="40" />
+                                <div class="input-message clearfix">
+                                    <span class="error-message pull-right" ng-if="rmsameEmail"><i class="fa fa-times"></i>
+                                        Email address are same.</span>
+                                    <span class="error-message pull-right" ng-if="rmemptyEmail"><i
+                                            class="fa fa-times"></i>
+                                        Email address is mandatory.</span>
+                                    <span class="error-message pull-right" ng-if="rminvalidEmail"><i
+                                            class="fa fa-times"></i>
+                                        Please provide proper email address. Eg: john@xyz.com</span>
+                                </div>
+                                <div class="update-fields float-right" ng-show="false" class="text-right">
+                                    <button type="submit" id="cancelEmailAddress"
+                                        class="p-3 my-2 btn ax-btn-disabled secbut pcacs-tabs scrolltop"
+                                        title="profileaddresschangestep3"
+                                        ng-click="rmsameEmail = false; rmemptyEmail = false; rminvalidEmail = false; formData.fields.emailNew = ''; changeEmailAddress = false;">
+                                        Cancel
+                                    </button>
+                                    <button type="submit" id="updateEmailAddress"
+                                        class="p-3 my-2 btn ax-btn-primary secbut pcacs-tabs scrolltop"
+                                        title="profileaddresschangestep3" ng-click="newEmailValidate('changeEmail')">
+                                        Update
+                                    </button>
+
+                                </div>
+                            </div>
+							<div class="col-md-6 panEmail">
+                                <label class="ax-label">Email ID belongs to:</label>
+
+                                <ul class="list-inline radiolist mb-4rem">
+                                    <li class="self-emailattribute">
+                                        <label for="eself">
+                                            <input type="radio" class="customcheckradio" 
+                                                ng-model="formData.fields.emailBelongs" name="emstatus" id="eself" ng-click="panEmailRegError = false" value="S" checked />
+                                            <span>Self</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label for="espouse">
+                                            <input type="radio" class="customcheckradio"
+                                                ng-model="formData.fields.emailBelongs" name="emstatus" id="espouse" ng-click="panEmailRegError = false" value="U" />
+                                            <span>Spouse</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label for="eparent">
+                                            <input type="radio" class="customcheckradio"
+                                                ng-model="formData.fields.emailBelongs" name="emstatus" id="eparent" ng-click="panEmailRegError = false" value="P" />
+                                            <span>Parent</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label for="echildren">
+                                            <input type="radio" class="customcheckradio"
+                                                ng-model="formData.fields.emailBelongs" name="emstatus" id="echildren" ng-click="panEmailRegError = false" value="C" />
+                                            <span>Children</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-12 mb-4 update-fields text-left new-profilemobilenumber"
+                                ng-show="changeEmailAddress && !rmnewEmailOTP">
+                                <button type="submit" id="cancelPanSection"
+                                    class="btn ax-btn-disabled p-3 my-2 secbut pcacs-tabs scrolltop"
+                                    title="profileaddresschangestep3"
+                                    ng-click="formData.fields.emailNew = ''; emptyEmail = false; invalidEmail = false; sameEmail = false; changeEmailAddress = false; newEmailOTP = false;">
+                                    Cancel
+                                </button>								
+                                <button type="submit" id="updateEmailAddress"
+                                        class="p-3 my-2 btn ax-btn-primary secbut pcacs-tabs scrolltop"
+                                        title="profileaddresschangestep3" ng-click="newEmailValidate('changeEmail')">
+                                        Update
+                                </button>
+                                <!--<button type="button" class="btn ax-btn-primary p-3 my-2 validate-newsendotp"
+                                    ng-click="newEmailValidate()" id="sendOTP">
+                                    Send OTP
+                                </button>-->
+                            </div>
+                            <div class="validate3otp col-md-6 parent-field" ng-if="rmnewEmailOTP">
+                                <label class="ax-label">OTP</label>
+                                <input class="input-field form-control pan-inputinfo" type="password" id="inputs-otpEmail"
+                                    ng-model="formData.fields.otpEmailNew"
+                                    ng-keypress="$event.keyCode == 13 ? $event.preventDefault() : null; $event.keyCode == 13 ? validateEmailOTP() : invalidOTP = false"
+                                    maxlength="6" only-digits required />
+                                <div class="input-message child-field hint-txt clearfix" ng-hide="otpEmailSuccess">
+                                    <a href="javascript:void(0)" class="pull-left info-message validate-newsendotp"
+                                        ng-click="newEmailValidate()">
+                                        <i class="icon14 icon-reset icon-reset-new"></i> <span>Resend OTP</span>
+                                    </a>
+                                </div>
+                                <div ng-if="otpEmailSuccess" class="input-message clearfix validated-newotp">
+                                    <a href="javascript:void(0)" class="pull-left success-message">
+                                        <i class="fa fa-check"></i> <span>OTP Verified</span>
+                                    </a>
+                                </div>
+                                <span class="error-message" ng-if="invalidEmailOTP || rminvalidEmailOTP"><i class="fa fa-times"></i> OTP verification failed </span>
+                                <span class="error-message" ng-if="rmlimitEmailOTP"><i class="fa fa-times"></i> {{elimitError}} </span>
+                                <div class="input-message clearfix">
+                                    <span class="error-message pull-right" ng-if="rmEmptyEmailOtp"><i
+                                            class="fa fa-times"></i>
+                                            OTP is Empty.</span>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-12 mb-5 validate3otp" ng-if="rmnewEmailOTP && !rmemailotpSuccess">
+                                <button type="button" class="btn px-3 py-3 my-2 ax-btn-primary validate-newotp"
+                                    ng-click="validateEmailOTP()" id="validateEmailOTP">
+                                    Validate
+                                </button>
+                            </div>
+                        <!--</div>-->
+                        <!--<div class="row">-->
+
+                            
+							<div class="col-md-12">
+								<div class="input-message clearfix" ng-if="panEmailRegError">
+                                        <span class="error-message pull-right"><i class="fa fa-times"></i> {{panEmailRegMsg}}</span>
+                                </div>
+							</div>
+                        </div>
+                        <div ng-hide="true" class="row">
+                            <div class="self-emaildisable col-sm-6" ng-show="panEmailShow">
+                                <label class="ax-label " for="panEmail"><span
+                                        ng-if="formData.fields.emailBelongs == 'U'">Spouse
+                                        PAN</span><span ng-if="formData.fields.emailBelongs == 'P'">Dependent
+                                        Parent PAN</span><span ng-if="formData.fields.emailBelongs == 'C'">Dependent
+                                        Children PAN</span></label>
+                                <div class="ax-filed">
+                                    <input class="input-field form-control" type="text" id="panEmail"
+                                        ng-model="formData.fields.emailPan" alpha-numeric
+                                        ng-keypress="panEmailError = false; panEmailSameError = false" maxlength="10"
+                                        required />
+                                    <span class="validation-result"></span>
+                                </div>
+                                <!---<label class="input-label" for="panEmail">PAN belonging to above Email ID</label>-->
+
+                                <div class="input-message clearfix" ng-if="panEmailError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                                <div class="input-message clearfix" ng-if="panEmailSameError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please enter
+                                        PAN of the email holder</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+							
+                            <div class="marginb0 col-md-6 parent-field" ng-if="!changeNumber">
+                                <label class="ax-label" for="input-1mob">Mobile Number</label>
+                                <input class="input-field form-control" type="text" id="input-1mob" only-digits ng-keypress="emptyMobileNewB = false;invalidMobileNewB = false; sameNumber = false;"
+                                    ng-model="formData.fields.mobile" ng-disabled="!formData.RMModule || otpSuccess || !onloadValidate || newOTP" maxlength="10" />
+
+                                <div class="input-message hint-txt clearfix child-field" ng-if="(!formData.threeinone) && (!formData.RMModule || otpSuccess || !onloadValidate)">
+                                    <a href="javascript:void(0)" class="pull-right info-message change-pernumber"
+                                        ng-click="changeMobile()">Change number</a>
+                                </div>
+								<div class="col-md-12 p-0" ng-show="formData.RMModule && !newOTP && !otpSuccess">
+                                    <div class="input-message clearfix" ng-if="mobileOTPVerifiedError">
+                                        <span class="error-message pull-right" style="top: -2rem"><i
+                                                class="fa fa-times"></i> Verify your mobile</span>
+                                    </div>
+                                    <div class="input-message clearfix mt-3">
+                                        <span class="error-message pull-right" ng-if="emptyMobileNewB"><i
+                                                class="fa fa-times"></i>
+                                            Please enter mobile number</span>
+
+                                        <span class="error-message pull-right" ng-if="invalidRmMble"><i
+                                                class="fa fa-times"></i>
+                                            Please provide 10 digit mobile number</span>
+                                        <span class="error-message pull-right" ng-if="sameNumber"><i
+                                                class="fa fa-times"></i>
+                                            Old and New mobile numbers are same</span>
+                                    </div>
+                                
+                                    <button type="button" class="btn ax-btn-primary p-3 mb-5 mt-3 validate-newsendotp"
+                                        ng-click="newMobileValidate('pageLoad')" id="sendOTP"
+                                        ng-if="onloadValidate && !pageload">
+                                        GET OTP ON MOBILE
+                                    </button>
+                                   
+								</div>
+                            </div>
+                            <div class="new-profilemobilenumber col-md-6" ng-show="changeNumber">
+                                <label class="ax-label" for="input-1newmob">New Mobile Number</label>
+                                <input class="input-field form-control" type="text" only-digits maxlength="10"
+                                    id="input-1newmob" ng-model="formData.fields.mobileNewB" ng-disabled="newOTP"
+                                    ng-keypress="$event.keyCode == 13 ? $event.preventDefault() : null; $event.keyCode == 13 ? newMobileValidate() : newMobileErrClear()"
+                                    required />
+                                <div class="input-message clearfix">
+                                    <span class="error-message pull-right" ng-if="emptyMobileNewB"><i
+                                            class="fa fa-times"></i>
+                                        Please enter mobile number</span>
+                                    <span class="error-message pull-right" ng-if="invalidMobileNewB"><i
+                                            class="fa fa-times"></i>
+                                        Please provide 10 digit mobile number</span>
+                                    <span class="error-message pull-right" ng-if="sameNumber"><i
+                                            class="fa fa-times"></i>
+                                        Old and New mobile numbers are same</span>
+                                </div>
+                            </div>
+							<div class="col-md-6 panMobile">
+
+                                <label class="ax-label"> Above Mobile Number belongs to:</label>
+                                <ul class="list-inline radiolist mb-4rem">
+                                    <li class="self-mobileattribute">
+                                        <label for="mself">
+                                            <input type="radio" class="customcheckradio"
+                                                ng-model="formData.fields.mobileBelongs" name="mmstatus" id="mself" ng-click="panMobileRegError = false"
+                                                checked value="S" />
+                                            <span>Self</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label for="mspouse">
+                                            <input type="radio" class="customcheckradio"
+                                                ng-model="formData.fields.mobileBelongs" name="mmstatus" id="mspouse" ng-click="panMobileRegError = false" value="U" />
+                                            <span>Spouse</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label for="mparent">
+                                            <input type="radio" class="customcheckradio"
+                                                ng-model="formData.fields.mobileBelongs" name="mmstatus" id="mparent" ng-click="panMobileRegError = false" value="P" />
+                                            <span>Parent</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label for="mchildren">
+                                            <input type="radio" class="customcheckradio"
+                                                ng-model="formData.fields.mobileBelongs" name="mmstatus" id="mchildren" ng-click="panMobileRegError = false" value="C" />
+                                            <span>Children</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-12 mb-4 update-fields text-left new-profilemobilenumber"
+                                ng-show="changeNumber && !newOTP">
+                                <button type="submit" id="cancelPanSection"
+                                    class="btn ax-btn-disabled p-3 my-2 secbut pcacs-tabs scrolltop"
+                                    title="profileaddresschangestep3"
+                                    ng-click="formData.fields.mobileNewB = ''; emptyMobileNewB = false; invalidMobileNewB = false; changeNumber = false; newOTP = false;">
+                                    Cancel
+                                </button>
+                                <button type="button" class="btn ax-btn-primary p-3 my-2 validate-newsendotp"
+                                    ng-click="newMobileValidate()" id="sendOTP">
+                                    Send OTP
+                                </button>
+                            </div>
+                            <div class="validate3otp col-md-6 parent-field" ng-if="newOTP">
+                                <label class="ax-label">OTP</label>
+                                <input class="input-field form-control pan-inputinfo" type="password" id="inputs-otpnumber"
+                                    ng-model="formData.fields.otpNew"
+                                    ng-keypress="$event.keyCode == 13 ? $event.preventDefault() : null; $event.keyCode == 13 ? validateOTP() : invalidOTP = false"
+                                    maxlength="6" only-digits required />
+                                <div class="input-message child-field hint-txt clearfix" ng-hide="otpSuccess">
+                                    <a href="javascript:void(0)" class="pull-left info-message validate-newsendotp"
+                                        ng-click="newMobileValidate()">
+                                        <i class="icon14 icon-reset icon-reset-new"></i> <span>Resend OTP</span>
+                                    </a>
+                                </div>
+                                <div ng-if="otpSuccess" class="input-message clearfix validated-newotp">
+                                    <a href="javascript:void(0)" class="pull-left success-message">
+                                        <i class="fa fa-check"></i> <span>OTP Verified</span>
+                                    </a>
+                                </div>
+                                <div class="input-message clearfix">
+                                    <span class="error-message pull-right" ng-if="rmEmptyEmailOtp"><i
+                                            class="fa fa-times"></i>
+                                        OTP is empty.</span>
+                                </div>
+                            </div>
+							<div class="col-md-12 validate3otp" ng-if="otpSuccess">
+								<h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5">Mobile OTP validated successfully</h4>
+                            </div>
+                            <div class="col-md-12 validate3otp" ng-if="newOTP && !otpSuccess">
+                                <div class="error-message" ng-show="invalidOTP"><i class="fa fa-times"></i> OTP verification failed.</div>
+								<h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5">We have sent one unique OTP to your mobile number</h4>
+                                <button type="button" class="btn px-3 py-3 my-2 ax-btn-primary validate-newotp"
+                                    ng-click="validateOTP()" id="validateOTP">
+                                    Validate
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            
+							
+							<div class="col-md-12">
+								<div class="input-message clearfix mt-3" ng-show="panMobileRegError">
+                                        <span class="error-message pull-right"><i class="fa fa-times"></i> {{panMobileRegMsg}}</span></span>
+                                </div>
+							</div>
+                            <div ng-hide="true" class="col-sm-6">
+                                <div class="self-mobdisable" ng-show="panMobileShow">
+                                    <label class="ax-label" for="panMobile"><span
+                                            ng-if="formData.fields.mobileBelongs == 'U'">Spouse
+                                            PAN</span><span ng-if="formData.fields.mobileBelongs == 'P'">Dependent
+                                            Parent
+                                            PAN</span><span ng-if="formData.fields.mobileBelongs == 'C'">Dependent
+                                            Children
+                                            PAN</span></label>
+                                    <div class="ax-field">
+                                        <input class="input-field form-control" type="text" id="panMobile"
+                                            ng-model="formData.fields.mobilePan" alpha-numeric
+                                            ng-keypress="panMobileError = false; panMobileSameError = false"
+                                            maxlength="10" required />
+                                        <span class="validation-error"></span>
+                                    </div>
+                                    <!--<label class="input-label" for="panMobile">PAN belonging to above Mobile Number</label>-->
+
+                                    <div class="input-message clearfix" ng-if="panMobileError">
+                                        <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                            provide
+                                            valid input</span>
+                                    </div>
+                                    <div class="input-message clearfix" ng-if="panMobileSameError">
+                                        <span class="error-message pull-right"><i class="fa fa-times"></i> Please enter
+                                            PAN
+                                            of the mobile number</span>
+                                    </div>
+                                </div>
+                            </div>		
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="divider col-12">
+                        <div class="divider-d"></div>
+                    </div>
+                    <div class="col-12">
+                        <h4 class="ax-sec-title">Enter Financial Info</h4>
+                    </div>
+                    <div class="col-12" id="financialInfo">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="ax-label">
+                                    Your Occupation
+                                </label>
+                                <select data-placeholder="Occupation" class="select form-control" id="occupation"
+                                    ng-model="formData.fields.occupation" ng-change="occupationError=false;">
+                                    <option value="" ng-hide="formData.fields.occupation">Occupation</option>
+                                    <option ng-selected="op.OccupationId == formData.fields.occupation"
+                                        ng-repeat="op in formData.OccupationDetailsList track by [$index]"
+                                        value="{{op.OccupationId}}">{{op.Name}}</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="occupationError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ax-label">Source of Funds</label>
+                                <select data-placeholder="Select" class="select form-control" id="sFunds"
+                                    ng-model="formData.fields.sFunds" ng-change="sFundsError=false;">
+                                    <option value="" ng-hide="formData.fields.sFunds">Select</option>
+                                    <option ng-selected="ani.SourceOfFundId == formData.fields.sFunds"
+                                        ng-repeat="ani in formData.sFunds track by [$index]"
+                                        value="{{ani.SourceOfFundId}}">{{ani.SourceOfFundName}}</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="sFundsError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="ax-label">Gross Annual Income</label>
+                                <select data-placeholder="Annual Income" class="select form-control" name="anIncome" id="anIncome"
+                                    ng-model="formData.fields.anIncome" ng-change="anIncomeError=false;">
+                                    <option value="">Annual Income</option>
+                                    <option ng-selected="ani.IncomeRangeId == formData.fields.anIncome"
+                                        ng-repeat="ani in formData.incomeRange track by [$index]"
+                                        value="{{ani.IncomeRangeId}}">{{ani.Name}}</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="anIncomeError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ax-label">Net worth:</label>
+                                <input class="form-control" type="tel" id="netWorth1" required=""
+                                    ng-model="formData.fields.netWorth" placeholder="{{networthOptional}}" ng-keypress="netWorth1Error = false" maxlength="10" only-digits>
+                                <div class="input-message clearfix" ng-if="netWorth1Error">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                                <div class="onboard-info infos">
+                                    <a href="javascript:void(0)" class="info-tag info-cat">
+                                        <img src="assets/images/info-icon.svg" class="ax-info-img" alt="">
+                                    </a>
+                                    <div class="info-details no-display">
+                                        <p>
+                                            All your assets minus your loans/ liabilities. A
+                                            rough Estimate is
+                                            fine.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="ax-label">
+                                    Trading Experience:
+                                </label>
+                                <!-- <input class="form-control" type="tel" id="trdExp" required=""
+                                    ng-model="formData.fields.tradeExp" maxlength="2" only-digits> -->
+                                <select class="select form-control" data-placeholder="Trading Experience" id="trdExp"
+                                    ng-model="formData.fields.trdExp">
+                                    <option value="" ng-hide="formData.fields.trdExp"></option>
+                                    <option value="0">No Experience</option>
+                                    <option value="1-3">1-3 Years</option>
+                                    <option value="4-6">4-6 Years</option>
+                                    <option value="6-9">6-9 Years</option>
+                                    <option value="10-plus">10 or More Than 10 Years</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="trdExpError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ax-label">
+                                    Are your politically exposed:
+                                </label>
+                                <select class="select form-control" id="pscrelation"
+                                    ng-model="formData.fields.political" name="pscrelation"
+                                    data-placeholder="Are your politically exposed">
+                                    <option value="" ng-hide="formData.fields.political">Select</option>
+                                    <option value="Y">Politically Exposed</option>
+                                    <option value="R">Related to Political Exposed Person</option>
+                                    <option value="N">Not Related</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="pscrelationError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="ax-label">
+                                    Dealing through other sub broker/ Broker:
+                                </label>
+                                <select class="select form-control" id="broker" ng-model="formData.fields.broker"
+                                    name="broker">
+                                    <option value="Y">Yes</option>
+                                    <option ng-selected="true" value="N">No</option>
+                                </select>
+                            </div>
+                            <div class="sub-add col-md-6" ng-if="brokerDetails">
+                                <label class="ax-label">
+                                    Broker's Name:
+                                </label>
+                                <input class="form-control" type="text" id="brokerName1" value="" required="" ng-disabled="brokerNameFreeze"
+                                    ng-model="formData.fields.brokerName" alpha-numeric maxlength="100" />
+
+                                <div class="input-message clearfix" ng-if="brokerName1Error">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please provide
+                                        valid input</span>
+                                </div>
+                            </div>
+							<div class="col-md-6">
+                                <label class="ax-label">
+                                    Running account authorization:
+                                </label>
+                                <select class="select form-control" id="rdnSetFunds"
+                                    ng-model="formData.fields.rdnSetFunds">
+                                    <option value="" ng-hide="formData.fields.rdnSetFunds">Select</option>
+                                    <option value="M">Monthly</option>
+                                    <option value="Q">Quarterly</option>
+                                    <option value="Y">Yearly</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="ax-label">
+                                    Legal proceeding by SEBI (3years):
+                                </label>
+                                <select data-placeholder="Select" class="select form-control" id="disputes"
+                                    ng-model="formData.fields.disputes" name="disputes">
+                                    <option value="" ng-hide="formData.fields.disputes">Select</option>
+                                    <option value="Y">Yes</option>
+                                    <option value="N">No</option>
+                                </select>
+                                <div class="input-message clearfix" ng-if="pscrelationError">
+                                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                        provide valid input</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="divider col-12" ng-hide="formData.threeinone">
+                        <div class="divider-d"></div>
+                    </div>
+				</div>
+                <div class="row mt-5">
+					<div class="col-12 mb-4">
+                        Multiple Nomination Form <a href="https://simplehai.axisdirect.in/images/Multiple_Nominationform.pdf" target="_blank" download>Download</a>
+                    </div>
+                    <div class="col-12">
+                        <label for="" class="nomineeaddress">
+                            <input class="customcheckradio" type="checkbox" required id="tpctry1" name="tpctry1"
+                             />
+                            <span>I am an Indian citizen & pay taxes in india, I do not pay taxes in USA or any
+                                other country.</span>
+                        </label>
+                    </div>
+                    <div class="col-12">
+                        <label for="" class="nomineeaddress">
+                            <input class="customcheckradio" type="checkbox" name="rdnContractNote" required
+                                id="rdnContractNote" />
+                            <span>I Accept all the <a href="javascript:void(0)" ng-click="preferences()">preferences set by AxisDirect.</a></span>
+                        </label>
+                    </div>
+                    <div class="col-12">
+                        <label for="" class="nomineeaddress">
+                            <input class="customcheckradio" type="checkbox" name="InternetTrading" required
+                                id="InternetTrading" />
+                            <span><a href="javascript:void(0)" ng-click="profileBTerms()">E-Margin Facility & Rights</a></span>
+                        </label>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="input-message clearfix" ng-if="termsAndConditionsError"><span
+                                class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                                Please Accept the terms and conditions.</span></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="input-message clearfix" ng-if="fatcaError"><span
+                                class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                                You Should be an Indian citizen.</span></div>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col-12 text-center">
+						<button type="button" ng-click="firstSection()" id="backPanDetail" ng-if="formData.KRA && formData.isg"
+                                                class="text-uppercase boariding-btns text-uppercase plan-button">
+                                                Back to Pan Details
+                                            </button>
+                        <button type="button" class="text-uppercase boariding-btns text-uppercase plan-button"
+                            ng-click="secondSection()" id="backProfilePage" ng-if="!formData.KRA || !formData.isg">
+                            Back to Personal Details - A
+                        </button>
+                        <button type="button" class="text-uppercase boariding-btns ax-btn-primary"
+                            ng-disabled="changeNumber || changeEmailAddress || formData.apiLoading || newOTP"
+                            ng-click="personalValidate()" id="proceedBank">
+                            Proceed to bank details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 help-sidebar d-none d-sm-block">
+                    <h3 class="ax-sec-title mt-0 mb-3">Help is here</h3>
+                    <div class="guideline-with-bg">
+                        <div class="d-flex pb-4">
+                            <div class="pr-3">1.</div>
+                            <div>Please ensure that the information provided by you is correct.
+                            </div>
+                        </div>
+                        <div class="d-flex pb-4">
+                            <div class="pr-3">2.</div>
+                            <div class="">As per the SEBI KYC norms, it is mandatory to provide your annual income details
+                            </div>
+                        </div>
+                        <div class="d-flex pb-4">
+                                <div class="pr-3">3.</div>
+                                <div class="">The online account opening process is available only for resident individuals in 'single' mode of holding
+                                </div>
+                            </div>
+							<div><i class="fa fa-question-circle fa-lg"></i> Need Help? <span style="color: #97144d; cursor: pointer;" class="cursor-pointer" ng-click="formData.helpPopup()" role="button" tabindex="0"> Click here</span>
+							</div>
+                    </div>
+                
+            </div>
+        </div>
+
+
+        </form>
+    </div>
+
+</div>
+<!-- <div class="mobile-proceed">
+    <a href="address" class="back"><i class="icon25 icon-back"></i></a>
+    <a href="javascript:void(0);" class="proceed" ng-click="personalValidate()">Proceed</a>
+    <a href="javascript:void(0);" class="need-assistance-mob" ng-click="mobileAssistance()"><i
+            class="icon25 icon-assistance"></i></a>
+</div> -->
+</div>

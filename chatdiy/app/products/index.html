@@ -1,0 +1,829 @@
+
+<style>
+.tooltip{width: 200px}
+.table {
+display: none !important;
+}
+</style>
+<!-- Global site tag (gtag.js) - Google Ads: 727858862 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-727858862"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-727858862');
+</script>
+<!-- Event snippet for AxisDirect_Product_Dec20 conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-727858862/8HRpCJHY_esBEK79iNsC'});
+</script>
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1253495914811323');
+  fbq('track', 'PageView');fbq('trackCustom', 'AxisDirect-Products');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1253495914811323&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+
+<div class="row product-zone" id="products">
+    <div class="col-md-9">
+		<h4 class="ax-sec-title acord-btn mb-5" data-toggle="collapse" data-target="#selectPlan">
+			<a href="javascript:void(0)" class="collapseTag ax-sec-title" title="selectPlan">Select Plan</a></h4>
+		<div id="selectPlan" class="collapse show mb-5" data-parent="#products">
+        <div class="row">
+            <div class="col-md-9">
+				<h4 class="ax-primary-title m-0 mb-3"><b>Please select anyone plan to proceed...</b></h4>
+                <!--<h4 class="ax-primary-title m-0 mb-3">Woohoo! We are almost done!</h4>
+                <h4 class="ax-sec-title mt-0">Investments now at your fingertips with a one-stop solution for all your financial needs!</h4>-->
+            </div>
+            <div class="col-12 d-block d-sm-none">
+                <div class="d-flex justify-content-start">
+                    <div>Step 5/8</div>
+                    <div class="mobile-progress progress">
+                        <div class="progress-bar" style="width:62.5%;height:20px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-none d-sm-block text-center">
+                <!-- <img class="img-fluid cartoon-character" src="../../assets/images/axis/product-cartoon.png" -->
+                    <!-- alt="Registration-emoji" /> -->
+            </div>
+        </div>
+		<div class="row mb-1 no-gutters">
+			<div class="col-md-4 account-plan-container">
+				<input type="radio" ng-click="productSelect(paymentProductId)" name="axisDirect" id="{{paymentProductId}}" value="prosperity"> 
+				<div class="account-plan account-plan-bg-01 h-100 d-flex flex-row mx-1">
+					<span class="arrow"></span>
+					<div class="pl-5 d-none">
+						<div>AXIS DIRECT</div> 
+						<div class="d-flex flex-column">
+							<div class="align-self-start">PROSPERITY</div> 
+							<div class="align-self-end">ACCOUNT</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 account-plan-container">
+				<input type="radio" ng-click="productSelect(paymentProductIdTwo)" name="axisDirect" id="{{paymentProductIdTwo}}" value="5555Plan"> 
+				<div class="account-plan account-plan-bg-02 h-100 d-flex flex-row mx-1">
+					<span class="arrow"></span>
+					<div class="pl-5 d-none">
+						<div>AXIS DIRECT</div> 
+						<div class="d-flex flex-column">
+							<div class="align-self-start">NOW or NEVER 5555</div> 
+							<div class="align-self-end">PLAN</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 account-plan-container">
+				<input type="radio" ng-click="productSelect(paymentProductIdThree)" class="pOne" name="axisDirect" id="{{paymentProductIdThree}}" value="1500Plan"> 
+				<div class="account-plan account-plan-bg-03 h-100 d-flex flex-row mx-1">
+					<span class="arrow"></span>
+					<div class="pl-5 d-none">
+						<div>AXIS DIRECT</div> 
+						<div class="d-flex flex-column">
+							<div class="align-self-start">INVESTMENT <sup>plus</sup> AP1500</div> 
+							<div class="align-self-end">PLAN</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="row">
+			<div class="divider col-12 mb-5">
+				<div class="divider-d"></div>
+            </div>
+         </div>
+		 
+		
+			<h4 class="ax-sec-title m-0 my-5">Plan Details</h4>
+		
+		<div id="planDetails">
+				 <div class="row mt-2">
+                    <div class="col-12">
+						
+						<div ng-show="productAction" class="guideline-with-bg">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="d-flex pb-4">
+									<div class="pr-3 ax-sec-tick">&#10004;</div>
+									<div>{{complimentaryTurnover}}</div>
+									</div>
+								</div>
+								<div class="col-md-6 pl-0">
+									<div class="d-flex pb-4">
+									<div class="pr-3 ax-sec-tick">&#10004;</div>
+									<div class="" ng-show="productActionTwo" >{{planTwopointTwo}}</div>
+									<div class="" ng-show="productActionThree" >{{planThreepointTwo}}</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="d-flex pb-4">
+									<div class="pr-3 ax-sec-tick">&#10004;</div>
+									<div class="" ng-show="productActionTwo" >{{planTwopointThree}}</div>
+									<div class="" ng-show="productActionThree" >{{planThreepointThree}}</div>
+									</div>
+								</div>
+								<div class="col-md-6 pl-0" ng-show="productActionTwo">
+									<div class="d-flex pb-4">
+									<div class="pr-3 ax-sec-tick">&#10004;</div>
+									<div class="" >{{planTwopointFour}}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div ng-show="!productAction" class="row mb-4">
+							<div class="col-12">
+								<div class="help-sidebar">
+									<div class="guideline-with-bg">
+										<div class="row">
+											<div class="col-md-4 col-12">
+												<div class="d-flex pb-4">
+													<div class="pr-3 ax-sec-tick">&#10004;</div>
+													<div>Zero Demat AMC for the first year</div>
+												</div>
+												<div class="d-flex pb-md-0 pb-4">
+													<div class="pr-3 ax-sec-tick">&#10004;</div>
+													<div class="">Multi-channel trading platforms</div>
+												</div>
+											</div>
+											<div class="col-md-8 col-12">
+												<div class="d-flex pb-4">
+													<div class="pr-3 ax-sec-tick">&#10004;</div>
+													<div class="">Equity, Mutual Funds, IPO, Bonds, Insurance all under one roof</div>
+												</div>
+												<div class="d-flex pb-0">
+													<div class="pr-3 ax-sec-tick">&#10004;</div>
+													<div class="">Seamless trading experience with 3in1 account</div>
+												</div>
+											</div>
+										</div>
+										
+										
+									</div>
+								</div>					
+							</div>				
+						</div>
+						
+						<h4 ng-show="productAction" class="ax-sec-title mt-2">How will it benefit you?</h4>
+						<div ng-show="productAction" class="d-flex">
+							<ul class="list-group shadow-sm">
+							  <li class="list-group-item p-0">
+								<div class="d-flex benefit-text">
+									<div class="benefit-static-text p-3 border-right">
+										Complimentary Delivery Turnover(CDT)
+									</div>
+									<div class="benefit-dynamic-text p-3">
+										<strong ng-show="productActionTwo">&#8377; {{deliveryTurnoverTwo}}</strong>
+										<strong ng-show="productActionThree">&#8377; {{deliveryTurnoverThree}}</strong>
+									</div>
+								</div>
+							  </li>
+							  <li class="list-group-item p-0">
+								<div class="d-flex benefit-text">
+									<div class="benefit-static-text p-3 border-right">
+										Complimentary Turnover Validity
+									</div>
+									<div class="benefit-dynamic-text p-3">
+										<strong ng-show="productActionTwo">{{turnoverValidityTwo}}</strong>
+										<strong ng-show="productActionThree">{{turnoverValidityThree}}</strong>
+									</div>
+								</div>
+							  </li>
+							  <li class="list-group-item p-0">
+								<div class="d-flex benefit-text">
+									<div class="benefit-static-text p-3 border-right">
+										Account Opening Charges
+									</div>
+									<div class="benefit-dynamic-text p-3">
+										<strong ng-show="productActionTwo">&#8377; {{openingChargesTwo}}/-</strong>
+										<strong ng-show="productActionThree">&#8377; {{openingChargesThree}}/-</strong>
+									</div>
+								</div>
+							  </li>
+							</ul>
+							
+						</div>
+						<h4 ng-show="productAction" class="ax-primary-title m-0 mb-3 mt-2">Brokerage Charges (Post utilization of CDT)</h4>
+                    </div>
+                </div>
+				
+					<div ng-show="!productAction" class="row mb-4">
+					<div class="col-12">
+						<div class="help-sidebar">
+							<div class="guideline-with-bg">
+								<h3 class="ax-sec-title mt-0 mb-4">Brokerage & Account Opening Charges</h3>
+								<h3 class="ax-primary-title mt-0 mb-4"><b>Account Opening Charges: Rs 499/-</b></h3>
+								
+							
+								
+								<!-- new changes -->
+								<div class="row m-0 shadow-sm border border-bottom-0 rounded">
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4  bg-grey h-70">
+												Plan
+											</div>
+											<div class="col-6 col-md-12 pl-4 py-4">
+												Prosperity
+											</div>
+										</div>
+									</div>
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4  bg-grey h-70">
+												Cash/Emargin Product (Each Leg)
+											</div>
+											<div class="col-6 col-md-12 pl-4 py-4">
+												0.50%
+											</div>
+										</div>
+									</div>	
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4 bg-grey h-70">
+												Intraday/Cover Product  (Each Leg)  
+											</div>
+											<div class="col-6 col-md-12 pl-4 py-4">
+												0.050%
+											</div>
+										</div>
+									</div>	
+								</div>
+								<div class="row m-0 shadow-sm border border-bottom-0 rounded">
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4 bg-grey h-70">
+												Future  (Each Leg)
+											</div>
+											<div class="col-6 col-md-12 pl-4 py-4">
+												0.050%
+											</div>
+										</div>
+									</div>	
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4 bg-grey h-70">
+												Equity Option
+											</div>
+											<div class="col-6 col-md-12 pl-4 py-4">
+												&#8377; 10/- per lot
+											</div>
+										</div>
+									</div>	
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4 bg-grey h-70">
+												Commodity &amp; Currency Option  (Each lot/Leg)
+											</div>
+											<div class="col-6 col-md-12 pl-4 py-4">
+												&#8377; {{commodityCurrencyOptionOne}}
+											</div>
+										</div>
+									</div>	
+								</div>
+								<div ng-show="!productAction" class="mt-3">
+									<label class="ax-label m-0 mb-3"><b>1)  Options Rs.10 per order will be applicable only for self generated trades through online platforms.</b></label>
+								</div>			
+							</div>
+						</div>					
+					</div>				
+				</div>
+				<div ng-show="productAction" class="row mb-4">
+					<div class="col-12">
+						<div class="help-sidebar">
+							<div class="guideline-with-bg">
+								
+								<div class="row m-0 shadow-sm border border-bottom-0 rounded">
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4 bg-grey h-70">
+												Plan
+											</div>
+											<div ng-show="productActionTwo" class="col-6 col-md-12 pl-4 py-4">{{brokeragePlanTwo}}</div>
+											<div ng-show="productActionThree" class="col-6 col-md-12 pl-4 py-4">{{brokeragePlanThree}}</div>
+										</div>
+									</div>
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4 bg-grey h-70">
+												Cash/Emargin Product (Each Leg)
+											</div>
+											<div ng-show="productActionTwo" class="col-6 col-md-12 pl-4 py-4">{{brokerageDeliveryTwo}}</div>
+											<div ng-show="productActionThree" class="col-6 col-md-12 pl-4 py-4">{{brokerageDeliveryThree}}</div>
+										</div>
+									</div>	
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4 bg-grey h-70">
+												Intraday/Cover Product  (Each Leg)  
+											</div>
+											<div ng-show="productActionTwo" class="col-6 col-md-12 pl-4 py-4 ">{{brokerageIntradayTwo}}</div>
+											<div ng-show="productActionThree" class="col-6 col-md-12 pl-4 py-4 ">{{brokerageIntradayThree}}</div>
+										</div>
+									</div>	
+								</div>
+								<div class="row m-0 shadow-sm border border-bottom-0 rounded">
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4 bg-grey h-70">
+												Future (Each Leg)
+											</div>
+											<div ng-show="productActionTwo" class="col-6 col-md-12 pl-4 py-4 ">{{brokerageFutureTwo}}</div>
+											<div ng-show="productActionThree" class="col-6 col-md-12 pl-4 py-4 ">{{brokerageFutureThree}}</div>
+										</div>
+									</div>	
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4 bg-grey h-70">
+												Equity Option
+											</div>
+											<div ng-show="productActionTwo"class="col-6 col-md-12 pl-4 py-4 ">&#8377; {{brokerageOptionTwo}}</div>
+											<div ng-show="productActionThree" class="col-6 col-md-12 pl-4 py-4 ">&#8377; {{brokerageOptionThree}}</div>
+										</div>
+									</div>	
+									<div class="col-md col-12 border-right border-bottom">
+										<div class="row">
+											<div class="col-6 col-md-12 pl-4 py-4 bg-grey h-70">
+												Commodity &amp; Currency Option  (Each lot/Leg)
+											</div>
+											<div ng-show="productActionTwo"class="col-6 col-md-12 pl-4 py-4 ">&#8377; {{commodityCurrencyOptionTwo}}</div>
+											<div ng-show="productActionThree" class="col-6 col-md-12 pl-4 py-4 ">&#8377; {{commodityCurrencyOptionThree}}</div>
+										</div>
+									</div>	
+								</div>	
+								
+								
+								<div ng-show="productAction" class="mt-3">
+									<label ng-show="productActionTwo" class="ax-label m-0 mb-3"><b>1) Account opening charges of Rs 5555 will be debited post account opening.</b></label>
+									<label ng-show="productActionThree" class="ax-label m-0 mb-3"><b>1) Account opening charges of Rs 1500 will be debited post account opening.</b></label>
+									<label ng-show="productActionTwo" class="ax-label m-0 mb-3"><b>2) NN5555 plan will be activated post debit of account opening charges.</b></label>
+									<label ng-show="productActionThree" class="ax-label m-0 mb-3"><b>2) AP1500 plan will be activated post debit of account opening charges.</b></label>
+									<label ng-show="productActionTwo" class="ax-label m-0 mb-3"><b>3)</b> <a href="assets/pdf/DSP_Plans_5555-7-01-20 (1).pdf" target="_blank"><u><b>Click here</b></u></a> <b>to know terms & Condition of "{{planTwo}}".</b></label>
+									<label ng-show="productActionThree" class="ax-label m-0 mb-3"><b>3)</b> <a href="assets/pdf/DSP_Plans_1500-07-01-20 (1).pdf" target="_blank"><u><b>Click here</b></u></a><b> to know terms & Condition of "{{planThree}}".</b></label>
+									<label ng-show="productActionThree || productActionTwo " class="ax-label m-0 mb-3"><b>4) Options Rs.10 per order will be applicable only for self generated trades through online platforms.</b></label>
+								</div>								
+							</div>
+						</div>					
+					</div>				
+				</div>
+				<div class="row mb-5">
+                    <div class="col-12 text-right">
+						<a style="text-decoration: none;" href="https://simplehai.axisdirect.in/images/PartB/CDR%20-%20Part%20B%20SHORT%20Form%20Ver%2010_07-03-2019.PDF"
+                                    target="_blank">Read Terms & Conditions Carefully, <span style="border-bottom: 1px solid;"> Click Here</span></a>
+                    </div>
+                </div>
+              
+              
+		</div>
+	
+		
+		</div>
+		
+		
+            
+		<div class="row">
+			<div class="divider col-12 mb-5">
+				<div class="divider-d"></div>
+			</div>
+		</div>
+		
+		<h4 class="ax-sec-title m-0 mb-5">Trading segment</h4>
+		
+		<div id="tradingSegment" class="mb-5">
+			<div class="row intrestedlist">
+                        <div class="col-sm-4 mt-3 input-section">
+                            <label class="checkkbox no-border" for="equity">
+                                <input class="customcheckradio" type="checkbox" name="segments" id="equity">
+                                <span>Equity <span class="grey-texts">(NSE & BSE)</span></span>
+								
+								<img src="assets/images/info-icon.svg" width="16" height="16" class="ml-2 ax-product-info pull-right" alt="" data-toggle="tooltip" data-placement="bottom" title="Be a part of India's growth story by investing in stock market or take benefit of short term stock movements using plethora of leverage products like E-margin, Intraday, cover!">
+                            </label>
+                        </div>
+                        <div class="col-sm-6 mt-3 input-section currencies-section">
+                            <label class="checkkbox no-border iSelect" for="mutualfunds">
+                                <input class="customcheckradio" type="checkbox" name="segments" id="mutualfunds">
+                                <span>Mutual Funds <span class="grey-texts">(Exchange, Distribution)</span></span>
+                            </label>
+                        </div>
+					</div>
+					<div class="row mt-3">						
+						<div class="col-sm-12 mt-3">							
+							<label class="checkkbox no-border iSelect" for="derivativesAll">
+                                <input class="customcheckradio" type="checkbox" name="derivativesAll" id="derivativesAll">
+                                <span>Derivatives - All</span>
+                            </label>
+						</div>
+					</div>
+					<div class="row intrestedlist">
+                        <div class="col-sm-4 mt-3 input-section derivatives-section">
+                            <label class="checkkbox no-border iSelect" for="equityderivatives">
+                                <input class="customcheckradio" type="checkbox" name="derivatives" id="equityderivatives" disabled>
+                                <span>Equity Derivatives <span class="grey-texts">(NSE)</span></span>
+
+								<img src="assets/images/info-icon.svg" width="16" height="16" class="ml-2 ax-product-info pull-right" alt="" data-toggle="tooltip" data-placement="bottom" title="Trade in futures & options on Stocks & Indices. Make the best use of leverage products like intraday and cover to take multi fold exposure!">
+                            </label>
+                        </div>
+                        <div class="col-sm-4 mt-3 input-section currencies-section">
+                            <label class="checkkbox no-border iSelect" for="commodityderivatives">
+                                <input class="customcheckradio" type="checkbox" name="derivatives" id="commodityderivatives" disabled>
+                                <span>Commodity Derivatives</span>
+
+								<img src="assets/images/info-icon.svg" width="16" height="16" class="ml-2 ax-product-info pull-right" alt="" data-toggle="tooltip" data-placement="bottom" title="Diversify your portfolio beyond equity. Trade in Futures & Options on Gold, silver, crude and agricultural commodities to hedge your investments / benefit from commodity price movements!">
+                            </label>
+                        </div>
+                        <div class="col-sm-4 mt-3 input-section pos-relative">
+                            <label class="checkkbox no-border" for="currency" >
+                                <input class="customcheckradio" type="checkbox" name="derivatives" id="currency" disabled>
+                                <span>Currency <span class="grey-texts">(NSE)</span></span>
+
+								<img src="assets/images/info-icon.svg" width="16" height="16" class="ml-2 ax-product-info pull-right" alt="" data-toggle="tooltip" data-placement="bottom" title="World is too small, they say! Global currencies move with global markets and they all are interlinked. With a good insight of these markets, you can benefit from currency futures/options trading!">
+                            </label>
+                        </div>					
+                        <div class="col-sm-12 mt-3 input-section pos-relative" ng-if="displaysInfoStatus">
+                            <div class="alert-skeleton derivative-alert p-3">
+                                <p class="m-0"><span class="font-regular">Please note:</span> To enable Derivatives you
+                                    require additional Last 6 months bank statement.</p>
+                            </div>
+                        </div>
+                    </div>
+					
+		</div>
+		 
+		<!--<div class="row mt-5 mb-5">
+			<div class="col-md-4" ng-repeat="plan in planDetails track by [$index]">
+				<input type="radio" ng-click="productPaymentAction({{plan.ProductId}})" id="planId{{plan.ProductId}}" name="axisDirect" value="{{plan.ProductId}}" checked> {{plan.PlanName}}</div>
+			</div>
+		</div>-->
+        <div class="profileaddresschangestep1 pacs">
+            <!--Contact Details-->
+            <div class="onboard-innerinfo">
+                <!--<div class="clearfix ob-form-header">
+                    <div class="pull-left">
+                        <a href="personalDetails"  class="previous">Previous</a>
+                        <a href="javascript:void(0);" ng-click="fifthSection()" class="next">Next</a>
+                    </div>
+                    <div class="pull-right">
+                        <div class="text-right" ng-if="formData.ReferenceNumber">Reference Number : {{formData.ReferenceNumber}}</div>   
+                    </div>
+                </div>  -->
+                 <!--<div class="row">
+                    <div class="divider col-12 my-5">
+                        <div class="divider-d"></div>
+                    </div>
+                </div>
+				
+				<div class="row mb-4">
+					<div class="col-12">
+						<div class="help-sidebar">
+							<div class="guideline-with-bg">
+								<div class="row">
+									<div class="col-md-4 col-12">
+										<div class="d-flex pb-4">
+											<div class="pr-3 ax-sec-tick">&#10004;</div>
+											<div>Zero Demat AMC for the first year</div>
+										</div>
+										<div class="d-flex pb-md-0 pb-4">
+											<div class="pr-3 ax-sec-tick">&#10004;</div>
+											<div class="">Multi-channel trading platforms</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-12">
+										<div class="d-flex pb-4">
+											<div class="pr-3 ax-sec-tick">&#10004;</div>
+											<div class="">Equity, Mutual Funds, IPO, Bonds, Insurance all under one roof</div>
+										</div>
+										<div class="d-flex pb-0">
+											<div class="pr-3 ax-sec-tick">&#10004;</div>
+											<div class="">Seamless trading experience with 3in1 account</div>
+										</div>
+									</div>
+								</div>
+								
+								
+							</div>
+						</div>					
+					</div>				
+				</div>-->
+			  
+				<!----trading segment-->
+                <div class="intrestedsegments intrested-products">
+                    <h4 class="ax-sec-title m-0 mb-5 d-none">Disclaimer</h4>
+					<div id="productDisclaimer">
+					<!--<div class="row" ng-hide="dpBank">-->
+					<div class="row d-none">
+						<div class="col-12 mb-5">
+							<label class="ax-label">Preferred depository is NSDL</label>
+						</div>
+					</div>
+					<div class="row d-none">
+						<div class="col-sm-4 mt-3 input-section depository-section">
+                            <label for="nsdl">
+                                <input class="customcheckradio" type="radio" name="depository" value="NSDL" id="nsdl" ng-disabled="formData.RMModule">
+                                <span>NSDL</span>
+                            </label>
+                        </div>
+                        <!--<div class="col-sm-4 mt-3 input-section pos-relative">
+                            <label for="cdsl">
+                                <input class="customcheckradio" type="radio" name="depository" value="CDSL" id="cdsl" ng-disabled="formData.RMModule">
+                                <span>CDSL</span>
+                            </label>
+                        </div>-->
+					</div>
+                  
+					<div class="row" ng-show="dpBank">
+                        
+							<div class="col-md-6 d-none">
+								<div class="row">
+									<div class="col-12">
+										<label class="ax-label">DP Depository</label>
+									</div>
+									<div class="col-12">
+										<div class="row">
+											<div class="col-md-6 mt-3 input-section pos-relative d-none">
+												<label for="dpcdsl">
+													<input class="customcheckradio" type="radio" name="dpdepository" value="CDSL" id="dpcdsl">
+													<span>CDSL</span>
+												</label>
+											</div>
+											<div class="col-md-6 mt-3 input-section pos-relative">
+												<label for="dpnsdl">
+													<input class="customcheckradio" type="radio" name="dpdepository" value="NSDL" id="dpnsdl">
+													<span>NSDL</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-6">
+									<label class="ax-label">Bank DP Id</label>
+									<input class="input-field form-control text-uppercase" type="text" 
+										id="bankdpNumber" placeholder="DP Id" name="dpNumber"  alpha-numeric maxlength="8" ng-keypress="dpIdError = false;"
+										ng-model="formData.bankDpNumber" disabled >
+
+                                      
+									</div>
+									<div class="col-md-6">
+									<label class="ax-label">Customer DP Id</label>
+									<input class="input-field form-control text-uppercase" type="text" 
+										id="dpNumber" placeholder="DP Id" name="dpNumber"  alpha-numeric maxlength="8" ng-keypress="dpIdError = false;"
+										ng-model="formData.dpNumber">
+
+                                        <div class="input-message clearfix">
+                                            <span class="error-message pull-right" ng-if="dpIdError"><i class="fa fa-times"></i>
+                                                Please provide valid DP Id</span>
+                                        </div>
+									</div>
+								</div>
+							</div>
+					</div>
+					<!-- <div class="row mt-4" ng-if="formData.referralCode">
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-12">
+									<label class="ax-label">Referral Code</label>
+									<input class="input-field form-control text-uppercase" type="text" 
+									id="reffcode" placeholder="Referral Code" name="reffcode"  alpha-numeric maxlength="8" ng-keypress="dpIdError = false;"
+									ng-model="formData.referralCode" disabled >
+								</div>
+							</div>
+						</div>
+					</div> -->
+					</div>
+					
+					 <div class="row" ng-show="dpBank">
+						<div class="divider col-12 mb-5">
+							<div class="divider-d"></div>
+						</div>
+					</div>
+					
+					<h4 class="ax-sec-title acord-btn collapsed m-0 mb-5"  data-toggle="collapse" data-target="#assistedCode">
+					<a href="javascript:void(0)" class="collapseTag ax-sec-title" title="assistedCode">Assisted <span ng-if="!appliedPromo">& Promo </span>Codes</a>
+					<small ng-if="collapseDetailsError" class="text-danger ml-5 mt-3 ng-scope"><i class="fa fa-times"></i> Further action required</small>
+					</h4>
+					<div id="assistedCode" class="collapse" data-parent="#products">
+                    <div class="row align-items-end">
+                        
+                        <div class="col-md-4 input-section">
+                            <label class="ax-label" for="assistedCode">I have assisted code with me (Optional)</label>
+                            <input class="input-field form-control text-uppercase" type="text" name="referrelCodes" ng-disabled="freezeLG"
+                                id="assistedLGCode" placeholder="LG CODE" alpha-numeric maxlength="20"
+                                ng-model="formData.assistedLGCode">
+                        </div>
+                        <div class="col-md-4 input-section">
+                            <label class="ax-label text-uppercase" for="assistedCode"></label>
+                            <input class="input-field form-control" type="text" name="referrelCodes" id="assistedLCCode" ng-disabled="freezeLC"
+                                maxlength="20" alpha-numeric placeholder="LC CODE" ng-model="formData.assistedLCCode">
+                        </div>
+						<div class="col-md-4 input-section">
+							<!-- <label class="ax-label">Referral Code</label> -->
+							<input class="input-field form-control text-uppercase" type="text" 
+							id="reffcode" placeholder="Referral Code" name="reffcode"  alpha-numeric maxlength="24" 
+							ng-model="formData.referralCode" ng-disabled="freezeRC">
+						</div>
+                    </div>
+                    <div class="row">
+                        <div class="divider col-12 mb-5">
+                            <div class="divider-d"></div>
+                        </div>
+                    </div>
+					<div class="row" ng-if="!appliedPromo">
+						<div class="col-md-8 input-section">
+							<label class="ax-label" for="assistedCode">I have a promo code with me</label>
+							<input class="input-field form-control text-uppercase" type="text" name="referrelCodes"
+								id="promoCode" placeholder="PROMO CODE" alpha-numeric maxlength="20" ng-disabled="promoDone || promoDisabled"
+								ng-model="formData.promoCode" ng-blur="clearText()">
+								
+							<div class="ax-label text-success mt-4" ng-if="promoSuccess">{{promoDescripton}}</div>	
+							<div class="ax-label text-success mt-4" ng-if="promoDone">Promo code applied</div>	
+							<div class="ax-label text-danger mt-4" ng-if="promoFailed">{{promoDescripton}}</div>	
+							<div class="ax-label text-danger mt-4" ng-if="promoEmpty">Please enter promo code</div>	
+						</div>
+						<div class="col-md-4">
+							<button type="submit" class="mt-5 btn ax-btn-primary text-uppercase secbut pcacs-tabs scrolltop" ng-disabled="promoDone" ng-click="applyPromo()">
+								Apply
+							</button>					
+						</div>
+						<div class="col-12 mb-5">
+							<!--<p ng-if="!productAction && formData.promoCode" style="color:#ae275f"><small>This promocode is not applicable for plans with subscription amount as account opening fees is already waived off for these plans.</small></p>-->
+							<p><small>* I hereby authorise ASL to buy ETF(s) units not exceeding Rs.100 at market price towards activation of my Trading account. I agree that this is complimentary against account opening fees paid and no money will be deducted from my bank account.</small></p>
+						</div>
+					</div>     
+					</div>
+                </div>
+
+                <div class="row mb-5">
+					
+                    <div class="col-12 text-center">
+                        <div class="wizard-btns">
+                            <button type="button" id="backBankPage" ng-click="fourthSection()"
+                                class="text-uppercase boariding-btns text-uppercase plan-button" ng-if="!formData.isgEsign">
+                                Back to bank details
+                            </button>
+                            <button type="submit" id="proceedPayment"
+                                class="btn ax-btn-primary text-uppercase secbut pcacs-tabs scrolltop"
+                                ng-disabled="formData.apiLoading" title="" ng-click="paymentBtn()"
+                                ng-if="!formData.isgEsign && formData.makePayment && !formData.RMModule && !iszeropayment">
+                                Make Payment
+                            </button>
+                            <button type="submit" id="proceedPayment"
+                                class="btn ax-btn-primary text-uppercase secbut pcacs-tabs scrolltop"
+                                ng-disabled="formData.apiLoading" title="" ng-click="updateDpid()"
+                                ng-if="(!formData.isgEsign && !formData.makePayment && !formData.RMModule && !iszeropayment)">
+                                Proceed to document upload
+                            </button>
+                            <button type="submit" id="proceedPayment"
+                                class="btn ax-btn-primary text-uppercase secbut pcacs-tabs scrolltop"
+                                ng-disabled="formData.apiLoading" title="" ng-click="productSentSms()"
+                                ng-if="formData.RMModule">
+                                Proceed to document upload
+                            </button>
+							<button type="button" id="backBankPage" ng-click="paymentSkip()"
+                                class="text-uppercase boariding-btns text-uppercase plan-button" ng-if="!formData.RMModule && formData.paymentSkip && !iszeropayment">
+                                Skip Payment
+                            </button>
+							<button type="button" id="backBankPage" ng-click="paymentSkip()"
+							class="btn ax-btn-primary text-uppercase secbut pcacs-tabs scrolltop" ng-if="!formData.RMModule && iszeropayment">
+							Proceed to document upload
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+				
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 help-sidebar d-none d-sm-block">
+        <h3 class="ax-sec-title mt-0 mb-3">Hey.. Help is here!<a ng-click="showInfo();" href="javascript:void(0);"><img
+                    src="assets/images/info-icon.svg" width="16" height="16" class="ax-product-info pull-right" alt=""></a></h3>
+        <div class="guideline-with-bg">
+            <div class="d-flex pb-4">
+                <div class="pr-3">1.</div>
+                <div ng-if="!webfinacle">This section provides details of the brokerage rates provided on your account.</div>
+                <div ng-if="webfinacle">Here you can choose from one of the various competitive pricing plans available with us.</div>
+            </div>
+            <div class="d-flex pb-4">
+                <div class="pr-3">2.</div>
+                <div class="" ng-if="!webfinacle">Your account is default enabled for cash segment.</div>
+                <div class="" ng-if="webfinacle">You can opt for derivatives segment (stocks, currency, commodity) by uploading income proof</div>
+            </div>
+            <div class="d-flex pb-4">
+                <div class="pr-3">3.</div>
+                <div class="" ng-if="!webfinacle">In case, you opt for derivative segment, you would need to upload your income proof (any
+                    one of Latest copy of Form 16 OR last six months bank statement, OR any of the last three month
+                    salary slip) as per SEBI guidelines in the next section.</div>
+				<div class="" ng-if="webfinacle">You can also mention the Axis Bank Employee who has assisted you in the journey by entering their Employee ID in the fields provided for entering LG & LC Codes. You can choose to make payment either through Net Banking, UPI, Bar Code, Wallets, Debit or Credit Card.</div>
+            </div>
+			<div>
+										<i class="fa fa-question-circle fa-lg"></i> Need Further Assist? <span style="color: #97144d; cursor: pointer;" class="cursor-pointer" ng-click="formData.helpPopup()" role="button" tabindex="0"> Click here</span>
+									</div>
+		
+        </div>
+    </div>
+</div>
+<section class="modal fade" id="promocodeDialog" role="dialog" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header" style="padding-bottom: 0 !important">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body pt-0">
+				<div class="row">
+					<div class="col-md-8 input-section">
+						<label class="ax-label" for="assistedCode">I have a promo code with me</label>
+						<input class="input-field form-control text-uppercase" type="text" name="referrelCodes"
+							id="promoCodeModal" placeholder="PROMO CODE" alpha-numeric maxlength="20" ng-disabled="promoDone"
+							ng-model="formData.promoCode" ng-blur="clearText()">
+							
+						<div class="ax-label text-success mt-4" ng-if="promoSuccess">{{promoDescripton}}</div>	
+						<div class="ax-label text-success mt-4" ng-if="promoDone">Promo code applied</div>	
+						<div class="ax-label text-danger mt-4" ng-if="promoFailed">{{promoDescripton}}</div>	
+						<div class="ax-label text-danger mt-4" ng-if="promoEmpty">Please enter promo code</div>	
+					</div>
+					<div class="col-md-4">
+						<button type="submit" class="mt-5 btn ax-btn-primary text-uppercase secbut pcacs-tabs scrolltop" ng-disabled="promoDone" ng-click="applyPromo()">
+							Apply
+						</button>					
+					</div>
+				</div>         
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="modal fade" id="productSentSmsDialog" role="dialog" tabindex="-1">
+	<div class="modal-dialog login-dialog">
+		<div class="modal-content">
+			<!-- <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div> -->
+			<div class="modal-body">
+				<div class="row">
+					<h4 class="ax-sec-label text-center mb-3 w-100">Payment link send to customer successfully</h4>
+					<div class="col-md-12 text-center">
+						<button type="submit" class="mt-2 btn ax-btn-primary text-uppercase secbut pcacs-tabs scrolltop" ng-click="productValidate()">
+							Okay
+						</button>					
+					</div>
+				</div>         
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- dp popup -->
+<section class="modal fade" id="dpMessagePopup" role="dialog" tabindex="-1">
+	<div class="modal-dialog login-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="ax-modal-close close" data-dismiss="modal" data-toggle="tooltip"
+					title="Close">&times;</button>
+				<!-- <div class="row">
+					<div class="col-12">
+						<h4 class="ax-sec-title mt-0">Preferences set by AxisDirect</h4>
+					</div>
+				</div> -->
+			</div>
+			<div class="modal-body pt-0 pb-0">
+				<p class="ax-sec-title text-center"> {{dpMessage}} </p>
+			</div>
+			<div class="modal-footer text-center">
+				<div class="row w-100">
+					<div class="col-12">
+						<button type="button" data-dismiss="modal" class="btn ax-btn-primary text-uppercase">
+							Okay</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <!-- Show product 'i' information -->
+    <div class="show-product-info" ng-if="showProductInfo">
+        <p class="m-0">For any queries you can call us on 022-61480808 or 022-40508080</p>
+    </div>
+</section>
+<!-- <div class="mobile-proceed">
+    <a href="personalDetails" class="back"><i class="icon25 icon-back"></i></a>
+	<a href="javascript:void(0);" class="proceed"  ng-click="productValidate()">Proceed</a>
+    <a href="javascript:void(0);" class="need-assistance-mob" ng-click="mobileAssistance()"><i class="icon25 icon-assistance"></i></a>
+</div> -->

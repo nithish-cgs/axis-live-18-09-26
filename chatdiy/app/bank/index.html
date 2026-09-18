@@ -1,0 +1,305 @@
+<style>
+.table {
+display: none !important;
+}
+</style>
+<div  ng-if="!webkarvy">       
+<!-- Global site tag (gtag.js) - Google Ads: 727858862 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-727858862"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-727858862');
+</script>
+
+<!-- Event snippet for AxisDirect_BankDetails_Dec20 conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-727858862/B6SECLbln-wBEK79iNsC'});
+</script>
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1253495914811323');
+  fbq('track', 'PageView');fbq('trackCustom', 'AxisDirect-BankDetails');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1253495914811323&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+</div>
+<div class="profileaddresschangestep1 pacs">
+        <!--Contact Details-->
+        <div class="onboard-innerinfo">
+            <div class="clearfix ob-form-header">
+                <!-- <div class="pull-left">
+                    <a href="products" class="previous">Previous</a>
+                    <a href="javascript:void(0);" ng-click="sixthSection()" class="next">Next</a>
+                </div> -->
+                <!-- <div class="pull-right">
+                    <div class="text-right" ng-if="formData.ReferenceNumber">Reference Number :
+                        {{formData.ReferenceNumber}}</div>
+                </div> -->
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row mb-5">
+                        <div class="col-md-9" ng-if="!webkarvy">
+                            <h4 class="ax-sec-title">I will require your bank account details to enable seamless investing experience</h4>
+                        </div>
+                        <div class="col-12 d-block d-sm-none" ng-if="!webkarvy">
+                            <div class="d-flex justify-content-start">
+                                <div>Step 4/8</div>
+                                <div class="mobile-progress progress">
+                                    <div class="progress-bar" style="width:50%;height:20px"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-none d-sm-block text-center" ng-if="!webkarvy">
+                            <!-- <img class="img-fluid cartoon-character" src="assets/images/axis/bank-cartoon.png"
+                                alt="Registration-emoji" /> -->
+                        </div>
+                    </div>
+                    
+                    <form class="input-forms" autocomplete="off">
+                        <div class="row" ng-if="webkarvy">
+                            <div class="col-sm-12 p-0" ng-if="webkarvy">
+                                <div class="d-flex align-items-center justify-content-start">
+                                    <h1 class="ax-sec-title mt-0 d-none d-sm-block ">Communication deails</h1>
+                                   
+                                </div>
+                                <hr/>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ax-label">Phone Number:</label>
+                                <div class="ax-field">
+                                    <input class="form-control" autocomplete="nope" placeholder="Enter 10 Digit Mobile Number" type="tel" id="mobile"
+                                    ng-model="formData.fields.mobile"  
+                                    required only-digits maxlength="10" />
+                                </div>
+                                <span class="error-message pull-right" ng-if="emptyMobile"><i class="fa fa-times"></i> Mobile
+                                    number is mandatory.</span>
+                                <span class="error-message pull-right" ng-if="invalidMobile"><i class="fa fa-times"></i> Please
+                                    provide valid mobile number</span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ax-label">Email ID:</label>
+                                <div class="ax-field">
+                                    <input class="form-control" autocomplete="nope" placeholder="Enter your valid Email ID" type="text" id="emailID"
+                                        ng-model="formData.fields.email"
+                                         required maxlength="50" />
+                                    <span class="validation-result"></span>
+                                </div>
+                                <p class="error-message pull-right" ng-show="invalidEmail || emptyEmail"><i class="fa fa-times"></i>
+                                    Please
+                                    provide proper email address. Eg: john@xyz.com</p>
+                            </div>
+                            
+                        </div>
+                        <div class="row" ng-if="webkarvy">
+                            <div class="col-sm-12 p-0">
+                                <div class="d-flex align-items-center justify-content-start">
+                                    <h1 class="ax-sec-title mt-0  ">Bank Details</h1>
+                                    
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div>
+                            <!-- Manual Address Entry -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="ax-label">Bank Name:</label>
+                                    <div class="ax-field IBBankDisabled" ng-if="!webkarvy">                        
+                                        <select class="select form-control" ng-model="formData.fields.bankID"
+                                        ng-change="bankName('changed')" id="pBank" ng-if="formData.bankList != ''" ng-disabled="webJana || janabank || pBankdisabled">
+                                            <option value="">Select Bank</option>
+                                            <option ng-selected="bank.BankId == formData.fields.bankID"
+                                                ng-repeat="bank in formData.bankList track by [$index]"
+                                                value="{{bank.BankId}}">{{bank.BankName}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="ax-field" ng-if="webkarvy">      
+                                        <select class="select form-control" ng-model="formData.fields.bankName"
+                                        ng-change="bankName('changed')" id="pBank" ng-if="kbank != ''">
+                                            <option value="">Select Bank</option>
+                                            <option ng-selected="bank.BankName == formData.fields.bankName"
+                                                ng-repeat="bank in kbank track by [$index]"
+                                                value="{{bank.BankName}}">{{bank.BankName}}</option>
+                                        </select>
+                                        
+                                    </div>
+                                    <div class="input-message clearfix" ng-if="karvybankNameError"><span class="error-message pull-right"><i
+                                        class="fa fa-times"></i> Please Select bank name</span></div>
+                                    <div class="input-message clearfix" ng-if="bankNameError"><span class="error-message pull-right"><i
+                                        class="fa fa-times"></i> Please select bank name</span></div>
+                                </div>
+                                <div class="col-md-6 IBBankDisabled">
+                                    <label class="ax-label">IFSC code:</label>
+                                    <div class="ax-field" ng-if="!webfinacle && !webJana">
+                                            <angucompleteifsc disable-input="disableIFSC" placeholder="Enter IFSC Code" ng-click="scrolltoView($event)" id="ifsc" pause="100"
+                                            selectedobject="" searchfields="" titlefield="" minlength="1" inputclass="input-field"
+                                            matchclass="highlight" ng-keypress="ifscError = false;" />
+                                        <span class="validation-result"></span>
+                                    </div>
+									 <div class="ax-field mt-3 mb-5 ax-sec-title" ng-if="webfinacle || webJana">{{formData.fields.ifscCode}}</div>
+                                    <div class="input-message clearfix" ng-if="ifscError"><span class="error-message pull-right"><i
+                                        class="fa fa-times"></i> Please provide valid ifsc code</span></div>
+                                </div>
+                            </div>
+        
+                            <div class="row">
+                                <div class="col-md-6 IBBankDisabled">
+                                    <label class="ax-label">Bank Account Number:</label>
+                                    <div class="ax-field">
+                                            <input ng-if="!webfinacle && !webJana" class="input-field form-control" placeholder="Enter Bank Account Number" type="{{ typePasswordAc ? 'text' : 'password' }}" ng-focus="typePasswordAc=true" ng-blur="typePasswordAc=false" autocomplete="off" id="acc1" value="" name="accNumber" required="" ng-model="formData.fields.accNumber" maxlength="18" ng-right-click stop-ccp ng-keypress="$event.keyCode == 13 ? bankValidate() : accInvalid = false" ng-disabled="accNumberFreeze || janabank" only-digits />
+                                        <div class="mb-5 ax-sec-title" ng-if="webfinacle || webJana">{{formData.fields.accNumber}}</div>
+                                        <div class="input-message clearfix">
+                                            <span class="error-message pull-right" ng-if="accInvalid"><i class="fa fa-times"></i>
+                                                Invalid Account Number</span>
+                                        </div>
+                                        <span class="validation-result"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 IBBankDisabled"  ng-show="!webfinacle && !webJana" >
+                                    <label class="ax-label">Confirm Bank Account Number:</label>
+                                    <div class="ax-field">
+                                        <input class="input-field form-control" stop-ccp type="{{ typePasswordCAC ? 'text' : 'password' }}" ng-focus="typePasswordCAC=true" ng-blur="typePasswordCAC=false" id="cacc1" value="" placeholder="Confirm Bank Account Number" required="" ng-model="formData.fields.raccNumber" ng-right-click maxlength="18" ng-keypress="$event.keyCode == 13 ? bankValidate() : accountMismatch = false" ng-disabled="raccNumberFreeze || janabank"  only-digits>
+                                       
+										<div class="input-message clearfix">
+                                            <span class="error-message pull-right" ng-if="accountMismatch"><i class="fa fa-times"></i>
+                                                Account number not same</span>
+                                        </div>
+                                        <span class="validation-result"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+						
+                    
+                        <div class="row mb-5">
+                                <div class="col-12 text-center">
+                        <div class="wizard-btns">
+                            
+							<button type="button" id="backPersonalPage" ng-if="webkarvy" ng-click="firstSection()" class="boariding-btns text-uppercase plan-button">
+                                Back to Personal details
+                            </button>
+							<button type="button" id="backPersonalPage" ng-if="!webkarvy" ng-click="thirdSection()" class="boariding-btns text-uppercase plan-button">
+                                Back to Personal details
+                            </button>
+                            <button type="button" id="proceedProductPage" class="btn ax-btn-primary text-uppercase secbut pcacs-tabs scrolltop"
+                                ng-disabled="formData.apiLoading" title="profileaddresschangestep6" ng-click="bankValidate()">
+                                Proceed
+                            </button>
+                            <div class="loader-info text-center" style="display:block; position: relative;" ng-show="formData.apiLoading">
+                                <div class="display-table">
+                                    <div class="loading-data display-table-cell">
+                                        <span class="content-loader"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </form>
+                </div>
+    
+                <div class="col-md-3 help-sidebar d-none d-sm-block">
+                        <h3 class="ax-sec-title mt-0 mb-3">Hey.. Help is here!</h3>
+                        <div class="guideline-with-bg">
+                            <div class="d-flex pb-4">
+                                <div class="pr-3">1.</div>
+                                <div ng-if="!webfinacle">This section will help you to link your bank account with the Axis Direct Trading Account.</div>
+                                <div ng-if="webfinacle">This section will help to link your bank account available with Axis bank with your Axis Direct Demat and Trading Account
+</div>
+                            </div>
+                            <div class="d-flex pb-4">
+                                <div class="pr-3">2.</div>
+                                <div class="" ng-if="!webfinacle">Please Select Correct Bank and Enter Correct IFSC code.</div>
+                                <div class="" ng-if="webfinacle">Incase of Multiple bank accounts, you can choose the preferred bank account from the drop down for linking with Axis Direct</div>
+                            </div>
+                            <div class="d-flex pb-4">
+                                <div class="pr-3">3.</div>
+                                <div class="" ng-if="!webfinacle">IFSC is mentioned on your cheque leaf.</div>
+                                <div class="" ng-if="webfinacle">To verify IFSC, you can refer to your Axis Bank cheque leaf.</div>
+                            </div>
+                            <div class="d-flex pb-4" ng-if="!webfinacle">
+                                <div class="pr-3">4.</div>
+                                <div class="">IFSC Code is 11 Digit Alphanumeric Code</div>
+                            </div>
+                            <div class="d-flex pb-4" ng-if="!webfinacle">
+                                <div class="pr-3">5.</div>
+                                <div class="">The first four alphabetic Characters represent bank name, fifth character is zero (0) and reserved for future use. The last Six Characters (usually numeric, but can be alphanumeric) represent the branch </div>
+                            </div>
+							<div>
+										<i class="fa fa-question-circle fa-lg"></i> Need Further Assist? <span style="color: #97144d; cursor: pointer;" class="cursor-pointer" ng-click="formData.helpPopup()" role="button" tabindex="0"  ng-if="!webkarvy"> Click here</span>
+									</div>
+                        </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+	<section class="modal fade" id="pennyModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog login-dialog" style="margin-top: 231.5px;">
+            <div class="modal-content">
+                <div class="modal-body login-body">
+                        <!--Final Login Modal-->
+                        <div class="login-screen welcome-content">
+                                <ul class="form-fields text-center">
+                                    <li class="final-step">
+                                        <p class="page-tag page-tag1 ax-sec-title mt-0 mb-5">
+                                            {{pennyResponse}}
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="btn btn-primary text-uppercase mt-5" data-dismiss="modal" ng-if="!webkarvy" ng-click="bankDataSubmit()">
+                                            Okay
+                                        </button>
+										<button type="button" class="btn btn-primary text-uppercase mt-5" data-dismiss="modal" ng-if="webkarvy" ng-click="karvyBankSubmit()">
+                                            Okay
+                                        </button>
+                                    </li>
+                                </ul>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+ <!-- Modal -->
+ <section class="modal fade" id="myModal" role="dialog" tabindex="-1">
+	<div class="modal-dialog login-dialog" style="margin-top: 231.5px;" >
+		<div class="modal-content">
+		<div class="modal-body">
+			<b>To enhance your trading experience.</b> <br>
+			Explore linking your Axis Bank Account with us.<br>
+			Let us know if you are interestred in opening an Axis Bank Savings Account.
+			<div class="help-body">
+			</div>
+		</div>
+		<div class="modal-footer d-flex justify-content-end">
+				<button type="button" class="btn ax-btn-primary text-uppercase" ng-click="notAxisClient()">
+					Yes, I am Interested</button>
+				<button type="button" data-dismiss="modal" aria-label="Close" data-dismiss="modal" class="btn ax-btn-primary text-uppercase">
+				No, proceed</button>
+			</div>
+		</div>
+	</div>
+</section>
+<form id="frmMain" runat="server" method="post" style="opacity: 0;">
+    <input id="msg" name="msg" type="text" value="" />
+</form>
+    <!-- <div class="mobile-proceed">
+        <a href="products" class="back"><i class="icon25 icon-back"></i></a>
+        <a href="javascript:void(0);" class="proceed" ng-click="bankValidate()">Proceed</a>
+        <a href="javascript:void(0);" class="need-assistance-mob" ng-click="mobileAssistance()"><i class="icon25 icon-assistance"></i></a>
+    </div> -->

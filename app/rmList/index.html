@@ -1,0 +1,155 @@
+<style>
+.product-zone ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+.product-zone ul li {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    line-height: 23px;
+    margin: 0 5px;
+	color: #fff;
+	text-align: center;
+}
+
+</style>
+<div class="container">
+<div class="row">
+	<div class="col-md-3">
+        <label class="ax-label">From Date:</label>
+		<div class="ax-field">
+		<input class="form-control ll-skin-melon" placeholder="Select Date" readonly type="text" id="fromDt" ng-model="formData.fields.fromDt"  maxlength="10" />
+		</div>
+	</div>
+	<div class="col-md-3">	
+        <label class="ax-label">To Date:</label>
+		<div class="ax-field">
+		<input class="form-control ll-skin-melon" placeholder="Select Date" readonly type="text" id="toDt" ng-model="formData.fields.toDt"  maxlength="10" />
+		</div>
+	</div>
+	<div class="col-md-3">	
+        <label class="ax-label">Stage Completed:</label>
+		<div class="ax-field">
+			<select class="select form-control" ng-model="clientComplete" ng-change="getRmList()" id="stageCompleted">
+				<option value=""></option>
+				<option value="0">Registration</option>
+				<option value="1">Profile</option>
+				<option value="2">Bank</option>
+				<option value="3">Product</option>
+				<option value="4">Document</option>
+			</select>
+		</div>
+	</div>
+	<div class="col-md-3">	
+        <label class="ax-label">Scrutiny Status:</label>
+		<div class="ax-field">
+			<select class="select form-control" ng-model="agentComplete" ng-change="getRmList()" id="agentCompleted">
+				<option value=""></option>
+				<option value="3">All</option>
+				<option value="0">Rejected</option>
+				<option value="1">WIP</option>
+				<option value="2">Completed</option>
+				<option value="4">Activated</option>
+			</select>
+		</div>
+	</div>
+	<div class="col-md-3">	
+        <label class="ax-label">Reference Number:</label>
+		<div class="ax-field">
+			<input class="form-control text-capitalize" type="text" id="refernceNumber" placeholder="Enter Reference Number" ng-model="searchWB" alpha-numeric maxlength="30"  autocomplete="nope"  />
+            <span class="validation-result"></span>
+		</div>
+	</div>	
+	<div class="col-md-3">	
+        <label class="ax-label">PAN:</label>
+		<div class="ax-field">
+			<input class="form-control text-capitalize" type="text" id="pan" placeholder="Enter PAN" ng-model="searchPan" maxlength="10" alpha-numeric autocomplete="nope"  />
+            <span class="validation-result"></span>
+		</div>
+	</div>
+	<div class="col-md-3">	
+        <label class="ax-label">Email:</label>
+		<div class="ax-field">
+			<input class="form-control text-capitalize" type="text" id="rmemail" placeholder="Enter Email" ng-model="searchEmail" maxlength="30"  autocomplete="nope"  />
+            <span class="validation-result"></span>
+		</div>
+	</div>
+	<div class="col-md-3">	
+        <label class="ax-label">Mobile:</label>
+		<div class="ax-field">
+			<input class="form-control text-capitalize" type="text" id="mobile"  placeholder="Enter Mobile" ng-model="searchMobile" maxlength="10"  only-digits  autocomplete="nope"  />
+            <span class="validation-result"></span>
+		</div>
+	</div>
+</div>
+<div class="row mb-4">
+	<div class="col-md-12 pull-right">
+		<button class="btn btn-primary ax-btn-primary float-right text-uppercase mx-2" ng-click="getRmList()">Search</button>
+	</div>
+
+</div>
+<div class="row product-zone">
+	<div class="col-md-12 text-center" ng-if="!formData.overallList">
+		No list to display
+	</div>
+    <div class="col-md-3 mb-4" ng-repeat="rmList in formData.overallList | filter:query">
+		<div class="card h-100">
+			<div class="card-header">
+				<h5 class="card-title ax-bold-title"><i class="fa fa-user" aria-hidden="true"></i> {{rmList.ClientName}}</h5>
+			</div>
+			<div class="card-body rounded text-center" >
+				<h5 class="card-title text-secondary" ng-if="rmList.PaymentStatus == 'Y'"><i class="fa fa-desktop mr-2" aria-hidden="true"></i> {{rmList.ReferenceNumber}}
+					<span class="ml-2 badge"><span ng-if="rmList.KRAClient == 'Z'">k-Edit</span><span ng-if="rmList.KRAClient == 'N'">{{rmList.KRAClient}}K</span><span ng-if="rmList.KRAClient == 'Y'">K</span></span>
+				</h5>
+				<p class="mb-0" ng-if="rmList.PanNumber">
+				<small class="card-title text-secondary"><strong>Pan Number :</strong><span class="text-uppercase"> {{rmList.PanNumber}} </span>
+				</small></p>
+				<small class="card-title text-secondary"><strong>Updated On :</strong> {{rmList.RegistrationOn}}
+				</small>
+				<small class="card-title text-secondary"><strong>Status :</strong> <span ng-if="rmList.OverAllStatus!='Rejected'"><span ng-if="rmList.OverAllStatus">{{rmList.OverAllStatus}}</span> <span ng-if="!rmList.OverAllStatus">In Progress</span></span> 
+				
+				<a href="javascript:void(0)" ng-if="rmList.OverAllStatus == 'Rejected'" ng-click="rejecModal(rmList.ReferenceNumber)">Rejected</a>
+				</small>
+				<div class="mt-3"><a href="javascript:void(0)" ng-if="rmList.POAPDFAvailable == 'Y'" class="ax-bold-title pe-none" ng-click="generatePOA(rmList.ReferenceNumber,'poa')"><small>POA Generate</small></a> <span ng-if="rmList.POAPDFAvailable == 'Y' && rmList.AOFPDFAvailable == 'Y'">|</span> <a href="javascript:void(0)" class="ax-bold-title" ng-click="generatePOA(rmList.ReferenceNumber,'aof')" ng-if="rmList.AOFPDFAvailable == 'Y'"><small>AOF Generate</small></a></div>
+				<div class="mt-3"><a href="javascript:void(0)" ng-if="rmList.POAPDFAvailable == 'Y'" class="ax-bold-title pe-none" ng-click="downloadPOA(rmList.ReferenceNumber,'poa')"><small>POA Download</small></a> <span ng-if="rmList.POAPDFAvailable == 'Y' && rmList.AOFPDFAvailable == 'Y'">|</span> <a href="javascript:void(0)" class="ax-bold-title" ng-click="downloadPOA(rmList.ReferenceNumber,'aof')" ng-if="rmList.AOFPDFAvailable == 'Y'"><small>AOF Download</small></a></div>
+			</div>
+			<div class="card-footer">
+				<ul>
+                    <li ng-class="{'bg-success': rmList.RegistrationStatus == '4' || rmList.RegistrationStatus == '3'  || rmList.RegistrationStatus == '45' || rmList.RegistrationStatus == '47' || rmList.RegistrationStatus == '48', 'bg-warning':  rmList.RegistrationStatus == '2' || rmList.RegistrationStatus == '44', 'bg-danger':  rmList.RegistrationStatus == '5','bg-secondary':  !rmList.RegistrationStatus || rmList.RegistrationStatus == '0', 'bg-primary':  rmList.RegistrationStatus == '49'}">
+                        <span data-bs-toggle="tooltip" data-original-title="Registration" class="">S<small>1</small></span>
+                    </li>
+                    <li ng-class="{'bg-success': rmList.ProfileStatus == '4' || rmList.ProfileStatus == '3'  || rmList.ProfileStatus == '45' || rmList.ProfileStatus == '47' || rmList.ProfileStatus == '48', 'bg-warning':  rmList.ProfileStatus == '2' || rmList.ProfileStatus == '44', 'bg-danger':  rmList.ProfileStatus == '5','bg-secondary':  !rmList.ProfileStatus || rmList.ProfileStatus == '0', 'bg-primary':  rmList.ProfileStatus == '49'}">
+                        <span class="" data-bs-toggle="tooltip" data-original-title="Profile">S<small>2</small></span>
+                    </li>
+                    <li ng-class="{'bg-success': rmList.BankStatus == '4' || rmList.BankStatus == '3'  || rmList.BankStatus == '45' || rmList.BankStatus == '47' || rmList.BankStatus == '48', 'bg-warning':  rmList.BankStatus == '2'|| rmList.BankStatus == '44', 'bg-danger':  rmList.BankStatus == '5','bg-secondary':  !rmList.BankStatus || rmList.BankStatus == '0', 'bg-primary':  rmList.BankStatus == '49'}">
+                        <span class="" data-bs-toggle="tooltip" data-original-title="Bank">S<small>3</small></span>
+                    </li>
+                    <li ng-class="{'bg-success': rmList.ChoosePlanStatus == '4' || rmList.ChoosePlanStatus == '3'  || rmList.ChoosePlanStatus == '45' || rmList.ChoosePlanStatus == '47' || rmList.ChoosePlanStatus == '48', 'bg-warning':  rmList.ChoosePlanStatus == '2'|| rmList.ChoosePlanStatus == '44', 'bg-danger':  rmList.ChoosePlanStatus == '5','bg-secondary':  !rmList.ChoosePlanStatus || rmList.ChoosePlanStatus == '0', 'bg-primary':  rmList.ChoosePlanStatus == '49'}">
+                        <span class="" data-bs-toggle="tooltip" data-original-title="Products">S<small>4</small></span>
+                    </li>    
+                    <li ng-class="{'bg-success': rmList.POAStatus == '4' || rmList.POAStatus == '3'  || rmList.POAStatus == '45' || rmList.POAStatus == '47' || rmList.POAStatus == '48', 'bg-warning':  rmList.POAStatus == '2'|| rmList.POAStatus == '44', 'bg-danger':  rmList.POAStatus == '5','bg-secondary':  !rmList.POAStatus || rmList.POAStatus == '0', 'bg-primary':  rmList.POAStatus == '49'}">
+                        <span class="" data-bs-toggle="tooltip" data-original-title="Documents Upload">S<small>5</small></span>
+                    </li>
+                    
+                </ul>
+			</div>
+		</div>
+    </div>
+</div>
+</div>
+<section class="modal fade" id="rejectModal" role="dialog" tabindex="-1">
+            <div class="modal-dialog" style="margin-top: 230px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="ax-modal-close close" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                            title="Close">&times;</button>
+                    </div>
+                    <div class="modal-body pt-0 pb-5">
+                            <span ng-bind-html="reason"></span>                    
+					</div>
+                </div>
+            </div>
+        </section>

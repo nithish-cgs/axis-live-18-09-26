@@ -1,0 +1,412 @@
+<div class="container">
+<div class="profileaddresschangestep1 pacs" ng-controller="financialController">                     
+                        <h2 class="page-title page-titleboard"><span>Financial Details</span></h2>
+                        <p class="page-tag">Please enter your financial details here</p>
+
+                        <!--Contact Details-->
+                        <div class="onboard-innerinfo">
+                            <form class="input-forms">
+                                <ul class="form-fields">
+                                    <li>
+                                        <h4 class="onboard-title onboard-title1">Your Occupation</h4>
+                                        <select class="select" id="occupation" ng-model="formData.fields.occupation">
+											<option value="" ng-hide="formData.fields.occupation">Occupation</option>
+                                            <option ng-show="false" value=""></option>
+                                            <option ng-selected="op.OccupationId == formData.fields.occupation" ng-repeat="op in formData.OccupationDetailsList track by [$index]" value="{{op.OccupationId}}">{{op.Name}}</option>
+                                        </select>
+                                    </li>
+                                    <li class="marginb10">
+                                        <h4 class="onboard-title onboard-title1  no-padding">Your Annual Income</h4>
+                                        <ul class="list-inline radiolist">
+                                            <li>
+                                                <label for="anincome1">
+                                                    <input type="radio" ng-model="formData.fields.anIncome" class="customcheckradio"
+                                                           name="anincome" id="anincome1" value="1"/>
+                                                    <span>&lt; 1 Lac</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="anincome2">
+                                                    <input type="radio" ng-model="formData.fields.anIncome" class="customcheckradio"
+                                                           name="anincome" id="anincome2" value="2"/>
+                                                    <span>1-5 Lacs</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="anincome3">
+                                                    <input type="radio" ng-model="formData.fields.anIncome" class="customcheckradio"
+                                                           name="anincome" id="anincome3" value="4"/>
+                                                    <span>5-10 Lacs</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="anincome4">
+                                                    <input type="radio" ng-model="formData.fields.anIncome" class="customcheckradio"
+                                                           name="anincome" id="anincome4" value="6"/>
+                                                    <span>10-25 Lacs</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="anincome5">
+                                                    <input type="radio" ng-model="formData.fields.anIncome" class="customcheckradio"
+                                                           name="anincome" id="anincome5" value="7"/>
+                                                    <span>&gt; 25 Lacs</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <input class="input-field" type="tel" id="netWorth1" required="" ng-model="formData.fields.netWorth">
+                                        <label class="input-label" for="netWorth1">Your Networth</label>
+                                        <div class="onboard-info">
+                                            <a href="javascript:void(0)" class="info-tag info-cat"><img
+                                                    src="assets/images/info-icon.svg" width="16" height="16" alt=""></a>
+                                            <div class="info-details no-display">
+                                                <p>All your assets minus your loans/ liabilities. A rough Estimate is fine.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="mobmarnone">
+                                        <h4 class="onboard-title onboard-title1">Your Networth Date</h4>
+                                        <ul class="list-inline relation-name relation-name1">
+                                            <li>
+                                                <select class="select">
+                                                    <option>29</option>
+                                                    <option>02</option>
+                                                    <option>03</option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                <select class="select">
+                                                    <option>September</option>
+                                                    <option>January</option>
+                                                    <option>Febuary</option>
+                                                    <option>March</option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                <select class="select">
+                                                    <option>2016</option>
+                                                    <option>2015</option>
+                                                    <option>2014</option>
+                                                </select>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="marginb20">
+                                        <h4 class="onboard-title onboard-title1  no-padding">Your Trading/Investment
+                                            Experience</h4>
+                                        <ul class="list-inline radiolist">
+                                            <li>
+                                                <label for="year1">
+                                                    <input type="radio" class="customcheckradio"
+                                                           name="years" id="year1"/>
+                                                    <span>No Experience</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="year2">
+                                                    <input type="radio" class="customcheckradio"
+                                                           name="years" id="year2"/>
+                                                    <span>1-2 Years</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="year3">
+                                                    <input type="radio" class="customcheckradio"
+                                                           name="years" id="year3"/>
+                                                    <span>2-3 Years</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="year4">
+                                                    <input type="radio" class="customcheckradio"
+                                                           name="years" id="year4"/>
+                                                    <span>3-5 Years</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="year5">
+                                                    <input type="radio" class="customcheckradio"
+                                                           name="years" id="year5"/>
+                                                    <span>More than 5 Years</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="marginb20">
+                                        <h4 class="onboard-title onboard-title1  no-padding">Dealing through other sub
+                                            broker</h4>
+                                        <ul class="list-inline radiolist">
+                                            <li class="choosencate">
+                                                <label for="brYes">
+                                                    <input type="radio" class="customcheckradio"
+                                                           name="broker" id="brYes"/>
+                                                    <span>Yes</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="brno">
+                                                    <input type="radio" class="customcheckradio"
+                                                           name="broker" id="brno" checked/>
+                                                    <span>No</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="no-display sub-add">
+                                        <input class="input-field" type="text" id="brokerName1" value="" required="">
+                                        <label class="input-label" for="brokerName1">Broker's Name</label>
+                                    </li>
+                                    <li class="no-display sub-add">
+                                        <input class="input-field" type="text" id="clientcode" value="" required="">
+                                        <label class="input-label" for="clientcode">Client Code</label>
+                                    </li>
+                                    <li class="no-display sub-add">
+                                        <input class="input-field" type="text" id="exchange1" value="" required="">
+                                        <label class="input-label" for="exchange1">Exchange (Optional)</label>
+                                    </li>
+                                    <li class="marginb0 no-display sub-add">
+                                        <div class="past-actions pos-relative">
+                                            <h4 class="onboard-title onboard-title1 no-padding">Any disputes&nbsp;</h4>
+                                            <div class="onboard-info">
+                                                <a href="javascript:void(0)" class="info-tag info-cat"><img
+                                                        src="assets/images/info-icon.svg" width="16" height="16" alt=""/></a>
+                                                <div class="info-details no-display">
+                                                    <p> Details of any action/proceedings initiated/pending/taken by
+                                                        SEBI/Stock exchange/any other authority against the applicant in
+                                                        charge of dealing in securities during the last 3 years.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="list-inline radiolist">
+                                            <li class="choo-paction">
+                                                <label for="paYes">
+                                                    <input type="radio" class="customcheckradio" name="rcates"
+                                                           id="paYes"/>
+                                                    <span>Yes</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="paNo">
+                                                    <input type="radio" class="customcheckradio" name="rcates"
+                                                           id="paNo" checked/>
+                                                    <span>No</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="no-display sub-action">
+                                        <input class="input-field" type="text" id="disputes" value="" required="">
+                                        <label class="input-label" for="disputes">Details of disputes</label>
+                                        <div class="onboard-info">
+                                            <a href="javascript:void(0)" class="info-tag info-cat"><img
+                                                    src="assets/images/info-icon.svg" width="16" height="16" alt=""/></a>
+                                            <div class="info-details  no-display">
+                                                <p>Details of disputes/dues pending from/to such stock
+                                                    broker/sub-broker/authorized person</p>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="marginb20">
+                                        <h4 class="onboard-title onboard-title1  no-padding">Political Connection</h4>
+                                        <ul class="list-inline radiolist">
+                                            <li>
+                                                <label for="pcrelate1">
+                                                    <input type="radio" class="customcheckradio"
+                                                           name="pscrelation" id="pcrelate1"/>
+                                                    <span>Politically Exposed</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="pcrelate2">
+                                                    <input type="radio" class="customcheckradio"
+                                                           name="pscrelation" id="pcrelate2"/>
+                                                    <span>Related to Political Exposed Person</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="pcrelate2">
+                                                    <input type="radio" class="customcheckradio"
+                                                           name="pscrelation" id="pcrelate3" checked/>
+                                                    <span>Not Related</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="marginb20">
+                                        <h4 class="onboard-title">FATCA &amp; CRS Details </h4>
+                                    </li>
+                                    <li class="marginb10">
+                                        <h4 class="onboard-title onboard-title1 no-padding">Residence for Tax Purpose
+                                            Outside India</h4>
+                                        <ul class="list-inline radiolist">
+                                            <li class="nriaddress">
+                                                <label for="tpctry1">
+                                                    <input type="radio" class="customcheckradio" name="rcontry"
+                                                           id="tpctry1"/>
+                                                    <span>Yes</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="tpctry2">
+                                                    <input type="radio" class="customcheckradio" name="rcontry"
+                                                           id="tpctry2" checked/>
+                                                    <span>No</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="no-display nri-add">
+                                        <h4 class="onboard-title onboard-title1">Your Country</h4>
+                                        <select class="select">
+                                            <option>India</option>
+                                            <option>Pakistan</option>
+                                            <option>China</option>
+                                            <option>Bangladesh</option>
+                                        </select>
+                                    </li>
+                                    <li class="no-display nri-add">
+                                        <input class="input-field" type="text" id="tinNumber1" value="" required="">
+                                        <label class="input-label" for="tinNumber1">Tax Identification Number</label>
+                                        <div class="onboard-info">
+                                            <a href="javascript:void(0)" class="info-tag info-cat"><img
+                                                    src="assets/images/info-icon.svg" width="16" height="16" alt=""/></a>
+                                            <div class="info-details no-display">
+                                                <p>A sector is an area of the economy in which businesses share the same
+                                                    or a related
+                                                    product or service.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="no-display nri-add">
+                                        <input class="input-field" type="text" id="poBirth1" value="" required="">
+                                        <label class="input-label" for="poBirth1">Place of Birth</label>
+                                    </li>
+                                    <li class="no-display nri-add">
+                                        <h4 class="onboard-title onboard-title1">Country of Birth</h4>
+                                        <select class="select" data-placeholder="Country of Birth">
+                                            <option>India</option>
+                                            <option>Pakistan</option>
+                                            <option>China</option>
+                                            <option>Bangladesh</option>
+                                        </select>
+                                    </li>
+
+                                    <li class="no-display nri-add">
+                                        <h4 class="onboard-title onboard-title1 no-padding">Tax Residency Address</h4>
+                                        <ul class="list-inline radiolist">
+                                            <li>
+                                                <label for="addty1">
+                                                    <input type="radio" class="customcheckradio" name="rcontryad"
+                                                           id="addty1" checked/>
+                                                    <span>Same as Correspondence</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="addty2">
+                                                    <input type="radio" class="customcheckradio" name="rcontryad"
+                                                           id="addty2"/>
+                                                    <span>Same as Permanent</span>
+                                                </label>
+                                            </li>
+                                            <li class="differntadd">
+                                                <label for="addty3">
+                                                    <input type="radio" class="customcheckradio" name="rcontryad"
+                                                           id="addty3"/>
+                                                    <span>Different</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="no-display diff-add">
+                                        <h4 class="onboard-title onboard-title1  no-padding">Address Type</h4>
+                                        <select class="select">
+                                            <option>Resident Individual</option>
+                                            <option>Non Resident Indian</option>
+                                            <option>Foreign National</option>
+                                            <option>Person of Indian Origin</option>
+                                        </select>
+                                    </li>
+                                    <li class="no-display diff-add marginb20">
+                                        <input class="input-field" type="tel" id="pincode1" value="" required="">
+                                        <label class="input-label" for="pincode1">Your
+                                            Pincode</label>
+                                    </li>
+                                    <li class="no-display diff-add">
+                                        <h4 class="onboard-title onboard-title1">Your State</h4>
+                                        <select class="select">
+                                            <option>Telanagana</option>
+                                            <option>Andhra Pradesh</option>
+                                            <option>Maharashtra</option>
+                                            <option>Tamil Nadu</option>
+                                            <option>Karnataka</option>
+                                        </select>
+                                    </li>
+                                    <li class="no-display diff-add">
+                                        <h4 class="onboard-title onboard-title1">Your District</h4>
+                                        <select class="select">
+                                            <option>Hyderabad</option>
+                                            <option>Warangal</option>
+                                            <option>Rangareddy</option>
+                                            <option>Adilabad</option>
+                                            <option>Karimnagar</option>
+                                            <option>Khammam</option>
+                                        </select>
+                                    </li>
+                                    <li class="no-display diff-add">
+                                        <h4 class="onboard-title onboard-title1">Your City</h4>
+                                        <select class="select">
+                                            <option>Hyderabad</option>
+                                            <option>Mumbai</option>
+                                            <option>Chennai</option>
+                                            <option>Delhi</option>
+                                        </select>
+                                    </li>
+                                    <li class="no-display diff-add">
+                                        <input class="input-field" type="text" id="tax-add1" value="" required="">
+                                        <label class="input-label" for="tax-add1">Your Street, Area
+                                            &amp; Landmark</label>
+                                    </li>
+                                    <li class="no-display diff-add">
+                                        <h4 class="onboard-title onboard-title1">Your Country</h4>
+                                        <select class="select">
+                                            <option>India</option>
+                                            <option>Pakistan</option>
+                                            <option>China</option>
+                                            <option>Bangladesh</option>
+                                        </select>
+                                    </li>
+                                    <li class="no-display diff-add">
+                                        <input class="input-field" type="tel" id="Office-same2s" value=""
+                                               required="">
+                                        <label class="input-label" for="Office-same2s">Your
+                                            Residential Number - Optional</label>
+                                    </li>
+                                    <li class="no-display diff-add">
+                                        <input class="input-field" type="tel" id="Office-same2s" value=""
+                                               required="">
+                                        <label class="input-label" for="Office-same2s">Your
+                                            Office Number - Optional</label>
+                                    </li>
+									<li class="text-center wizard-btns">										
+										<button id="dolaterbutton" type="button" class="text-uppercase boariding-btns"
+												onclick="window.location.href='index.html'">I'll
+											Do It Later
+										</button>
+										<button id="proceedbutton" type="button" data-toggle="modal"
+												class="btn ax-btn-primary text-uppercase secbut pcacs-tabs scrolltop"
+												title="profileaddresschangestep5" ng-click="financeValidate()"
+										>Proceed
+										</button>
+									</li>
+                                </ul>
+                            </form>
+                            <div class="text-center wizard-btns">
+                            </div>
+						</div>						
+						
+                    </div>
+                    </div>

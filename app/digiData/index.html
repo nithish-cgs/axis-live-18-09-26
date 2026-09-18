@@ -1,0 +1,25 @@
+<div class="container mt-5">
+<div class="profileaddresschangestep1 pacs" id="profileB">
+    <!--Contact Details-->
+    <div class="onboard-innerinfo">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-5">
+                    <div class="col-4">
+                        <button class="btn btn-primary ax-btn-primary" ng-click="sendUrl()">Re-Send URL To Customer</button>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-primary ax-btn-primary" ng-click="fetchStatus()">Get Digilocker Status</button>
+                    </div>
+                </div>
+				<div class="my-4" style="color:#97144d;" ng-show="urlSent">
+                    An URL has been sent to the customer Email and Mobile Number to complete the Digilocker verification process.
+                </div>
+                <div class="" ng-if="!formData.apiLoading">
+                    User Digilocker Status : <strong>Pending</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

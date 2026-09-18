@@ -1,0 +1,1051 @@
+<style>
+    .ax-btn-primary1 {
+    border-radius: 0;
+    /* padding: 15px 20px; */
+    font-size: 14px;
+    box-shadow: none;
+    outline: 0;
+    color: #97144d;
+    border: none;
+    border: 2px solid #97144d;
+    width: 100px;
+    }
+	.ax-btn-primary1:hover{
+    cursor: pointer;
+    transform: scale(0.97);
+    transition:0.5s;
+	border: 2px solid #97144d !important;
+}
+.ax-btn-primary1:active{
+    transform: scale(0.9);
+    transition:0.5s;
+	border: 2px solid #97144d !important;
+}
+/* .card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+} */
+    .card-hg{
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    .card-hg::-webkit-scrollbar {
+        display: none;
+    }
+    .card-hg {
+        -ms-overflow-style: none;
+        scrollbar-width: none; 
+    }
+    .h-400{
+        max-height: 400px;
+        height: 400px;
+    }
+    #investBtn{
+        width: 100px !important;
+    }
+    .ax-btn-primary{
+        padding: 1rem !important;
+    }
+    .previewsip{
+        height: auto;
+        overflow-y: scroll;
+		scrollbar-width: none; 
+    }
+    .f-16{
+        font-size: 16px;
+    }
+    .modal-dialog .modal-content {
+    border-radius: 20px !important;
+   }
+    @media (min-width: 1200px) {
+    .container {
+        width: 1350px !important;
+    }
+    
+}
+.heightcard{
+height:150px;}
+@media screen and (max-width:950px) and (min-width:320px){
+.heightcard{
+height:auto;}
+}
+</style>
+<!-- Criteo Loader File -->
+
+<script type="text/javascript" src="//dynamic.criteo.com/js/ld/ld.js?a=119080" async="true"></script>
+
+<!-- END Criteo Loader File -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-727858862"></script> -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-727858862');
+</script>
+<!-- Event snippet for AxisDirect_DocUpload_Dec20 conversion page -->
+<!-- <script>
+    gtag('event', 'conversion', { 'send_to': 'AW-727858862/nV6dCI3j_esBEK79iNsC' });
+</script> -->
+<!-- Facebook Pixel Code -->
+<script>
+    !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1253495914811323');
+    fbq('track', 'PageView'); fbq('trackCustom', 'AxisDirect-DocUpload');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1253495914811323&ev=PageView&noscript=1" /></noscript>
+<!-- End Facebook Pixel Code -->
+
+<script> (function(w,d,t,r,u) { var f,n,i; w[u]=w[u]||[],f=function() { var o={ti:"343173170", enableAutoSpaTracking: true}; o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad") }, n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function() { var s=this.readyState; s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null) }, i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i) }) (window,document,"script","//bat.bing.com/bat.js","uetq"); </script>
+<!-- Taboola Pixel Code -->
+  <script type='text/javascript'>
+   window._tfa = window._tfa || [];
+    window._tfa.push({notify: 'event', name: 'page_view', id: 1717432}); 
+    !function (t, f, a, x) {
+         if (!document.getElementById(x)) {
+             t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
+             } 
+            }
+    (document.createElement('script'), document.getElementsByTagName('script')[0], '//cdn.taboola.com/libtrc/unip/1717432/tfa.js', 'tb_tfa_script');
+    </script>
+     <!-- End of Taboola Pixel Code -->	
+      <script>
+    window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  event: "generate_lead",
+  lead_type: "contact_form",  // or "demo_request", "callback", etc.
+  form_id: "leadForm1",       // optional: ID of the form submitted
+  page_location: window.location.href, // optional: current page URL
+  page_title: document.title  // optional: page title for context
+});
+</script>
+<style>
+    .sipCheckBox{
+        height: 20px !important;
+        width: 20px !important;
+        border: 2px solid #ED1164 !important
+    }
+    .sip-bg{
+        background: #f1f4f7 !important;
+        display: inline-block;
+    }
+    .basket-bg{
+        background: #F1F4F7;    
+    }
+    .card:hover {
+    border: 1px solid #ED1164;
+    box-shadow: 2px 2px 2px #bebebe,
+               -2px -2px 2px #ffffff !important;
+    }
+
+    hr{
+        margin: 1rem 0 !important;
+        color: inherit !important;
+        border: 0 !important;
+        border-top: 1px solid !important;
+        opacity: .25 !important;
+    }
+    .custom-text{
+        color: #97144D;
+    }
+    .form-select-lg{
+        height: 40px;
+    }
+    .sipDate{
+        font-size: 1.25rem;
+        border-radius: 0.5rem;
+        height: 40px;
+        border: 1px solid #ced4da;
+        width:100%;
+        padding: 0.5rem 0.5rem 0.5rem 1rem;
+    }
+    .ax-btn{
+        padding: 10px 20px !important;
+    }
+    
+    .w-custom{
+        width: 100% !important;
+    }
+    .w-custom1{
+        width: 200px !important;
+    }
+    .text-greyy{
+        color: #9D9D9D;
+    }
+    .basket-text{
+        color: #ED1164 !important;
+    }
+    .form-check-input:checked[type=checkbox]{
+        --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e")
+    }
+    .form-check-input:checked{
+        background-color: #ED1164;
+        border-color: #ED1164;
+        color: #fff
+    }
+    .form-check-input[type=checkbox] {
+    border-radius: 0.25em;
+    }
+    .form-check-input {
+        --bs-form-check-bg: var(--bs-body-bg);
+        width: 1em;
+        height: 1em;
+        margin-top: .25em;
+        vertical-align: top;
+        background-color: var(--bs-form-check-bg);
+        background-image: var(--bs-form-check-bg-image);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        border: var(--bs-border-width) solid var(--bs-border-color);
+        -webkit-appearance: none;
+        appearance: none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        /* outline: none; */
+    }
+    .form-check .form-check-input{
+        outline: none !important;
+    }
+</style> 
+<div ng-if="formData.paymentPixel" style="height: 1px; visibility: hidden">
+    <img src="https://publicis.go2cloud.org/aff_l?offer_id=408&adv_sub={{formData.ReferenceNumber}}" width="1"
+        height="1" />
+</div>
+<div ng-if="formData.skippedPayment" style="height: 1px; visibility: hidden">
+    <img src="https://apoxymedia.net/p.ashx?o=930&e=275&f=img&t={{formData.ReferenceNumber}}" width="1" height="1"
+        border="0" />
+</div>
+<div class="container">
+<div class="profileaddresschangestep1 pacs">
+    <div class="onboard-innerinfo">
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- 1st screen -->
+                <div class="row mb-5"  ng-if="sipcard">
+                    <div class="col-md-9">
+                        <h3 class="fw-bold text-dark text-dark">Invest In Ideas With Smallcases </h3>
+                        <p class="ml-2">Smallcases Are Modern Investment Products That Help You Build A Diversified,Low-cost & Long Term Portofolio</p>
+                    </div>
+                    <div class="col-12 d-block d-sm-none">
+                        <div class="d-flex justify-content-start">
+                            <div>Step 7/8</div>
+                            <div class="mobile-progress progress">
+                                <div class="progress-bar" style="width:75%;height:20px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center d-none d-sm-block">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="row" ng-if="sipcard">
+                            <div class="col-md-6 my-3" ng-repeat="plan1 in planlist1 track by [$index]">
+                                <div class="card shadow-sm rounded-3 heightcard" >
+                                    <div class="card-body">
+                                        <div class="row mx-0 mt-3">
+                                            <div class="col-md-8 p-0">
+                                                <div class="row mx-0">
+                                                    <div class="col-md-2 align-self-center col-2">
+                                                        <img src="{{plan1.BasketImage}}" alt="" class="img-fluid">
+                                                    </div>
+                                                    <div class="col-md-5 align-self-center col-4 text-center p-0"><span class="fw-bold text-dark">{{plan1.BasketName}}</span>
+                                                    </div>
+                                                    <div class="col-md-5 align-self-center col-4 mt-md-0 mt-3 text-start">
+                                                        <span class="py-2 px-1 sip-bg">
+                                                        <small class="fw-bold text-dark">
+                                                            <img src="./assets/images/rounds.png" class="mw-100 mh-auto">
+                                                                Stock Weightage
+                                                        </small>
+                                                    </span>
+                                                    </div>
+                                                    <div class="col-md-4 d-md-none mt-md-0 mt-3 col-2 d-block text-end">
+                                                        <div class="form-check d-flex justify-content-end">
+                                                            <input class="form-check-input sipCheckBox" type="checkbox" ng-model="plan1.selected" id="{{plan1.BasketScId}}">
+                                                        </div>
+                                                        <!-- <input class="sipCheckBox" type="checkbox"> -->
+                                                        <!-- <input  type="checkbox" > <span class="tickMark2"></span> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 text-end d-md-block d-none">
+                                                <div class="form-check d-flex justify-content-end">
+                                                    <input class="form-check-input sipCheckBox" type="checkbox" ng-model="plan1.selected" id="{{plan1.BasketScId}}">
+                                                </div>                                                <!-- <input  type="checkbox" > <span class="tickMark2"></span> -->
+                                            </div>
+                                        </div>
+                                        <div class="row mt-md-4 mt-2">
+                                            <div class="col-md-6">
+                                                <small>{{plan1.ShortDescription}}
+                                                </small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row mt-md-0 mt-3">
+                                                    <div class="col-md-3 col-3">
+                                                    <small>Min.Amt.</small> <small class="fw-bold text-dark">{{plan1.BasketAmount | number}}</small>
+                                                    </div>
+                                                    <div class="col-md-3 col-3">
+                                                        <small>4Y CAGR</small>
+                                                         <small class="fw-bold text-success">{{plan1.CAGR}}</small>
+                                                    </div>
+                                                    <div class="col-md-6  col-6 my-4 p-md-0">
+                                                        <span class="p-0 sip-bg fw-bold text-dark">
+                                                            <small><img class="me-3 mw-100 mh-auto" src="./assets/images/speeds.png">{{plan1.RiskLable}}</small>
+                                                        </span>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-message clearfix" ng-if="SipminimumStocks"><span
+                                    class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                                    Please Choose Basket.</span></div>
+                        </div>
+                         <div class="col-md-12" ng-if="sipmaxStocks">
+                            <div class="input-message clearfix" ><span
+                                    class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                                    You can Choose only one Basket at a time.</span></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-message clearfix" ng-if="basketlimitErr"><span
+                                    class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                                    {{basketlimit}}</span></div>
+                        </div>
+                        </div>
+                        <!-- 2nd screen -->
+                        <div class="row mx-0 mt-5" ng-if="SipChooseInvest" >
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <img src="./assets/images/arrow-left-line.png" class="img-fluid mb-3" alt=""><span class="h2 fw-bold text-dark ps-2">Investment</span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p class="ps-md-5">smallcases are modern investment products that help you build a diversified, low-cost & long term portfolio</p>
+                                    </div>
+                                </div>
+                                <!-- length 3 -->
+                                <div class="row" id="col-4-div" ng-if="Thirdplans">
+                                    <div ng-repeat="plan1 in planlist1 track by [$index]" ng-class="planlist1.length == 1 ? 'col-md-6' : 'col-md-4'">
+                                        <div class="card shadow-sm rounded-3 h-400  mt-3">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-6 mt-3">
+                                                        <p class="fw-bold text-dark">BASKET {{$index + 1}}</p>
+                                                    </div>
+                                                    <div class="col-md-6 col-6 text-end mt-3" ng-if="planlist1.length != 1">
+                                                        <img src="./assets/images/sipdelete.png" alt="" class="mw-100 mh-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" ng-class="SipEnterotp||ConfirmSIPOTP?'d-none':''" ng-disabled="orderplaced" ng-click="deletesip((plan1.SIPInfoId))">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <p class="fw-bold text-dark"><span><img src="{{plan1.BasketImage}}" alt="" class="mw-100 mh-auto me-3 img-fluid" style=width:15%></span>{{plan1.BasketName}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body card-hg">
+                                                <div class="row">
+                                                <div class="col-md-9 col-9 mb-3">
+                                                    <small class="custom-text">Stock, ETF & Segments</small>
+                                                </div>
+                                                <div class="col-md-3 col-3 mb-3 text-center">
+                                                    <small class="custom-text">Qty</small>
+                                                </div>
+                                                </div>
+                                                <div class="row" ng-repeat="stockdls in plan1._SIPStockMaster track by [$index]">
+                                                    
+                                                    <div class="col-md-9 col-9">
+                                                        <p class="fw-bold text-dark mb-0">{{stockdls.StockName}}</p>
+                                                        <small>{{stockdls.Ticker}}</small>
+                                                    </div>
+                                                    <div class="col-md-3 col-3 text-center"> 
+                                                        <p class="text-success">{{stockdls.Shares}}</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <hr>
+                                                    </div>
+                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="my-md-0 my-4" ng-if="!AddbasketDiv &&!RemoveDiv" ng-class="planlist1.length == 1 ? 'col-md-6' : 'col-md-4'">
+                                        <div class="card h-100 shadow-sm rounded-3" ng-class="planlist1.length >= 3 ? 'mt-3' : ''">
+                                            <div class="card-body d-flex h-400">
+                                                <div class="row mx-0 align-self-center">
+                                                    <div class="col-md-12 text-center"> 
+                                                        <p class="text-greyy">You can buy a multiple basket,</p>
+                                                    </div>
+                                                    <div class="col-md-12 text-center"> 
+                                                        <p class="text-greyy">minimum 1 and maximum 3 basket</p>
+                                                    </div>
+                                                    <div class="col-md-12 text-center">
+                                                        <a href="" class="fw-bold text-dark text-uppercase basket-text" ng-class="SipEnterotp||ConfirmSIPOTP?'pe-none':''" ng-click="basket()">Add basket</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- length 2 -->
+                                <div class="row "  id="col-6-div" ng-if="Secondplans">
+                                    <div  id="basket2"  ng-repeat="plan1 in planlist1 track by [$index]"  ng-class="planlist1.length == 1 ? 'col-md-6' : 'col-md-4'">
+                                        <div class="card shadow-sm rounded-3 h-400">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-6 mt-3">
+                                                        <p class="fw-bold text-dark">BASKET {{$index + 1}}</p>
+                                                    </div>
+                                                    <div class="col-md-6 col-6 text-end mt-3" ng-if="planlist1.length != 1">
+                                                        <img src="./assets/images/sipdelete.png" alt="" class="mw-100 mh-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" ng-class="SipEnterotp||ConfirmSIPOTP?'d-none':''"  ng-disabled="orderplaced" ng-click="deletesip(plan1.SIPInfoId)">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <p class="fw-bold text-dark"><span><img src="{{plan1.BasketImage}}" alt="" class="mw-100 mh-auto me-3" style=width:15%></span>{{plan1.BasketName}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body card-hg">
+                                                <div class="row">
+                                                <div class="col-md-9 col-9 mb-3">
+                                                    <small class="custom-text">Stock, ETF & Segments</small>
+                                                </div>
+                                                <div class="col-md-3 col-3 mb-3 text-center">
+                                                    <small class="custom-text">Qty</small>
+                                                </div>
+                                                </div>
+                                                <div class="row" ng-repeat="stockdls in plan1._SIPStockMaster track by [$index]">
+                                                   
+                                                    <div class="col-md-9 col-9">
+                                                        <p class="fw-bold text-dark mb-0">{{stockdls.StockName}}</p>
+                                                        <small>{{stockdls.Ticker}}</small>
+                                                    </div>
+                                                    <div class="col-md-3 col-3 text-center"> 
+                                                        <p class="text-success">{{stockdls.Shares}}</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <hr>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="my-md-0 my-4" ng-if="!AddbasketDiv &&!RemoveDiv"  ng-class="planlist1.length == 1 ? 'col-md-6' : 'col-md-4'">
+                                        <div class="card h-100 shadow-sm rounded-3 h-400" ng-class="planlist1.length >= 3 ? 'mt-3' : ''">
+                                            <div class="card-body d-flex">
+                                                <div class="row mx-0 align-self-center">
+                                                    <div class="col-md-12 text-center"> 
+                                                        <p class="text-greyy">You can buy a multiple basket,</p>
+                                                    </div>
+                                                    <div class="col-md-12 text-center"> 
+                                                        <p class="text-greyy">minimum 1 and maximum 3 basket</p>
+                                                    </div>
+                                                    <div class="col-md-12 text-center">
+                                                        <a href="" class="fw-bold text-dark text-uppercase basket-text" ng-class="SipEnterotp||ConfirmSIPOTP?'pe-none':''" ng-click="basket()">Add basket</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    </div>
+                                <!-- length 1 -->
+                                <div class="row justify-content-evenly" id="col-6-div" ng-if="Fristplans ">
+                                    <div class="col-md-6" id="basket2" ng-repeat="plan1 in planlist1 track by [$index]">
+                                        <div class="card shadow-sm rounded-3 h-400">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-6 mt-3">
+                                                        <p class="fw-bold text-dark">BASKET {{$index + 1}}</p>
+                                                    </div>
+                                                    <div class="col-md-6 col-6 text-end mt-3">
+                                                        <!-- <img src="./assets/images/sipdelete.png" alt="" class="mw-100 mh-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" ng-click="deletesip(plan1.SIPInfoId)"> -->
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <p class="fw-bold text-dark"><span><img src="{{plan1.BasketImage}}" alt=""
+                                                                    class="mw-100 mh-auto me-3" style=width:15%></span>{{plan1.BasketName}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body card-hg">
+                                                <div class="row">
+                                                    <div class="col-md-9 col-9 mb-3">
+                                                        <small class="custom-text">Stock, ETF & Segments</small>
+                                                    </div>
+                                                    <div class="col-md-3 col-3 mb-3 text-center">
+                                                        <small class="custom-text">Qty</small>
+                                                    </div>
+                                                </div>
+                                                <div class="row" ng-repeat="stockdls in plan1._SIPStockMaster track by [$index]">
+                                
+                                
+                                                    <div class="col-md-9 col-9">
+                                                        <p class="fw-bold text-dark mb-0">{{stockdls.StockName}}</p>
+                                                        <small>{{stockdls.Ticker}}</small>
+                                                    </div>
+                                                    <div class="col-md-3 col-3 text-center">
+                                                        <p class="text-success">{{stockdls.Shares}}</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <hr>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-4 my-4 my-md-0">
+                                
+                                        <!-- 1st screen side bar -->
+                                        <div class="card shadow-sm border-0" id="totalAmt" ng-if="FsttotalAmt">
+                                            <div class="card-header border">
+                                                <div class="row mt-3">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-auto">
+                                                                <p class="text-uppercase fw-bold text-dark">Basket Amount:</p>
+                                                            </div>
+                                                            <div class="col-md-auto">
+                                                                <span class="f-14 ml-2 fw-bold text-dark">₹{{totalMinInvestAmount | number}}  </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-auto">
+                                                                <!-- <p class="small mb-0 ">Additional Charges:<span class="small ml-2  ">₹100 (One-time Platform Charge + Applicable GST) </span></p> -->
+                                                                 <p class="small">
+                                                            Total stock basket amount is as per LTP of previous trading day and initial margin will be
+                                                            checked for total stock basket amount +10%.
+                                                        </p>
+                                                            </div>
+                                                            <!-- <div class="col-md-auto">
+                                                                <span class="f-14 ml-2 fw-bold text-dark">₹100 (One-time Platform Charge + Applicable GST) </span>
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="col-md-12">
+                                                        <p class="small">
+                                                            Total stock basket amount is as per LTP of previous trading day and initial margin will be
+                                                            checked for total stock basket amount +10%.
+                                                        </p>
+                                                    </div> -->
+                                                </div>
+
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row" ng-repeat="basketDetail in planlist1 track by $index">
+                                                    <div class="col-md-12 my-3">
+                                                        <div class="d-flex justify-content-around">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="flexRadioDefault{{$index}}"
+                                                                    id="radio{{$index}}" ng-model="sipOrLumpSelection[$index]" value="SIP"
+                                                                    ng-change="changePlan('SIP',$index)">
+                                                                <label class="form-check-label small" for="radio{{$index}}">
+                                                                    Onetime and SIP
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="flexRadioDefault{{$index}}"
+                                                                    id="radio{{$index}}_{{$index + 1}}" ng-model="sipOrLumpSelection[$index]"
+                                                                    value="Lumpsum" ng-change="changePlan('Lumpsum',$index)">
+                                                                <label class="form-check-label small" for="radio{{$index}}_{{$index + 1}}">
+                                                                    Lumpsum
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <p class="text-uppercase sip-bg">BASKET {{$index + 1}}:{{basketDetail.BasketName}}</p>
+                                                    </div>
+                                                    <div class="col-md-6" ng-if="sipOrLumpSelection[$index] == 'SIP'">
+                                                        <label>Preference</label>
+                                                        <select class="form-select form-select-lg" aria-label="Default select example"
+                                                            ng-model="preferencesSelection[$index]">
+                                                            <option value="Weekly">Weekly</option>
+                                                            <option value="Monthly">Monthly</option>
+                                                            <option value="Quarterly">Quarterly</option>
+                                                            <option value="Yearly">Yearly</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6" ng-if="sipOrLumpSelection[$index] == 'SIP'">
+                                                        <label>Monthly</label>
+                                                        <input type="date" id="sipDate{{$index}}" class="sipDate" placeholder="dd/mm/yyyy"
+                                                            min="{{ minDate }}" ng-model="SIPCreationDate[$index]">
+                                                    </div>
+                                                    <div class="col-md-12 my-2" ng-if="sipOrLumpSelection[$index] != 'SIP'">
+                                                        <div class="ax-field">
+                                                            <input class="input-field form-control" type="text" id="fName1" ng-disabled="siptextdis"
+                                                                ng-model="basketDetail.BasketAmount">
+                                                            <!-- <span class="validation-result"></span> -->
+                                                        </div>
+                                                        <!-- <p class="small fw-bold">{{basketDetail.MinInvestAmount}}</p> -->
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <hr>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer bg-white border-0 shadow-sm">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" ng-model="chkselct1"
+                                                                id="flexCheckChecked1" ng-init="chkselct1=true" checked>
+                                                            <small for="flexCheckChecked1">
+                                                                I have read & accept the <span><a href="./assets/images/SmallCase_T&C.pdf"
+                                                                        target="_blank">terms & conditions</a></span>
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="input-message clearfix" ng-if="sipradio"><span
+                                                                class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                                                                Please Choose sip radio button</span></div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="input-message clearfix" ng-if="dateEmptyErr"><span
+                                                                class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                                                                Date is required</span></div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="input-message clearfix" ng-if="terms"><span
+                                                                class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                                                                Please select the Terms and condition</span></div>
+                                                    </div>
+                                                    <div class="col-md-12 my-2">
+                                                        <button type="button" class="btn ax-btn-primary ax-btn rounded-2 w-100"
+                                                            ng-click="hideFunc()">Proceed</button>
+                                                    </div>
+                                                </div>
+                                
+                                            </div>
+                                        </div>
+                                        <!-- 2nd screen side bar -->
+                                        <div class="card shadow-sm border-0 " id="basketDiv" ng-if="ChooseBasketDetails">
+                                            <div class="card-header px-4 bg-white border-0" ng-repeat="basketDetail in planlist1">
+                                                <div class="row mt-3 px-2">
+                                                    <div class="col-md-12">
+                                                        <div class="row basket-bg rounded-2">
+                                                            <div class="col-md-6 col-6">
+                                                                <p class="small mt-2 mb-0">Basket Name</p>
+                                                                <p class="small fw-bold text-dark">{{basketDetail.BasketName}}</p>
+                                                            </div>
+                                                            <div class="col-md-6 col-6" ng-if="basketDetail.OneTimeWithSIP">
+                                                                <p class="small mt-2 mb-0">Onetime and SIP</p>
+                                                                <p class="small fw-bold text-dark">Yes</p>
+                                                            </div>
+                                                            <div class="col-md-6 col-6" ng-if="!basketDetail.OneTimeWithSIP">
+                                                                <p class="small mt-2 mb-0">Lumpsum</p>
+                                                                <p class="small fw-bold text-dark">Yes</p>
+                                                            </div>
+                                                            <div class="col-md-6 col-6">
+                                                                <p class="small mt-2 mb-0">No. of Stocks</p>
+                                                                <p class="small fw-bold text-dark">{{basketDetail._SIPStockMaster.length }}</p>
+                                                            </div>
+                                                            <div class="col-md-6 col-6">
+                                                                <p class="small mt-2 mb-0">Basket Amount*</p>
+                                                                <p class="small fw-bold text-dark">₹{{basketDetail.BasketAmount | number}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p class="small">
+                                                            *The amount will change based on the value of the basket when the order is executed. If the
+                                                            bank account doesn't have enough balance, the orders will still go through successfully. For
+                                                            those with a trading account not linked to their Axis Bank account, assuming all pending
+                                                            debits are cleared, the amount will be debited monthly if the auto SIP order type is chosen.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer bg-white border-0 shadow-sm">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mb-md-5 mb-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" ng-model="chkselct"
+                                                                    id="flexCheckChecked" ng-init="chkselct1=true" checked>
+                                                                <small for="flexCheckChecked">
+                                                                    I want to choose the smallcase basket(s) mentioned above, and I confirm that I've
+                                                                    read and accepted all the <span><a href="./assets/images/SmallCase_T&C.pdf"
+                                                                            target="_blank">terms & conditions</a></span>
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 text-center">
+                                                            <div class="d-flex justify-content-evenly">
+                                                                <div>
+                                                                    <p class="small">Total Amount</p>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="fw-bold custom-text">₹{{totalMinInvestAmount | number}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="input-message clearfix" ng-if="sipgenartion"><span
+                                                                    class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                                                                    {{sipotpERR}}</span></div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="input-message clearfix" ng-if="terms1"><span
+                                                                    class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                                                                    Please select the Terms and condition</span></div>
+                                                        </div>
+                                                        <div class="col-md-12 my-2">
+                                                            <button type="button" class="btn ax-btn-primary ax-btn rounded-2 w-100"
+                                                                ng-click="previewpagesip()">Preview</button>
+                                                        </div>
+                                                    </div>
+                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 3rd enter otp screen side bar -->
+                                        <div class="card shadow-sm border-0 " id="otpDiv" ng-if="SipEnterotp">
+                                            <div class="card-header border-0 bg-white">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <img src="./assets/images/arrow-left-line.png" class="img-fluid" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body border-0">
+                                                <div class="row">
+                                                    <div class="col-md-12 my-1">
+                                                        <p class="h3 mt-0 fw-bold text-dark">Enter OTP</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <p class="small">Please enter the 6-digit OTP send to your registered email address. </p>
+                                                    </div>
+                                                    <div class="otp-wrapper mt-5">
+                                                        <div otp-input-directive options="personalNewotpInput"></div>
+                                
+                                                        <div class="otp-resend mt-5" id="otp-timer">Resend OTP : <span class="f-10" id="time"></span> <a
+                                                                href="javascript:void(0);" class="f-10" tabindex="-1" ng-if="enableResendButton"
+                                                                rel="noreferrer" ng-click="newEmailValidate()"
+                                                                ng-class="{adisabled: mobileResendDisable}">RE-SEND</a>
+                                                            <span ng-bind="mobileCounter" class="f-10" ng-if="!enableResendButton"></span>
+                                                        </div>
+                                                        <div class="error-message" ng-show="EmptyOtp"><i class="fa fa-times"></i>OTP is Empty
+                                                        </div>
+                                                        <div class="error-message" ng-show="invalidOTP"><i class="fa fa-times"></i> {{eOtpResponseMsg}}
+                                                        </div>
+                                                        <!-- <h6 class="page-tag page-tag1 sb-bold-title mt-3 text-success mb-5" ng-if="!OtpLimitExceed">OTP has been sent to your mobile number</h6> -->
+                                                        <div class="col-md-12">
+                                                            <div class="input-message clearfix" ng-if="OtpErrmsg"><span
+                                                                    class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                                                                    {{OtpFailuremsg}}</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer bg-white border-0 shadow-sm" ng-if="SipEnterotp" style="max-width: 500px;">
+                                                <div class="row">
+                                                    <div class="col-md-12 my-2">
+                                                        <button type="button" class="btn ax-btn-primary ax-btn rounded-2 w-100"
+                                                            ng-click="confirmOTP()">Confirm OTP</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 4st otp confirm screen side bar -->
+                                        <div class="card shadow-sm border-0 " id="ConfirmationDiv" ng-if="ConfirmSIPOTP">
+                                            <div class="card-body border-0">
+                                                <div class="row">
+                                                    <div class="col-md-12 my-1">
+                                                        <img src="./assets/images/confirmation.gif" class="img-fluid" alt="">
+                                                    </div>
+                                                    <div class="col-md-12 text-center">
+                                                        <p class="text-dark fw-bold">Your smallcase basket order has been taken successfully!</p>
+                                                    </div>
+                                                    <div class="col-md-12 text-center">
+                                                        <p class="small">Your order or investment will be processed once your demat cum trading account
+                                                            is activated and you first log in to the Axis Direct website</p>
+                                                        <p class="small">Please ensure funds are available in your Axis Bank account or Axis Securities
+                                                            ledger to avoid faliure of order executions</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer bg-white border-0 shadow-sm" ng-if="ConfirmSIPOTP">
+                                                <div class="row">
+                                                    <div class="col-md-12 my-2">
+                                                        <button type="button" class="btn ax-btn-primary ax-btn rounded-2 w-100"
+                                                            ng-click="completeSip()">Done</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                
+                                    </div>
+                                    <!-- length 1 -->
+                                    <!-- <div class="col-md-6 my-md-0 my-4" id="emptyBasket" ng-if="Fristplans &&!RemoveDiv">
+                                                                        <div class="card h-100 shadow-sm rounded-3">
+                                                                            <div class="card-body d-flex">
+                                                                                <div class="row mx-0 align-self-center">
+                                                                                    <div class="col-md-12 text-center"> 
+                                                                                        <p class="text-greyy">You can buy a multiple basket,</p>
+                                                                                    </div>
+                                                                                    <div class="col-md-12 text-center"> 
+                                                                                        <p class="text-greyy">minimum 1 and maximum 3 basket</p>
+                                                                                    </div>
+                                                                                    <div class="col-md-12 text-center">
+                                                                                        <a href="" class="fw-bold text-dark text-uppercase basket-text" ng-class="SipEnterotp||ConfirmSIPOTP?'pe-none':''" ng-click="basket()">Add basket</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div> -->
+                                </div>
+                                    
+
+                               
+                            </div>
+
+                           
+                    </div>
+
+                        
+
+
+
+                </div>
+
+            </div>
+            <div class="d-flex mt-5 justify-content-between">
+                <div>
+                    <button type="button" ng-click="Skip()" ng-if="skipremovebtn"
+                        class="btn ax-btn-primary1 text-uppercase rounded p-3">Skip</button>
+                </div>
+                <div>
+                    <button type="button" ng-click="Invest()" ng-if="InvestSip" id="investBtn"
+                        class="btn ax-btn-primary text-uppercase rounded p-3" >Invest</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- delete modal -->
+<div class="modal fade" id="Deletebasket" tabindex="-1"   role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div class="row mx-0">
+                <div class="col-md-12 text-center">
+                    <h4 class="fw-bold text-dark">Delete Basket</h4>
+                </div>
+                <div class="col-md-12 text-center">
+                    <p>Are you sure you want to delete the selected basket?</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <div class="row w-100" style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        ">
+                <div class="col-6">   
+                    <button type="button" class="btn ax-btn-primary1 ax-btn w-custom w-100" data-bs-dismiss="modal" style="padding: 15px 20px !important;">No</button>
+                </div>
+                <div class="col-6">
+                    <button type="button" class="btn ax-btn-primary ax-btn w-custom" ng-click="deletebasket()" data-bs-dismiss="modal" style="padding: 15px 20px !important;">Yes</button>
+                </div>
+            </div>
+               
+                  
+                </div>
+        <!-- <div class="modal-footer justify-content-center">
+          <button type="button" class="btn ax-btn-primary1 ax-btn w-custom" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn ax-btn-primary ax-btn w-custom" data-bs-dismiss="modal" ng-click="deletebasket()">Yes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- 1st screen popup -->
+  <div class="modal fade" id="Basketsub" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div class="row mx-0">
+                <div class="col-md-12 text-center">
+                    <h4 class="fw-bold text-dark">Resume SIP</h4>
+                </div>
+                <div class="col-md-12 text-center">
+                    <p>Are you want to proceed with choosed SIP?</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn ax-btn-primary1 ax-btn w-custom1" data-bs-dismiss="modal" ng-click="yesBasket()" style="padding: 15px 20px !important;">Choose again</button>
+          <button type="button" class="btn ax-btn-primary ax-btn w-custom1" data-bs-dismiss="modal" ng-click="noBasket()" style="padding: 15px 20px !important;">Continue with the same</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="CancelSip" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div class="row mx-0">
+                <div class="col-md-12 text-center">
+                    <h4 class="fw-bold text-dark">Cancel selected smallcase baskets</h4>
+                </div>
+                <div class="col-md-12 text-center">
+                    <p>Are you sure. Do you want to cancel the selected smallcase basket?</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn ax-btn-primary1 ax-btn w-custom1" data-bs-dismiss="modal" ng-click="CancelSipApp()" style="padding: 15px 20px !important;">Yes</button>
+          <button type="button" class="btn ax-btn-primary ax-btn w-custom1" data-bs-dismiss="modal" ng-click="frontpageApp()" style="padding: 15px 20px !important;">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="PreviewSip" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width: 700px;">
+      <div class="modal-content">
+	
+        <div class="modal-header" style="background-image: url(https://simplehai.axisdirect.in/images/DAO/topimg1.png);background-repeat: no-repeat;text-align: center;padding: 0rem 4rem !important;padding-top: 25px;width: 100%;height: 100px;">
+       <button type="button" class="btn-close close" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                        title="Close">&times;</button>
+	 </div>
+        <div class="modal-body" style="padding: 1rem 3rem;overflow-y: scroll;height: 400px;-ms-overflow-style: none;scrollbar-width: none;">
+            <div class="row mx-0 previewsip">
+                <div class="col-md-12 mb-5" id="basket2"  ng-repeat="plan1 in planlist1 track by [$index]">
+                    <div class="row" id="profileB">
+                        <div class="col-12" >
+                            <h4 class="acord-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseProfile{{$index + 1}}" ng-click="openCollapse('$index')"><a href="javascript:void(0)" class="collapseTag ax-sec-title" title="collapseProfile{{$index + 1}}" >BASKET {{$index + 1}} :</a>
+                          </h4>
+                        </div>
+                    <!-- <div class="row">
+                        <div class="col-md-12 col-12 mt-3">
+                            <p class="fw-bold text-dark">Basket {{$index + 1}} :</p>
+                        </div>
+                        </div> -->
+                    <div class="card shadow-sm rounded-3 collapse " id="collapseProfile{{$index + 1}}" data-bs-parent="#profileB" ng-class="{'show': $index === 0}">
+                    <div class="card-header">
+                        <div class="row ">
+                            
+                            <div class="col-md-6  d-flex">
+                                <p class="f-16 fw-bold text-dark">Basket Name: </p>
+                                <p class="f-16 mx-2 ">{{plan1.BasketName}}</p>
+                            </div>
+                            <div class="col-md-6  d-flex justify-content-md-center" ng-if="plan1.OneTimeWithSIP">
+                                <p class="f-16 fw-bold text-dark">Onetime and SIP : </p>
+                                <p class="f-16 mx-2 ">Yes</p>                                                    
+                            </div>
+                            <div class="col-md-6  d-flex justify-content-md-center" ng-if="!plan1.OneTimeWithSIP">
+                                <p class="f-16 fw-bold text-dark">Lumpsum: </p>
+                                <p class="f-16 mx-2  ">Yes</p>                                                    
+                            </div>
+                            <div class="col-md-6  d-flex">
+                                <p class="f-16 fw-bold text-dark">No. of Stocks: </p>
+                                <p class="f-16 mx-2  ">{{plan1._SIPStockMaster.length }}</p>
+                            </div>
+                            <div class="col-md-6  d-flex justify-content-md-center">
+                                <p class="f-16  fw-bold text-dark">Basket Amount *: </p>
+                                <p class="f-16 mx-2  ">₹{{plan1.BasketAmount | number}}</p>                                                    
+                            </div>
+                            <!-- <div class="col-md-6 col-6 mt-3">
+                                <p class="fw-bold text-dark">Basket {{$index + 1}}</p>
+                            </div>
+                            <div class="col-md-6 col-6 text-end mt-3" ng-if="planlist1.length != 1">
+                                <img src="./assets/images/sipdelete.png" alt="" class="mw-100 mh-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" ng-class="SipEnterotp||ConfirmSIPOTP?'pe-none':''"  ng-disabled="orderplaced" ng-click="deletesip(plan1.SIPInfoId)">
+                            </div>
+                            <div class="col-md-12">
+                                <p class="fw-bold text-dark"><span><img src="{{plan1.BasketImage}}" alt="" class="mw-100 mh-auto me-3" style=width:15%></span>{{plan1.BasketName}}</p>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row ">
+                        <div class="col-md-9 col-9 mb-3">
+                            <small class="custom-text">Stock, ETF & Segments</small>
+                        </div>
+                        <div class="col-md-3 col-3 mb-3 text-center">
+                            <small class="custom-text">Qty</small>
+                        </div>
+                        </div>
+                        <div class="row" ng-repeat="stockdls in plan1._SIPStockMaster track by [$index]">
+                           
+                            <div class="col-md-9 col-9">
+                                <p class="fw-bold text-dark mb-0">{{stockdls.StockName}}</p>
+                                <small>{{stockdls.Ticker}}</small>
+                            </div>
+                            <div class="col-md-3 col-3 text-center"> 
+                                <p class="text-success">{{stockdls.Shares}}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider col-12">
+                    <div class="divider-d mb-1 mb-sm-5"></div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="input-message clearfix mx-3" ng-if="sipgenartion"><span
+                    class="error-message top-0 pull-right"><i class="fa fa-times"></i>
+                   {{sipotpERR}}</span></div>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <div>
+                <button type="button" class="btn ax-btn-primary ax-btn rounded-2 w-100"  ng-click="otp()">Send OTP</button>
+                </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="modal fade" id="SipSucessDelete" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div class="row mx-0">
+                <div class="col-md-12 text-center">
+                    <p>{{sipYesError}}</p>
+                </div>
+            </div>
+        </div>
+      
+        <div class="modal-footer justify-content-center">
+          
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="col-md-12">
+                        <button type="button" class="btn ax-btn-primary ax-btn w-100 rounded-4" data-bs-dismiss="modal" ng-click="SipFinish()" >OKAY</button>
+                </div>
+                
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

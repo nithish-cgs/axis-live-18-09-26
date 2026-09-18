@@ -1,0 +1,558 @@
+<style>
+.table {
+display: none !important;
+}
+</style>
+<div class="row gutter-20 mb-0 header-cards" ng-if="emailMobile">
+<!-- Global site tag (gtag.js) - Google Ads: 727858862 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-727858862"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-727858862');
+</script>
+<!-- Event snippet for AxisDirect_Register conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-727858862/tDqcCIrE_OsBEK79iNsC'});
+</script>
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1253495914811323');
+  fbq('track', 'PageView');fbq('trackCustom', 'AxisDirect-Register');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1253495914811323&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+    <div class="col-md-4 mb-4 d-none d-md-block">
+        <div class="img-text-card img-fluid header-card-bgimage-01"> 
+            <h4 class="card-heading ">All Investments.</h4>
+            <h4 class="card-heading ">One Destination.</h4>
+			
+			<h4 class="card-text font-weight-bold">
+				A suite of investment solutions to diversify your portfolio.
+			</h4>
+			 
+        </div>
+    </div>
+    <div class="col-md-4 mb-4 d-none d-md-block">
+        <div class="img-text-card img-fluid header-card-bgimage-02"> 
+			<h4 class="card-heading">No Strings Attached</h4>
+			
+			<h4 class="card-text font-weight-bold">
+				Now open trading account with us by linking any existing bank account*
+			</h4>
+			 
+        </div>
+    </div>
+    <div class="col-md-4 mb-4 d-none d-md-block">
+        <div class="img-text-card img-fluid header-card-bgimage-03"> 
+			<h4 class="card-heading text-white">Just 15 minutes</h4>
+			
+			<h4 class="card-text text-white">
+				Now, open your demat and trading account online in flat 15 minutes**
+			</h4>
+			 
+        </div>
+    </div>
+            
+
+</div>
+
+
+<div class="row" ng-if="emailMobile">
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-9">
+                <h1 class="ax-primary-title mt-0 d-none d-sm-block">Hey there! I will be your online assistant for this demat account opening journey! Please help me with your basic details</span></h1>
+				
+				<button ng-click="formData.callPopup()" class="boariding-btns px-0 plan-button" id="existingCustomer" ng-if="!formData.ReferenceNumber" ng-hide="formData.RMModule || krasearch" style="margin-top: 5px;" ng-click="existingCustomer = false; existingResponse = false;">Registration</button>
+            </div>
+            <div class="col-md-3 d-none d-sm-block text-center d-md-block">
+                <img class="img-fluid cartoon-character" src="assets/images/axis/registration-cartoon.png" alt="Registration-emoji"
+                    title="" />
+            </div>
+        </div>
+		<div class="row  d-block d-md-none">	
+			<div class="col-md-12">
+				<h4 class="ax-sec-title">Open an account with AxisDirect in just 15<sup>*</sup> minutes and start trading</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				
+			</div>
+		</div>
+        <div class="row mt-5 mt-sm-0">
+            <div class="col-md-6">
+                <label class="ax-label">Mobile Number:</label>
+                <div class="row">
+                    <div class="col-3">
+                        <input class="form-control" type="tel" id="mobileExtn" ng-model="formData.fields.mobileExtn"
+                            ng-disabled="true" maxlength="10" only-digits />
+                    </div>
+                    <div class="col-9">
+                        <div class="ax-field">
+                            <input class="form-control" autocomplete="nope" placeholder="Enter 10 Digit Mobile Number" type="tel" id="mobile"
+                                ng-model="formData.fields.mobile" ng-blur="getUserDetails($event)"
+                                ng-disabled="formData.threeinone || formData.ReferenceNumber || otp || otpVerified" maxlength="10"
+                                ng-keypress="emptyMobile = false; invalidMobile = false; $event.keyCode == 13 ? firstStage() : null"
+                                required only-digits  />
+                            <span class="validation-result"></span>
+                        </div>
+                        <span class="error-message pull-right" ng-if="emptyMobile"><i class="fa fa-times"></i> Mobile
+                            number is mandatory.</span>
+                        <span class="error-message pull-right" ng-if="invalidMobile"><i class="fa fa-times"></i> Please
+                            provide valid mobile number</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="ax-label">Email ID:</label>
+                <div class="ax-field">
+                    <input class="form-control" autocomplete="nope" placeholder="Enter your valid Email ID" type="text" id="emailID"
+                        ng-model="formData.fields.email"
+                        ng-keypress="emptyEmail = false; invalidEmail = false; $event.keyCode == 13 ? firstStage() : null"
+                        ng-disabled="formData.threeinone || formData.ReferenceNumber  || otp" required maxlength="50"  />
+                    <span class="validation-result"></span>
+                </div>
+                <p class="error-message pull-right" ng-if="invalidEmail || emptyEmail"><i class="fa fa-times"></i>
+                    Please
+                    provide proper email address. Eg: john@xyz.com</p>
+            </div>
+        </div>
+        <div class="row">
+			<div class="col-md-6">
+                <label class="ax-label">Name:</label>
+                <div class="ax-field">
+                    <input class="form-control text-capitalize" type="text" id="username" placeholder="Enter Name" ng-model="formData.fields.username"
+                        ng-disabled="formData.threeinone || formData.ReferenceNumber  || otp || otpVerified"
+                        ng-keypress="emptyUsername = false; $event.keyCode == 13 ? $event.preventDefault() : null; $event.keyCode == 13 ? panEnter() : panErrorClear();" maxlength="30"
+                        ng-keyup="panErrorClear()" autocomplete="nope" alpha-special required  />
+                        <span class="validation-result"></span>
+                </div>
+                <p class="error-message pull-right" ng-if="emptyUsername"><i class="fa fa-times"></i> Name is mandatory
+                </p>
+                <p class="error-message pull-right" ng-if="validUsername"><i class="fa fa-times"></i> Enter Valid Username 
+                </p>
+            </div>
+            <div class="col-md-6">
+                <label class="ax-label">City:</label>
+                <angucompletecity  ng-keypress="emptyCityName = false; invalidCityName = false; $event.keyCode == 13 ? firstStage() : null"
+                    ng-click="scrolltoView($event)" id="city"
+                    pause="100" selectedobject="cityname" searchfields="" placeholder="Enter City" titlefield=""
+                    minlength="1" inputclass="" input-changed="inputChanged" matchclass="highlight" />
+                <span class="error-message pull-right" ng-if="emptyCityName"><i class="fa fa-times"></i> CityName is Empty
+                </span>
+                <span class="error-message pull-right" ng-if="invalidCityName"><i class="fa fa-times"></i> CityName is Invalid
+                </span>
+            </div>
+		<div class="col-md-6 input-section">
+		<label class="ax-label" for="assistedCode">I have assisted code with me (Optional)</label>
+		<input class="input-field form-control text-uppercase" type="text" name="referrelCodes"
+			id="assistedLGCode" placeholder="LG CODE" alpha-numeric maxlength="20"
+			ng-model="formData.assistedLGCode">
+		</div>
+		<div class="col-md-6 input-section">
+		<label class="ax-label" for="assistedCode">&nbsp;</label>
+			<label class="ax-label text-uppercase" for="assistedCode"></label>
+			<input class="input-field form-control" type="text" name="referrelCodes" id="assistedLCCode"
+				maxlength="20" alpha-numeric placeholder="LC CODE" ng-model="formData.assistedLCCode">
+		</div>
+        </div>
+        <div class="row" ng-show="otpSectionShow">
+            <div class="col-md-6">
+                <label class="ax-label">Mobile OTP:</label>
+                <div class="ax-timerandresend">
+                    <div class="ax-field">
+                        <input autocomplete="nope" only-digits ng-keypress="emptyMobileOTP = false; $event.keyCode == 13 ? validateOTP() : ''" ng-model="formData.fields.mobileOTP" class="form-control" type="{{ typePassword ? 'text' : 'password' }}"
+                            id="mobileOtp" required />
+                        <a href="javascript:void(0);" class="" tabindex="-1" ng-if="enableResendButton" ng-click="resendOTP('mobile')"
+                            ng-class="{adisabled: mobileResendDisable}" rel="noopener">RE-SEND</a>
+                        <span ng-bind="counter" ng-if="!enableResendButton"></span>
+                        <span class="validation-result"></span>
+                        <i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': typePassword, 'fa-eye-slash': !typePassword}" ng-click="togglePassword()"></i>
+                    </div>
+                    <p class="error-message pull-right" ng-if="emptyMobileOTP"><i class="fa fa-times"></i> Mobile OTP is Empty</p>
+					<p class="error-message pull-right" ng-if="invalidOTP"><i class="fa fa-times"></i> {{apiResponseErrorMsg}}</p>
+					<div ng-if="!OtpLimitExceed">
+                        <h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5" ng-if="otpSent">We have sent a One Time Password to your mobile number.</h4>
+                        <h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5" ng-if="otpreSent">We have re-sent a One Time Password to your mobile number.</h4>
+                    </div>
+					<div ng-if="OtpLimitExceed">
+                        <h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5">{{OtpResponseMsg}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <button class="btn btn-primary ax-btn-primary" id="getOtp" ng-disabled="enableOTPButton" ng-if="!showRegistrationBtn" ng-click="firstStage()">GET OTP ON MOBILE</button>
+            </div>
+            <div class="col-md-12">
+                <button class="btn ax-btn-primary" id="registration" ng-if="showRegistrationBtn"
+                    ng-click="validateOTP()">START REGISTRATION</button>
+            </div>
+        </div>
+
+        <!-- 07-08-2019 -->
+        <div class="row mt-4 gutter-20">
+                <div class="col-md-4 pt-1 mb-4 order-md-first">
+                    <div class="card card-img-top h-100">
+                        <div class="card-body px-3 pb-4">
+                            <img class="mw-100 mh-100 d-block mx-auto" src="assets/images/top-img01.png" alt="Card image">
+                            <h4 class="card-title">Pay less, get more!</h4>
+                            <p class="card-text mb-3">Get high leverage on intraday products and up to 4 times in E-Margin</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 pt-1 order-md-first">
+                    <div class="card card-img-top h-100">
+                        
+                        <div class="card-body px-3 pb-4">
+                            <img class="mw-100 mh-100 d-block mx-auto" src="assets/images/top-img02.png" alt="Card image">
+                            <h4 class="card-title">Join the crusade</h4>
+                            <p class="card-text mb-3">More than 2 Million happy and satisfied customers</p>
+                        </div>
+                    </div>
+            
+                </div>
+                <div class="col-md-4 mb-4 pt-1 order-first">
+                    <div class="card card-img-top h-100">
+                            <div class="card-body px-3 pb-4">
+                            <img class="mw-100 mh-100 d-block mx-auto" src="assets/images/zero.png" alt="Card image">
+                            <h4 class="card-title">Zero AMC<sup>#</sup></h4>
+                            <p class="card-text mb-3">Zero Demat account annual maintenance charge for 1<sup>st</sup> year</p>
+                        </div>
+                    </div>
+            
+                </div>
+                <div class="col-md-4 mb-4 pt-1">
+                    <div class="card card-img-top h-100">
+                        
+                        <div class="card-body px-3 pb-4">
+                            <img class="mw-100 mh-100 d-block mx-auto" src="assets/images/top-img04.png" alt="Card image">
+                            <h4 class="card-title">Your investments, our research expertise</h4>
+                            <p class="card-text mb-3">A team of experts to guide you in the journey of wealth creation</p>
+                        </div>
+                    </div>
+            
+                </div>
+                <div class="col-md-4 mb-4 pt-1">
+                    <div class="card card-img-top h-100">
+                        
+                        <div class="card-body  px-3 pb-4">
+                            <img class="mw-100 mh-100 d-block mx-auto" src="assets/images/top-img05.png" alt="Card image">
+                            <h4 class="card-title">All investments, one destination</h4>
+                            <p class="card-text mb-3">We provide all investment options together under one roof</p>
+                        </div>
+                    </div>
+            
+                </div>
+                <div class="col-md-4 mb-4 pt-1">
+                    <div class="card card-img-top h-100">
+                        
+                        <div class="card-body  px-3 pb-4">
+                            <img class="mw-100 mh-100 d-block mx-auto" src="assets/images/top-img06.png" alt="Card image">
+                            <h4 class="card-title">Give wings to your dreams</h4>
+                            <p class="card-text mb-3">Get closer to your dreams with the power of technology in hassle free manner</p>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>	
+			
+		<div class="mb-4">
+				<p class="d-none d-md-block"><small>* Trading account can be linked with any of your existing bank account in Axis, ICICI, HDFC, Yes or SBI.</small></p>
+				<p class="d-none d-md-block"><small>** Valid for KRA registered clients using E-sign & Account would be opened after all procedure relating to IPV and client due diligence is completed.</small></p>			
+				<p class="d-block d-md-none"><small>* Valid for KRA registered clients using E-sign & Account would be opened after all procedure relating to IPV and client due diligence is completed.</small></p>		
+				<p><small># Applicable only for Axis Bank account holders</small></p>
+				<p><small><a href="https://simplehai.axisdirect.in/disclaimer-home" target="_blank" rel="noopener">Axis Direct Disclaimer</a></small></p>
+		</div>
+
+    </div>
+    <div class="col-md-3 d-none d-sm-block">
+        <!-- <h4 class="ax-help-header">Help is Here</h4> -->
+        <div class="guideline-with-bg" ng-if="emailMobile">
+            <h3 class="ax-sec-title mt-0 mb-4">Help is here</h3>
+            <h3 class="ax-bold-title mt-0 mb-3">Keep below docs handy</h3>
+            <ul class="mb-3">
+                <li>PAN card</li>
+                <li>Address Proof – Aadhaar Card, Driving Licence, Voter Id, or Passport</li>
+                <li ng-if="!formData.threeinone">Cancelled Cheque</li>
+                <li>Passport Size Photo</li>
+              <!--  <li>Email Id and mobile number that you provide on this page will be used for all future communication related to your trading and demat account.</li>
+                <li>OTP delivery via SMS sometimes gets delayed due to your mobile network issues. However, if you do not receive OTP and want us to re-send, that option will be available after a minute.</li>-->
+            </ul>
+			<div>
+				<i class="fa fa-question-circle fa-lg"></i> Need Help? <span style="color: #0067be; cursor: pointer;" class="cursor-pointer" ng-click="formData.helpPopup()" role="button" tabindex="0"> Click here</span>
+			</div>
+        </div>
+				
+    </div>
+</div>
+
+<div class="row" ng-if="pan">
+<!-- Global site tag (gtag.js) - Google Ads: 727858862 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-727858862"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-727858862');
+</script>
+<!-- Event snippet for AxisDirect_PANDetails_Dec20 conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-727858862/3nZ4CIrN_OsBEK79iNsC'});
+</script>
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1253495914811323');
+  fbq('track', 'PageView');fbq('trackCustom', 'AxisDirect-PANDetails');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1253495914811323&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+    <div class="col-md-9">
+        <div class="row mb-5">
+            <div class="col-md-9">
+                <h1 class="ax-primary-title mt-0 mt-sm-5 text-capitalize">Hi {{formData.fields.username}}, I am delighted to be helping you today.
+                </h1>
+                <h4 class="ax-sec-title">Now, we will be verifying your KYC details. For that, I need your
+                <br class="d-none d-sm-block" />PAN and Date of Birth.
+				<br/><br/>
+				<p>Kindly ensure your mobile number or email address is updated in Aadhar for Instant Activation. 
+Not sure? <a href="https://resident.uidai.gov.in/verify-email-mobile" target="_blank" rel="noopener">Click here</a></p>
+				</h4>
+				
+            </div>
+            <div class="col-12 d-block d-sm-none">
+                <div class="d-flex justify-content-start">
+                    <div>Step 1/8</div>
+                    <div class="mobile-progress progress">
+                        <div class="progress-bar" style="width:12.5%;height:20px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-none d-sm-block">
+                <img class="img-fluid" src="../../assets/images/axis/pan-cartoon.png" alt="Registration-emoji"
+                    title="" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="ax-label">Enter valid PAN no:</label>
+                <div class="ax-field">
+                    <input class="form-control text-uppercase" placeholder="Enter PAN" type="text" id="pan"
+                        ng-model="formData.fields.panNumber"
+                        ng-disabled="formData.ReferenceNumber || formData.threeinone"
+                        maxlength="10"
+                        ng-keypress="$event.keyCode == 13 ? $event.preventDefault() : null; $event.keyCode == 13 ? panEnter() : panErrorClear();"
+                        ng-keyup="panErrorClear()" alpha-numeric required />
+                    <span class="validation-result"></span>
+                </div>
+                <div class="input-message clearfix">
+                    <span class="success-message pan-verified1 pull-left" ng-show="panVerified">
+                        <i class="fa fa-check"></i> PAN Verified</span>
+                    <span class="error-message pull-right" ng-show="panError">
+                        <i class="fa fa-times"></i> PAN card is mandatory to open Axis Direct account. Based on PAN,
+                        your KYC details will be fetched from KRA.</span>
+                    <span class="error-message pull-right" ng-show="panInValid">
+                        <i class="fa fa-times"></i> Please provide valid PAN</span>
+                    <span class="error-message pull-right" ng-show="panCoVaild">
+                        <i class="fa fa-times"></i> Only Resident Individual accounts allowed. Please call us on
+                        022-4050 8080 to open your account.
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label class="ax-label">Date of Birth:</label>
+                <div class="ax-field">
+                    <input class="form-control ll-skin-melon" placeholder="Enter DOB" readonly type="text" id="txtDOB"
+                        ng-model="formData.fields.DOB"
+                        ng-disabled="(formData.ReferenceNumber) && (!formData.previewDetails || formData.fields.KRAVerified) || formData.threeinone"
+                        maxlength="10" />
+                    <span class="validation-result"></span>
+                </div>
+                <div class="input-message clearfix">
+                    <span class="success-message kra-verified pull-left" ng-show="kraCustomer">
+                        <i class="fa fa-check"></i> KRA Verified</span>
+                    <span class="error-message pull-right" ng-if="dobError">
+                        <i class="fa fa-times"></i> Please provide Date of Birth</span>
+                    <span class="error-message pull-right" ng-show="ageInvalid">
+                        <i class="fa fa-times"></i> Must have completed 18 years of age</span>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <button class="btn btn-primary ax-btn-primary" id="personalDetails"
+                    ng-disabled="formData.hideBtn || formData.apiLoading || formData.disableApp" ng-click="registration()">PROCEED TO PERSONAL
+                    DETAILS</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 d-none d-sm-block">
+        <h3 class="mt-0 mb-3 ax-sec-title">Help is Here 
+            <!-- <a class="float-right help-notification" href="javascript:void(0);"><i class="fa fa-question-circle"></i></a> -->
+        </h3>
+        <div class="guideline-with-bg" ng-if="pan">
+            <div class="d-flex pb-4">
+                <div class="pr-3">1.</div>
+                <div>Pan card is a mandatory document to open
+                    Demat and Trading Account as per SEBI
+                    Guidelines</div>
+            </div>
+            <div class="d-flex pb-4">
+                <div class="pr-3">2.</div>
+                <div class="">We require you to input your PAN number
+                    and DOB to verify if you are a KYC compliant
+                    customer</div>
+            </div>
+            <div class="d-flex pb-4">
+                <div class="pr-3">3.</div>
+                <div class="">Please ensure your DOB is as per your PAN
+                    Card</div>
+            </div>
+            <div class="d-flex pb-4">
+                <div class="pr-3">4.</div>
+                <div class="">In case your KYC is successfully verified, the
+                    form will be auto filled.</div>
+            </div>
+			<div>
+				<i class="fa fa-question-circle fa-lg"></i> Need Help? <span style="color: #0067be; cursor: pointer;" class="cursor-pointer" ng-click="formData.helpPopup()" role="button" tabindex="0"> Click here</span>
+			</div>
+        </div>
+    </div>
+</div>
+
+<!-- Axis KRA loader -->
+<div class="row" ng-show="krasearch">        
+    <div class="col-xs-12 col-md-6 offset-md-3 text-center">
+        <h4 class="ax-sec-title">Just doing a quick check! Thanks for your patience.</h4>
+        <img class="img-fluid maxHeight-200" src="../../assets/images/axis/kra-search.png" alt="" tilte="" />
+        <div class="text-animation-area">
+            <p class="step1 axTextActive"><i class="icon icon-circle-check"></i> Verifying your PAN Card & DOB </p>
+            <p class="step2 axTextSSemiStart"><i class="icon icon-circle-check"></i> Checking KRA Status</p>
+            <p class="step3 axTextSemiStart"><i class="icon icon-circle"></i> Fetching your details </p>
+            <!-- <p class="step4 axTextStart"><i class="icon icon-circle"></i> </p> -->
+        </div>
+    </div>
+</div>
+<!-- End -->
+
+<div id="pdfView" class="modal fade diymodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="modalDiyModalClose" class="close" data-dismiss="modal"
+                    aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="verify-panbox text-center margint15 marginb15">
+                    <embed src="RSEC_Mandatory_Instruction_Document.pdf" width="500" height="375"
+                        type='application/pdf'>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="modal fade" id="paninformation" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog login-dialog" style="margin-top: 231.5px;">
+        <div class="modal-content">
+            <!--<div class="modal-header">
+                <button type="button" class="close" id="panVerificationSection" ng-click="formData.panVerification = false" data-dismiss="modal"
+                    data-toggle="tooltip" title="">
+                    <i class="icon16 card-collapse"></i>
+                </button>
+            </div>-->
+            <div class="modal-body login-body">
+                <div class="login-screen welcome-content">
+                    <form class="input-forms">
+                        <ul class="form-fields text-center">
+                            <li class="final-step no-padding">
+                                <p class="page-tag page-tag1 ax-sec-title mt-0" compile="formData.panStatus"></p>
+                            </li>
+                            <li class="mt-5">
+								<button type="button" class="btn ax-btn-primary"
+                                    ng-click="formData.panVerification = false; existingDroppedToken()"
+                                     data-dismiss="modal"
+                                    ng-if="formData.applicationDisabled">
+                                    Okay
+                                </button>
+                                <button type="button" class="btn ax-btn-primary"
+                                    ng-click="formData.panVerification = false; CKYCValidation()"
+                                    id="getKraDetailsButton" data-dismiss="modal"
+                                    ng-if="formData.getKraDetails && !formData.otherMode">
+                                    Okay
+                                </button>
+                                <button type="button" class="btn ax-btn-primary" data-dismiss="modal"
+                                    id="otherModeButton" ng-click="redirectToRegister()" ng-if="formData.otherMode && !formData.HideOkayBtn">
+                                    Okay
+                                </button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="DebarredPan" role="dialog" tabindex="-1">
+        <div class="modal-dialog login-dialog" style="margin-top: 231.5px;">
+            <div class="modal-content">
+                <!--<div class="modal-header">
+                    <button type="button" class="close" id="panVerificationSection" ng-click="formData.panVerification = false" data-dismiss="modal"
+                        data-toggle="tooltip" title="">
+                        <i class="icon16 card-collapse"></i>
+                    </button>
+                </div>-->
+                <div class="modal-body login-body">
+                    <div class="login-screen welcome-content">
+                        <form class="input-forms">
+                            <ul class="form-fields text-center">
+                                <li class="final-step no-padding">
+                                    <p class="page-tag page-tag1 ax-sec-title mt-0" compile="formData.panStatus"></p>
+                                </li>
+                                <li class="mt-5">
+                                    <button type="button" class="btn ax-btn-primary"
+                                        ng-click="DebarredPan()"
+                                        id="" data-dismiss="modal">
+                                        Okay
+                                    </button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    

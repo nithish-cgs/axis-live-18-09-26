@@ -1,0 +1,2747 @@
+<style>
+    .ax-btn-primary1 {
+        border-radius: 0;
+        /* padding: 15px 20px; */
+        font-size: 14px;
+        box-shadow: none;
+        outline: 0;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        border: 2px solid #97144d;
+        width: 100px;
+    }
+
+    .namecolor {
+        color: #97144d;
+        font-weight: 600;
+    }
+
+    .guideline-with-bg {
+        display: inline-block;
+        width: 100%;
+        background: #f5f5f5;
+        padding: 40px 15px;
+        border-radius: 5px;
+        border: 1px solid #eaeaea;
+    }
+
+    .card-hg {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+    .card-hg::-webkit-scrollbar {
+        display: none;
+    }
+
+    .card-hg {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .h-400 {
+        max-height: 400px;
+        height: 400px;
+    }
+
+    #investBtn {
+        width: 100px !important;
+    }
+
+    /* .ax-btn-primary{
+        padding: 1rem !important;
+    } */
+    .owl-item:nth-child(1n) .account-plan-bg1 {
+        /* background: url(../images/productimg_bg1.jpg); */
+        /* background-size: cover; */
+        align-items: center;
+        background-color: #eaeaea;
+        height: 130px !important;
+    }
+
+    .account-plan-container .account-plan .align-self-start {
+        font-size: 14px;
+        font-weight: 900;
+    }
+
+    .ipvbar {
+        display: flex;
+        place-content: center;
+        position: relative;
+        counter-reset: step;
+        margin: 20px 50px 0px 50px;
+        align-items: center;
+    }
+
+    .ax-btn-primary {
+        padding: 1rem 6rem !important;
+    }
+
+    .ax-btn-primary1 {
+        padding: 0rem 2rem !important;
+    }
+
+    .ipv-bar-progress {
+        border: 1px solid #D9D9D9;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #999999;
+    }
+
+    .ipv-bar-active {
+        background-color: #F1F1F6;
+        color: #ED1164;
+        border: none;
+    }
+
+    .ipv-photo-img {
+        background: url('../../assets/images/SBINEW/Group\ 10118.svg');
+    }
+
+    .ipv-bar-progress::after {
+        content: attr(step-title);
+        position: absolute;
+        font-size: 11px;
+        margin-top: 5px;
+        color: #ED1164;
+        font-weight: bold;
+        width: 120px;
+        text-align: center;
+        height: 10px;
+        bottom: 0;
+        top: 100%;
+    }
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        text-align: right;
+        opacity: 0;
+        background: none repeat scroll 0 0 transparent;
+        cursor: inherit;
+        display: block;
+    }
+
+    .app-nav-wizard .steps.completed:not(:last-child)::before {
+        width: 100%;
+        height: 2px;
+        background: #ae275f;
+        z-index: 9;
+    }
+
+    .ipv-line {
+        height: 2px;
+        background-color: #F1F1F6;
+        width: 10%;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    .app-nav-wizard .steps.active .stage {
+        background: url('./assets/images/statusLoad.png');
+        border: 0px solid #ae275f;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 0px solid #ae275f;
+        position: relative;
+        z-index: 9;
+    }
+
+    .app-nav-wizard .steps.completed .stage {
+        background: url('./assets/images/statusTick.png');
+        color: #fff;
+        border: 0px solid #ae275f;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .app-nav-wizard.mb-7.mt-3 {
+        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+    }
+
+    .identity-upload-btn-wrapper1 {
+        display: flex;
+        place-content: center;
+        align-items: center;
+        flex-direction: row;
+        position: relative;
+        gap: 0px;
+    }
+
+    .dottedImageshow1 {
+        border: 3px solid #F9F8FF;
+        /* outline-style: dashed; */
+        outline-color: #F1F1F6 !important;
+        outline-width: 1px;
+        border-radius: 5px;
+        background-color: #F9F8FF;
+        padding: 3px;
+        text-align: center;
+        flex-direction: column;
+        height: 72px;
+    }
+
+    .card2 {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        /* border: 1px solid rgba(0, 0, 0, .125); */
+        border-radius: .25rem;
+    }
+
+    .select2-container--default.select2-container .select2-selection--multiple .select2-selection__rendered,
+    .select2-container--default.select2-container .select2-selection--single .select2-selection__rendered {
+        padding-left: 0;
+        line-height: 35px;
+        font-family: ProximaNova-Light, sans-serif;
+        color: #666;
+        font-size: 16px;
+    }
+
+    .card2 {
+        position: relative;
+        margin: 8px;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        /* border: 1px solid rgba(0, 0, 0, .125); */
+        border-radius: .25rem;
+    }
+
+    .input-upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        text-align: right;
+        opacity: 0;
+        background: none repeat scroll 0 0 transparent;
+        cursor: inherit;
+        width: 25px;
+        overflow: hidden;
+    }
+
+    .app-nav-wizard .steps:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 31%;
+        left: 75%;
+        width: 100%;
+        height: 2px;
+        background: #eaeaea;
+    }
+
+    /* .owl-item:nth-child(3n) .account-plan-bg {
+    background: url(../images/productimg_bg3.jpg);
+    background-size: cover;
+    height: 85px !important;
+}
+.owl-item:nth-child(2n) .account-plan-bg {
+    background: url(../images/productimg_bg3.jpg);
+    background-size: cover;
+    height: 85px !important;
+}
+.owl-item:nth-child(1n) .account-plan-bg {
+    background: url(../images/productimg_bg3.jpg);
+    background-size: cover;
+    height: 85px !important;
+} */
+    .form-check-input:checked[type=checkbox] {
+        --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e")
+    }
+
+    .form-check-input:checked {
+        background-color: #ED1164;
+        border-color: #ED1164;
+        color: #fff
+    }
+
+    .form-check-input[type=checkbox] {
+        border-radius: 0.25em;
+    }
+
+    .form-check-input {
+        --bs-form-check-bg: var(--bs-body-bg);
+        width: 1em;
+        height: 1em;
+        margin-top: .25em;
+        vertical-align: top;
+        background-color: var(--bs-form-check-bg);
+        background-image: var(--bs-form-check-bg-image);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        border: var(--bs-border-width) solid var(--bs-border-color);
+        -webkit-appearance: none;
+        appearance: none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        /* outline: none; */
+    }
+
+    .form-check .form-check-input {
+        outline: none !important;
+    }
+
+    .ax-sec-title {
+        font-size: 16px;
+        color: black;
+        font-family: robotoregular;
+        line-height: 20px;
+        letter-spacing: 0.56px;
+    }
+
+    select.form-control+.select2 {
+        border: 1px solid #eaeaea;
+        padding: 3px 10px;
+        height: 40px;
+        margin-bottom: 4rem !important;
+        border-radius: 5px;
+        background: #f5f5f5;
+        width: 100% !important;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: 4px;
+        right: 10px;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 26px;
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        width: 20px;
+    }
+
+    .continuebtn {
+        border-radius: 0 !important;
+        border: 1px solid;
+        color: #97144d;
+    }
+
+    .continuebtn:hover {
+        color: #97144d !important;
+        border: 1px solid !important;
+    }
+
+    @media (max-width: 768px) {
+        .steps {
+            width: 50px !important;
+        }
+
+        .owl-stage-outer {
+            width: 90%;
+        }
+
+        .owl-item {
+            width: calc(34.5vw) !important;
+        }
+
+        /* .app-nav-wizard .steps:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 31%;
+    left: 78%;
+    width: 80%;
+    height: 2px;
+    background: #eaeaea;
+} */
+        .owl-stage-outer {
+            width: 75%;
+            margin: 0 auto;
+        }
+
+        .lengthover {
+            overflow-x: hidden;
+            height: 350px;
+        }
+
+        @media (min-width: 576px) {
+            .owl-stage-outer {
+                width: 84%;
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            .continuebtn1 {
+                flex-direction: column;
+            }
+        }
+    }
+</style>
+<div class="container mt-5">
+    <div class="guideline-with-bg">
+        <div class="ax-sec-title mt-0 mb-4">Thank You
+            <!-- <span class="namecolor">{{formData.fields.username}}</span>  -->
+            for choosing Axis Direct!
+        </div>
+        <h5 class="mt-0 mb-3 f-16">SEBI require some additional information to open your Trading and Demat account</h6>
+    </div>
+    <!-- <div class="row mb-4">
+    <div class="app-nav-wizard mb-7 mt-3 d-flex justify-content-evenly" >
+        <div class="steps ste   p1" ng-click="firstByodSection()"
+            ng-class="panStage && !firstCompleted ? 'active':'completed'">
+            <div class="stage">
+                <i class="fa fa-mobile"></i>
+               <p ng-if="satgeone">1</p>
+            </div>
+            <p>Pan</p>
+        </div> 
+        <div class="steps step2" ng-click="secondByodSection()" 
+            ng-class="{'active': firstCompleted && !secondCompleted,'completed': secondCompleted}">
+            <div class="steps step1">
+                <div class="stage">
+                    <p ng-if="satgetwo">1</p>
+                </div>
+                <p>Personal-A</p>
+            </div>
+        </div> 
+        <div class="steps step1" ng-click="thirdByodSection()"
+            ng-class="{'active': firstCompleted && !secondCompleted,'completed': secondCompleted}">
+            <div class="steps step1">
+                <div class="stage">
+                    <i class="icon icon-document-text icon-color"></i>
+                    <p ng-if="satgetwo">1</p>
+                </div>
+                <p >Personal</span></p>
+            </div>
+        </div>
+        <div class="steps step3" ng-click="fourthByodSection()"
+            ng-class="{'active': thirdCompleted && !fourthCompleted,'completed': fourthCompleted}">
+            <div class="steps step1">
+                <div class="stage">
+                    
+                    <p ng-if="satgefour">2</p>
+                </div>
+                <p>Bank</p>
+            </div>
+        </div>
+        <div class="steps step2" ng-click="fifthByodSection()"
+            ng-class="{'active': secondCompleted && !thirdCompleted,'completed': thirdCompleted}">
+            <div class="steps step1">
+                <div class="stage">
+                    <i class="icon icon-plans icon-color"></i>
+                    <p ng-if="satgethree">2</p>
+                </div>
+                <p ng-if="!formData.makePayment">Buy Plan</p>
+                <p ng-if="formData.makePayment">Make Payment</p>
+                <p>Account</p>
+            </div>
+        </div>
+        <div class="steps step3" ng-click="sixthByodSection()"
+            ng-class="{'active': secondCompleted && !thirdCompleted,'completed': thirdCompleted}">
+            <div class="steps step1">
+                <div class="stage">
+                    <p ng-if="satgefour">3</p>
+                </div>
+                <p>Document Upload</p>
+            </div>
+        </div>
+     
+    </div>
+</div> -->
+    <!-- PAN STAGE -->
+    <!-- <div class="row" ng-if="BYODPanStage">
+    <div class="col-md-4">
+        <label class="ax-label">Name Printed as per the PAN Card:</label>
+        <div class="ax-field">
+            <input class="form-control text-uppercase" placeholder="Enter PAN Name" type="text" id="panCName" autocomplete="false"
+                ng-model="formData.fields.username" ng-right-click stop-ccp
+                ng-disabled="formData.ReferenceNumber || webJana"
+                maxlength="50"  
+                only-alphabets required />
+            <span class="validation-result"></span>
+        </div>
+        <div class="input-message clearfix">
+            <span class="error-message pan-right" ng-if="panCVerified">
+                <i class="fa fa-times"></i> PAN Name Enter</span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label class="ax-label">Enter valid PAN no:</label>
+        <div class="ax-field">
+            <input class="form-control text-uppercase" placeholder="Enter PAN" type="text" id="pan" autocomplete="false"
+                ng-model="formData.fields.panNumber" ng-right-click stop-ccp
+                ng-disabled="formData.ReferenceNumber || webJana"
+                maxlength="10"
+                ng-keypress="$event.keyCode == 13 ? $event.preventDefault() : null; $event.keyCode == 13 ? panEnter() : panErrorClear();"
+                ng-keyup="panErrorClear()" alpha-numeric required />
+            <span class="validation-result"></span>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <label class="ax-label">Date of Birth:</label>
+        <div class="ax-field">
+            <input class="form-control ll-skin-melon" placeholder="Enter DOB" type="text" id="txtDOB"
+                ng-model="formData.fields.DOB" ng-disabled="dobFreeze" maxlength="10" readonly/>
+            <span class="validation-result"></span>
+        </div>
+        <div class="input-message clearfix">
+            <span class="error-message pull-right" ng-if="dobError">
+                <i class="fa fa-times"></i> Please provide Date of Birth</span>
+           
+        </div>
+    </div>
+    <div class="col-md-12 d-flex justify-content-md-start justify-content-center">
+        <button type="button" class="btn btn-primary ax-btn-primary" id="personalDetails" 
+            ng-disabled="formData.hideBtn || formData.apiLoading" ng-click="registration()">PROCEED TO PERSONAL
+            DETAILS</button>
+     </div>
+    
+</div> -->
+    <!-- Addreess Stage -->
+    <div class="row" id="profileB">
+        <div class="col-12" ng-if="BYODAddressStage">
+            <h4 class="acord-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseProfile"><a
+                    href="javascript:void(0)" class="collapseTag ax-sec-title" title="collapseProfile"
+                    ng-click="openCollapse('collapseProfile')">Profile</a>
+                <small ng-if="collapseProfileError" class="text-danger ml-5 mt-3"><i class="fa fa-times"></i> Further
+                    action required</small>
+            </h4>
+        </div>
+        <div class="col-12 collapse" id="collapseProfile" data-bs-parent="#profileB" ng-if="BYODAddressStage">
+            <div class="lengthover">
+                <div class="col-12" ng-if="CustomerName">
+                    <h4 class="ax-sec-title">Name</h4>
+                    <div class="row" id="collapseNameKRA">
+                        <div class="col-12 col-md-4">
+                            <label class="ax-label">First Name <span ng-if="webfinacle"
+                                    class="text-danger">*</span></label>
+                            <div class="ax-field">
+                                <input class="input-field form-control" id="fmName_KRA" type="text" required
+                                    autocomplete="nope" only-alphabets ng-disabled="true"
+                                    ng-model="formData.fields.firstName" ng-keypress="fmNameError = false" />
+                                <span class="validation-result "></span>
+                            </div>
+                            <span class="error-message pull-right" ng-if="fmName_KRAError"><i class="fa fa-times"></i>
+                                Please
+                                provide valid input</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="ax-label">
+                                Middle
+                                Name
+                            </label>
+                            <div class="ax-field">
+                                <input class="input-field form-control" type="text" required autocomplete="nope"
+                                    only-alphabets ng-model="formData.fields.middleName" ng-disabled="true" />
+                                <span class="validation-result"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="ax-label">Last Name <span ng-if="webfinacle"
+                                    class="text-danger">*</span></label>
+                            <div class="ax-field">
+                                <input class="input-field form-control" id="lmname_KRA" type="text" required
+                                    autocomplete="nope" only-alphabets id="" ng-model="formData.fields.lastName"
+                                    ng-disabled="true">
+                                <span class="validation-result "></span>
+                            </div>
+                            <span class="error-message pull-right" ng-if="lmname_KRAError"><i class="fa fa-times"></i>
+                                Please
+                                provide valid input</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider col-12">
+                    <div class="divider-d mb-1 mb-sm-5"></div>
+                </div>
+                <div class="col-sm-12">
+                    <h4 class="ax-sec-title mb-5 ">Your Correspondence Address</h4>
+                </div>
+                <div class="col-12" id="collapseAddressKRA">
+                    <div class="row ">
+                        <div class="col-sm-12" ng-if="corress1">
+                            <label class="ax-label">
+                                Your Address, Line 1
+                            </label>
+                            <div class="ax-field">
+                                <input class="input-field form-control" required type="text" autocomplete="nope"
+                                    ng-model="formData.fields.cAddress1" ng-keypress="clearErrorMSG()" />
+                                <span class="validation-result "></span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row " ng-if="corress2">
+                        <div class="col-sm-6">
+                            <label class="ax-label">
+                                Address, Line 2
+                            </label>
+                            <div class="ax-field">
+                                <input class="input-field form-control" type="text" autocomplete="nope" id="cadr2"
+                                    ng-model="formData.fields.cAddress2" ng-keypress="clearErrorMSG()" />
+                                <span class="validation-result "></span>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6" ng-if="corress3">
+                            <label class="ax-label">
+                                Address, Line 3
+                            </label>
+                            <div class="ax-field">
+                                <input class="input-field form-control" type="text" autocomplete="nope" id="cadr3"
+                                    alpha-numeric ng-model="formData.fields.cAddress3" ng-keypress="clearErrorMSG()" />
+                                <span class="validation-result "></span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-sm-6" ng-if="ResidelcAddressType">
+
+                            <label class="ax-label">Address Type:</label>
+
+                            <select class="select form-control" ng-model="formData.fields.cAddressType"
+                                ng-disabled="true" id="KcAddressType" ng-show="selectShow"
+                                ng-change="cAddressTypeError=false">
+                                <option value="" disabled>Address Type</option>
+                                <option ng-selected="aType.DocumentTypeId == formData.fields.cAddressType"
+                                    ng-repeat="aType in formData.addressTypeList track by [$index]"
+                                    value="{{aType.DocumentTypeId}}">{{aType.Name}}</option>
+                            </select>
+
+                            <div class="input-message clearfix" ng-if="cAddressTypeError"><span
+                                    class="error-message pull-right"><i class="fa fa-times"></i>
+                                    Please provide valid input</span></div>
+
+                        </div>
+                        <div class="col-sm-6" ng-if="corressPin">
+                            <label class="ax-label">Pincode</label>
+                            <div class="info-edit-mode margint15">
+                                <angucomplete ng-click="scrolltoView($event)" autocomplete="nope" id="cPin" pause="1000"
+                                    selectedobject="" searchfields="" titlefield="" minlength="1" inputclass=""
+                                    matchclass="highlight" ng-keypress="cPin_valueError = false;" />
+                            </div>
+                            <div class="input-message clearfix" ng-if="cPin_valueError"><span
+                                    class="error-message pull-right"><i class="fa fa-times"></i>
+                                    Please provide valid input</span></div>
+                            <div class="input-message clearfix" ng-if="formData.cPin_valueError">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i>
+                                    Please provide valid PIn</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6" ng-if="corressPin">
+                            <label for="cState" class="ax-label" ng-class="{'top0':formData.cdValid}">State <span
+                                    ng-if="webfinacle" class="text-danger">*</span></label>
+                            <div class="info-edit-mode ax-field">
+                                <input class="input-field form-control" type="text" ng-disabled="true"
+                                    autocomplete="nope" ng-model="formData.fields.cStateName">
+                                <span class="validation-result "></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6" ng-if="corressPin">
+                            <label for="cDistrict" class="ax-label" ng-class="{'top0':formData.cdValid}">
+                                District <span ng-if="webfinacle" class="text-danger">*</span></label>
+                            <div class="ax-field">
+                                <input class="input-field form-control" type="text" ng-disabled="true"
+                                    autocomplete="nope" ng-model="formData.fields.cDistrict" />
+                                <span class="validation-result "></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 " ng-if="corressCity">
+                            <label class="ax-label">City:</label>
+                            <div class="ax-field">
+                                <input class="input-field form-control" type="text" autocomplete="nope" id="kCity"
+                                    ng-model="formData.fields.cCity" ng-keypress="city1_valueError = false" />
+                                <span class="validation-result "></span>
+                            </div>
+
+                        </div>
+                        <!-- <div class="col-md-6">
+                    <div class="info-edit-mode margint30">
+                        <label class="ax-label">Your Country:</label>
+                    </div>
+                    <div class="ax-field">
+                        <input type="text" value="India" ng-disabled="true"
+                            class="form-control" />
+                        <span class="validation-result "></span>
+                    </div>
+                </div> -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div class="col-md-12 d-flex justify-content-md-start justify-content-center">
+            <button type="button" class="btn btn-primary ax-btn-primary" id="personalDetails" 
+            ng-disabled="formData.hideBtn || formData.apiLoading" ng-click="ComfirmPersonal()">Confirm & Proceed</button>
+            </div> -->
+
+        </div>
+
+        <!-- Personal stage -->
+        <div class="col-12" ng-if="BYODPersonalStage">
+            <h4 class="acord-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseInfo"><a
+                    href="javascript:void(0)" class="collapseTag ax-sec-title" title="collapseInfo"
+                    ng-click="openCollapse('collapseInfo')">Personal</a>
+                <small ng-if="collapseInfoError" class="text-danger ml-5 mt-3"><i class="fa fa-times"></i> Further
+                    action required</small>
+            </h4>
+        </div>
+        <div class="col-12 collapse" id="collapseInfo" data-bs-parent="#profileB" ng-if="BYODPersonalStage">
+            <div class="lengthover">
+
+
+                <div class="col-12" id="additionalInfo">
+
+                    <div class="row ">
+
+                        <!-- <div class="col-md-6">
+                <label class="ax-label">Residential Status:</label>
+                <div class="ax-field IBBankDisabled" >
+                    <select class="select resident-status form-control" id="rStatus"
+                        ng-model="formData.fields.resStatus" ng-change="resStatus()" ng-disabled="rStatusdisabled">
+                        <option value="" >Residential Status</option>
+                        <option value="Resident Individual">Resident Individual</option>
+                        <option value="Non Resident Indian">Non Resident Indian</option>
+                        <option value="Foreign National">Foreign National</option>
+                        <option value="Person of Indian Origin">Person of Indian Origin</option>
+                    </select>
+                </div>
+                <div class="input-message clearfix" ng-if="rStatusError">
+                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                        provide valid input</span>
+                </div>
+                <div class="input-message clearfix" ng-if="nonIndian"><span
+                        class="error-message pull-right"><i class="fa fa-times"></i> Only accounts with
+                        Resident Individual Allowed to open
+                        from here. Please call us on 022-61480808 or 022-40508080 for opening an account with us</span>
+                </div>
+            </div> -->
+                        <!-- <div class="col-md-6">
+                <label class="ax-label">Citizenship:</label>
+
+                <select disabled class="select form-control" ng-model="formData.fields.citizen"
+                    id="citizen">
+                    <option value="" >Country</option>
+                    <option ng-selected="country.CountryName == formData.fields.citizen"
+                        ng-repeat="country in formData.countryList track by [$index]"
+                        value="{{country.CountryName}}">{{country.CountryName}}</option>
+                </select>
+                <div class="input-message clearfix" ng-if="citizenError">
+                    <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                        provide valid input</span>
+                </div>
+            </div> -->
+                        <div class="col-md-6" ng-if="MaritalValue">
+                            <label class="ax-label">Marital Status:</label>
+                            <select class="select form-control" ng-model="formData.fields.marital"
+                                data-bs-placeholder="Marital Status" ng-change="maritalError=false;" name="marital"
+                                id="marital">
+                                <option value="">Select</option>
+                                <option value="S">Single</option>
+                                <option value="M">Married</option>
+                                <!-- <option value="O">Others</option> -->
+                            </select>
+                            <div class="input-message clearfix" ng-if="maritalError">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span>
+                            </div>
+                            <div class="input-message clearfix" ng-if="maritalError1">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-if="Gendervalue">
+                            <label class="ax-label">Gender:</label>
+                            <select class="select form-control" ng-model="formData.fields.gender"
+                                ng-change="genderError=false;" data-bs-placeholder="Gender" name="gender" id="gender">
+                                <option value="">Select</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                <option value="T">Transgender</option>
+                            </select>
+                            <div class="input-message clearfix" ng-if="genderError">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span>
+                            </div>
+                            <div class="input-message clearfix" ng-if="genderError1">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i> Salutation/Title used
+                                    in the previous stage does not match with the gender selected</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-if="Fathervalue">
+                            <label class="ax-label">Father Name <span ng-if="webfinacle"
+                                    class="text-danger">*</span></label>
+                            <input class="input-field form-control" ng-keypress="fNames11Error = false" type="text"
+                                maxlength="100" only-alphabets id="fNames11" value="" required=""
+                                ng-model="formData.fields.fsFirstName" ng-disabled="fsFirstNameFreeze">
+                            <div class="input-message clearfix" ng-if="fNames11Error"><span
+                                    class="error-message pull-right"><i class="fa fa-times"></i> Father's <span
+                                        ng-if="fsType"></span> Name must be at least 3 characters long</span></div>
+                        </div>
+                        <div class="col-md-6" ng-if="MotherValue">
+                            <label class="ax-label">Mother Name <span ng-if="webfinacle"
+                                    class="text-danger">*</span></label>
+                            <input class="input-field form-control" ng-keypress="fName12Error = false" type="text"
+                                id="fName12" maxlength="25" only-alphabets value="" required=""
+                                ng-model="formData.fields.moFirstName" ng-disabled="moFirstNameFreeze">
+                            <div class="input-message clearfix" ng-if="fName12Error"><span
+                                    class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span></div>
+                        </div>
+                        <div class="col-md-6" ng-if="Educationvalue">
+                            <label class="ax-label">Highest Education <span ng-if="webfinacle"
+                                    class="text-danger">*</span></label>
+
+                            <select data-bs-placeholder="Education" class="select  form-control" id="education"
+                                ng-model="formData.fields.education" ng-change="educationError = false">
+                                <option value="">Select</option>
+                                <option ng-selected="ed.EducationId == formData.fields.education"
+                                    ng-repeat="ed in formData.educationList track by [$index]"
+                                    value="{{ed.EducationId}}">{{ed.Name}}</option>
+                            </select>
+                            <div class="input-message clearfix" ng-if="educationError">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-if="occupationvalue">
+                            <label class="ax-label">
+                                Your Occupation <span ng-if="webfinacle" class="text-danger">*</span>
+                            </label>
+                            <select data-bs-placeholder="Occupation" class="select form-control" id="occupation"
+                                ng-model="formData.fields.occupation" ng-change="occupationError=false;">
+                                <option value="">Select</option>
+                                <option ng-selected="op.OccupationId == formData.fields.occupation"
+                                    ng-repeat="op in formData.OccupationDetailsList track by [$index]"
+                                    value="{{op.OccupationId}}">{{op.Name}}</option>
+                            </select>
+                            <div class="input-message clearfix" ng-if="occupationError">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-if="SourceValue">
+                            <label class="ax-label">Source of Funds</label>
+                            <select data-bs-placeholder="Select" class="select form-control" id="sFunds"
+                                ng-model="formData.fields.sFunds" ng-change="sFundsError=false;">
+                                <option value="0">Select</option>
+                                <option ng-selected="ani.SourceOfFundId == formData.fields.sFunds"
+                                    ng-repeat="ani in formData.sFunds track by [$index]" value="{{ani.SourceOfFundId}}">
+                                    {{ani.SourceOfFundName}}</option>
+                            </select>
+                            <div class="input-message clearfix" ng-if="sFundsError">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-if="AnnualValue">
+                            <label class="ax-label">Gross Annual Income</label>
+                            <select data-bs-placeholder="Annual Income" class="select form-control" name="anIncome"
+                                id="anIncome" ng-model="formData.fields.anIncome" ng-change="anIncomeError=false;">
+                                <option value="">Select</option>
+                                <option ng-selected="ani.IncomeRangeId == formData.fields.anIncome"
+                                    ng-repeat="ani in formData.incomeRange track by [$index]"
+                                    value="{{ani.IncomeRangeId}}">{{ani.Name}}</option>
+                            </select>
+                            <div class="input-message clearfix" ng-if="anIncomeError">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-if="TradeValue">
+                            <label class="ax-label">
+                                Trading Experience:
+                            </label>
+                            <!-- <input class="form-control" type="tel" id="trdExp" required=""
+                    ng-model="formData.fields.tradeExp" maxlength="2" only-digits> -->
+                            <select class="select form-control" data-bs-placeholder="Trading Experience" id="trdExp"
+                                ng-change="getTrdExp()" ng-model="formData.fields.trdExp">
+                                <option value="">Select</option>
+                                <option value="0">No Experience</option>
+                                <option value="1-3">1-3 Years</option>
+                                <option value="4-6">4-6 Years</option>
+                                <option value="6-9">6-9 Years</option>
+                                <option value="10-plus">10 or More Than 10 Years</option>
+                            </select>
+                            <div class="input-message clearfix" ng-if="trdExpError">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-if="politicalvalue">
+                            <label class="ax-label">
+                                Are your politically exposed:
+                            </label>
+                            <select class="select form-control" id="pscrelation" ng-model="formData.fields.political"
+                                name="pscrelation" data-bs-placeholder="Are your politically exposed">
+                                <option value="">Select</option>
+                                <option value="Y">Politically Exposed</option>
+                                <option value="R">Related to Political Exposed Person</option>
+                                <option value="N">Not Related</option>
+                            </select>
+                            <div class="input-message clearfix" ng-if="pscrelationError">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i> Please
+                                    provide valid input</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-1 mb-1" ng-if="DisabilityValue">
+                            <label class="ax-label">
+                                Are you a differently-abled person?
+                            </label>
+                            <ul class="list-inline radiolist mb-2">
+                                <li>
+                                    <div class="checkBoxSect2">
+                                        <label class="cBox2" for="DisabilityNo">No, continue normally
+                                            <input ng-click="Disability('N')" type="radio" ng-model="DisabilityVal"
+                                                id="DisabilityNo" name="DisabilityNo" value="N">
+                                            <span class="rtickMark2"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="checkBoxSect2">
+                                        <label class="cBox2" for="DisabilityYes">Yes, I need assistance
+                                            <input ng-click="Disability('Y')" type="radio" ng-model="DisabilityVal"
+                                                id="DisabilityYes" name="DisabilityYes" value="Y">
+                                            <span class="rtickMark2"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="input-message clearfix" ng-if="DisabilityError">
+                                <span class="mb-2" style="color: #ed1164;"><i class="fa fa-times"></i>
+                                    Please provide Valid Input</span>
+                            </div>
+
+                        </div>
+                        <!-- <div class="row" ng-if="EmailAlready"> -->
+
+                        <div class="col-md-6 parent-field" ng-if="EmailBYOD">
+                            <label class="input-label ax-label" for="input-1email">Email ID <span ng-if="webfinacle"
+                                    class="text-danger">*</span></label>
+                            <input class="input-field form-control" type="text" id="input-1email"
+                                ng-model="formData.fields.email"
+                                ng-disabled="emailVerificationSend || changeEmailShow" />
+
+                            <div class="input-message clearfix" ng-if="emptyEmail">
+                                <span class="error-message pull-right"><i
+                                        class="fa fa-times"></i>{{emailErrorMessage}}</span>
+                            </div>
+                            <div class="input-message child-field hint-txt clearfix"
+                                ng-if="(EmailBYOD && !emailVerificationSend) || emailVerificationSend">
+                                <span><a href="javascript:void(0)" class="pull-right info-message change-pernumber"
+                                        ng-click="changeEmailShow ? emailShowChange() : emailVerificationSend ? getPersonalInfo() : newEmailValidate()">{{changeEmailShow
+                                        ? 'Change Email' : emailVerificationSend ? 'Update Status' :
+                                        'Verify'}}</a></span>
+                            </div>
+                        </div>
+                        <div class="marginb0 col-md-6 parent-field" ng-if="MobileBYOD">
+                            <label class="ax-label" for="input-1mob">{{showotpMobile ? 'Enter New Mobile Number' :
+                                'Mobile Number'}} <span ng-if="webfinacle" class="text-danger">*</span></label>
+                            <input class="input-field form-control" type="text" id="input-1mob" only-digits
+                                ng-keypress="emptyMobileNewB = false;invalidMobileNewB = false; sameNumber = false;"
+                                ng-model="formData.fields.mobile" ng-disabled="(BYOD && !showotpMobile) || newOTP"
+                                maxlength="10" />
+                            <div class="input-message clearfix" ng-if="emptyMobile">
+                                <span class="error-message pull-right"><i
+                                        class="fa fa-times"></i>{{mobileErrorMessage}}</span>
+                            </div>
+                            <div class="input-message child-field hint-txt clearfix"
+                                ng-if="MobileBYOD && changeMobileNum && !newOTP && !showotpMobile">
+                                <span><a href="javascript:void(0)" class="pull-right info-message change-pernumber"
+                                        ng-click="changeMobile()">Change Mobile</a></span>
+                            </div>
+                            <div class="d-flex gap-3" ng-if="showotpMobile">
+                                <button type="submit" id="cancelPanSection"
+                                    class="btn ax-btn-disabled p-3 my-2 secbut pcacs-tabs scrolltop"
+                                    title="profileaddresschangestep3" ng-click="cancelMobile()">
+                                    Cancel
+                                </button>
+                                <button ng-if="!newOTP" type="button"
+                                    class="btn ax-btn-primary p-3 my-2 w-auto validate-newsendotp"
+                                    ng-click="newMobileValidate()" id="sendOTP">
+                                    Send OTP
+                                </button>
+                            </div>
+
+                            <div class="validate3otp  parent-field" ng-if="newOTP">
+                                <label class="ax-label">OTP</label>
+                                <input class="input-field form-control pan-inputinfo" type="password"
+                                    id="inputs-otpnumber" ng-model="formData.fields.otpNew"
+                                    ng-keypress="$event.keyCode == 13 ? $event.preventDefault() : null; $event.keyCode == 13 ? validateOTP() : invalidOTP = false"
+                                    maxlength="6" only-digits required />
+                                <div class="input-message child-field hint-txt clearfix" ng-hide="otpSuccess">
+                                    <a href="javascript:void(0)" class="pull-left info-message validate-newsendotp"
+                                        ng-click="newMobileValidate()">
+                                        <i class="icon14 icon-reset icon-reset-new"></i> <span>Resend OTP</span>
+                                    </a>
+                                </div>
+                                <div ng-if="otpSuccess" class="input-message clearfix validated-newotp">
+                                    <a href="javascript:void(0)" class="pull-left success-message">
+                                        <i class="fa fa-check"></i> <span>OTP Verified</span>
+                                    </a>
+                                </div>
+                                <div class="input-message clearfix">
+                                    <span class="error-message pull-right" ng-if="otpEmpty"><i class="fa fa-times"></i>
+                                        {{otpErrorMessageMobile}}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 validate3otp" ng-if="newOTP && !otpSuccess">
+                                <div class="error-message" ng-show="invalidOTP"><i class="fa fa-times"></i>
+                                    {{formData.error}}</div>
+                                <h4 class="page-tag page-tag1 ax-bold-title my-2">We have sent one unique OTP to your
+                                    mobile number</h4>
+                                <button type="button" class="btn px-3 py-3 my-2 ax-btn-primary validate-newotp"
+                                    ng-click="validateOTP()" id="validateOTP">
+                                    Validate
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 panEmail pe-0" ng-if="emailIdBelongsShow && EmailBYOD">
+                            <label class="ax-label">Email ID belongs to:</label>
+
+
+                            <ul class="list-inline radiolist mb-4rem">
+                                <li class="self-emailattribute">
+                                    <div class="checkBoxSect2">
+                                        <label class="cBox2" ng-click="panEmailRegError = false" for="eself">
+                                            Self
+                                            <input type="radio" ng-model="formData.fields.emailBelongs" id="eself"
+                                                name="emstatus" ng-click="emstatus('S', true)" value="S" checked> <span
+                                                class="rtickMark2"></span></label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="checkBoxSect2">
+                                        <label class="cBox2" ng-click="panEmailRegError = false" for="espouse">Spouse
+                                            <input type="radio" ng-model="formData.fields.emailBelongs" id="espouse"
+                                                name="emstatus" ng-click="emstatus('U', true)" value="U"> <span
+                                                class="rtickMark2"></span></label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="checkBoxSect2">
+                                        <label class="cBox2" ng-click="panEmailRegError = false" for="eparent">Parent
+                                            <input type="radio" ng-model="formData.fields.emailBelongs" id="eparent"
+                                                name="emstatus" ng-click="emstatus('P', true)" value="P"> <span
+                                                class="rtickMark2"></span></label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="checkBoxSect2">
+                                        <label class="cBox2" ng-click="panEmailRegError = false"
+                                            for="echildren">Children <input type="radio"
+                                                ng-model="formData.fields.emailBelongs" id="echildren" name="emstatus"
+                                                ng-click="emstatus('C', true)" value="C"> <span
+                                                class="rtickMark2"></span></label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+
+
+
+                        <div class="col-md-6 panMobile pe-0" ng-if="mobileBelongsShow && MobileBYOD">
+                            <label class="ax-label">Mobile Number belongs to:</label>
+                            <ul class="list-inline radiolist mb-4rem">
+                                <li class="self-mobileattribute">
+                                    <div class="checkBoxSect2">
+                                        <label class="cBox2" ng-click="panMobileRegError = false" for="mself">Self
+                                            <input type="radio" ng-model="formData.fields.mobileBelongs" id="mself"
+                                                name="mmstatus" ng-click="emstatus('S', false)" value="S" checked> <span
+                                                class="rtickMark2"></span></label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="checkBoxSect2">
+                                        <label class="cBox2" ng-click="panMobileRegError = false" for="mspouse">Spouse
+                                            <input type="radio" ng-model="formData.fields.mobileBelongs" id="mspouse"
+                                                name="mmstatus" ng-click="emstatus('U', false)" value="U"> <span
+                                                class="rtickMark2"></span></label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="checkBoxSect2">
+                                        <label class="cBox2" ng-click="panMobileRegError = false" for="mparent">Parent
+                                            <input type="radio" ng-model="formData.fields.mobileBelongs" id="mparent"
+                                                name="mmstatus" ng-click="emstatus('P', false)" value="P"> <span
+                                                class="rtickMark2"></span></label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="checkBoxSect2">
+                                        <label class="cBox2" ng-click="panMobileRegError = false"
+                                            for="mchildren">Children <input type="radio"
+                                                ng-model="formData.fields.mobileBelongs" id="mchildren" name="mmstatus"
+                                                ng-click="emstatus('C', false)" value="C"> <span
+                                                class="rtickMark2"></span></label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-message clearfix mt-5" ng-if="panEmailRegError || panMobileRegError">
+                                <span class="error-message pull-right"><i class="fa fa-times"></i>
+                                    {{panMobileRegError ? panMobileRegMsg : panEmailRegMsg}}</span>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                    </div>
+                    <!-- <div class="divider">
+            <div class="divider-d"></div>
+        </div> -->
+
+                    <!-- <h4 class="acord-btn" data-bs-toggle="collapse" data-bs-target="#collapsePDetails"><a href="javascript:void(0)" class="collapseTag ax-sec-title" title="collapsePDetails" ng-click="openCollapse('collapsePDetails')">Personal Details</a>
+        <small ng-if="collapsePDetailsError" class="text-danger ml-5 mt-3"><i class="fa fa-times"></i> Further action required</small>
+        </h4> -->
+
+                </div>
+
+
+
+
+                <!-- <div class="row my-5">
+        <div class="col-12 text-center d-flex justify-content-center">
+            <button type="button" ng-click="personalUpdate()" id="personalUpdate"
+                class="btn btn-primary ax-btn-primary">
+                Proceed Ahead
+            </button>
+        </div>
+        </div> -->
+            </div>
+        </div>
+
+
+        <!-- bankStage -->
+        <!-- <div ng-if="BYODBankSatge">
+    <div class="lengthover">
+    <div class="row" >
+        <div class="col-md-6">
+            <label class="ax-label">Bank Name:</label>
+            <div class="ax-field" >      
+                <select class="select form-control" ng-model="formData.fields.bankName"
+                ng-change="bankName('changed')" id="pBank" ng-if="kbank != ''">
+                    <option value="">Select Bank</option>
+                    <option ng-selected="bank.BankName == formData.fields.bankName"
+                        ng-repeat="bank in kbank track by [$index]"
+                        value="{{bank.BankName}}">{{bank.BankName}}</option>
+                </select>
+                
+            </div>
+            <div class="input-message clearfix" ng-if="karvybankNameError"><span class="error-message pull-right"><i
+                class="fa fa-times"></i> Please Select bank name</span></div>
+            <div class="input-message clearfix" ng-if="bankNameError"><span class="error-message pull-right"><i
+                class="fa fa-times"></i> Please select bank name</span></div>
+        </div>
+        <div class="col-md-6 IBBankDisabled">
+            <label class="ax-label">IFSC code:</label>
+            <div class="ax-field">
+                    <angucompleteifsc disable-input="disableIFSC" placeholder="Enter IFSC Code" ng-click="scrolltoView($event)" id="ifsc" pause="100"
+                    selectedobject="" searchfields="" titlefield="" minlength="1" inputclass="input-field"
+                    matchclass="highlight" ng-keypress="ifscError = false;" />
+                <span class="validation-result"></span>
+            </div>
+             <div class="ax-field mt-3 mb-5 ax-sec-title" ng-if="webfinacle || webJana">{{formData.fields.ifscCode}}</div>
+            <div class="input-message clearfix" ng-if="ifscError"><span class="error-message pull-right"><i
+                class="fa fa-times"></i> Please provide valid ifsc code</span></div>
+        </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-6 IBBankDisabled">
+            <label class="ax-label">Bank Account Number:</label>
+            <div class="ax-field">
+                    <input ng-if="!webfinacle && !webJana" class="input-field form-control" placeholder="Enter Bank Account Number" type="{{ typePasswordAc ? 'text' : 'password' }}" ng-focus="typePasswordAc=true" ng-blur="typePasswordAc=false" autocomplete="off" id="acc1" value="" name="accNumber" required="" ng-model="formData.fields.accNumber" maxlength="18" ng-right-click stop-ccp ng-keypress="$event.keyCode == 13 ? bankValidate() : accInvalid = false" ng-disabled="accNumberFreeze || janabank||bankDisable" only-digits />
+                <div class="mb-5 ax-sec-title" ng-if="(webfinacle && !finMulti)|| webJana">{{formData.fields.accNumber}}</div>
+                
+                <div class="ax-field" ng-if="webfinacle && finMulti">      
+                <select class="select form-control" ng-model="multiaccNumber" ng-change="acNumber(multiaccNumber)" id="accNumber">
+                    <option value="">Select Bank</option>
+                    <option ng-selected="bank.AccountNumber == multiaccNumber"
+                        ng-repeat="bank in finData.bankAccountDetails track by [$index]"
+                        value="{{$index}}">{{bank.AccountNumber}}</option>
+                </select>
+                
+            </div>
+                <div class="input-message clearfix">
+                    <span class="error-message pull-right" ng-if="accInvalid"><i class="fa fa-times"></i>
+                        Invalid Account Number</span>
+                </div>
+                <span class="validation-result"></span>
+            </div>
+        </div>
+        <div class="col-md-6 IBBankDisabled"  ng-show="!webfinacle && !webJana" >
+            <label class="ax-label">Confirm Bank Account Number:</label>
+            <div class="ax-field">
+                <input class="input-field form-control" stop-ccp type="{{ typePasswordCAC ? 'text' : 'password' }}" ng-focus="typePasswordCAC=true" ng-blur="typePasswordCAC=false" id="cacc1" value="" placeholder="Confirm Bank Account Number" required="" ng-model="formData.fields.raccNumber" ng-right-click maxlength="18" ng-keypress="$event.keyCode == 13 ? bankValidate() : accountMismatch = false" ng-disabled="raccNumberFreeze || janabank||bankDisable"  only-digits>
+               
+                <div class="input-message clearfix">
+                    <span class="error-message pull-right" ng-if="accountMismatch"><i class="fa fa-times"></i>
+                        Account number not same</span>
+                </div>
+                <span class="validation-result"></span>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-12 d-flex justify-content-md-start justify-content-center">
+        <button type="button" class="btn btn-primary ax-btn-primary" id="BankDetails" 
+            ng-disabled="formData.hideBtn || formData.apiLoading" ng-click="ComfirmBank()">Proceed Ahead</button>
+            </div>
+</div> -->
+        <!-- ProductSatge -->
+        <div class="divider">
+            <div class="divider-d"></div>
+        </div>
+        <div class="col-12" ng-if="BYODPlanStage">
+            <h4 class="acord-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseProduct"><a
+                    href="javascript:void(0)" class="collapseTag ax-sec-title" title="collapseProduct"
+                    ng-click="openCollapse('collapseProduct')">Plan</a>
+                <small ng-if="collapseProductError" class="text-danger ml-5 mt-3"><i class="fa fa-times"></i> Further
+                    action required</small>
+            </h4>
+        </div>
+        <div class="col-12 collapse" id="collapseProduct" data-bs-parent="#profileB" ng-if="BYODPlanStage">
+            <div class="lengthover">
+                <div>
+                    <p>
+                        Tariff Plans & Segements
+                    </p>
+                </div>
+                <data-owl-carousel class="owl-carousel segmentation-container account-plan-container mt-3 pt-4"
+                    data-options="owlOptionsTestimonials">
+                    <div class="mb-3 item" owl-carousel-item="" ng-repeat="plan in planList track by [$index]"
+                        ng-class="{'d-none': utmHide}" id="plan{{plan.ProductId}}">
+                        <input type="radio" ng-click="prdSelect($index)" name="axisDirect" id="product-{{$index}}"
+                            value="{{plan.ProductId}}" ng-disabled="disableAll">
+                        <div class="account-plan account-plan-bg1 h-100 d-flex flex-row mx-1 text-dark">
+                            <span class="arrow"></span>
+                            <div class="ps-0 overflow-hidden">
+                                <div class="d-flex flex-column">
+                                    <div class="align-self-start text-uppercase">{{plan.PlanName}}</div>
+                                    <!-- <small>Vaild for 1 year</small> -->
+                                    <div><button type="button" class="btn btn-primary ax-btn-primary1">Choose</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </data-owl-carousel>
+                <div class="row my-4">
+                    <div class="col-6">
+                        <a style="text-decoration: none;"
+                            href="https://simplehai.axisdirect.in/images/Processupdates/Schedule_of_charges/Demat-Schedule-of-Charges_05_03_2025.pdf"
+                            target="_blank">Know your Demat charges<span style="border-bottom: 1px solid;"> Click
+                                Here</span></a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a style="text-decoration: none;"
+                            href="https://simplehai.axisdirect.in/images/PartB/CDR%20-%20Part%20B%20SHORT%20Form%20Ver%2010_07-03-2019.pdf"
+                            target="_blank">Read Terms &amp; Conditions Carefully, <span
+                                style="border-bottom: 1px solid;"> Click Here</span></a>
+                    </div>
+                </div>
+
+                <div id="tradingSegment" class="mb-5">
+                    <div class="row intrestedlist">
+                        <div class="col-md-4 col-6 mt-3 input-section">
+                            <div class="checkBoxSect2 tickMarkDisabled">
+                                <label class="cBox2" for="equity">Equity <small class="grey-texts"></small>
+                                    <input type="checkbox" id="equity" name="segments" disabled checked> <span
+                                        class="tickMark2"></span>
+                                    <!-- <img src="assets/images/info-icon.svg" width="16" height="16" class="ml-2 ax-product-info  mb-4"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Be a part of India's growth story by investing in stock market or take benefit of short term stock movements using plethora of leverage products like E-margin, Intraday, cover!"> -->
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6 mt-3 pe-0 input-section currencies-section">
+                            <div class="checkBoxSect2 tickMarkDisabled">
+                                <label class="cBox2" for="mutualfunds">Mutual Funds <small class="grey-texts"></small>
+                                    <input type="checkbox" id="mutualfunds" name="segments" disabled checked><span
+                                        class="tickMark2"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- <div class="col-sm-4 mt-3" ng-hide="vcip">		
+                        <div class="checkBoxSect2" ng-class="{'tickMarkDisabled': disableAll}">
+                            <label class="cBox2" for="slb"> SLB 
+                                <input type="checkbox" id="slb" name="slb" ng-disabled="disableAll" ng-model="chkselct" ng-change="getdetails()"> <span class="tickMark2"></span>
+
+                            </label>
+                            <div class="ax-label text-success mt-4" style="margin-top: 1rem !important;font-size: 10px !important;" ng-show="result" >ASL will levy processing fees at 10 % of the Transaction Rate / lending and borrowing fee for SLB Segment</div>	
+                        </div>		
+                    </div> -->
+                        <div class="col-md-4 col-12 mt-3">
+                            <div class="checkBoxSect2 tickMarkDisabled">
+                                <label class="cBox2" for="slb"> SLB
+                                    <input type="checkbox" id="slb" name="slb" checked disabled> <span
+                                        class="tickMark2"></span>
+                                </label>
+                                <div class="ax-label text-success mt-4"
+                                    style="margin-top: 1rem !important;font-size: 10px !important;">ASL will levy
+                                    processing fees at 10 % of the Transaction Rate / lending and borrowing fee for SLB
+                                    Segment</div>
+
+                                <!-- <div class="ax-label text-success mt-4" style="margin-top: 1rem !important;font-size: 10px !important;" >ASL will levy processing fees at 10 % of the Transaction Rate / lending and borrowing fee for SLB Segment</div> -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row mt-3">						
+                    <div class="col-sm-12 mt-3">		
+                        <div class="checkBoxSect2" ng-class="{'tickMarkDisabled': disableAll}">
+                            <label class="cBox2" for="derivativesAll">Derivatives - All
+                                <input type="checkbox" id="derivativesAll" name="derivativesAll" ng-click="derivativesAll()" ng-disabled="disableAll"> <span class="tickMark2"></span>
+                            </label>
+                        </div>		
+                    </div>
+                </div> -->
+                    <!-- <div class="row intrestedlist">
+                    <div class="col-md-4 col-6 mt-3">		
+                        <div class="checkBoxSect2" ng-class="{'tickMarkDisabled': disableAll}">
+                            <label class="cBox2" for="derivativesAll">Derivatives - All
+                                <input type="checkbox" id="derivativesAll" name="derivativesAll" ng-click="derivativesAll()" ng-disabled="disableAll"> <span class="tickMark2"></span>
+                            </label>
+                        </div>		
+                    </div>
+                    <div class="col-md-4 col-6 mt-3 input-section derivatives-section">
+                        <div class="checkBoxSect2" ng-class="{'tickMarkDisabled':derivativesDisable}">
+                            <label class="cBox2" for="equityderivatives">Equity Derivatives <span class="grey-texts"></span>
+                                <input type="checkbox" id="equityderivatives" name="derivatives" ng-disabled="derivativesDisable" ng-click="derivatives()"> <span class="tickMark2"></span>
+                                
+                                
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-6 mt-3 input-section currencies-section">
+                        <div class="checkBoxSect2" ng-class="{'tickMarkDisabled':derivativesDisable}">
+                            <label class="cBox2" for="commodityderivatives">Commodity Derivatives
+                                <input type="checkbox" id="commodityderivatives" name="derivatives" ng-disabled="derivativesDisable" ng-click="derivatives()"> <span class="tickMark2"></span>
+                            
+                                
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-6 mt-3 input-section pos-relative">
+                        <div class="checkBoxSect2" ng-class="{'tickMarkDisabled':derivativesDisable}">
+                            <label class="cBox2" for="currency">Currency <span class="grey-texts"></span>
+                                <input type="checkbox" id="currency" name="derivatives" ng-disabled="derivativesDisable" ng-click="derivatives()"> <span class="tickMark2"></span>
+                            
+                               
+                            </label>
+                        </div>
+                    </div>					
+                    
+                </div> -->
+                    <!-- <div class="d-flex mt-2"><p class="fw-bold" style="margin-right: 4px;">Note:</p> While we are registered with multiple exchanges, we are not operational / offering services in MSEI Exchange, BSE Derivatives (Equity/Currency/Commodities), BSE SLBM, Debt and NSE Commodity Derivatives.
+                    We will keep you posted incase of any change.</div> -->
+                </div>
+            </div>
+
+            <div class="row mx-0">
+                <div class="col-md-6 input-section">
+                    <input class="input-field form-control text-uppercase" type="text" name="referrelCodes"
+                        ng-disabled="freezeLG" id="assistedLGCode" placeholder="LG CODE" alpha-numeric maxlength="20"
+                        ng-model="formData.assistedLGCode">
+                    <span ng-if="lgcodereq" class="error-message pull-right"><i class="fa fa-times"></i> Please provide
+                        LG Code</span>
+                </div>
+                <div class="col-md-6 input-section">
+                    <input class="input-field form-control" type="text" name="referrelCodes" id="assistedLCCode"
+                        ng-disabled="freezeLC" maxlength="20" alpha-numeric placeholder="LC CODE"
+                        ng-model="formData.assistedLCCode">
+                </div>
+            </div>
+            <!-- <div class="col-md-12 d-flex justify-content-md-start justify-content-center">
+        <button type="button" class="btn btn-primary ax-btn-primary" id="ProductDetails" 
+            ng-disabled="formData.hideBtn || formData.apiLoading" ng-click="ComfirmProducts()">Proceed Ahead</button>
+    </div> -->
+        </div>
+        <div class="divider">
+            <div class="divider-d"></div>
+        </div>
+        <!-- upload-documents -->
+        <!-- <div class="col-12" ng-if="BYODDocument">
+            <h4 class="acord-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseDocument"><a
+                    href="javascript:void(0)" class="collapseTag ax-sec-title" title="collapseDocument"
+                    ng-click="openCollapse('collapseDocument')">Upload Documents</a>
+                <small ng-if="collapseDocumentError" class="text-danger ml-5 mt-3"><i class="fa fa-times"></i> Further
+                    action required</small>
+            </h4>
+        </div> -->
+        <div class="col-12 collapse" id="collapseDocument" data-bs-parent="#profileB" ng-if="BYODDocument">
+            <div class="lengthover">
+                <div ng-if="SignimageByodShow">
+                    <div class="radio-btn1 d-flex mt-2">
+                        <div class="row w-100">
+                            <div class="col-md-8">
+                                <div>
+                                    <div class="d-flex">
+                                        <div class="row w-100">
+                                            <div class="col-md-6 d-flex justify-content-md-center align-items-center">
+                                                <label for="nYes" class="form-check-inline mt-1 ml-1 fw-bold">Signature
+                                                    Image</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card2 d-flex justify-content-center align-items-center">
+                                                    <div class="c-adr2 display-animate upload-section d-flex align-items-center justify-content-md-start justify-content-center"
+                                                        id="aadhar-upload-front" ng-if="!SignimageShows">
+
+                                                        <div class="fw-bold" ng-if="!signimg2DelHide">
+                                                            <div>
+                                                                <img src="./assets/images/file_uploader.png"
+                                                                    class="img-fluid">
+                                                            </div>
+                                                            <input type="file" accept="image/*" class="input-upload"
+                                                                id="SPECIMENPROOF" onchange="imgUpld('SPECIMENPROOF');">
+                                                        </div>
+                                                    </div>
+                                                    <div id="SpecimenCimage" class="w-100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <div class="input-message clearfix"><span class="error-message"
+                                        ng-if="signaturetypeError"><i class="fa fa-times"></i>File type not
+                                        supported</span></div>
+                                <div class="input-message clearfix"><span class="error-message"
+                                        ng-if="signatureImgError"><i class="fa fa-times"></i>Please upload
+                                        image</span></div>
+                                <div class="input-message clearfix"><span class="error-message"
+                                        ng-if="signatureSizeError"><i class="fa fa-times"></i>Please upload the
+                                        document less than 4Mb</span></div>
+                                <!-- <p class="page-tag page-tag1 ax-bold-title  mb-3 mt-3" ng-if="signFincleMsg">
+                    The uploaded signature will be used only for the purpose of opening Demat
+                    and Trading Account with Axis securities and same will be not updated in
+                    bank records
+                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider">
+                        <div class="divider-d"></div>
+                    </div>
+                </div>
+                <div ng-if="CheckimageByodShow">
+                    <div class="radio-btn1 d-flex mt-2">
+                        <div class="row w-100">
+                            <div class="col-md-8">
+                                <!-- <div class="d-flex">
+                    <label for="nYes" class="form-check-inline mt-1 ml-1 fw-bold">Cancelled cheque</label>
+                </div> -->
+                                <div>
+                                    <div class="d-flex">
+                                        <div class="row w-100">
+                                            <div class="col-md-6 d-flex justify-content-md-center align-items-center">
+                                                <label for="nYes" class="form-check-inline mt-1 ml-1 fw-bold">Cancelled
+                                                    cheque</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card2 d-flex justify-content-center align-items-center">
+                                                    <div class="c-adr2 display-animate upload-section d-flex align-items-center justify-content-md-start justify-content-center"
+                                                        id="aadhar-upload-front" ng-if="!BankimageShows">
+                                                        <div class="fw-bold" ng-if="!Bankimg2DelHide">
+                                                            <div>
+                                                                <img src="./assets/images/file_uploader.png"
+                                                                    class="img-fluid">
+                                                            </div>
+                                                            <input type="file" accept="image/*" class="input-upload"
+                                                                id="BankCheque" onchange="imgUpld('BankCheque');">
+                                                        </div>
+                                                    </div>
+                                                    <div id="bankCimage" class="w-100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <div class="input-message clearfix"><span class="error-message" ng-if="banktypeError"><i
+                                            class="fa fa-times"></i>File type not
+                                        supported</span></div>
+                                <div class="input-message clearfix"><span class="error-message" ng-if="bankImgError"><i
+                                            class="fa fa-times"></i>Please upload
+                                        image</span></div>
+                                <div class="input-message clearfix"><span class="error-message"
+                                        ng-if="bankCNImgError"><i class="fa fa-times"></i>Please upload valid
+                                        cheque image</span></div>
+                                <div class="input-message clearfix"><span class="error-message" ng-if="bankQImgError"><i
+                                            class="fa fa-times"></i>Please upload good
+                                        quality image</span></div>
+                                <div class="input-message clearfix"><span class="error-message" ng-if="bankSizeError"><i
+                                            class="fa fa-times"></i>Please upload the
+                                        document less than 4Mb</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider">
+                        <div class="divider-d"></div>
+                    </div>
+                </div>
+                <div ng-if="CorressimageByodShow">
+                    <div class="row d-flex justify-content-md-center align-items-md-center">
+                        <div class="col-md-4 upload-content marginb5">
+                            <p class="margint10">Correspondance Address</p>
+                            <select class="select cadr form-control" data-bs-placeholder="Correspondence Address Proof"
+                                id="c1address" ng-model="formData.fields.DocsaddressProof"
+                                ng-disabled="formData.digiData"
+                                ng-change="cAddressImgError = false; ctypeError = false;cImgUpld()">
+                                <option value="0">Select</option>
+                                <option ng-selected="ap.DocumentTypeId == formData.fields.DocsaddressProof"
+                                    ng-repeat="ap in formData.cList track by [$index]" value="{{ap.DocumentTypeId}}">
+                                    {{ap.Name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-8 upload-content marginb5">
+                            <div class="radio-btn1 d-flex mt-2">
+                                <div class="row w-100">
+                                    <div class="col-md-8">
+                                        <div>
+                                            <div class="d-flex">
+                                                <div class="row w-100">
+                                                    <div
+                                                        class="col-md-6 d-flex justify-content-md-center align-items-center">
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div
+                                                            class="card2 d-flex justify-content-center align-items-center">
+                                                            <label for="nYes"
+                                                                class="form-check-inline mt-1 ml-1 fw-bold">Front
+                                                                Image</label>
+                                                            <div class="c-adr2 display-animate upload-section d-flex align-items-center justify-content-md-start justify-content-center"
+                                                                id="aadhar-upload-front" ng-if="!Coress1imageShows">
+                                                                <div class="fw-bold" ng-if="!Coreess1img2DelHide">
+                                                                    <div>
+                                                                        <img src="./assets/images/file_uploader.png"
+                                                                            class="img-fluid">
+                                                                    </div>
+                                                                    <input type="file" accept="image/*"
+                                                                        class="input-upload" id="CorrespondenceAddress"
+                                                                        onchange="imgUpld('CorrespondenceAddress');">
+                                                                </div>
+                                                            </div>
+                                                            <div id="Coress1Cimage" class="w-100"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="radio-btn1 d-flex mt-2">
+                                <div class="row w-100">
+                                    <div class="col-md-8">
+                                        <div>
+                                            <div class="d-flex">
+                                                <div class="row w-100">
+                                                    <div
+                                                        class="col-md-6 d-flex justify-content-md-center align-items-center">
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div
+                                                            class="card2 d-flex justify-content-center align-items-center">
+                                                            <label for="nYes"
+                                                                class="form-check-inline mt-1 ml-1 fw-bold">Back
+                                                                Image</label>
+                                                            <div class="c-adr2 display-animate upload-section d-flex align-items-center justify-content-md-start justify-content-center"
+                                                                id="aadhar-upload-front" ng-if="!Coress2imageShows">
+                                                                <div class="fw-bold" ng-if="!Coreess3img2DelHide">
+                                                                    <div>
+                                                                        <img src="./assets/images/file_uploader.png"
+                                                                            class="img-fluid">
+                                                                    </div>
+                                                                    <input type="file" accept="image/*"
+                                                                        class="input-upload" id="CorrespondenceAddress2"
+                                                                        onchange="imgUpld('CorrespondenceAddress2');">
+                                                                </div>
+                                                            </div>
+                                                            <div id="Coress2Cimage" class="w-100"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="input-message clearfix"><span class="error-message"
+                                    ng-if="catypeError || ca2typeError"><i class="fa fa-times"></i>File type
+                                    not supported</span></div>
+                            <div class="input-message clearfix"><span class="error-message" ng-if="cAddressImgError"><i
+                                        class="fa fa-times"></i>Please upload
+                                    image</span></div>
+                            <div class="input-message clearfix"><span class="error-message"
+                                    ng-if="cAddressBackImgError"><i class="fa fa-times"></i>Please upload
+                                    Back image</span></div>
+                            <div class="input-message clearfix"><span class="error-message" ng-if="cAddressQImgError"><i
+                                        class="fa fa-times"></i>
+                                    Please upload good quality image</span></div>
+                            <div class="input-message clearfix"><span class="error-message"
+                                    ng-if="cAddressCNImgError"><i class="fa fa-times"></i>
+                                    {{cAddressCNImgError1}}</span></div>
+                            <div class="input-message clearfix"><span class="error-message" ng-if="ctypeError"><i
+                                        class="fa fa-times"></i>Please select document
+                                    type</span></div>
+                            <div class="input-message clearfix"><span class="error-message" ng-if="cSizeError"><i
+                                        class="fa fa-times"></i>Please upload the document
+                                    less than 4Mb</span></div>
+                        </div>
+                    </div>
+                    <div class="divider">
+                        <div class="divider-d"></div>
+                    </div>
+                </div>
+                <div ng-if="incomeimageByodShow">
+                    <div class="row d-flex justify-content-md-center align-items-md-center">
+                        <div class="col-md-4 upload-content marginb5">
+                            <p class="margint10">Income Address</p>
+                            <select class="select form-control" data-bs-placeholder="Income Proof"
+                                ng-model="formData.fields.foDocumentProof"
+                                ng-change="foImgError = false;itypeError = false;foImgUpload()">
+                                <option value="">Select Future &
+                                    Options doc.</option>
+                                <option ng-selected="ap.DocumentTypeId == formData.fields.foDocumentProof"
+                                    ng-repeat="ap in formData.foDocumentTypeList track by [$index]"
+                                    value="{{ap.DocumentTypeId}}">{{ap.Name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-8 upload-content marginb5">
+                            <div class="radio-btn1 d-flex mt-2">
+                                <div class="row w-100">
+                                    <div class="col-md-8">
+                                        <div>
+                                            <div class="d-flex">
+                                                <div class="row w-100">
+                                                    <div
+                                                        class="col-md-6 d-flex justify-content-md-center align-items-center">
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div
+                                                            class="card2 d-flex justify-content-center align-items-center">
+                                                            <div class="c-adr2 display-animate upload-section d-flex align-items-center justify-content-md-start justify-content-center"
+                                                                id="aadhar-upload-front" ng-if="!incomeimageShows">
+                                                                <div class="fw-bold" ng-if="!incomeimg2DelHide">
+                                                                    <div>
+                                                                        <img src="./assets/images/file_uploader.png"
+                                                                            class="img-fluid">
+                                                                    </div>
+                                                                    <input type="file" accept="image/*"
+                                                                        class="input-upload" id="Income"
+                                                                        onchange="imgUpld('Income');">
+                                                                </div>
+                                                            </div>
+                                                            <div id="income1Cimage" class="w-100"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="input-message clearfix"><span class="error-message" ng-if="incometypeError"><i
+                                        class="fa fa-times"></i>File type not
+                                    supported</span></div>
+                            <div class="input-message clearfix"><span class="error-message" ng-if="foImgError1"><i
+                                        class="fa fa-times"></i>Please upload image</span>
+                            </div>
+                            <div class="input-message clearfix"><span class="error-message" ng-if="itypeError"><i
+                                        class="fa fa-times"></i>Please select document
+                                    type</span></div>
+                            <div class="input-message clearfix"><span class="error-message" ng-if="iSizeError"><i
+                                        class="fa fa-times"></i>Please upload the document
+                                    less than 4Mb</span></div>
+                        </div>
+                    </div>
+                    <div class="divider">
+                        <div class="divider-d"></div>
+                    </div>
+                </div>
+                <!-- <div class="radio-btn1 d-flex mt-2">
+        <div class="row w-100">
+            <div class="col-md-6" >
+                <div class="d-flex">
+                    <label for="nYes" class="form-check-inline mt-1 ml-1 fw-bold">INCOME Image</label>
+                </div>
+                 <div>
+                    <div class="card2 d-flex justify-content-center align-items-center" >
+                        <div class="c-adr2 display-animate upload-section d-flex align-items-center justify-content-md-start justify-content-center"  id="aadhar-upload-front" ng-if="!INCOMEimageShows">
+                            
+                           <div class="fw-bold" >
+                                <div>
+                                    <img src="./assets/images/file_uploader.png" class="img-fluid">
+                                </div>
+                              
+                        <input type="file" accept="image/*" class="input-upload" id="income"  onchange="imgUpld('income');">
+                           </div> 
+                          
+                          </div>
+                          <div id="income" class="w-100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divider">
+        <div class="divider-d"></div>
+    </div> -->
+
+            </div>
+
+        </div>
+        <div class="card-footer bg-white border-0 shadow-sm mt-3 p-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Terms and Conditions</h4>
+                </div>
+                <div class="col-md-12 mb-md-5 mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" ng-model="chkselct6" id="chkselct6"
+                            ng-init="chkselct6=true" checked ng-click="firstTrems()">
+                        <small for="chkselct6">
+                            I am not classifed as a US Person. Additionally, I am a citizen of India and exclusively pay
+                            taxes within India. Furthermore, my income solely origiantes from india, with no earinings
+                            from the USA or any other country.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="divider">
+                <div class="divider-d"></div>
+            </div>
+            <!-- <div class="row mt-3">
+                <div class="col-md-12 mb-md-5 mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" ng-model="chkselct2" id="chkselct2"
+                            ng-init="chkselct2=true" checked ng-click="secondTrems()">
+                        <ol for="chkselct2">
+                            <li style="list-style: disc;">I Accept all the <a href="javascript:void(0)"
+                                    ng-click="preferencesBYOD()" style="color: #97144d">preferences set by
+                                    AxisDirect.</a> </li>
+                            <li style="list-style: disc;">
+                                I Accept all <a
+                                    href="https://simplehai.axisdirect.in/images/Most-Important-Terms-and-Conditions-MITC.pdf"
+                                    target="_blank" style="color: #97144d">Most Important Terms and Conditions.</a>
+                            </li>
+                            <li style="list-style: disc;"><a href="javascript:void(0)" style="color: #97144d"
+                                    data-bs-toggle="modal" data-bs-target="#profileBterms">E-Margin Facility &
+                                    Rights</a> </li>
+                        </ol>
+                    </div>
+                </div>
+            </div> -->
+            <div class="row mt-3">
+                <div class="col-md-12 mb-md-5 mb-3">
+
+                    <!-- Checkbox 1 -->
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="chkPref" ng-model="chkPref"
+                            ng-init="chkPref=true" ng-click="prefTerms()">
+                        <label for="chkPref">
+                            I Accept all the
+                            <a href="javascript:void(0)" ng-click="preferencesBYOD()" style="color:#97144d">
+                                preferences set by AxisDirect
+                            </a>
+                        </label>
+                    </div>
+
+                    <!-- Checkbox 2 -->
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="chkMITC" ng-model="chkMITC"
+                            ng-init="chkMITC=true" ng-click="mitcTerms()">
+                        <label for="chkMITC">
+                            I have read, understood, and agree to the
+                            <a href="https://simplehai.axisdirect.in/images/Most-Important-Terms-and-Conditions-MITC.pdf"
+                                target="_blank" style="color:#97144d">
+                                Most Important Terms and Conditions
+                            </a>
+                        </label>
+                    </div>
+
+                    <!-- Checkbox 3 -->
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="chkEMargin" ng-model="chkEMargin"
+                            ng-click="emarginTerms()">
+                        <label for="chkEMargin">
+                            <a href="javascript:void(0)" style="color:#97144d" data-bs-toggle="modal"
+                                data-bs-target="#profileBterms">
+                                E-Margin Facility & Rights
+                            </a> - <span>I understand that enabling the E-Margin facility requires DDPI enablement. I
+                                confirm that I have read and understood the applicable Terms & Conditions. Upon
+                                selection, DDPI consent will also be enabled.
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="ddpi" ng-model="ddpi" ng-click="ddpiFn()">
+                        <label for="ddpi"> I hereby give my consent for executing DDPI for my demat account for the
+                            purpose of meeting Stock Exchange obligations. If I do not provide this consent, eDIS will
+                            be considered as the default authorization mechanism.
+                            <a href="javascript:void(0);" ng-click="ddpiModal()"><small style="font-size: 75%">Read
+                                    More</small></a>
+                        </label>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="divider">
+                <div class="divider-d"></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12 mb-md-5 mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" ng-model="chkselct3" id="chkselct3"
+                            ng-init="chkselct3=true" checked ng-click="thirdTrems()">
+                        <small for="chkselct3">
+                            <a href="javascript:void(0)" style="color: #97144d"> I agree to the Terms and Conditions
+                                applicable to RDA / Trading Preferences / DDPI / BML / Authorised Persons / Sub-brokers
+                                / Demat / Trading / Other related services.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="input-message clearfix"><span class="error-message top-0" ng-if="ByodtermsError"><i
+                        class="fa fa-times"></i>Please accept terms and
+                    conditions</span></div>
+            <div class="input-message clearfix"><span class="error-message top-0" ng-if="ddpiError"><i
+                        class="fa fa-times"></i>Please authorize Axis Securities
+                    Limited to execute DDPI
+                </span></div>
+        </div>
+        <div class="col-md-12 mt-4 d-flex  justify-content-center ">
+            <button type="button" class="btn btn-primary ax-btn-primary" id="DocumentDetails"
+                ng-click="ComfirmDocument()">Submit</button>
+        </div>
+
+    </div>
+</div>
+
+<section class="modal fade" id="dmodal" role="dialog" tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <strong class="pt-5 modal-title">RISK DISCLOSURES ON DERIVATIVES</strong>
+                <button type="button" class="btn-close" ng-click="declineDModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <ol>
+                    <li class="mt-3">9 out of 10 individual traders in equity Futures and Options Segment, incurred net
+                        losses.</li>
+                    <li class="mt-3">On an average, loss makers registered net trading loss close to &#8377;50,000.</li>
+                    <li class="mt-3">Over and above the net trading losses incurred, loss makers expended an additional
+                        28%
+                        of net trading losses as transaction costs.</li>
+                    <li class="mt-3">Those making net trading profits, incurred between 15% to 50% of such profits as
+                        transaction cost.</li>
+                </ol>
+                <ul>
+                    <div class="mt-5 continuebtn1 d-flex ml-md-3">
+                        <button type="button" class="btn ax-btn-primary" data-bs-dismiss="modal"
+                            style="padding: 2rem 2rem !important;">I understand the above risks</button>
+                        <button type="button"
+                            class="btn text-uppercase plan-button text-uppercase continuebtn mt-md-0 mt-3 mx-md-3"
+                            style="padding: 2rem 8rem !important;" ng-click="declineDModal()">Cancel</button>
+                    </div>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="getImgModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="ax-modal-close close" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                    title="Close">&times;</button>
+                <div class="floating-buttons"></div>
+                <div class="kv-zoom-body file-zoom-content" style="overflow-y: auto">
+                    <img src="" id="imgBig" class="kv-preview-data file-preview-image file-zoom-detail"
+                        style="width: 100%; height: 100%;">
+                    <embed src="" id="pdfBig" type="application/pdf"
+                        class="kv-preview-data file-preview-image file-zoom-detail" height="600" style="width: 100%;">
+                </div>
+                <button type="button" class="btn btn-navigate btn-prev" title="View previous file" id="viewPreviousFile"
+                    disabled="disabled"><i class="glyphicon glyphicon-triangle-left"></i></button>
+                <button type="button" class="btn btn-navigate btn-next" title="View next file" id="viewNextFile"
+                    disabled="disabled"><i class="glyphicon glyphicon-triangle-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="previewPdf1Pan" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="mt-3">We've noticed a discrepancy between the Father's Name you mentioned and the
+                            Father's Name as per the PAN Card. Your application would be rejected due to this
+                            discrepancy.
+                        </p>
+                        <p class="mt-3">We recommend you to click on <b>Update & Replace</b>, to update your Father's
+                            name in the journey which is <span style="color:#97144d">"{{FatherNamefromIdfy}}"</span>
+                        </p>
+                        <p class="mt-3">If you do not wish to update Father's name, click on <b>Continue without
+                                updating</b> and complete the remaining journey
+                        </p>
+                        <div class=' mt-3 d-flex justify-content-center continuebtn1 gap-2'>
+                            <button type="button" class="btn plan-button text-uppercase mt-3 continuebtn  "
+                                style="padding:2rem 2rem !important;" ng-click="ContiueWithOutPan()"
+                                data-bs-dismiss="modal">
+                                Continue without updating
+                            </button>
+                            <button class='col-md-6 btn ax-btn-primary mt-3 text-uppercase' type="button"
+                                style="border-radius: 0 !important;padding:2rem 2rem !important;" id="proceedEsignPage"
+                                data-bs-dismiss="modal" ng-click="popfathernamePan()">
+                                Update & Replace
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="politicalExposed" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body pt-0 px-4">
+                <div class="row">
+                    <div class="col-12 d-flex text-center continuebtn1">
+                        <button type="button" data-bs-dismiss="modal" ng-click="politicaldefalut()"
+                            style="padding: 2rem 2rem !important;" class="btn ax-btn-primary text-uppercase">
+                            I am not Politically Exposed </button>
+                        <a href="https://simplehai.axisdirect.in/downloads"
+                            class="btn ax-btn-primary mt-md-0 mt-3  text-uppercase"
+                            style="margin-left: 6px;border-radius: 6px;padding: 2rem 2rem !important;">
+                            Fill up the form and Leave the page</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<form id="frmmain" runat="server" method="post" class="d-none">
+    <input id="msg" name="msg" type="text" value="" />
+</form>
+<section class="modal fade" id="formPDF1" role="dialog">
+    <div class="modal-dialog modal-xl" style="max-width:1100px">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="kv-zoom-body file-zoom-content">
+                    <object data="{{objURl | trustAsResourceUrl }}" style="width: 100%; height: 100%"></object>
+
+                </div>
+                <button type="button" id="proceedEsignPage" ng-click="DIYUpdateIPVStage('esign')"
+                    class="btn ax-btn-primary text-uppercase" style="padding:2rem 2rem !important;">ESign
+                    and Activate Instantly</button>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="productSentSmsDialog" role="dialog" tabindex="-1">
+    <div class="modal-dialog login-dialog">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                </div> -->
+            <div class="modal-body">
+                <div class="row">
+                    <h4 class="ax-sec-label text-center mb-3 w-100">Payment link send to customer successfully</h4>
+                    <div class="col-md-12 text-center">
+                        <button type="submit" data-bs-dismiss="modal"
+                            class="mt-2 btn ax-btn-primary text-uppercase secbut pcacs-tabs scrolltop">
+                            Okay
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="BYODConfirmRM" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="ax-sec-title m-0">Esign link send to customer successfully</p>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12 text-center">
+                        <button data-bs-dismiss="modal" class="btn ax-btn-primary text-uppercase mx-2"
+                            ng-click="android()">
+                            Okay</button>
+                    </div>
+                </div>
+                <!-- End -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <section class="modal fade" id="profileBterms" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body pt-0 text-center">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="ax-sec-title mt-0">E-Margin Facility & Rights</h4>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-5">
+                    <div class="col-12 text-left terms-content">
+                        <p>E-Margin is a SEBI approved Margin Trading Facility where you can take leverage upto
+                            4 times with Axis Securities Ltd. A nominal Delayed Payment Charge will be levied on
+                            the outstanding amount. For more details <a target="_blank" rel="noreferrer"
+                                href="https://simplehai.axisdirect.in/dynamicWeb/E-Margin/E-Margin_Rights_and_obligations.html">click
+                                here.</a></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        
+                        <button type="button" data-bs-dismiss="modal" class="btn text-uppercase btn-primary py-3 px-5">
+                            OKAY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<section class="modal fade" id="AxisPreferencesBYOD" role="dialog" tabindex="-1">
+    <div class="modal-dialog login-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="ax-sec-title mt-0">Preferences set by AxisDirect</h4>
+                    </div>
+                </div>
+                <button class="btn-close close" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                    title="Close">&times;</button>
+
+            </div>
+            <div class="modal-body pt-0 pb-0">
+
+                <div class="row mt-2 mb-2">
+                    <div class="col-12 text-left">
+
+                        <div class="d-flex pb-4">
+                            <div class="pe-3"><input checked type="checkbox" class="customcheckradio" disabled />
+                            </div>
+                            <div>I/We wish to receive Contract Note and other related
+                                reports/statements/documents in electronic mode</div>
+                        </div>
+                        <div class="d-flex pb-4">
+                            <div class="pe-3"><input checked type="checkbox" class="customcheckradio" disabled />
+                            </div>
+                            <div>I/We wish to avail of the facility of internet trading / wireless technology
+                            </div>
+                        </div>
+                        <div class="d-flex pb-4">
+                            <div class="pe-3"><input checked type="checkbox" class="customcheckradio" disabled />
+                            </div>
+                            <div>I/We instruct the DP to receive each and every credit in my / our account</div>
+                        </div>
+                        <div class="d-flex pb-4">
+                            <div class="pe-3"><input checked type="checkbox" class="customcheckradio" disabled />
+                            </div>
+                            <div>I/We would like to instruct the DP to accept all the pledge instructions in my
+                                /our account without any other further instruction from my/our end</div>
+                        </div>
+                        <div class="d-flex pb-4">
+                            <div class="pe-3"><input checked type="checkbox" class="customcheckradio" disabled />
+                            </div>
+                            <div>I/We would like to share the email ID with the RTA</div>
+                        </div>
+                        <div class="d-flex pb-4">
+                            <div class="pe-3"><input checked type="checkbox" class="customcheckradio" disabled />
+                            </div>
+                            <div>I/We would wish to receive dividend/interest directly into bank account through
+                                ECS</div>
+                        </div>
+                        <div class="d-flex pb-4">
+                            <div class="pe-3"><input checked type="checkbox" class="customcheckradio" disabled />
+                            </div>
+                            <div>I/We would wish to receive Annual Report through electronic mode</div>
+                        </div>
+                        <div class="d-flex pb-4">
+                            <div class="pe-3"><input checked type="checkbox" class="customcheckradio" disabled />
+                            </div>
+                            <div>I/We would raise the request for DIS Slip whenever required through customer
+                                service</div>
+                        </div>
+                        <div class="d-flex pb-4">
+                            <div class="pe-3"><input checked type="checkbox" class="customcheckradio" disabled />
+                            </div>
+                            <div>I/We would like to receive Demat statement and annual report on electronic mode
+                            </div>
+                        </div>
+                        <div class="d-flex pb-4">
+                            <div class="pe-3"><input checked type="checkbox" class="customcheckradio" disabled />
+                            </div>
+                            <div>I/We hereby authorize to communicate with me/us through telephone/mobile, Email, SMS or
+                                other modes of communication
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <!-- End -->
+            </div>
+            <div class="modal-footer justify-content-center">
+                <div class="row">
+                    <div class="col-12">
+                        <button data-bs-dismiss="modal" class="btn ax-btn-primary text-uppercase">
+                            I Accept</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="modal fade" id="PalnDetailsBYOD" role="dialog" tabindex="-1">
+    <div class="modal-dialog login-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="fw-bold m-0 my-4">Plan Details</h4>
+                <button class="btn-close close" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                    title="Close">&times;</button>
+            </div>
+            <div class="modal-body pt-0">
+                <div class="row">
+                    <div id="planDetails">
+
+                        <div ng-show="!productAction || freedomPlan" class="row mb-4">
+                            <div class="col-12">
+                                <div class="help-sidebar">
+                                    <div class="guideline-with-bg">
+                                        <div class="row">
+                                            <div ng-class="{'col-md-5 px-0': freedomPlan,'col-md-4': !freedomPlan}"
+                                                class="col-12">
+                                                <div class="d-flex pb-4">
+                                                    <div class="ax-sec-tick"
+                                                        ng-class="{'pe-1': freedomPlan,'pe-3': !freedomPlan}">&#10004;
+                                                    </div>
+                                                    <div>Zero Demat AMC for the first year</div>
+                                                </div>
+                                                <div class="d-flex pb-md-0 pb-4">
+                                                    <div class="ax-sec-tick"
+                                                        ng-class="{'pe-1': freedomPlan,'pe-3': !freedomPlan}">&#10004;
+                                                    </div>
+                                                    <div class="">{{freedomPlan ? '20% Discount on MTF Rates would be
+                                                        for lifetime':'Multi-channel trading platforms'}}</div>
+                                                </div>
+                                            </div>
+                                            <div ng-class="{'col-md-7': freedomPlan,'col-md-8': !freedomPlan}"
+                                                class="col-12">
+                                                <div class="d-flex pb-4">
+                                                    <div class="ax-sec-tick"
+                                                        ng-class="{'pe-1': freedomPlan,'pe-3': !freedomPlan}">&#10004;
+                                                    </div>
+                                                    <div class="">{{freedomPlan ? 'Brokerage credit received for 3
+                                                        months post account opening':'Equity, Mutual Funds, IPO, Bonds,
+                                                        Insurance all under one roof'}}</div>
+                                                </div>
+                                                <div class="d-flex pb-0">
+                                                    <div class="ax-sec-tick"
+                                                        ng-class="{'pe-1': freedomPlan,'pe-3': !freedomPlan}">&#10004;
+                                                    </div>
+                                                    <div class="">{{freedomPlan ? 'Take advantage of reduced brokerage
+                                                        for lifetime ':'Seamless trading experience with 3in1 account'}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-show="productAction && !freedomPlan" class="row">
+                            <div class="col-12">
+
+                                <div class="mb-4 guideline-with-bg">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="d-flex pb-4">
+                                                <div class="pe-3 ax-sec-tick">&#10004;</div>
+                                                <div>Complimentary delivery turnover(CDT) of
+                                                    {{planList[psArray].DeliveryTurnover}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="d-flex pb-4">
+                                                <div class="pe-3 ax-sec-tick">&#10004;</div>
+                                                <div class="">{{planList[psArray].TurnoverValidity}} validity of CDT
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="d-flex pb-4">
+                                                <div class="pe-3 ax-sec-tick">&#10004;</div>
+                                                <div class="">Zero Demat AMC for the first year</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 d-none">
+                                    <div class="col-12">
+                                        <div class="help-sidebar">
+                                            <div class="guideline-with-bg">
+                                                <div class="row">
+                                                    <div class="col-md-4 col-12">
+                                                        <div class="d-flex pb-4">
+                                                            <div class="pe-3 ax-sec-tick">&#10004;</div>
+                                                            <div>Zero Demat AMC for the first year</div>
+                                                        </div>
+                                                        <div class="d-flex pb-md-0 pb-4">
+                                                            <div class="pe-3 ax-sec-tick">&#10004;</div>
+                                                            <div class="">Multi-channel trading platforms</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8 col-12">
+                                                        <div class="d-flex pb-4">
+                                                            <div class="pe-3 ax-sec-tick">&#10004;</div>
+                                                            <div class="">Equity, Mutual Funds, IPO, Bonds, Insurance
+                                                                all under one roof</div>
+                                                        </div>
+                                                        <div class="d-flex pb-0">
+                                                            <div class="pe-3 ax-sec-tick">&#10004;</div>
+                                                            <div class="">Seamless trading experience with 3in1 account
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4 ng-show="productAction && !freedomPlan" class="ax-sec-title mt-2">How will it
+                                    benefit you?</h4>
+                                <div ng-show="productAction && !freedomPlan" class="d-flex">
+                                    <ul class="list-group shadow-sm">
+                                        <li class="list-group-item p-0">
+                                            <div class="d-flex benefit-text">
+                                                <div class="benefit-static-text p-3 border-right">
+                                                    Complimentary Delivery Turnover(CDT)
+                                                </div>
+                                                <div class="benefit-dynamic-text p-3">
+                                                    <strong>&#8377; {{planList[psArray].DeliveryTurnover}}</strong>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item p-0">
+                                            <div class="d-flex benefit-text">
+                                                <div class="benefit-static-text p-3 border-right">
+                                                    Complimentary Turnover Validity
+                                                </div>
+                                                <div class="benefit-dynamic-text p-3">
+                                                    <strong>{{planList[psArray].TurnoverValidity}}</strong>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item p-0">
+                                            <div class="d-flex benefit-text">
+                                                <div class="benefit-static-text p-3 border-right">
+                                                    Account Opening Charges
+                                                </div>
+                                                <div class="benefit-dynamic-text p-3">
+                                                    <strong ng-if="planList[psArray].OpeningFee!=0">&#8377;
+                                                        {{planList[psArray].OpeningFee}}/-</strong>
+                                                    <strong ng-if="planList[psArray].OpeningFee==0">NIL</strong>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <h4 ng-show="productAction && !freedomPlan" class="ax-primary-title m-0 mb-3 mt-2">
+                                    Brokerage Charges (Post utilization of CDT)</h4>
+                            </div>
+                        </div>
+
+                        <div ng-show="!productAction || freedomPlan" class="row mb-4">
+                            <div class="col-12">
+                                <div class="help-sidebar">
+                                    <div class="guideline-with-bg">
+                                        <h3 class="ax-sec-title mt-0 mb-4">Brokerage & Account Opening Charges</h3>
+                                        <h3 class="ax-primary-title mt-0 mb-4"><b>Account Opening Charges: <span
+                                                    ng-if="planList[psArray].OpeningFee!=0">&#8377;
+                                                    {{planList[psArray].OpeningFee}}/-</span>
+                                                <span ng-if="planList[psArray].OpeningFee==0 && !freedomPlan">NIL</span>
+                                                <span ng-if="freedomPlan">Free</span></b></h3>
+
+                                        <!-- new changes -->
+                                        <div class="row m-0 shadow-sm border border-bottom-0 rounded">
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4  bg-grey h-70">
+                                                        Plan
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4">
+                                                        {{planList[psArray].PlanName}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4  bg-grey h-70">
+                                                        Cash/Emargin Product (Each Leg)
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4">
+                                                        {{planList[psArray].Exchange}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4 bg-grey h-70">
+                                                        Intraday/Cover Product (Each Leg)
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4">
+                                                        {{planList[psArray].IntradayandFeatures}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row m-0 shadow-sm border border-bottom-0 rounded">
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4 bg-grey h-70">
+                                                        Future (Each Leg)
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4">
+                                                        {{planList[psArray].CurrencyFeatures}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4 bg-grey h-70">
+                                                        Equity Option
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4"
+                                                        ng-if="planList[psArray].Options">&#8377;
+                                                        {{planList[psArray].Options}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4 bg-grey h-70">
+                                                        Commodity &amp; Currency Option (Each lot/Leg)
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4">
+                                                        &#8377; {{planList[psArray].CommodityCurrencyOption}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-show="!productAction || freedomPlan" class="mt-3">
+                                            <label class="ax-label m-0 mb-3" ng-if="!freedomPlan"><b>1) Options Rs.20
+                                                    per order will be applicable only for self generated trades through
+                                                    online platforms.</b></label>
+                                            <label class="ax-label m-0 mb-3" ng-if="!freedomPlan"><b>2) MTF Rates:
+                                                    {{planList[psArray].BrokeragePage ? planList[psArray].BrokeragePage
+                                                    : '17.99%'}} p.a., applicable on margin trading througn online
+                                                    platforms.</b></label>
+
+                                            <label class="ax-label m-0 mb-3" ng-if="freedomPlan"><b>(i) Axis Direct
+                                                    Freedom Plan will be activated post intimation of credit of funds in
+                                                    your bank account within the stipulated time (else, default rates
+                                                    will be applied).</b></label>
+                                            <label class="ax-label m-0 mb-3" ng-if="freedomPlan"><b>(i) Axis Direct
+                                                    Freedom Plan will be activated post intimation of credit of funds in
+                                                    your bank account within the stipulated time (else, default rates
+                                                    will be applied).</b></label>
+                                            <label class="ax-label m-0 mb-3" ng-if="freedomPlan"><b>(ii) Promo Codes or
+                                                    waiver of Account Opening Fees will only be applicable for the
+                                                    Prosperity Plan.</b></label>
+                                            <label class="ax-label m-0 mb-3" ng-if="freedomPlan"><b>(iii) Axis Direct
+                                                    Freedom Plan will only be applicable for those customers linking an
+                                                    Axis Bank Account with us. If any other bank is linked, the default
+                                                    plan of Prosperity will be applied.</b></label>
+                                            <label class="ax-label m-0 mb-3" ng-if="freedomPlan"><b>(iv) 20% Discount on
+                                                    MTF Rates would be for lifetime (slashed to 14.4% from
+                                                    18%)</b></label>
+                                            <label class="ax-label m-0 mb-3" ng-if="freedomPlan"><b>(v) In addition to
+                                                    the above mentioned rates, customer will be eligible for Brokerage
+                                                    Credit, based on the applicable slab.</b></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="productAction && !freedomPlan" class="row mb-4">
+                            <div class="col-12">
+                                <div class="help-sidebar">
+                                    <div class="guideline-with-bg">
+
+                                        <div class="row m-0 shadow-sm border border-bottom-0 rounded">
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4 bg-grey h-70">
+                                                        Plan
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4">
+                                                        {{planList[psArray].PlanName}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4 bg-grey h-70">
+                                                        Cash/Emargin Product (Each Leg)
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4">
+                                                        {{planList[psArray].Exchange}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4 bg-grey h-70">
+                                                        Intraday/Cover Product (Each Leg)
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4 ">
+                                                        {{planList[psArray].IntradayandFeatures}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row m-0 shadow-sm border border-bottom-0 rounded">
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4 bg-grey h-70">
+                                                        Future (Each Leg)
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4">
+                                                        {{planList[psArray].CurrencyFeatures}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4 bg-grey h-70">
+                                                        Equity Option
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4"
+                                                        ng-if="planList[psArray].Options">&#8377;
+                                                        {{planList[psArray].Options}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md col-12 border-right border-bottom">
+                                                <div class="row">
+                                                    <div class="col-6 col-md-12 ps-4 py-4 bg-grey h-70">
+                                                        Commodity &amp; Currency Option (Each lot/Leg)
+                                                    </div>
+                                                    <div class="col-6 col-md-12 ps-4 py-4"
+                                                        ng-if="planList[psArray].CommodityCurrencyOption">&#8377;
+                                                        {{planList[psArray].CommodityCurrencyOption}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div ng-show="productAction && !freedomPlan" class="mt-3">
+
+                                            <label class="ax-label m-0 mb-3"><b>1) The plan Subscription Charges will be
+                                                    debited post account opening.</b></label>
+
+                                            <label class="ax-label m-0 mb-3"><b>2) {{planList[psArray].PlanName}} will
+                                                    be activated post debit of subscription charges.</b></label>
+
+                                            <label class="ax-label m-0 mb-3"><b>3) Options Rs.10 per order will be
+                                                    applicable only for self generated trades through online
+                                                    platforms.</b></label>
+
+                                            <label class="ax-label m-0 mb-3"><b>4) Promo Codes or waiver of Account
+                                                    Opening Fees will only be applicable for the Prosperity
+                                                    Plan.</b></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row mb-5">
+                            <div class="col-12 text-right">
+                                <a style="text-decoration: none;"
+                                    href="https://simplehai.axisdirect.in/images/PartB/CDR%20-%20Part%20B%20SHORT%20Form%20Ver%2010_07-03-2019.pdf"
+                                    target="_blank">Read Terms & Conditions Carefully, <span
+                                        style="border-bottom: 1px solid;"> Click Here</span></a>
+                            </div>
+                        </div> -->
+
+
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <button type="submit" data-bs-dismiss="modal"
+                            class="mt-2 btn ax-btn-primary text-uppercase secbut pcacs-tabs scrolltop">
+                            Okay
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="modal fade" id="byodModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog login-dialog">
+        <div class="modal-content" style="background: #F9F9F9;">
+            <div class="modal-body d-flex justify-content-center p-3 text-dark">
+                <div class="row mx-0 my-3">
+                    <div class="col-12 text-left terms-content">
+                        <p>{{byodErrorMessage}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" data-bs-dismiss="modal" class="btn ax-btn-primary text-uppercase">
+                            Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="DisabilityModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog login-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body pt-0 pb-0">
+                <p class="ax-sec-title text-center">We’re here to help! </p>
+                <p class="ax-sec-title text-center"> By declaring a disability, a Relationship Manager (RM) will assist
+                    you in completing your Demat and Trading account opening. Do you want to continue in assisted mode?
+                </p>
+            </div>
+            <div class="modal-footer text-center">
+                <div class="row w-100">
+                    <div class="col-12">
+                        <button type="button" data-bs-dismiss="modal" ng-click="DisabilityModalYes()"
+                            class="btn ax-btn-primary text-uppercase">
+                            Yes
+                        </button>
+                        <button type="button" data-bs-dismiss="modal" ng-click="DisabilityModalNo()"
+                            style="padding: 1rem 6rem !important;"
+                            class="btn ax-btn-disabled text-uppercase mt-md-0 mt-2">
+                            No
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="ErrDisabilityModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog login-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body pt-0 pb-0">
+                <p class="ax-sec-title text-center">{{Errmsg}} </p>
+
+            </div>
+            <div class="modal-footer text-center">
+                <div class="row w-100">
+                    <div class="col-12">
+
+                        <button type="button" data-bs-dismiss="modal" ng-click="DisabilityModalNo()"
+                            class="btn ax-btn-primary text-uppercase">
+                            Okay
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="OverallDisabilityModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog login-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body pt-0 pb-0">
+                <p class="ax-sec-title text-center">Your application has been assigned to an RM, who will get in touch
+                    with you shortly.</p>
+            </div>
+            <div class="modal-footer text-center">
+                <div class="row w-100">
+                    <div class="col-12">
+                        // <button type="button" data-bs-dismiss="modal" ng-click="DisabilityModalYes()"
+                            class="btn ax-btn-primary text-uppercase">
+                            // Yes
+                            // </button>
+                        <button type="button" data-bs-dismiss="modal" ng-click="OverallDisability()"
+                            class="btn ax-btn-primary text-uppercase">
+                            Okay
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="ddpiModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="ax-sec-title mt-0">Demat Debit and Pledge Instruction (DDPI)</h4>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-5">
+                    <div class="col-12 text-left terms-content">
+                        <p><strong>Please Note:</strong> Accepting DDPI consitions is compulsory. If you wish to proceed
+                            without signing of DDPI, please then submit a physical account opening application to us.
+                        </p>
+                        <p>By accepting the terms of the form Demat Debit and Pledge Instruction (DDPI), you explicitly
+                            agree to authorize Axis Securities Limited to access your demat account for the purpose of
+                            meeting Stock Exchange Obligations for settlement of trades and also authorize pledging and
+                            re-pledging of securities for meeting your margin requirements</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" data-bs-dismiss="modal" ng-click="ddpiAccept()"
+                            class="btn ax-btn-primary text-uppercase">Accept</button>
+                       <button type="button" data-bs-dismiss="modal" ng-click="ddpiCancel()" class="btn text-uppercase plan-button text-uppercase">
+                                    Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="profileBterms" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="ax-sec-title mt-0">E-Margin Facility & Rights</h4>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-5">
+                    <div class="col-12 text-left terms-content">
+                        <p>E-Margin is a SEBI approved Margin Trading Facility where you can take leverage upto
+                            4 times with Axis Securities Ltd. A nominal Delayed Payment Charge will be levied on
+                            the outstanding amount. For more details <a target="_blank" rel="noreferrer"
+                                href="https://simplehai.axisdirect.in/dynamicWeb/E-Margin/E-Margin_Rights_and_obligations.html">click
+                                here.</a></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" data-bs-dismiss="modal" ng-click="emarginAccept()"
+                            class="btn ax-btn-primary text-uppercase">
+                            Accept</button>
+                        <button type="button" data-bs-dismiss="modal" ng-click="emarginCancel()"
+                            class="btn text-uppercase plan-button text-uppercase">
+                            Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="modal fade" id="profileBterms1" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="ax-sec-title mt-0">E-Margin Facility & Rights</h4>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-5">
+                    <div class="col-12 text-left terms-content">
+                        <p>Activate & get upto worth 15000 benefit for first 30 days from account opening.T&C Apply <a
+                                target="_blank"
+                                href="https://simplehai.axisdirect.in/images/ResearchPDF/2022/E-margin_TnC.pdf ">click
+                                here.</a></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" data-bs-dismiss="modal" ng-click="emarginAccept()"
+                            class="btn ax-btn-primary text-uppercase">
+                            Accept</button>
+                        <button type="button" data-bs-dismiss="modal" ng-click="emarginCancel()"
+                            class="btn text-uppercase plan-button text-uppercase">
+                            Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
