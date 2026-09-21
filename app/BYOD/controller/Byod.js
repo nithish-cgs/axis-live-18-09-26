@@ -1560,12 +1560,7 @@ mainApp.controller('ByodController', ['$scope', '$rootScope', '$state', 'serverS
     };
 
     $scope.Encryption = function (data) {
-        var ENCRYPTEDVALUE = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(data), key, {
-            keySize: 128 / 8,
-            iv: iv,
-            mode: CryptoJS.mode.CBC,
-            padding: CryptoJS.pad.Pkcs7
-        });
+        var ENCRYPTEDVALUE = axisCrypto.enc(data);
         return ENCRYPTEDVALUE.toString();
     }
 

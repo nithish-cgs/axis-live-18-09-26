@@ -1557,33 +1557,13 @@ mainApp.controller('registerController', ['$scope', '$rootScope', '$state', 'ser
 			$rootScope.formData.fields.mobile = $rootScope.formData.fields.rmmobile;
 			$rootScope.formData.fields.email = $rootScope.formData.fields.rmemail;
 		}
-		var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.panNumber), key, {
-			keySize: 128 / 8,
-			iv: iv,
-			mode: CryptoJS.mode.CBC,
-			padding: CryptoJS.pad.Pkcs7
-		});
+		var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.panNumber);
 		var panNumber = encryptedpassword.toString();
-		var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.dob), key, {
-			keySize: 128 / 8,
-			iv: iv,
-			mode: CryptoJS.mode.CBC,
-			padding: CryptoJS.pad.Pkcs7
-		});
+		var encryptedpassword = axisCrypto.enc($rootScope.formData.dob);
 		var dob = encryptedpassword.toString();
-		var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.email), key, {
-			keySize: 128 / 8,
-			iv: iv,
-			mode: CryptoJS.mode.CBC,
-			padding: CryptoJS.pad.Pkcs7
-		});
+		var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.email);
 		var email = encryptedpassword.toString();
-		var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.mobile), key, {
-			keySize: 128 / 8,
-			iv: iv,
-			mode: CryptoJS.mode.CBC,
-			padding: CryptoJS.pad.Pkcs7
-		});
+		var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.mobile);
 		var mobile = encryptedpassword.toString();
 		var sendData = {
 			PanNumber: panNumber,
@@ -2202,33 +2182,13 @@ mainApp.controller('registerController', ['$scope', '$rootScope', '$state', 'ser
 				$rootScope.formData.fields.mobile = $rootScope.formData.fields.rmmobile;
 				$rootScope.formData.fields.email = $rootScope.formData.fields.rmemail;
 			}
-			var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.panNumber), key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.panNumber);
 			var panNumber = encryptedpassword.toString();
-			var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.dob), key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var encryptedpassword = axisCrypto.enc($rootScope.formData.dob);
 			var dob = encryptedpassword.toString();
-			var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.email), key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.email);
 			var email = encryptedpassword.toString();
-			var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.mobile), key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.mobile);
 			var mobile = encryptedpassword.toString();
 			if ($rootScope.siddhiApp) {
 				mobile = "";
@@ -3221,59 +3181,24 @@ mainApp.controller('registerController', ['$scope', '$rootScope', '$state', 'ser
 			if ($rootScope.uBank) {
 				mode = 'U'
 			}
-			var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.panNumber), key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.panNumber);
 			var panNumber = encryptedpassword.toString();
-			var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.dob), key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var encryptedpassword = axisCrypto.enc($rootScope.formData.dob);
 			var dob = encryptedpassword.toString();
-			var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.email), key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.email);
 			var email = encryptedpassword.toString();
-			var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.mobile), key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.mobile);
 			var mobile = encryptedpassword.toString();
 			if ($rootScope.formData.fields.firstName != undefined) {
-				var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.firstName), key, {
-					keySize: 128 / 8,
-					iv: iv,
-					mode: CryptoJS.mode.CBC,
-					padding: CryptoJS.pad.Pkcs7
-				});
+				var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.firstName);
 				var fname = encryptedpassword.toString();
 			}
 			if ($rootScope.formData.fields.lastName != undefined) {
-				var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.lastName), key, {
-					keySize: 128 / 8,
-					iv: iv,
-					mode: CryptoJS.mode.CBC,
-					padding: CryptoJS.pad.Pkcs7
-				});
+				var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.lastName);
 				var lname = encryptedpassword.toString();
 			}
 			if ($rootScope.formData.fields.middleName != undefined) {
-				var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.middleName), key, {
-					keySize: 128 / 8,
-					iv: iv,
-					mode: CryptoJS.mode.CBC,
-					padding: CryptoJS.pad.Pkcs7
-				});
+				var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.middleName);
 				var mname = encryptedpassword.toString();
 			}
 			sessionStorage.setItem('mode', mode)

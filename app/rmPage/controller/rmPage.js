@@ -86,19 +86,9 @@ mainApp.controller('rmPageController', ['$scope', '$rootScope', '$state', 'serve
 
 			$scope.getRmPwdOTP = function () {
 				var s_url = "RMChangePasswordSentOTP";
-				var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.newPassword), key, {
-						keySize: 128 / 8,
-						iv: iv,
-						mode: CryptoJS.mode.CBC,
-						padding: CryptoJS.pad.Pkcs7
-					});
+				var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.newPassword);
 
-				var encryptedOldpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.oldPassword), key, {
-						keySize: 128 / 8,
-						iv: iv,
-						mode: CryptoJS.mode.CBC,
-						padding: CryptoJS.pad.Pkcs7
-					});
+				var encryptedOldpassword = axisCrypto.enc($rootScope.formData.fields.oldPassword);
 				$scope.cp = encryptedOldpassword.toString();
 				$scope.pa = encryptedpassword.toString();
 				var sendData = {
@@ -225,12 +215,7 @@ mainApp.controller('rmPageController', ['$scope', '$rootScope', '$state', 'serve
 
 			$scope.updtPassword = function () {
 				if(!$scope.pa){
-				var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.newPassword), key, {
-						keySize: 128 / 8,
-						iv: iv,
-						mode: CryptoJS.mode.CBC,
-						padding: CryptoJS.pad.Pkcs7
-				});
+				var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.newPassword);
 				$scope.pa = encryptedpassword.toString();
 				}
 				var s_url = "UpdatePassWordRMLogin";
@@ -313,12 +298,7 @@ mainApp.controller('rmPageController', ['$scope', '$rootScope', '$state', 'serve
 					$scope.invalidEmail = false;
 					$scope.emptyEmail = false;
 				}
-				var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.rmEmail), key, {
-					keySize: 128 / 8,
-					iv: iv,
-					mode: CryptoJS.mode.CBC,
-					padding: CryptoJS.pad.Pkcs7
-				});
+				var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.rmEmail);
 				var rmEmail = encryptedpassword.toString();
 				if ($scope.error == 0) {
 					var sendData = {

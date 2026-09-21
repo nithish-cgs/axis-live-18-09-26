@@ -30,8 +30,6 @@ function btnFocus(event) {
 var url1 = window.location + '';
 url = decodeURIComponent(url1);
 var pathname = window.location.pathname;
-var key = "";
-var iv = "";
 var utm_source = (getParameterByName('utm_source', url));
 var utm_medium = (getParameterByName('utm_medium', url));
 var utm_term = (getParameterByName('utm_term', url));
@@ -132,10 +130,9 @@ var RMVia = (getParameterByName('Via', url));
 // 		iv = CryptoJS.enc.Utf8.parse(result.key);
 // 	}
 // });
-var encodedKey = "TW82MEpsRGF3c3FpVWpYTw==";
-var decodedKey = window.atob(encodedKey);
-key = CryptoJS.enc.Utf8.parse(decodedKey);
-iv = CryptoJS.enc.Utf8.parse(decodedKey);
+/* AES key material removed - crypto now goes through the axisCrypto
+ * facade, which the build injects into app.min.js before obfuscation.
+ * See APPSEC_KEY_REMEDIATION_HANDOVER.md section 2. */
 function urlParameter() {
 	var url = window.location.href;
 	var retObject = {};
@@ -6277,12 +6274,7 @@ mainApp.controller('appController', ['$scope', '$rootScope', '$state', 'serverSe
 		}
 		var url = "SignInRmEmployee";
 
-		var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.rmPassword), key, {
-			keySize: 128 / 8,
-			iv: iv,
-			mode: CryptoJS.mode.CBC,
-			padding: CryptoJS.pad.Pkcs7
-		});
+		var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.rmPassword);
 		var pa = encryptedpassword.toString();
 
 		var sendData = {
@@ -6451,12 +6443,7 @@ mainApp.controller('appController', ['$scope', '$rootScope', '$state', 'serverSe
 		if ($rootScope.encryptedRMUsername) {
 			username = $rootScope.encryptedRMUsername;
 		} else {
-			var encryptedpassword = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse($rootScope.formData.fields.rmUsername), key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var encryptedpassword = axisCrypto.enc($rootScope.formData.fields.rmUsername);
 			username = encryptedpassword.toString();
 			$rootScope.encryptedRMUsername = username;
 		}
@@ -6505,12 +6492,7 @@ mainApp.controller('appController', ['$scope', '$rootScope', '$state', 'serverSe
 		}
 		$rootScope.formData.apiLoading = true;
 		serverService.apiCall(s_url, sendData).then(function (a) {
-			var decryptedpassword = CryptoJS.AES.decrypt(a.data.Response, key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var decryptedpassword = axisCrypto.dec(a.data.Response);
 			var da = decryptedpassword.toString(CryptoJS.enc.Utf8);
 			var response = JSON.parse(da);
 			console.log(response);
@@ -7260,12 +7242,7 @@ mainApp.controller('appController', ['$scope', '$rootScope', '$state', 'serverSe
 			param = JSON.stringify(param);
 			obj = true;
 		}
-		var encreq = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(param), key, {
-			keySize: 128 / 8,
-			iv: iv,
-			mode: CryptoJS.mode.CBC,
-			padding: CryptoJS.pad.Pkcs7
-		});
+		var encreq = axisCrypto.enc(param);
 		if (obj) {
 			return { 'Encrequest': encreq.toString() };
 		} else {
@@ -7274,12 +7251,7 @@ mainApp.controller('appController', ['$scope', '$rootScope', '$state', 'serverSe
 	}
 	$rootScope.decryptRes = function (param, objKey) {
 		const decres = param[objKey];
-		var decreq = CryptoJS.AES.decrypt(decres, key, {
-			keySize: 128 / 8,
-			iv: iv,
-			mode: CryptoJS.mode.CBC,
-			padding: CryptoJS.pad.Pkcs7
-		});
+		var decreq = axisCrypto.dec(decres);
 		var da = decreq.toString(CryptoJS.enc.Utf8);
 		return JSON.parse(da);
 	}

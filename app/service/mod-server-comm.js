@@ -14,8 +14,6 @@ serverComm.factory('serverService', ['$http', '$q', function ($http, $q) {
 		/* Local host */
 		TermsPDFUrl: window.location.origin + '/'
 	};
-	var key = "";
-	var iv = "";
 	// $.ajax({
 	// 	url: "/config.json",
 	// 	global: false,
@@ -27,10 +25,9 @@ serverComm.factory('serverService', ['$http', '$q', function ($http, $q) {
 	// 		iv = CryptoJS.enc.Utf8.parse(result.key);
 	// 	}
 	// });
-	var encodedKey = "TW82MEpsRGF3c3FpVWpYTw==";
-	 var decodedKey = window.atob(encodedKey);
-		key = CryptoJS.enc.Utf8.parse(decodedKey);
-		iv = CryptoJS.enc.Utf8.parse(decodedKey);
+/* AES key material removed - crypto now goes through the axisCrypto
+ * facade, which the build injects into app.min.js before obfuscation.
+ * See APPSEC_KEY_REMEDIATION_HANDOVER.md section 2. */
 	let apiEncryptList = [
 		'GetOverallStatusDIY',
 		'SignInRmEmployee',
@@ -66,7 +63,7 @@ serverComm.factory('serverService', ['$http', '$q', function ($http, $q) {
                     method: "POST",
                     url: config.serverBaseUrl + s_url,
                     data: encryptedData,
-                    headers: { 'Authorization': 'Basic ' + btoa("abc:xyz") },
+                    headers: { 'Authorization': axisCrypto.basicAuthHeader() },
                 }).then((response) => {
                     return this.decryption(response.data);
                 });
@@ -76,7 +73,7 @@ serverComm.factory('serverService', ['$http', '$q', function ($http, $q) {
 					url: config.serverBaseUrl + s_url,
 					data: sendData,
 					headers: {
-						'Authorization': 'Basic ' + btoa("abc:xyz") + ''
+						'Authorization': axisCrypto.basicAuthHeader()
 					},
 					async: false
 				});
@@ -89,7 +86,7 @@ serverComm.factory('serverService', ['$http', '$q', function ($http, $q) {
 				url: config.EmpServerBaseUrl + s_url,
 				data: sendData,
 				headers: {
-					'Authorization': 'Basic ' + btoa("abc:xyz") + ''
+					'Authorization': axisCrypto.basicAuthHeader()
 				},
 				async: false
 			});
@@ -110,7 +107,7 @@ serverComm.factory('serverService', ['$http', '$q', function ($http, $q) {
 				method: "POST",
 				url: config.serverBaseUrl + s_url,
 				headers: {
-					'Authorization': 'Basic ' + btoa("abc:xyz") + ''
+					'Authorization': axisCrypto.basicAuthHeader()
 				},
 				async: false
 			});
@@ -215,12 +212,7 @@ serverComm.factory('serverService', ['$http', '$q', function ($http, $q) {
 				param = JSON.stringify(param);
 				obj = true;
 			}
-			var encreq = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(param), key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var encreq = axisCrypto.enc(param);
 			if (obj) {
 				return { 'Encrequest' : encreq.toString()};
 			} else {
@@ -229,12 +221,7 @@ serverComm.factory('serverService', ['$http', '$q', function ($http, $q) {
 		},
 		decryption:  function(param , objKey = 'Response') {
 			const decres = param[objKey];
-			var decreq = CryptoJS.AES.decrypt(decres, key, {
-				keySize: 128 / 8,
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			});
+			var decreq = axisCrypto.dec(decres);
 			var res = decreq.toString(CryptoJS.enc.Utf8);
 			return { data : JSON.parse(res) };
 		}
