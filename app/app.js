@@ -119,6 +119,8 @@ var EmailIdbelongingto = getParameterByName('EmailIdbelongingto', url);
 var code = (getParameterByName('code', url));
 var emailStatus = (getParameterByName('Status', url));
 var RMVia = (getParameterByName('Via', url));
+var Token = (getParameterByName('token', url));
+var Secured = (getParameterByName('secured', url));
 // $.ajax({
 // 	url: "/config.json",
 // 	global: false,
@@ -456,6 +458,73 @@ mainApp.run(['$rootScope', '$location', 'serverService', '$state', '$interval', 
 	} else {
 		$rootScope.webkarvy = false;
 	}
+
+	$rootScope.getTinyUrlDetails = function () {
+		console.log("it's getTinyUrlDetails");
+		var url = 'DecryptSecuredTinyUrl';
+		var sendData = {
+			Token: Token
+		};
+		$rootScope.formData.apiLoading = true;
+		serverService.apiCall(url, sendData)
+			.then(function (a) {
+				var response = a.data;
+				$rootScope.formData.apiLoading = false;
+				console.log("DecryptSecuredTinyUrl response:", response);
+				if (response.IsSuccess) {
+					var queryString = response.QueryString;
+					if (queryString) {
+						var params = new URLSearchParams(queryString);
+						sessionStorage.setItem("lgcode", params.get("lgcode") || "");
+						sessionStorage.setItem("lccode", params.get("lccode") || "");
+						sessionStorage.setItem("bankname", params.get("bankname") || "");
+						sessionStorage.setItem("segment", params.get("planId") || "");
+						sessionStorage.setItem("UTM_bank", params.get("UTM_bank") || "");
+						sessionStorage.setItem("ReferralCode", params.get("ReferralCode") || "");
+						sessionStorage.setItem("PromoCode", params.get("PromoCode") || "");
+						sessionStorage.setItem("utm_campaign", params.get("utm_campaign") || "");
+						sessionStorage.setItem("rmTeam", params.get("rmTeam") || "");
+
+						/* The register controller seeds the LG/LC fields from the URL
+						 * globals (register.js), and a SECURED link carries no lgcode /
+						 * lccode in the URL - they arrive here, inside the decrypted
+						 * QueryString. Without this they only ever reach sessionStorage,
+						 * so the fields stay blank and editable and the RM's codes are
+						 * lost from the UI. $rootScope is shared, so this lands whether
+						 * the register controller constructed before or after this call
+						 * resolved. */
+						var lgFromTiny = params.get("lgcode") || "";
+						var lcFromTiny = params.get("lccode") || "";
+						if (lgFromTiny) { $rootScope.formData.assistedLGCode = lgFromTiny; }
+						if (lcFromTiny) { $rootScope.formData.assistedLCCode = lcFromTiny; }
+					}
+				} else {
+					console.error(
+						"Unable to decrypt URL:",
+						response.Message
+					);
+					$rootScope.formData.errorMessage =
+						response.Message || 'Unable to decrypt URL.';
+				}
+			})
+			.catch(function (error) {
+				$rootScope.formData.apiLoading = false;
+				console.error(
+					"getTinyUrlDetails failed:",
+					error
+				);
+				$rootScope.formData.errorMessage =
+					'Something went wrong. Please try again.';
+			});
+	};
+
+	if (Token && Secured == "1") {
+		console.log("if condition hits");
+		console.log("Token:", Token);
+		console.log("Secured:", Secured);
+		$rootScope.getTinyUrlDetails();
+	}
+
 
 	$rootScope.getJanaDetails = function () {
 		var url = "GetJanaBankBasicInfoEnc";
@@ -2874,9 +2943,9 @@ mainApp.run(['$rootScope', '$location', 'serverService', '$state', '$interval', 
 		var url = 'LCLGCodeMappingDiy';
 		var sendData = {
 			ReferenceNumber: $rootScope.formData.ReferenceNumber,
-			LCCode: $rootScope.formData.assistedLCCode,
-			LGCode: $rootScope.formData.assistedLGCode,
-			Utm_Campaign: utm_campaign,
+			LCCode: $rootScope.formData.assistedLCCode || sessionStorage.getItem('lccode'),
+			LGCode: $rootScope.formData.assistedLGCode || sessionStorage.getItem('lgcode'),
+			Utm_Campaign: utm_campaign || sessionStorage.getItem('utm_campaign'),
 		}
 
 		serverService.apiCall(url, sendData);
@@ -2983,7 +3052,7 @@ mainApp.run(['$rootScope', '$location', 'serverService', '$state', '$interval', 
 						paninformation.show();
 						$rootScope.formData.panStatus = 'Your account is under process in another mode';
 					}
-					if ($rootScope.formData.assistedLGCode || $rootScope.formData.assistedLCCode) {
+					if ($rootScope.formData.assistedLGCode || $rootScope.formData.assistedLCCode || sessionStorage.getItem('lgcode') || sessionStorage.getItem('lccode')) {
 						$rootScope.codeMaping();
 					}
 

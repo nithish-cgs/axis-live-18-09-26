@@ -65,13 +65,21 @@ mainApp.controller('registerController', ['$scope', '$rootScope', '$state', 'ser
 		$('.select').select2();
 	}, 500)
 
-	if (lgcode) {
-		$rootScope.formData.assistedLGCode = lgcode;
+	/* A SECURED tiny link carries no lgcode / lccode in the URL, so the globals
+	 * parsed in app.js are null for that journey. getTinyUrlDetails decrypts them
+	 * out of the token and puts them in sessionStorage instead - fall back to
+	 * that, otherwise the fields stay blank and unlocked and the customer can
+	 * overwrite the RM's codes. sessionStorage holds "" when the code was absent,
+	 * which is falsy, so the guard still behaves. */
+	var lgSeed = lgcode || sessionStorage.getItem('lgcode');
+	if (lgSeed) {
+		$rootScope.formData.assistedLGCode = lgSeed;
 		$scope.disableLG = true;
 	}
 
-	if (lccode) {
-		$rootScope.formData.assistedLCCode = lccode;
+	var lcSeed = lccode || sessionStorage.getItem('lccode');
+	if (lcSeed) {
+		$rootScope.formData.assistedLCCode = lcSeed;
 		$scope.disableLC = true;
 	}
 
@@ -3312,7 +3320,7 @@ mainApp.controller('registerController', ['$scope', '$rootScope', '$state', 'ser
 								"referenceNumber": response.ReferenceNumber,
 								"mobile": response.AgentMobile
 							};
-							if ($rootScope.formData.assistedLGCode || $rootScope.formData.assistedLCCode) {
+							if ($rootScope.formData.assistedLGCode || $rootScope.formData.assistedLCCode || sessionStorage.getItem('lgcode') || sessionStorage.getItem('lccode')) {
 								$rootScope.codeMaping();
 							}
 							var dpval = '';
@@ -3333,7 +3341,7 @@ mainApp.controller('registerController', ['$scope', '$rootScope', '$state', 'ser
 							}
 
 							// if ((utm_bank && dp) || lgcode || lccode || bankname || planId || productId || segment || isCMLMandatory || referral_code || Utm_promoCode) {
-							if (UTM_bank || utm_bank || dp || lgcode || lccode || bankname || planId || productId || segment || isCMLMandatory || referral_code || Utm_promoCode) {
+							if (UTM_bank || utm_bank || dp || lgcode || lccode || bankname || planId || productId || segment || isCMLMandatory || referral_code || Utm_promoCode || sessionStorage.getItem('lgcode') || sessionStorage.getItem('lccode')) {
 								if (bankname) {
 									utm_bank = bankname;
 								} else {

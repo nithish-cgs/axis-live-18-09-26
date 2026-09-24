@@ -45,7 +45,7 @@ serverComm.factory('serverService', ['$http', '$q', function ($http, $q) {
 		'VerifyKRAClientStatusEnc',
 		'EmailVerificationUrl','KRAClientValidationupdate','DIYClientPersonalInfoProfile',
 		'DIYClientOtherInfo','DIYGetDocumentProofStageByRefEnc', 'GetAppFormDetailsDIY', 'GetRefNoByPANMobileEnc',
-		'DIYGetRegistrationInfoByReferenceNumber','FathernameUpdate','Digilockercreate','Digilockerfetchdetails','Documentextraction','CaptureDifferentlyAbled','WBTempPersistenceResume'
+		'DIYGetRegistrationInfoByReferenceNumber','FathernameUpdate','Digilockercreate','Digilockerfetchdetails','Documentextraction','CaptureDifferentlyAbled','WBTempPersistenceResume','ConvertToTinyUrl','DecryptSecuredTinyUrl'
 	  ]
 	return {
 		bankCity: function (s_url, sendData) {
@@ -220,7 +220,17 @@ serverComm.factory('serverService', ['$http', '$q', function ($http, $q) {
 			}
 		},
 		decryption:  function(param , objKey = 'Response') {
-			const decres = param[objKey];
+			const decres = param ? param[objKey] : undefined;
+			/* Not every endpoint in apiEncryptList envelopes its RESPONSE. Some
+			 * accept an encrypted request but reply with plain JSON, and a plain
+			 * body also comes back for API errors. Without this guard we called
+			 * axisCrypto.dec(undefined), which throws
+			 *   TypeError: Cannot read properties of undefined (reading 'ciphertext')
+			 * INSIDE apiCall's .then() - so the promise rejected and the caller's
+			 * success handler never ran. The request had actually succeeded; the
+			 * response was simply thrown away. That is what stopped ConvertToTinyUrl
+			 * populating the UI. Same guard as AxisPDF/IndexNewV2.html. */
+			if (!decres) { return { data : param }; }
 			var decreq = axisCrypto.dec(decres);
 			var res = decreq.toString(CryptoJS.enc.Utf8);
 			return { data : JSON.parse(res) };

@@ -4942,7 +4942,7 @@ mainApp.controller('documentController', ['$scope', '$rootScope', '$state', 'ser
 												{ field: "Guardian Last name", readonly: nominee.GuardianLastName ? true : false, value: nominee.GuardianLastName || '', required: true, type: 'input', class: 'col-md-4', directive: 'alphapet', length: 30 },
 												{ field: "Guardian Date of birth", readonly: nominee.GuardianDateofBirth ? true : false, value: nominee.GuardianDateofBirth || '', required: true, type: 'date' },
 												{
-													field: "Relationship", readonly: nominee.GuardianRelationship ? true : false, value: nominee.GuardianRelationship ? nominee.GuardianRelationship.toString() : '', required: true, type: 'dropdown',
+													field: "Relationship with Minor", readonly: nominee.GuardianRelationship ? true : false, value: nominee.GuardianRelationship ? nominee.GuardianRelationship.toString() : '', required: true, type: 'dropdown',
 													arrayVal: $rootScope.formData.nomineeRelationList, labelKey: 'Nominee',
 													valueKey: 'NomineeValue'
 												},
@@ -8090,7 +8090,7 @@ mainApp.controller('documentController', ['$scope', '$rootScope', '$state', 'ser
 		{ field: 'Guardian Last name', value: '', required: true, type: 'input', class: 'col-md-4', directive: 'alphapet', length: 30 },
 		{ field: 'Guardian Date of birth', value: '', required: true, type: 'date' },
 		{
-			field: 'Relationship', value: '', required: true, type: 'dropdown',
+			field: 'Relationship with Minor', value: '', required: true, type: 'dropdown',
 			arrayVal: $rootScope.formData.nomineeRelationList, labelKey: 'Nominee',
 			valueKey: 'NomineeValue'
 		},
@@ -8505,6 +8505,52 @@ mainApp.controller('documentController', ['$scope', '$rootScope', '$state', 'ser
 
 		return newError === 0;
 	};
+	// BYOD: Nominee Relationship is required for a Major nominee; Nominee Relationship
+	// AND Guardian Relationship are both required for a Minor nominee. Minor/Major is
+	// decided the same way the rest of this controller decides it - by whether a
+	// guardianNewFields[index] row exists for that nominee (populated only when the
+	// bank/API sent IsGuardian === "1", see nomineeNewFields/guardianNewFields population
+	// above). Reuses the same field.error/field.errorMessage pattern read by index.html
+	// so the BYOD Relationship-only UI block shows the message inline like every other field.
+	$scope.validateByodNomineeRelationship = function () {
+		let newError = 0;
+		let isBlank = function (val) {
+			return val == null || String(val).trim() === '';
+		};
+		if ($rootScope.nomineeNewFields.length > 0) {
+			$rootScope.nomineeNewFields.forEach(function (nomineeGroup, index) {
+				let isMinor = !!($rootScope.guardianNewFields && $rootScope.guardianNewFields[index] && $rootScope.guardianNewFields[index].length > 0);
+				nomineeGroup.forEach(function (field) {
+					if (field.field === 'Relationship') {
+						if (isBlank(field.value)) {
+							field.error = true;
+							field.errorMessage = isMinor ? 'Nominee relationship is required for a minor nominee.' : 'Nominee relationship is required for a major nominee.';
+							newError++;
+						} else {
+							field.error = false;
+							field.errorMessage = '';
+						}
+					}
+				});
+				if (isMinor) {
+					$rootScope.guardianNewFields[index].forEach(function (field) {
+						if (field.field === 'Relationship with Minor ') {
+							if (isBlank(field.value)) {
+								field.error = true;
+								field.errorMessage = 'Guardian relationship is required for a minor nominee.';
+								newError++;
+							} else {
+								field.error = false;
+								field.errorMessage = '';
+							}
+						}
+					});
+				}
+			});
+			$scope.$evalAsync();
+		}
+		return newError === 0;
+	};
 	$scope.EmailRefex = function (email) {
 		var regex = /^[\w-\.]+@[a-zA-Z]{1}([\w-]+\.)+[\w-]{2,4}$/g;
 		return regex.test(email);
@@ -8726,7 +8772,7 @@ mainApp.controller('documentController', ['$scope', '$rootScope', '$state', 'ser
 							if (guardian.field === "Guardian Last name") {
 								obj.GuardianLastName = guardian.value;
 							}
-							if (guardian.field === "Relationship") {
+							if (guardian.field === "Relationship with Minor") {
 								obj.GuardianRelationship = guardian.value;
 							}
 							if (guardian.field === 'Guardian Date of birth') {
@@ -8898,6 +8944,9 @@ mainApp.controller('documentController', ['$scope', '$rootScope', '$state', 'ser
                 return;
             }
             $scope.printNomineeError = false;
+			if (!$scope.validateByodNomineeRelationship()) {
+                return;
+            }
             $scope.NomineeSave();
             return;
         }

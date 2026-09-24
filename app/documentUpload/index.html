@@ -3346,6 +3346,44 @@ provided to me / us by the AMC / DP as follows (please tick, as appropriate):
                                 </div>
                            
                         </div>
+						<!-- BYOD: Nominee/Guardian Relationship. Bank/API normally supplies
+                         RelationshipWithNominee / GuardianRelationship (see documentUpload.js
+                         nomineeNewFields/guardianNewFields population). When missing, collect it
+                         here instead of the full non-BYOD field block below. Guardian row is only
+                         shown when guardianNewFields[index] exists (minor-nominee signal from the
+                         bank via IsGuardian, same as non-BYOD). -->
+                    <div ng-if="nomineeNewFields.length > 0 && NomineeError && BYOD">
+                        <div class="col-12 no-margin no-padding" ng-repeat="(index, nominee) in nomineeNewFields track by $index">
+                            <div class="row">
+                                <div class="col-md-6" ng-repeat="field in nominee track by $index" ng-if="field.field == 'Relationship'">
+                                    <label class="ax-label">Nominee Relationship: <span class="text-danger">*</span></label>
+                                    <div class="ax-field">
+                                        <select class="form-control select" ng-model="field.value" ng-change="field.error = false;">
+                                            <option value="">Select</option>
+                                            <option ng-repeat="eb in field.arrayVal" value="{{eb[field.valueKey]}}">
+                                                {{eb[field.labelKey]}}
+                                            </option>
+                                        </select>
+                                        <div class="input-message clearfix" ng-if="field.error"><span
+                                            class="error-message pull-right"><i class="fa fa-times"></i>{{field.errorMessage}}</span></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" ng-repeat="field in guardianNewFields[index]" ng-if="field.field == 'Relationship with Minor'">
+                                    <label class="ax-label">Guardian Relationship: <span class="text-danger">*</span></label>
+                                    <div class="ax-field">
+                                        <select class="form-control select" ng-model="field.value" ng-change="field.error = false;">
+                                            <option value="">Select</option>
+                                            <option ng-repeat="eb in field.arrayVal" value="{{eb[field.valueKey]}}">
+                                                {{eb[field.labelKey]}}
+                                            </option>
+                                        </select>
+                                        <div class="input-message clearfix" ng-if="field.error"><span
+                                            class="error-message pull-right"><i class="fa fa-times"></i>{{field.errorMessage}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div ng-if="nomineeNewFields.length > 0 && NomineeError && !BYOD">
                         <div class="col-12 no-margin no-padding" ng-repeat="(index, nominee) in nomineeNewFields track by $index">
                             <h4 class="ax-sec-title mb-5">
