@@ -488,7 +488,7 @@ mainApp.run(['$rootScope', '$location', 'serverService', '$state', '$interval', 
 						sessionStorage.setItem("lgcode",getParamCaseInsensitive("lgcode") || getParamCaseInsensitive("LGCode"));
 						sessionStorage.setItem("lccode",getParamCaseInsensitive("lccode") || getParamCaseInsensitive("LCCode"));
 						sessionStorage.setItem("bankname",getParamCaseInsensitive("bankname"));
-						sessionStorage.setItem("segment",getParamCaseInsensitive("planId") || getParamCaseInsensitive("productId"));
+						sessionStorage.setItem("segment",getParamCaseInsensitive("planId") || getParamCaseInsensitive("segment"));
 						sessionStorage.setItem("UTM_bank",getParamCaseInsensitive("UTM_bank") || getParamCaseInsensitive("UTM_Bank"));
 						sessionStorage.setItem("ReferralCode",getParamCaseInsensitive("ReferralCode"));
 						sessionStorage.setItem("PromoCode",getParamCaseInsensitive("PromoCode"));
