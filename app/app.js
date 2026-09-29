@@ -475,34 +475,30 @@ mainApp.run(['$rootScope', '$location', 'serverService', '$state', '$interval', 
 					var queryString = response.QueryString;
 					if (queryString) {
 						var params = new URLSearchParams(queryString);
-						sessionStorage.setItem("lgcode", params.get("lgcode") || "");
-						sessionStorage.setItem("lccode", params.get("lccode") || "");
-						sessionStorage.setItem("bankname", params.get("bankname") || "");
-						sessionStorage.setItem("segment", params.get("planId") || "");
-						sessionStorage.setItem("UTM_bank", params.get("UTM_bank") || "");
-						sessionStorage.setItem("ReferralCode", params.get("ReferralCode") || "");
-						sessionStorage.setItem("PromoCode", params.get("PromoCode") || "");
-						sessionStorage.setItem("utm_campaign", params.get("utm_campaign") || "");
-						sessionStorage.setItem("rmTeam", params.get("rmTeam") || "");
-
-						/* The register controller seeds the LG/LC fields from the URL
-						 * globals (register.js), and a SECURED link carries no lgcode /
-						 * lccode in the URL - they arrive here, inside the decrypted
-						 * QueryString. Without this they only ever reach sessionStorage,
-						 * so the fields stay blank and editable and the RM's codes are
-						 * lost from the UI. $rootScope is shared, so this lands whether
-						 * the register controller constructed before or after this call
-						 * resolved. */
-						var lgFromTiny = params.get("lgcode") || "";
-						var lcFromTiny = params.get("lccode") || "";
-						if (lgFromTiny) { $rootScope.formData.assistedLGCode = lgFromTiny; }
-						if (lcFromTiny) { $rootScope.formData.assistedLCCode = lcFromTiny; }
+						// Case-insensitive query parameter getter
+						function getParamCaseInsensitive(paramName) {
+							paramName = paramName.toLowerCase();
+							for (const [key, value] of params.entries()) {
+								if (key.toLowerCase() === paramName) {
+									return value;
+								}
+							}
+							return "";
+						}
+						sessionStorage.setItem("lgcode",getParamCaseInsensitive("lgcode") || getParamCaseInsensitive("LGCode"));
+						sessionStorage.setItem("lccode",getParamCaseInsensitive("lccode") || getParamCaseInsensitive("LCCode"));
+						sessionStorage.setItem("bankname",getParamCaseInsensitive("bankname"));
+						sessionStorage.setItem("segment",getParamCaseInsensitive("planId") || getParamCaseInsensitive("productId"));
+						sessionStorage.setItem("UTM_bank",getParamCaseInsensitive("UTM_bank") || getParamCaseInsensitive("UTM_Bank"));
+						sessionStorage.setItem("ReferralCode",getParamCaseInsensitive("ReferralCode"));
+						sessionStorage.setItem("PromoCode",getParamCaseInsensitive("PromoCode"));
+						sessionStorage.setItem("utm_campaign",getParamCaseInsensitive("utm_campaign"));
+						sessionStorage.setItem("rmTeam",getParamCaseInsensitive("rmTeam") || getParamCaseInsensitive("affiliate_name"));
+						console.log("SessionStorage values updated.");
 					}
+
 				} else {
-					console.error(
-						"Unable to decrypt URL:",
-						response.Message
-					);
+					console.error("Unable to decrypt URL:",response.Message);
 					$rootScope.formData.errorMessage =
 						response.Message || 'Unable to decrypt URL.';
 				}
