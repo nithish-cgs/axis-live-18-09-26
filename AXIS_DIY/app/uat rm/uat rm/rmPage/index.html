@@ -1,0 +1,356 @@
+<style>
+button[disabled], html input[disabled], button[disabled]:hover, html input[disabled]:hover {
+    cursor: no-drop;
+	background: #ddd;
+	box-shadow: none;
+}
+.table, .modal-header,.btn-navigate {
+display: none !important;
+}
+.kv-upload-progress + .input-group.file-caption-main{
+	top: 0;
+}
+
+#video {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width:320px;
+  height:240px;
+}
+
+#photo {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width:320px;
+  height:240px;
+}
+
+#canvas {
+  display:none;
+}
+
+.camera {
+  width: 340px;
+  display:inline-block;
+}
+
+.output {
+  width: 340px;
+  display:inline-block;
+}
+
+#startbutton {
+  display:block;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+  bottom:32px;
+  background-color: rgba(0, 150, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  color: rgba(255, 255, 255, 1.0);
+}
+
+.contentarea {
+  font-size: 16px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  width: 760px;
+}
+
+.wrapper {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.glyphicon.glyphicon-trash{
+	display: none;
+}
+</style>
+<div class="container">
+<div class="profileaddresschangestep1 pacs">
+    <!--Contact Details-->
+    <div class="onboard-innerinfo">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="ax-sec-title">RM Page</h4>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="row">							
+                            <div class="col-md-6" ng-show="formData.getRmMobile">
+								<div class="col-12">
+									<h4 class="ax-sec-title">Mobile Number</h4>
+								</div>
+								<div class="row">
+									<div class="col-3">
+										<input class="form-control" type="tel" id="mobileExtn" ng-model="formData.fields.mobileExtn"
+											ng-disabled="true" maxlength="10" only-digits />
+									</div>
+									<div class="col-9">
+										<div class="ax-field">
+											<input class="form-control" autocomplete="nope" placeholder="Enter 10 Digit Mobile Number" type="tel" id="mobile"
+												ng-model="formData.fields.rmmobile" ng-blur="getUserDetails($event)"
+												ng-disabled="formData.threeinone || formData.ReferenceNumber || otp || otpVerified" maxlength="10"
+												ng-keypress="emptyMobile = false; invalidMobile = false; $event.keyCode == 13 ? firstStage() : null"
+												required only-digits  />
+											<span class="validation-result"></span>
+										</div>
+										<span class="error-message pull-right" ng-if="emptyMobile"><i class="fa fa-times"></i> Mobile
+											number is mandatory.</span>
+										<span class="error-message pull-right" ng-if="invalidMobile"><i class="fa fa-times"></i> Please
+											provide valid mobile number</span>
+										<div class="col-md-12 validate3otp" ng-if="otpVerified">
+											<h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5">OTP validated successfully</h4>
+										</div>
+
+									</div>
+								</div>
+							</div>	
+													
+                            <div class="col-md-6" ng-show="formData.getRmEmail">
+								<div class="col-12">
+									<h4 class="ax-sec-title">Email ID:</h4>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div class="ax-field">
+											<input class="form-control" type="text" placeholder="Enter Email ID" id="rmEmail" ng-model="formData.fields.rmEmail"
+											 maxlength="60" ng-keypress="emptyEmail = false;$event.keyCode == 13 ? emailValidate() : null" />
+											 	<span class="validation-result"></span>
+										</div>
+					
+										<span class="error-message pull-right" ng-if="emptyEmail"><i class="fa fa-times"></i> Email ID is empty</span>
+										<span class="error-message pull-right" ng-if="invalidEmail"><i class="fa fa-times"></i> Please
+											provide valid email id</span>
+										<div class="col-md-12 validate3otp" ng-if="otpVerified">
+											<h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5">OTP validated successfully</h4>
+										</div>
+
+									</div>
+								</div>
+							</div>	
+
+							<div class="col-md-6" ng-if="rmdesignation">
+								<div class="col-12">
+									<h4 class="ax-sec-title">Emp. Designation</h4>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div class="ax-field">
+											<input class="form-control" type="text" placeholder="Enter Emp. Designation" id="rmDesign" ng-model="formData.fields.rmDesign"
+											 maxlength="60" alpha-numeric ng-keypress="emptyDesignation = false;" />
+											 	<span class="validation-result"></span>
+
+												 <span class="error-message pull-right" ng-if="emptyDesignation"><i class="fa fa-times"></i> Emp. Designation is required.</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6" ng-if="rmOrganization">
+								<div class="col-12">
+									<h4 class="ax-sec-title">Name of Organization:</h4>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div class="ax-field">
+											<input class="form-control" type="text" placeholder="Enter Name of Organization" id="rmOrganize" ng-model="formData.fields.rmOrganize"
+											 maxlength="60" alpha-numeric ng-keypress="emptyOrganization = false;"/>
+											 	<span class="validation-result"></span>
+												 <span class="error-message pull-right" ng-if="emptyOrganization"><i class="fa fa-times"></i> Name of Organization is required.</span>
+										</div>
+									</div>
+								</div>
+							</div>	
+					
+						</div>
+				
+						<div class="row" ng-show="otpSectionShow">
+							<div class="col-md-6">
+								<label class="ax-label">OTP:</label>
+								<div class="ax-timerandresend">
+									<div class="ax-field">
+										<input autocomplete="nope" only-digits ng-keypress="emptyOTP = false; $event.keyCode == 13 ? validateOTP() : ''" ng-model="formData.fields.OTP" class="form-control" type="{{ typePassword ? 'text' : 'password' }}"
+											id="OTP" required />
+										<a href="javascript:void(0);" class="" tabindex="-1" ng-if="!formData.getRmEmail && enableResendButton" ng-click="resendOTP('mobile')"
+											ng-class="{adisabled: mobileResendDisable}">RE-SEND</a>
+										<a href="javascript:void(0);" class="" tabindex="-1" ng-if="formData.getRmEmail && enableResendButton" ng-click="resendOTP('email')"
+											ng-class="{adisabled: mobileResendDisable}">RE-SEND</a>
+										<span ng-bind="counter" ng-if="!enableResendButton"></span>
+										<span class="validation-result"></span>
+										<i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': typePassword, 'fa-eye-slash': !typePassword}" ng-click="typePassword != typePassword"></i>
+									</div>
+									<p class="error-message pull-right" ng-if="emptyOTP"><i class="fa fa-times"></i> OTP is Empty</p>
+									<p class="error-message pull-right" ng-if="invalidOTP"><i class="fa fa-times"></i> {{apiResponseErrorMsg}}</p>
+									<div ng-if="!OtpLimitExceed">
+										<h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5" ng-if="otpSent && !formData.getRmEmail">We have sent a One Time Password to your mobile number.</h4>
+										<h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5" ng-if="otpSent && formData.getRmEmail">We have sent a One Time Password to your email id.</h4>
+										<h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5" ng-if="otpreSent && !formData.getRmEmail">We have re-sent a One Time Password to your mobile number.</h4>
+										<h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5" ng-if="otpreSent && formData.getRmEmail">We have re-sent a One Time Password to your email id.</h4>
+									</div>
+									<div ng-if="OtpLimitExceed">
+										<h4 class="page-tag page-tag1 ax-bold-title mt-0 mb-5">{{OtpResponseMsg}}</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+        
+					<div class="row mb-5" ng-show="formData.getRmMobile || formData.getRmEmail || rmOrganization || rmdesignation">
+						<div class="col-md-12">
+							<button class="btn btn-primary ax-btn-primary" id="getOtp" ng-disabled="enableOTPButton" ng-if="!showRegistrationBtn && formData.getRmMobile" ng-click="firstStage()">GET OTP ON MOBILE</button>
+							<button class="btn btn-primary ax-btn-primary" id="getOtp" ng-disabled="enableOTPButton" ng-if="!showRegistrationBtn && formData.getRmEmail" ng-click="emailValidate()">GET OTP ON EMAIL</button>
+						</div>
+						<div class="col-md-12">
+							<button class="btn ax-btn-primary" id="registration" ng-if="(showRegistrationBtn && formData.getRmMobile) || (!showRegistrationBtn && !formData.getRmMobile && (rmOrganization || rmdesignation))"
+								ng-click="validateOTP('mobile')">Update</button>
+								<button class="btn ax-btn-primary" id="registration" ng-if="showRegistrationBtn && formData.getRmEmail"
+								ng-click="validateOTP('email')">Update</button>
+								<!-- <button class="btn ax-btn-primary" id="registration" ng-if="showRegistrationBtn"
+								ng-click="editMobileNumber()">Change Mobile Number</button> -->
+						</div>
+					</div>
+					
+
+						<div class="row mb-5" ng-show="formData.getRmSignature">
+							<div class="col-6">
+										<div class="col-12 p-0">
+											<h4 class="ax-sec-title">Employee Signature</h4>
+										</div>							
+										<!-- <div class="col-12 p-0">
+											<h4 class="ax-sec-title">Peview option is missing</h4>
+										</div>							 -->
+                                            <div class="upload-section">
+                                                <div id="clientSignature"></div>
+                                                <input type="file" accept="image/*" class="input-upload"
+                                                    id="RMSIGNATURE" onchange="sigUpld('RMSIGNATURE');">
+                                            </div>
+                                            <div class="ax-field">
+                                                <!--<div class="validation-result"
+                                                    ng-class="{'validation-error': (!sigImageValidation && sigImageValidation!=''), 'validation-success': sigImageValidation}">
+                                                </div>-->
+                                            </div>
+                                            <div class="grey-texts">Allowed Extn : jpeg and png.</div>                                
+							</div>
+							<div class="col-12">
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="rmtypeError"><i class="fa fa-times"></i>File type
+                                                not supported</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="rmImgError"><i class="fa fa-times"></i>Please upload image</span></div>
+                                        <div class="input-message clearfix"><span class="error-message"
+                                                ng-if="rmSizeError"><i class="fa fa-times"></i>Please upload the document
+                                                less than 4Mb</span></div>
+                            </div>
+						</div>
+						
+						
+						<div class="row" ng-show="formData.changePassword && !otpArea">		
+							<div class="col-12 mb-4">
+								<h4 class="ax-sec-title" ng-if="IsPasswordExpired">Your password Expired, so please set new password</h4>
+								<h4 class="ax-sec-title">Update Password</h4>
+								<small>Password should be 8 to 12 characters and contain at least contain one alphabet in uppercase, one alphabet in lowercase, one number and one special character</small>
+							</div>		
+							<div class="col-md-4" ng-hide="formData.rmForgotOTP">
+								<label class="ax-label">Old Password:</label>
+								<div class="row">
+									<div class="col-12">
+										<div class="ax-field">
+											<input class="form-control" autocomplete="nope" placeholder="Enter Old Password" type="{{ oldtypePassword ? 'text' : 'password' }}" stop-ccp ng-model="formData.fields.oldPassword" ng-keypress="oldPasswordError = false;" maxlength="12" />
+											<span class="validation-result"></span>
+											<i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': oldtypePassword, 'fa-eye-slash': !oldtypePassword}" style="right: 20px" ng-click="oldtypePassword = !oldtypePassword"></i>
+										</div>
+										<span class="error-message pull-right" ng-if="oldPasswordError"><i class="fa fa-times"></i> Please enter correct old password.</span>
+									</div>
+								</div>
+							</div>							
+                            <div class="col-md-4">
+								<label class="ax-label">New Password:</label>
+								<div class="row">
+									<div class="col-12">
+										<div class="ax-field">
+											<input class="form-control" autocomplete="nope" placeholder="Enter New Password" type="{{ typePassword ? 'text' : 'password' }}" stop-ccp
+												ng-model="formData.fields.newPassword" ng-keypress="newPasswordError = false; formData.inValidPassword = false;" maxlength="12" />
+											<span class="validation-result"></span>
+											<i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': typePassword, 'fa-eye-slash': !typePassword}" style="right: 20px" ng-click="typePassword = !typePassword"></i>
+										</div>
+										<span class="error-message pull-right" ng-if="newPasswordError"><i class="fa fa-times"></i> Please enter new password.</span>
+										<span class="error-message pull-right" ng-if="formData.inValidPassword"><i class="fa fa-times"></i> Please
+											provide password in described format</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label class="ax-label">Confirm Password:</label>
+								<div class="row">
+									<div class="col-12">
+										<div class="ax-field">
+											<input class="form-control" autocomplete="nope" placeholder="Re Enter New Password" type="{{ retypePassword ? 'text' : 'password' }}"  stop-ccp
+												ng-model="formData.fields.renewPassword" ng-keypress="formData.passwordMismatch = false; renewPasswordError = false;" maxlength="12" />
+											<span class="validation-result"></span>
+											<i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': retypePassword, 'fa-eye-slash': !retypePassword}" style="right: 20px" ng-click="retypePassword = !retypePassword"></i>
+										</div>
+										<span class="error-message pull-right" ng-if="formData.passwordMismatch"><i class="fa fa-times"></i> Confirm password doesn't match.</span>
+										<span class="error-message pull-right" ng-if="renewPasswordError"><i class="fa fa-times"></i> Please re-enter password</span>
+									</div>
+								</div>
+							</div>							
+							<div class="col-md-12">
+								<button class="btn btn-primary ax-btn-primary" id="getOtp" ng-disabled="enableOTPButton" ng-click="updatePassword()">Update</button>
+							</div>							
+						</div>
+						<div class="row" ng-show="otpArea">
+							<div class="col-md-4">
+							<label class="ax-label">Mobile OTP:</label>
+								<div class="row">
+									<div class="col-12">
+										<div class="ax-field">
+										<input class="form-control" autocomplete="nope" placeholder="Mobile OTP" type="{{ mOTP ? 'text' : 'password' }}"  stop-ccp ng-model="formData.rmpwdmobileOTP" ng-keypress="mobileOTPError = false; mobileOTPEmptyError = false;" maxlength="6" />
+											<span class="validation-result"></span>
+											<i class="fa show-otp" tabindex="-1" ng-class="{'fa-eye': mOTP, 'fa-eye-slash': !mOTP}" style="right: 20px" ng-click="mOTP = !mOTP"></i>
+										</div>
+									</div>
+									<span class="error-message pull-right" ng-if="mobileOTPEmptyError"><i class="fa fa-times"></i> Please enter OTP sent to your mobile number</span>
+									<span class="error-message pull-right" ng-if="mobileOTPError"><i class="fa fa-times"></i> Invalid OTP</span>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<button class="btn btn-primary ax-btn-primary" id="getOtp" ng-disabled="enableOTPButton" ng-click="validateRMPwdOTP()">Validate OTP</button>
+							</div>
+						</div>
+                    </div>
+				</div>
+            </div>           
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Mobile OTP Problem -->
+        <section class="modal fade" id="RMModal" role="dialog" tabindex="-1">
+            <div class="modal-dialog login-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <p class="ax-sec-title m-0">{{formData.rmMsg}}</p>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-12 text-center">
+                                <button data-bs-dismiss="modal" ng-click="rmSetting()"
+                                    class="btn ax-btn-primary text-uppercase">
+                                    Okay</button>
+                            </div>
+                        </div>
+                        <!-- End -->
+                    </div>
+                </div>
+            </div>
+        </section>

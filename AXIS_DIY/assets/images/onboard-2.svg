@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #383838;
+      }
+
+      .cls-2 {
+        fill: #fefefe;
+      }
+
+      .cls-2, .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 1px;
+      }
+    </style>
+  </defs>
+  <rect id="Rectangle_1_copy_2" data-name="Rectangle 1 copy 2" x="42" width="42" height="42"/>
+  <rect id="Rectangle_1_copy_4" data-name="Rectangle 1 copy 4" x="126" width="42" height="42"/>
+  <rect id="Rectangle_1_copy_3" data-name="Rectangle 1 copy 3" class="cls-1" x="84" width="42" height="42"/>
+  <path id="Rectangle_31111224_copy" data-name="Rectangle 31111224 copy" class="cls-2" d="M148,14h1v1h-1v8h-1V15h-1V14h1V13h1v1Zm2,2h-1V15h1v1Zm-5,0V15h1v1h-1Zm-6,2V29h16V18h-4V17h5V30h-18V17h4v1h-3Z"/>
+  <path class="cls-3" d="M51,13H75V29H51V13Zm1,1H74V28H52V14ZM63,25h9v1H63V25Zm2-3h1v3H65V22Zm2,0h1v3H67V22Zm2,0h1v3H69V22Zm-6-2h1v1H63V20Zm1-1h1v1H64V19Zm1-1h1v1H65V18Zm1-1h1v1H66V17Zm1-1h1v1H67V16Zm1,1h1v1H68V17Zm1,1h1v1H69V18Zm1,1h1v1H70V19Zm1,1h1v1H71V20Zm-7,1V20h8v1H64ZM54,16h3v1H54V16Zm0,3h4v1H54V19Zm0,3h8v1H54V22Zm0,3h8v1H54V25Z"/>
+  <circle class="cls-4" cx="105" cy="21" r="12"/>
+  <path class="cls-3" d="M110,21h-3.27c-0.528,1.544-1.774,3-3.23,3V23c0.926,0,1.725-.955,2.157-2H100V20h5.954A3.173,3.173,0,0,0,106,19.5a2.5,2.5,0,0,0-2.5-2.5H100V16h10v1h-4.056A3.485,3.485,0,0,1,107,19.5a3.965,3.965,0,0,1-.048.5H110v1Zm-8,2.395,0.254-.169,3.324,4.995-0.832.554L101.568,24H101V23h1v0.395Z"/>
+  <path id="Shape_4_copy_3" data-name="Shape 4 copy 3" class="cls-3" d="M17,12a5,5,0,1,1-5,5A5,5,0,0,1,17,12Zm0,1a4,4,0,1,1-4,4A4,4,0,0,1,17,13ZM9,31a8,8,0,1,1,16,0M10,31a7,7,0,1,1,14,0M10,31V30H24v1H10ZM24,16V15h9v1H24Zm0,3V18h9v1H24Zm-1,3V21H33v1H23Zm3,3V24h7v1H26Zm1,3V27h6v1H27Z"/>
+</svg>

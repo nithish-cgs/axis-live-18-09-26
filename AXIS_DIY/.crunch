@@ -1,0 +1,19 @@
+{
+	"files": {
+		"assets/css/styles.scss": {
+			"engines": [
+				{
+					"compiler": "scss",
+					"output": "styles.css",
+					"options": {
+						"style": 0,
+						"comments": false
+					}
+				}
+			],
+			"sources": [
+				"styles.scss"
+			]
+		}
+	}
+}

@@ -1,0 +1,55 @@
+/*media screen for 1200 px*/
+
+/*@media (min-width: 1200px){
+.container {
+    width: 850px !important;
+}
+}*/
+
+@media (min-width: 992px){
+
+
+}
+/*media screen for 360 px*/
+
+@media (max-width: 420px){
+#regForm {
+    background: linear-gradient(to right, #e79ced5e, #f7f5cd78);
+    margin: 50px auto;
+    font-family: Raleway;
+    padding: 15px;
+    min-width: 225px;
+}
+
+.icon-bar ul{
+	margin-left: -40px !important;
+	list-style: none;
+}
+
+
+
+}
+
+
+
+/*media screen for 768 px*/
+
+
+@media (max-width: 768px){
+.icon-bar ul {
+	list-style: none;
+	margin-left: -35px;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica, Arial, sans-serif;
+    background-image: url(images/slide-12.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left; 
+}
+ 
+
+
+}
+
+ 
