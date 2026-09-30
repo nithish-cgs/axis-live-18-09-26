@@ -48,7 +48,17 @@ var utm_placement = (getParameterByName('utm_placement', url));
 var utm_adgroup = (getParameterByName('utm_adgroup', url));
 var utm_device = (getParameterByName('utm_device', url));
 var utm_content = (getParameterByName('utm_content', url));
-var utm_bank = (getParameterByName('utm_bank', url));
+/* utm_bank is read from the URL at script load only. Once the journey moves
+ * past the landing page the SPA URL no longer carries the parameter, so a
+ * mid-application reload parses null here - and the `if (utm_bank) {...}`
+ * block further down (which sets $rootScope.utmBankLogo and calls
+ * getBankLogo()) never runs, so the SSWB/SVCB header logo silently
+ * disappears for the rest of the session. Persist it the first time it is
+ * seen and fall back to that on later loads. Uses its own key - UTM_bank
+ * (capital) is a DIFFERENT variable already used for the Jana-bank flow
+ * below, with its own sessionStorage entry; reusing it here would collide. */
+var utm_bank = (getParameterByName('utm_bank', url)) || sessionStorage.getItem('utmBankCode') || '';
+if (utm_bank) { sessionStorage.setItem('utmBankCode', utm_bank); }
 var dp = (getParameterByName('dp', url));
 var CTA = (getParameterByName('CTA', url));
 var GCLID = (getParameterByName('GCLID', url));
