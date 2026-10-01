@@ -781,54 +781,81 @@ mainApp.run(['$rootScope', '$location', 'serverService', '$state', '$interval', 
 		return true;
 	};
 
-	if (utm_bank) {
-		// Header logo shown in place of the "Rm login" button for partner banks.
-		// Styled per bank - the lockups have very different aspect ratios
-		// (saraswat 2.3:1, svc 4.8:1), so one shared style looks wrong.
-		var utmBankLogos = {
-			"SSWB": {
-				src: "assets/images/logo/saraswat.png",
-				style: {
-					"margin-top": "14px",
-					"height": "100px",
-					"width": "auto",
-					"position": "absolute",
-					"right": "110px"
-				},
-				mobileStyle: {
-					"width": "40%",
-					"max-width": "165px",
-					"height": "auto",
-					"position": "absolute",
-					"top": "35px",
-					"right": "14px"
-				}
+	// Header logo shown in place of the "Rm login" button for partner banks.
+	// Styled per bank - the lockups have very different aspect ratios
+	// (saraswat 2.3:1, svc 4.8:1), so one shared style looks wrong.
+	//
+	// Defined unconditionally, NOT inside `if (utm_bank)`: a customer can start
+	// on SSWB/SVCB, close the tab, then return through a fresh URL with no
+	// ?utm_bank= and an empty session (e.g. a different browser/device) and hit
+	// "Resume Application". GetDecryptURL's response still names the bank via
+	// BankShortName even though neither the URL nor sessionStorage ever did -
+	// applyUtmBankLogo() (below) is called from that response handler, and it
+	// needs this object populated regardless of what utm_bank was at page load.
+	var utmBankLogos = {
+		"SSWB": {
+			src: "assets/images/logo/saraswat.png",
+			style: {
+				"margin-top": "14px",
+				"height": "100px",
+				"width": "auto",
+				"position": "absolute",
+				"right": "110px"
 			},
-			"SVCB": {
-				src: "assets/images/logo/svc.png",
-				style: {
-					"width": "230px",
-					"height": "auto",
-					"position": "absolute",
-					"top": "64px",
-					"transform": "translateY(-50%)",
-					"right": "110px"
-				},
-				mobileStyle: {
-					"width": "40%",
-					"max-width": "165px",
-					"height": "auto",
-					"position": "absolute",
-					"top": "69px",
-					"transform": "translateY(-50%)",
-					"right": "14px"
-				}
+			mobileStyle: {
+				"width": "40%",
+				"max-width": "165px",
+				"height": "auto",
+				"position": "absolute",
+				"top": "35px",
+				"right": "14px"
 			}
-		};
-		var bankLogo = utmBankLogos[utm_bank.toString().toUpperCase()];
+		},
+		"SVCB": {
+			src: "assets/images/logo/svc.png",
+			style: {
+				"width": "230px",
+				"height": "auto",
+				"position": "absolute",
+				"top": "64px",
+				"transform": "translateY(-50%)",
+				"right": "110px"
+			},
+			mobileStyle: {
+				"width": "40%",
+				"max-width": "165px",
+				"height": "auto",
+				"position": "absolute",
+				"top": "69px",
+				"transform": "translateY(-50%)",
+				"right": "14px"
+			}
+		}
+	};
+
+	// Resolves and applies the partner-bank header logo for a bank code, and
+	// persists it the same way the page-load path does, so a SUBSEQUENT reload
+	// (after a resume restores the logo mid-session) still finds it. Shared by
+	// the page-load block below and by decryptUrl()'s two BankShortName sites.
+	$rootScope.applyUtmBankLogo = function (code) {
+		code = (code || '').toString().toUpperCase();
+		var bankLogo = utmBankLogos[code];
+		if (bankLogo) { sessionStorage.setItem('utmBankCode', code); }
 		$rootScope.utmBankLogo = bankLogo ? bankLogo.src : '';
 		$rootScope.utmBankLogoConfig = bankLogo || null;
+		// setUtmBankLogoStyle() skips its own work when the viewport is still on
+		// the same side of the breakpoint as last time, to avoid rewriting the
+		// style mid-resize-drag. That guard compares against the PREVIOUS call,
+		// so without resetting it here, a second applyUtmBankLogo() for a
+		// DIFFERENT bank at an unchanged viewport width would silently keep the
+		// first bank's style object. Each call is a fresh pick, not a resize.
+		$rootScope.utmBankLogoIsMobile = null;
 		$rootScope.setUtmBankLogoStyle();
+		return !!bankLogo;
+	};
+
+	if (utm_bank) {
+		$rootScope.applyUtmBankLogo(utm_bank);
 		$rootScope.getBankLogo();
 	}
 	if (code && emailStatus == 'Y') {
@@ -2663,6 +2690,7 @@ mainApp.run(['$rootScope', '$location', 'serverService', '$state', '$interval', 
 
 					if (response.BankShortName) {
 						utm_bank = response.BankShortName;
+						$rootScope.applyUtmBankLogo(utm_bank);
 						$rootScope.getBankLogo();
 					} else {
 						$rootScope.bgImgDesktop = '';
@@ -5769,6 +5797,7 @@ mainApp.controller('appController', ['$scope', '$rootScope', '$state', 'serverSe
 
 								if (decryptResponse.BankShortName) {
 									utm_bank = decryptResponse.BankShortName;
+									$rootScope.applyUtmBankLogo(utm_bank);
 									$rootScope.getBankLogo();
 								} else {
 									$rootScope.bgImgDesktop = '';
