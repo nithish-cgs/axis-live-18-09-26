@@ -30,8 +30,8 @@ function btnFocus(event) {
 var url1 = window.location + '';
 url = decodeURIComponent(url1);
 
-var key = CryptoJS.enc.Utf8.parse('CGSRMAPPWITHMOBI');
-var iv = CryptoJS.enc.Utf8.parse('CGSRMAPPWITHMOBI');
+var key = CryptoJS.enc.Utf8.parse('5nSfy1kn3N7Ck4yQ');
+var iv = CryptoJS.enc.Utf8.parse('5nSfy1kn3N7Ck4yQ');
 var utm_source = (getParameterByName('utm_source', url));
 var utm_medium = (getParameterByName('utm_medium', url));
 var utm_term = (getParameterByName('utm_term', url));
@@ -2422,7 +2422,7 @@ angular.module('filters-module', [])
 			};
 		}
 	]);
-mainChatApp.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+mainChatApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function ($locationProvider, $stateProvider, $urlRouterProvider) {
 	$locationProvider.hashPrefix('!');
 	$locationProvider.html5Mode(true);
 	$urlRouterProvider.when('/index.html', '/register');
@@ -2535,7 +2535,7 @@ mainChatApp.config(function ($locationProvider, $stateProvider, $urlRouterProvid
 	})
 
 	$urlRouterProvider.otherwise('/register');
-});
+}]);
 
 mainChatApp.controller('chatappController', ['$scope', '$rootScope', '$state', 'serverService', '$location', '$window', function ($scope, $rootScope, $state, serverService, $location, $window) {
 			$rootScope.formData.stageInfo = '1a';
