@@ -1,0 +1,34 @@
+if(response.EsignStatus=="Y"){
+								var EsignStatus = new bootstrap.Modal(document.getElementById('EsignStatus'), {
+									backdrop: 'static',
+									keyboard: false
+								});
+								EsignStatus.show();
+							return;
+							}
+
+
+602
+
+  <section class="modal fade" id="EsignStatus" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+            <div class="modal-dialog login-dialog" style="margin-top: 231.5px;">
+                <div class="modal-content">
+                    <div class="modal-body login-body">
+                        <div class="login-screen welcome-content">
+                            <form class="input-forms">
+                                <ul class="form-fields text-center">
+                                    <li class="final-step no-padding">
+                                        <p class="page-tag page-tag1 ax-sec-title mt-0">We are unable to process the request . Esign to Journey has already completed </p>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="btn ax-btn-primary mt-5" data-bs-dismiss="modal" ng-click="siddhiapp()">
+                                            Okay
+                                        </button>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

@@ -1,4 +1,4 @@
-mainApp.controller('registerController', ['$scope', '$rootScope', '$state', 'serverService', '$compile', function ($scope, $rootScope, $state, serverService, $compile) {
+﻿mainApp.controller('registerController', ['$scope', '$rootScope', '$state', 'serverService', '$compile', function ($scope, $rootScope, $state, serverService, $compile) {
 	$scope.showRegistrationBtn = false;
 	$scope.enableResendButton = false;
 	$scope.enableEmailResendButton = false;
@@ -828,8 +828,10 @@ mainApp.controller('registerController', ['$scope', '$rootScope', '$state', 'ser
 	// }
 
 	$scope.redirectToIB = function () {
-		window.location.assign('https://omni.axisbank.co.in/axisretailbanking/');
-	}
+        // window.location.assign('https://omni.axisbank.co.in/axisretailbanking/');
+        window.location.assign('https://omni.axis.bank.in/axisretailbanking/');
+    }
+
 
 	$scope.togglePassword = function (a) {
 		if (a == 'mobile') {

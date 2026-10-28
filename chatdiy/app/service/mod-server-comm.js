@@ -18,13 +18,13 @@ serverComm.factory('serverService', function ($http, $q) {
 			return $http({ method: "POST", url: config.serverBaseUrl + s_url, data: sendData, async: false });
 		},
 		apiCall: function (s_url, sendData) {
-			return $http({ method: "POST", url: config.serverBaseUrl + s_url, data: sendData, headers: { 'Authorization': 'Basic ' + btoa("lbAEMpq7:psgqURBH") + '' }, async: false });
+			return $http({ method: "POST", url: config.serverBaseUrl + s_url, data: sendData, headers: { 'Authorization': 'Basic ' + btoa("abc:xyz") + '' }, async: false });
 		},
 		EmpApiCall: function (s_url, sendData) {
-			return $http({ method: "POST", url: config.EmpServerBaseUrl + s_url, data: sendData, headers: { 'Authorization': 'Basic ' + btoa("lbAEMpq7:psgqURBH") + '' }, async: false });
+			return $http({ method: "POST", url: config.EmpServerBaseUrl + s_url, data: sendData, headers: { 'Authorization': 'Basic ' + btoa("abc:xyz") + '' }, async: false });
 		},
 		apiUrlCall: function (s_url) {
-			return $http({ method: "POST", url: config.serverBaseUrl + s_url, headers: { 'Authorization': 'Basic ' + btoa("lbAEMpq7:psgqURBH") + '' }, async: false });
+			return $http({ method: "POST", url: config.serverBaseUrl + s_url, headers: { 'Authorization': 'Basic ' + btoa("abc:xyz") + '' }, async: false });
 		},
 		apiTokenUrlCall: function (s_url, AuthDatas) {
 			return $http({

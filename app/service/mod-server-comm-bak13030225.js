@@ -14,8 +14,8 @@ serverComm.factory('serverService', function ($http, $q) {
 		/* Local host */
 		TermsPDFUrl: window.location.origin + '/'
 	};
-	var key = CryptoJS.enc.Utf8.parse('5nSfy1kn3N7Ck4yQ');
-	var iv = CryptoJS.enc.Utf8.parse('5nSfy1kn3N7Ck4yQ');
+	var key = CryptoJS.enc.Utf8.parse('CGSRMAPPWITHMOBI');
+	var iv = CryptoJS.enc.Utf8.parse('CGSRMAPPWITHMOBI');
 	let apiEncryptList = [
 		'GetOverallStatusDIY',
 		'EcommercePanSiteValidation',
@@ -50,7 +50,7 @@ serverComm.factory('serverService', function ($http, $q) {
                     method: "POST",
                     url: config.serverBaseUrl + s_url,
                     data: encryptedData,
-                    headers: { 'Authorization': 'Basic ' + btoa("lbAEMpq7:psgqURBH") },
+                    headers: { 'Authorization': 'Basic ' + btoa("abc:xyz") },
                 }).then((response) => {
                     return this.decryption(response.data);
                 });
@@ -60,7 +60,7 @@ serverComm.factory('serverService', function ($http, $q) {
 					url: config.serverBaseUrl + s_url,
 					data: sendData,
 					headers: {
-						'Authorization': 'Basic ' + btoa("lbAEMpq7:psgqURBH") + ''
+						'Authorization': 'Basic ' + btoa("abc:xyz") + ''
 					},
 					async: false
 				});
@@ -73,7 +73,7 @@ serverComm.factory('serverService', function ($http, $q) {
 				url: config.EmpServerBaseUrl + s_url,
 				data: sendData,
 				headers: {
-					'Authorization': 'Basic ' + btoa("lbAEMpq7:psgqURBH") + ''
+					'Authorization': 'Basic ' + btoa("abc:xyz") + ''
 				},
 				async: false
 			});
@@ -94,7 +94,7 @@ serverComm.factory('serverService', function ($http, $q) {
 				method: "POST",
 				url: config.serverBaseUrl + s_url,
 				headers: {
-					'Authorization': 'Basic ' + btoa("lbAEMpq7:psgqURBH") + ''
+					'Authorization': 'Basic ' + btoa("abc:xyz") + ''
 				},
 				async: false
 			});
